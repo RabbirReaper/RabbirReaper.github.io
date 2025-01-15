@@ -71,6 +71,12 @@ const cashFlowSchema = new mongoose.Schema({
 `value`裡面需要指定`type`,其他相關的`required`,`default`,`enum`,都是可選的
 根據需要加入適當的條件,官網裡有列出所有`validator`及相關的範例這裡只用到了一些
 
+### 下面補充說明,可以自訂義不符合時的報錯訊息
+> You can configure the error message for individual validators in your schema. There are two equivalent ways to set the validator error message:
+
+>```Array syntax: min: [6, 'Must be at least 6, got {VALUE}']```
+>```Object syntax: enum: { values: ['Coffee', 'Tea'], message: '{VALUE} is not supported' }```
+
 ### [官方文檔](https://mongoosejs.com/docs/validation.html)
 
 ### 在Schema 導出的部分,下面是範例程式碼：
