@@ -1,358 +1,161 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
+<!DOCTYPE html><html lang="zh-TW" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Hexo</title><meta name="author" content="Rabbir_Reaper"><meta name="copyright" content="Rabbir_Reaper"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
 <meta property="og:url" content="https://rabbirreaper.github.io/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://rabbirreaper.github.io/img/butterfly-icon.png">
 <meta property="article:author" content="Rabbir_Reaper">
 <meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+<meta name="twitter:image" content="https://rabbirreaper.github.io/img/butterfly-icon.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://rabbirreaper.github.io/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
 
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
   
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
     
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
   
-  
-<meta name="generator" content="Hexo 7.3.0"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '複製成功',
+    error: '複製失敗',
+    noSupport: '瀏覽器不支援'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '剛剛',
+    min: '分鐘前',
+    hour: '小時前',
+    day: '天前',
+    month: '個月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '載入更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Hexo',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Hexo</span></a></span><div id="menus"></div></nav><div id="site-info"><h1 id="site-title">Hexo</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/01/15/Mongoose-%E7%9A%84%E5%9F%BA%E7%A4%8E%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/" title="Mongoose 的基礎語法筆記">Mongoose 的基礎語法筆記</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">發表於</span><time datetime="2025-01-15T03:56:28.000Z" title="發表於 2025-01-15 11:56:28">2025-01-15</time></span></div><div class="content">建立連接 MongoDB如果MongoDB 是建立在本地端的話，網址會像下面這樣 12345678await mongoose.connect(&#x27;mongodb://127.0.0.1:27017/shopApp&#x27;).then(() =&gt; &#123;  console.log(&quot;Connection OPEN!!!&quot;)&#125;).catch((err) =&gt; &#123;  console.log(&quot;OH NOOOOO&quot;)  console.log(err)&#125;) 如果是用雲端的話網址會長一點官方文檔 Schema 與 Model 設計基礎下列程式碼展示了一些範例： 123456789101112131415161718192021222324252627282930313233343536373839404142const expenseCategorySchema = new mongoose.Schema(&#123;  name: &#123;    type: String,   ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/01/15/My-First-Post/" title="My First Post">My First Post</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">發表於</span><time datetime="2025-01-15T03:51:04.000Z" title="發表於 2025-01-15 11:51:04">2025-01-15</time></span></div><div class="content">前言其實我想寫blog很久了，我這個人做事的動力很斷斷續續，時常沒什麼動力，有動力可能也持續不久想透過blog的方式，記錄現在在做什麼，有種一步一步推進的感覺可能還有老了，可以回頭看以前類似日記的東西 blog短期目標目前打算把一些以前寫題目的程式放上來，方便我突然要找程式，不然都放在Discord上對那些程式有種暗無天日的感覺然後把最近學的東西打成筆記放上來，方便以後複習我記憶力不太好，有個紀錄筆記的地方，希望能加快我的學習 分享我很喜歡 https://zrn-code.github.io/about/這個電神的blog，我也是看他的教學開始寫hexo的他的blog超beautiful，也好多酷炫的內容 </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/01/15/hello-world/" title="Hello World">Hello World</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">發表於</span><time datetime="2025-01-15T03:28:53.437Z" title="發表於 2025-01-15 11:28:53">2025-01-15</time></span></div><div class="content">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;  More info: Writing Run server1$ hexo server  More info: Server Generate static files1$ hexo generate  More info: Generating Deploy to remote sites1$ hexo deploy  More info: Deployment </div></div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Rabbir_Reaper</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/15/Mongoose-%E7%9A%84%E5%9F%BA%E7%A4%8E%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/" title="Mongoose 的基礎語法筆記">Mongoose 的基礎語法筆記</a><time datetime="2025-01-15T03:56:28.000Z" title="發表於 2025-01-15 11:56:28">2025-01-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/15/My-First-Post/" title="My First Post">My First Post</a><time datetime="2025-01-15T03:51:04.000Z" title="發表於 2025-01-15 11:51:04">2025-01-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/15/hello-world/" title="Hello World">Hello World</a><time datetime="2025-01-15T03:28:53.437Z" title="發表於 2025-01-15 11:28:53">2025-01-15</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>標籤</span></div><div class="card-tag-cloud"><a href="/tags/Mongoose/" style="font-size: 1.1em; color: #999">Mongoose</a> <a href="/tags/node-js/" style="font-size: 1.1em; color: #999">node.js</a> <a href="/tags/MongoDB/" style="font-size: 1.1em; color: #999">MongoDB</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>歸檔</span>
       
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-        
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="搜尋"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜尋"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://rabbirreaper.github.io"></form>
-      </div>
-    </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main">
   
-    <article id="post-Mongoose-的基礎語法筆記" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/01/15/Mongoose-%E7%9A%84%E5%9F%BA%E7%A4%8E%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/" class="article-date">
-  <time class="dt-published" datetime="2025-01-15T03:56:28.000Z" itemprop="datePublished">2025-01-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/01/15/Mongoose-%E7%9A%84%E5%9F%BA%E7%A4%8E%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/">Mongoose 的基礎語法筆記</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
+    <ul class="card-archive-list">
       
-        <h1 id="建立連接-MongoDB"><a href="#建立連接-MongoDB" class="headerlink" title="建立連接 MongoDB"></a>建立連接 MongoDB</h1><p>如果MongoDB 是建立在本地端的話，網址會像下面這樣</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">await</span> mongoose.<span class="title function_">connect</span>(<span class="string">&#x27;mongodb://127.0.0.1:27017/shopApp&#x27;</span>)</span><br><span class="line">.<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Connection OPEN!!!&quot;</span>)</span><br><span class="line">&#125;)</span><br><span class="line">.<span class="title function_">catch</span>(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;OH NOOOOO&quot;</span>)</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(err)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>如果是用雲端的話網址會長一點<br><a target="_blank" rel="noopener" href="https://mongoosejs.com/docs/connections.html">官方文檔</a></p>
-<h1 id="Schema-與-Model-設計基礎"><a href="#Schema-與-Model-設計基礎" class="headerlink" title="Schema 與 Model 設計基礎"></a>Schema 與 Model 設計基礎</h1><p>下列程式碼展示了一些範例：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> expenseCategorySchema = <span class="keyword">new</span> mongoose.<span class="title class_">Schema</span>(&#123;</span><br><span class="line">  <span class="attr">name</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="title class_">String</span>,</span><br><span class="line">    <span class="attr">required</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">unique</span>: <span class="literal">true</span>,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> incomeCategorySchema = <span class="keyword">new</span> mongoose.<span class="title class_">Schema</span>(&#123;</span><br><span class="line">  <span class="attr">name</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="title class_">String</span>,</span><br><span class="line">    <span class="attr">required</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">unique</span>: <span class="literal">true</span>,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> cashFlowSchema = <span class="keyword">new</span> mongoose.<span class="title class_">Schema</span>(&#123;</span><br><span class="line">  <span class="attr">amount</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="title class_">Number</span>,</span><br><span class="line">    <span class="attr">min</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">required</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">type</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="title class_">String</span>,</span><br><span class="line">    <span class="attr">enum</span>: [<span class="string">&#x27;income&#x27;</span>, <span class="string">&#x27;expense&#x27;</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">category</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: mongoose.<span class="property">Schema</span>.<span class="property">Types</span>.<span class="property">ObjectId</span>,</span><br><span class="line">    <span class="attr">required</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">ref</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">type</span>.<span class="title function_">toString</span>() === <span class="string">&#x27;expense&#x27;</span> ? <span class="string">&#x27;ExpenseCategory&#x27;</span> : <span class="string">&#x27;IncomeCategory&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">date</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="title class_">Date</span>,</span><br><span class="line">    <span class="attr">default</span>: <span class="title class_">Date</span>.<span class="property">now</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">description</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="title class_">String</span>,</span><br><span class="line">    <span class="attr">required</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>MongoDB 在定義Schema是一個key對上一個value<br>value裡面需要指定type,其他相關的required,default,enum,都是可選的<br>根據需要加入適當的條件,官網裡有列出所有validator及相關的範例這裡只用到了一些</p>
-<p><a target="_blank" rel="noopener" href="https://mongoosejs.com/docs/validation.html">官方文檔</a></p>
-<p>在Schema 導出的部分,下面是範例程式碼：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">ExpenseCategory</span> = mongoose.<span class="title function_">model</span>(<span class="string">&#x27;ExpenseCategory&#x27;</span>, expenseCategorySchema);</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">IncomeCategory</span> = mongoose.<span class="title function_">model</span>(<span class="string">&#x27;IncomeCategory&#x27;</span>, incomeCategorySchema);</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">CashFlow</span> = mongoose.<span class="title function_">model</span>(<span class="string">&#x27;CashFlow&#x27;</span>, cashFlowSchema);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123; <span class="title class_">ExpenseCategory</span>, <span class="title class_">IncomeCategory</span>, <span class="title class_">CashFlow</span> &#125;;</span><br></pre></td></tr></table></figure>
-<p>mongoose.model(‘ExpenseCategory’, expenseCategorySchema);<br>程式碼的意思是建立一個名叫ExpenseCategory的model,參照expenseCategorySchema的Schema</p>
-<h1 id="插入資料"><a href="#插入資料" class="headerlink" title="插入資料"></a>插入資料</h1><p>語法<br>A.insertMany(陣列)<br>陣列裡面是Object</p>
-<p>下列是插入資料的範例程式</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">makeExpenseCategory</span> = <span class="keyword">async</span> (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> temp = [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;Else&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;Rent&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;Food&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;Drink&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;Bill&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">  <span class="keyword">await</span> <span class="title function_">connectDB</span>()</span><br><span class="line">  <span class="title class_">ExpenseCategory</span>.<span class="title function_">insertMany</span>(temp)</span><br><span class="line">    .<span class="title function_">then</span>(<span class="function">(<span class="params">p</span>) =&gt;</span> &#123; <span class="variable language_">console</span>.<span class="title function_">log</span>(p) &#125;)</span><br><span class="line">    .<span class="title function_">catch</span>(<span class="function"><span class="params">e</span> =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(e))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">makeExpenseCategory</span>()</span><br></pre></td></tr></table></figure>
-<p>這邊先連接了Database 後再進行插入<br>如果沒有await 會有高機率報錯,因為Database 還沒連接進行插入</p>
-<p>下列是執行結果</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">Connection OPEN!!!</span><br><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    name: &#x27;Else&#x27;,</span><br><span class="line">    _id: new ObjectId(&#x27;67861bba58428e2f0bba12e7&#x27;),</span><br><span class="line">    __v: 0</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    name: &#x27;Rent&#x27;,</span><br><span class="line">    _id: new ObjectId(&#x27;67861bba58428e2f0bba12e8&#x27;),</span><br><span class="line">    __v: 0</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    name: &#x27;Food&#x27;,</span><br><span class="line">    _id: new ObjectId(&#x27;67861bba58428e2f0bba12e9&#x27;),</span><br><span class="line">    __v: 0</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    name: &#x27;Drink&#x27;,</span><br><span class="line">    _id: new ObjectId(&#x27;67861bba58428e2f0bba12ea&#x27;),</span><br><span class="line">    __v: 0</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    name: &#x27;Bill&#x27;,</span><br><span class="line">    _id: new ObjectId(&#x27;67861bba58428e2f0bba12eb&#x27;),</span><br><span class="line">    __v: 0</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://mongoosejs.com/docs/api/model.html#Model.insertMany()">官方文檔</a></p>
-<h1 id="刪除資料"><a href="#刪除資料" class="headerlink" title="刪除資料"></a>刪除資料</h1><p>語法<br>await Character.deleteMany({ name: &#x2F;Stark&#x2F;, age: { $gte: 18 } });<br>&#x2F;&#x2F; returns {deletedCount: x} where x is the number of documents deleted.</p>
-<p>下列是範例程式碼</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">deleteExpenseCategory</span> = <span class="keyword">async</span> (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">await</span> <span class="title function_">connectDB</span>()</span><br><span class="line">  <span class="keyword">await</span> <span class="title class_">ExpenseCategory</span>.<span class="title function_">deleteOne</span>(&#123; <span class="attr">name</span>: <span class="string">&#x27;Food&#x27;</span> &#125;)</span><br><span class="line">    .<span class="title function_">then</span>(<span class="function"><span class="params">p</span> =&gt;</span> &#123; <span class="variable language_">console</span>.<span class="title function_">log</span>(p)&#125;)</span><br><span class="line">  <span class="keyword">await</span> <span class="title class_">ExpenseCategory</span>.<span class="title function_">find</span>()</span><br><span class="line">    .<span class="title function_">then</span>(<span class="function"><span class="params">p</span> =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(p))</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">deleteExpenseCategory</span>()</span><br></pre></td></tr></table></figure>
-<p>範例輸出</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#123; acknowledged: true, deletedCount: 1 &#125;</span><br><span class="line">[  </span><br><span class="line">  &#123;</span><br><span class="line">    _id: new ObjectId(&#x27;67861bba58428e2f0bba12e7&#x27;),</span><br><span class="line">    name: &#x27;Else&#x27;,</span><br><span class="line">    __v: 0</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    _id: new ObjectId(&#x27;67861bba58428e2f0bba12e8&#x27;),</span><br><span class="line">    name: &#x27;Rent&#x27;,</span><br><span class="line">    __v: 0</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    _id: new ObjectId(&#x27;67861bba58428e2f0bba12ea&#x27;),</span><br><span class="line">    name: &#x27;Drink&#x27;,</span><br><span class="line">    __v: 0</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    _id: new ObjectId(&#x27;67861bba58428e2f0bba12eb&#x27;),</span><br><span class="line">    name: &#x27;Bill&#x27;,</span><br><span class="line">    __v: 0</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://mongoosejs.com/docs/api/model.html#Model.deleteMany()">官方文檔</a></p>
-<h1 id="修改資料"><a href="#修改資料" class="headerlink" title="修改資料"></a>修改資料</h1><p>語法</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A.<span class="title function_">findOneAndUpdate</span>(conditions, update, options)  <span class="comment">// returns Query</span></span><br><span class="line">A.<span class="title function_">findOneAndUpdate</span>(conditions, update)           <span class="comment">// returns Query</span></span><br><span class="line">A.<span class="title function_">findOneAndUpdate</span>()                             <span class="comment">// returns Query</span></span><br></pre></td></tr></table></figure>
-
-
-<p>下列是範例程式碼</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">updateExpenseCategory</span> = <span class="keyword">async</span> (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">await</span> <span class="title function_">connectDB</span>()</span><br><span class="line">  <span class="keyword">await</span> <span class="title class_">ExpenseCategory</span>.<span class="title function_">findOneAndUpdate</span>(&#123; <span class="attr">name</span>: <span class="string">&#x27;Bill&#x27;</span> &#125;, &#123; <span class="attr">name</span>: <span class="string">&#x27;Utility&#x27;</span> &#125;)</span><br><span class="line">    .<span class="title function_">then</span>(<span class="function"><span class="params">p</span> =&gt;</span> &#123; <span class="variable language_">console</span>.<span class="title function_">log</span>(p) &#125;)</span><br><span class="line">  <span class="keyword">await</span> <span class="title class_">ExpenseCategory</span>.<span class="title function_">find</span>()</span><br><span class="line">    .<span class="title function_">then</span>(<span class="function"><span class="params">p</span> =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(p))</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">updateExpenseCategory</span>()</span><br></pre></td></tr></table></figure>
-<p>範例輸出</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">Connection OPEN!!!</span><br><span class="line">&#123; _id: new ObjectId(&#x27;67861bba58428e2f0bba12eb&#x27;), name: &#x27;Bill&#x27;, __v: 0 &#125;</span><br><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    _id: new ObjectId(&#x27;67861bba58428e2f0bba12e7&#x27;),</span><br><span class="line">    name: &#x27;Else&#x27;,</span><br><span class="line">    __v: 0</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    _id: new ObjectId(&#x27;67861bba58428e2f0bba12e8&#x27;),</span><br><span class="line">    name: &#x27;Rent&#x27;,</span><br><span class="line">    __v: 0</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    _id: new ObjectId(&#x27;67861bba58428e2f0bba12ea&#x27;),</span><br><span class="line">    name: &#x27;Drink&#x27;,</span><br><span class="line">    __v: 0</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    _id: new ObjectId(&#x27;67861bba58428e2f0bba12eb&#x27;),</span><br><span class="line">    name: &#x27;Utility&#x27;,</span><br><span class="line">    __v: 0</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<p>最後還有個參數Options 這邊沒有多做介紹有興趣可以去<a target="_blank" rel="noopener" href="https://mongoosejs.com/docs/api/query.html#Query.prototype.setOptions()">官方文檔</a>查看</p>
-<h1 id="資料關聯與查詢"><a href="#資料關聯與查詢" class="headerlink" title="資料關聯與查詢"></a>資料關聯與查詢</h1><p>注意到我CashFlowSchema的category type 是</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">category</span>: &#123;</span><br><span class="line">  <span class="attr">type</span>: mongoose.<span class="property">Schema</span>.<span class="property">Types</span>.<span class="property">ObjectId</span>,</span><br><span class="line">  <span class="attr">required</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">ref</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">type</span>.<span class="title function_">toString</span>() === <span class="string">&#x27;expense&#x27;</span> ? <span class="string">&#x27;ExpenseCategory&#x27;</span> : <span class="string">&#x27;IncomeCategory&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>ref 的意思就是參照哪一個collection<br>這邊注意到我寫了一個function來控制要選擇哪一個collection<br>這邊不能用arrow function,arrow function不會指定this 而是繼承外部的this<br>所以用function的this會給定當前資料的this這樣才能動態選定要哪一個collection</p>
-<p>下面是範例程式</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">makeCashFlow</span> = <span class="keyword">async</span> (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">await</span> <span class="title function_">connectDB</span>()</span><br><span class="line">    <span class="keyword">const</span> <span class="title class_">Food</span> = <span class="keyword">await</span> <span class="title class_">ExpenseCategory</span>.<span class="title function_">findOne</span>(&#123; <span class="attr">name</span>: <span class="string">&#x27;Food&#x27;</span> &#125;)</span><br><span class="line">    <span class="keyword">const</span> <span class="title class_">Rent</span> = <span class="keyword">await</span> <span class="title class_">ExpenseCategory</span>.<span class="title function_">findOne</span>(&#123; <span class="attr">name</span>: <span class="string">&#x27;Rent&#x27;</span> &#125;)</span><br><span class="line">    <span class="keyword">const</span> <span class="title class_">Drink</span> = <span class="keyword">await</span> <span class="title class_">ExpenseCategory</span>.<span class="title function_">findOne</span>(&#123; <span class="attr">name</span>: <span class="string">&#x27;Drink&#x27;</span> &#125;)</span><br><span class="line">    <span class="keyword">const</span> <span class="title class_">Salary</span> = <span class="keyword">await</span> <span class="title class_">IncomeCategory</span>.<span class="title function_">findOne</span>(&#123; <span class="attr">name</span>: <span class="string">&#x27;Salary&#x27;</span> &#125;)</span><br><span class="line">    <span class="keyword">const</span> <span class="title class_">Allowance</span> = <span class="keyword">await</span> <span class="title class_">IncomeCategory</span>.<span class="title function_">findOne</span>(&#123; <span class="attr">name</span>: <span class="string">&#x27;Allowance&#x27;</span>&#125;)</span><br><span class="line">    <span class="keyword">const</span> <span class="title class_">WindFall</span> = <span class="keyword">await</span> <span class="title class_">IncomeCategory</span>.<span class="title function_">findOne</span>(&#123; <span class="attr">name</span>: <span class="string">&#x27;WindFall&#x27;</span> &#125;)</span><br><span class="line">    <span class="comment">// 建立範例 CashFlow 資料</span></span><br><span class="line">    <span class="keyword">const</span> cashFlows = [</span><br><span class="line">      <span class="comment">// 支出範例</span></span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">amount</span>: <span class="number">500</span>,</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;expense&#x27;</span>,</span><br><span class="line">        <span class="attr">category</span>: <span class="title class_">Utility</span>,</span><br><span class="line">        <span class="attr">date</span>: <span class="keyword">new</span> <span class="title class_">Date</span>(<span class="string">&#x27;2025-01-01&#x27;</span>),</span><br><span class="line">        <span class="attr">description</span>: <span class="string">&#x27;Month utility&#x27;</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">amount</span>: <span class="number">1000</span>,</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;expense&#x27;</span>,</span><br><span class="line">        <span class="attr">category</span>: <span class="title class_">Rent</span>,</span><br><span class="line">        <span class="attr">date</span>: <span class="keyword">new</span> <span class="title class_">Date</span>(<span class="string">&#x27;2025-01-05&#x27;</span>),</span><br><span class="line">        <span class="attr">description</span>: <span class="string">&#x27;Monthly rent payment&#x27;</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">amount</span>: <span class="number">200</span>,</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;expense&#x27;</span>,</span><br><span class="line">        <span class="attr">category</span>: <span class="title class_">Drink</span>,</span><br><span class="line">        <span class="attr">date</span>: <span class="keyword">new</span> <span class="title class_">Date</span>(<span class="string">&#x27;2025-01-10&#x27;</span>),</span><br><span class="line">        <span class="attr">description</span>: <span class="string">&#x27;Coffee and snacks&#x27;</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="comment">// 收入範例</span></span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">amount</span>: <span class="number">5000</span>,</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;income&#x27;</span>,</span><br><span class="line">        <span class="attr">category</span>: <span class="title class_">Salary</span>,</span><br><span class="line">        <span class="attr">date</span>: <span class="keyword">new</span> <span class="title class_">Date</span>(<span class="string">&#x27;2025-01-15&#x27;</span>),</span><br><span class="line">        <span class="attr">description</span>: <span class="string">&#x27;January salary&#x27;</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">amount</span>: <span class="number">300</span>,</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;income&#x27;</span>,</span><br><span class="line">        <span class="attr">category</span>: <span class="title class_">Allowance</span>,</span><br><span class="line">        <span class="attr">date</span>: <span class="keyword">new</span> <span class="title class_">Date</span>(<span class="string">&#x27;2025-01-20&#x27;</span>),</span><br><span class="line">        <span class="attr">description</span>: <span class="string">&#x27;Weekly allowance&#x27;</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">amount</span>: <span class="number">800</span>,</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;income&#x27;</span>,</span><br><span class="line">        <span class="attr">category</span>: <span class="title class_">WindFall</span>,</span><br><span class="line">        <span class="attr">description</span>: <span class="string">&#x27;Lottery prize&#x27;</span></span><br><span class="line">      &#125;<span class="comment">//沒有給予date 自動指定當前時間</span></span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 插入資料到資料庫</span></span><br><span class="line">    <span class="title class_">CashFlow</span>.<span class="title function_">insertMany</span>(cashFlows)</span><br><span class="line">      .<span class="title function_">then</span>(<span class="function">(<span class="params">p</span>) =&gt;</span> &#123; <span class="variable language_">console</span>.<span class="title function_">log</span>(p) &#125;)</span><br><span class="line">      .<span class="title function_">catch</span>(<span class="function"><span class="params">e</span> =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(e))</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">error</span>(error);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title function_">makeCashFlow</span>()</span><br></pre></td></tr></table></figure>
-
-<p>範例輸出</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">Connection OPEN!!!</span><br><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    amount: 500,</span><br><span class="line">    type: &#x27;expense&#x27;,</span><br><span class="line">    category: new ObjectId(&#x27;67861bba58428e2f0bba12eb&#x27;),</span><br><span class="line">    date: 2025-01-01T00:00:00.000Z,</span><br><span class="line">    description: &#x27;Month utility&#x27;,</span><br><span class="line">    _id: new ObjectId(&#x27;67867473d6935a7b89fd3c1e&#x27;),     </span><br><span class="line">    __v: 0</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    amount: 1000,</span><br><span class="line">    type: &#x27;expense&#x27;,</span><br><span class="line">    category: new ObjectId(&#x27;67861bba58428e2f0bba12e8&#x27;),</span><br><span class="line">    date: 2025-01-05T00:00:00.000Z,</span><br><span class="line">    description: &#x27;Monthly rent payment&#x27;,</span><br><span class="line">    _id: new ObjectId(&#x27;67867473d6935a7b89fd3c1f&#x27;),</span><br><span class="line">    __v: 0</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    amount: 200,</span><br><span class="line">    type: &#x27;expense&#x27;,</span><br><span class="line">    category: new ObjectId(&#x27;67861bba58428e2f0bba12ea&#x27;),</span><br><span class="line">    date: 2025-01-10T00:00:00.000Z,</span><br><span class="line">    description: &#x27;Coffee and snacks&#x27;,</span><br><span class="line">    _id: new ObjectId(&#x27;67867473d6935a7b89fd3c20&#x27;),</span><br><span class="line">    __v: 0</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    amount: 5000,</span><br><span class="line">    type: &#x27;income&#x27;,</span><br><span class="line">    category: new ObjectId(&#x27;6785ec3ca2ddc9c34522ceca&#x27;),</span><br><span class="line">    date: 2025-01-15T00:00:00.000Z,</span><br><span class="line">    description: &#x27;January salary&#x27;,</span><br><span class="line">    _id: new ObjectId(&#x27;67867473d6935a7b89fd3c21&#x27;),</span><br><span class="line">    __v: 0</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    amount: 300,</span><br><span class="line">    type: &#x27;income&#x27;,</span><br><span class="line">    category: new ObjectId(&#x27;6785ec3ca2ddc9c34522cecb&#x27;),</span><br><span class="line">    date: 2025-01-20T00:00:00.000Z,</span><br><span class="line">    description: &#x27;Weekly allowance&#x27;,</span><br><span class="line">    _id: new ObjectId(&#x27;67867473d6935a7b89fd3c22&#x27;),</span><br><span class="line">    __v: 0</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    amount: 800,</span><br><span class="line">    type: &#x27;income&#x27;,</span><br><span class="line">    category: new ObjectId(&#x27;6785ec3ca2ddc9c34522cec9&#x27;),</span><br><span class="line">    description: &#x27;Lottery prize&#x27;,</span><br><span class="line">    _id: new ObjectId(&#x27;67867473d6935a7b89fd3c23&#x27;),</span><br><span class="line">    date: 2025-01-14T14:28:03.474Z,</span><br><span class="line">    __v: 0</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<p>這邊介紹 .populate的用法<br>可以看到上面的範例輸出category 後面的value是一個ObjectId<br>我們希望找到對應的category裡面的資料,這裡就會用到.populate</p>
-<p>用法看下列範例程式</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">findCashFlow</span> = <span class="keyword">async</span> (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">await</span> <span class="title function_">connectDB</span>()</span><br><span class="line">  <span class="keyword">const</span> cashFlows = <span class="keyword">await</span> <span class="title class_">CashFlow</span>.<span class="title function_">find</span>().<span class="title function_">populate</span>(<span class="string">&#x27;category&#x27;</span>,<span class="string">&#x27;name&#x27;</span>)</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(cashFlows)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">await</span> <span class="title class_">CashFlow</span>.<span class="title function_">find</span>().<span class="title function_">populate</span>(<span class="string">&#x27;category&#x27;</span>).<span class="title function_">then</span>(<span class="function"><span class="params">e</span> =&gt;</span> &#123;</span><br><span class="line">    e.<span class="title function_">forEach</span>(<span class="function"><span class="params">p</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(p.<span class="property">category</span>.<span class="property">name</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">findCashFlow</span>()</span><br></pre></td></tr></table></figure>
-
-<p>範例輸出</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">Connection OPEN!!!</span><br><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    _id: new ObjectId(&#x27;67867473d6935a7b89fd3c1e&#x27;),</span><br><span class="line">    amount: 500,</span><br><span class="line">    type: &#x27;expense&#x27;,</span><br><span class="line">    category: &#123; _id: new ObjectId(&#x27;67861bba58428e2f0bba12eb&#x27;), name: &#x27;Utility&#x27; &#125;,</span><br><span class="line">    date: 2025-01-01T00:00:00.000Z,</span><br><span class="line">    description: &#x27;Month utility&#x27;,</span><br><span class="line">    __v: 0</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    _id: new ObjectId(&#x27;67867473d6935a7b89fd3c1f&#x27;),</span><br><span class="line">    amount: 1000,</span><br><span class="line">    type: &#x27;expense&#x27;,</span><br><span class="line">    category: &#123; _id: new ObjectId(&#x27;67861bba58428e2f0bba12e8&#x27;), name: &#x27;Rent&#x27; &#125;,</span><br><span class="line">    date: 2025-01-05T00:00:00.000Z,</span><br><span class="line">    description: &#x27;Monthly rent payment&#x27;,</span><br><span class="line">    __v: 0</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    _id: new ObjectId(&#x27;67867473d6935a7b89fd3c20&#x27;),</span><br><span class="line">    amount: 200,</span><br><span class="line">    type: &#x27;expense&#x27;,</span><br><span class="line">    category: &#123; _id: new ObjectId(&#x27;67861bba58428e2f0bba12ea&#x27;), name: &#x27;Drink&#x27; &#125;,</span><br><span class="line">    date: 2025-01-10T00:00:00.000Z,</span><br><span class="line">    description: &#x27;Coffee and snacks&#x27;,</span><br><span class="line">    __v: 0</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    _id: new ObjectId(&#x27;67867473d6935a7b89fd3c21&#x27;),</span><br><span class="line">    amount: 5000,</span><br><span class="line">    type: &#x27;income&#x27;,</span><br><span class="line">    category: &#123; _id: new ObjectId(&#x27;6785ec3ca2ddc9c34522ceca&#x27;), name: &#x27;Salary&#x27; &#125;,</span><br><span class="line">    date: 2025-01-15T00:00:00.000Z,</span><br><span class="line">    description: &#x27;January salary&#x27;,</span><br><span class="line">    __v: 0</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    _id: new ObjectId(&#x27;67867473d6935a7b89fd3c22&#x27;),</span><br><span class="line">    amount: 300,</span><br><span class="line">    type: &#x27;income&#x27;,</span><br><span class="line">    category: &#123;</span><br><span class="line">      _id: new ObjectId(&#x27;6785ec3ca2ddc9c34522cecb&#x27;),</span><br><span class="line">      name: &#x27;Allowance&#x27;</span><br><span class="line">    &#125;,</span><br><span class="line">    date: 2025-01-20T00:00:00.000Z,</span><br><span class="line">    description: &#x27;Weekly allowance&#x27;,</span><br><span class="line">    __v: 0</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    _id: new ObjectId(&#x27;67867473d6935a7b89fd3c23&#x27;),</span><br><span class="line">    amount: 800,</span><br><span class="line">    type: &#x27;income&#x27;,</span><br><span class="line">    category: &#123; _id: new ObjectId(&#x27;6785ec3ca2ddc9c34522cec9&#x27;), name: &#x27;WindFall&#x27; &#125;,</span><br><span class="line">    description: &#x27;Lottery prize&#x27;,</span><br><span class="line">    date: 2025-01-14T14:28:03.474Z,</span><br><span class="line">    __v: 0</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br><span class="line">Utility</span><br><span class="line">Rent</span><br><span class="line">Drink</span><br><span class="line">Salary</span><br><span class="line">Allowance</span><br><span class="line">WindFall</span><br></pre></td></tr></table></figure>
-
-<p>.populate 還有很多有用的功能<br>詳細用法可以到<a target="_blank" rel="noopener" href="https://mongoosejs.com/docs/populate.html">官方文檔</a>查看</p>
-
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/01/">
+            <span class="card-archive-list-date">
+              一月 2025
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
       
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://rabbirreaper.github.io/2025/01/15/Mongoose-%E7%9A%84%E5%9F%BA%E7%A4%8E%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/" data-id="cm5xdf0330000rkw175xp23ap" data-title="Mongoose 的基礎語法筆記" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mongoose/" rel="tag">Mongoose</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-My-First-Post" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/01/15/My-First-Post/" class="article-date">
-  <time class="dt-published" datetime="2025-01-15T03:51:04.000Z" itemprop="datePublished">2025-01-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/01/15/My-First-Post/">My First Post</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>其實我想寫blog很久了，我這個人做事的動力很斷斷續續，時常沒什麼動力，有動力可能也持續不久<br>想透過blog的方式，記錄現在在做什麼，有種一步一步推進的感覺<br>可能還有老了，可以回頭看以前類似日記的東西</p>
-<h1 id="blog短期目標"><a href="#blog短期目標" class="headerlink" title="blog短期目標"></a>blog短期目標</h1><p>目前打算把一些以前寫題目的程式放上來，方便我突然要找程式，不然都放在Discord上對那些程式有種暗無天日的感覺<br>然後把最近學的東西打成筆記放上來，方便以後複習<br>我記憶力不太好，有個紀錄筆記的地方，希望能加快我的學習</p>
-<h1 id="分享"><a href="#分享" class="headerlink" title="分享"></a>分享</h1><p>我很喜歡 <a target="_blank" rel="noopener" href="https://zrn-code.github.io/about/">https://zrn-code.github.io/about/</a><br>這個電神的blog，我也是看他的教學開始寫hexo的<br>他的blog超beautiful，也好多酷炫的內容</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://rabbirreaper.github.io/2025/01/15/My-First-Post/" data-id="cm5xdf0390003rkw1fez8669n" data-title="My First Post" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/01/15/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2025-01-15T03:28:53.437Z" itemprop="datePublished">2025-01-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/01/15/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://rabbirreaper.github.io/2025/01/15/hello-world/" data-id="cm5xdf0370001rkw188qg8quk" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">標籤</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mongoose/" rel="tag">Mongoose</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">標籤雲</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/Mongoose/" style="font-size: 10px;">Mongoose</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">彙整</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">一月 2025</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2025/01/15/Mongoose-%E7%9A%84%E5%9F%BA%E7%A4%8E%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/">Mongoose 的基礎語法筆記</a>
-          </li>
-        
-          <li>
-            <a href="/2025/01/15/My-First-Post/">My First Post</a>
-          </li>
-        
-          <li>
-            <a href="/2025/01/15/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2025 Rabbir_Reaper<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.6.4.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
-</body>
-</html>
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>網站資訊</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章數量 :</div><div class="item-count">3</div></div><div class="webinfo-item"><div class="item-name">訪客數 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">總瀏覽量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最後更新時間 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-01-15T04:02:58.531Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By Rabbir_Reaper</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主題 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日夜模式切換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="單欄和雙欄切換"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到頂端"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
