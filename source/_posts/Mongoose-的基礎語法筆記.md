@@ -6,7 +6,7 @@ tags: [Mongoose, MongoDB, node.js]
 
 # 建立連接 MongoDB
 
-如果MongoDB 是建立在本地端的話，網址會像下面這樣
+如果**MongoDB**是建立在本地端的話，網址會像下面這樣
 ```js
 await mongoose.connect('mongodb://127.0.0.1:27017/shopApp')
 .then(() => {
@@ -18,11 +18,11 @@ await mongoose.connect('mongodb://127.0.0.1:27017/shopApp')
 })
 ```
 如果是用雲端的話網址會長一點
-[官方文檔](https://mongoosejs.com/docs/connections.html)
+### [官方文檔](https://mongoosejs.com/docs/connections.html)
 
 # Schema 與 Model 設計基礎
 
-下列程式碼展示了一些範例：
+### 下列程式碼展示了一些範例：
 ```js
 const expenseCategorySchema = new mongoose.Schema({
   name: {
@@ -67,13 +67,13 @@ const cashFlowSchema = new mongoose.Schema({
   }
 });
 ```
-MongoDB 在定義Schema是一個key對上一個value
-value裡面需要指定type,其他相關的required,default,enum,都是可選的
-根據需要加入適當的條件,官網裡有列出所有validator及相關的範例這裡只用到了一些
+**MongoDB**在定義`Schema`是一個`key`對上一個`value`
+`value`裡面需要指定`type`,其他相關的`required`,`default`,`enum`,都是可選的
+根據需要加入適當的條件,官網裡有列出所有`validator`及相關的範例這裡只用到了一些
 
-[官方文檔](https://mongoosejs.com/docs/validation.html)
+### [官方文檔](https://mongoosejs.com/docs/validation.html)
 
-在Schema 導出的部分,下面是範例程式碼：
+### 在Schema 導出的部分,下面是範例程式碼：
 ```js
 const ExpenseCategory = mongoose.model('ExpenseCategory', expenseCategorySchema);
 const IncomeCategory = mongoose.model('IncomeCategory', incomeCategorySchema);
@@ -81,16 +81,16 @@ const CashFlow = mongoose.model('CashFlow', cashFlowSchema);
 
 module.exports = { ExpenseCategory, IncomeCategory, CashFlow };
 ```
-mongoose.model('ExpenseCategory', expenseCategorySchema);
-程式碼的意思是建立一個名叫ExpenseCategory的model,參照expenseCategorySchema的Schema
+>mongoose.model('ExpenseCategory', expenseCategorySchema);
+程式碼的意思是建立一個名叫**ExpenseCategory**的`model`,參照**expenseCategorySchema**的`Schema`
 
 # 插入資料
 
-語法
-A.insertMany(陣列)
-陣列裡面是Object
+### 語法
+>A.insertMany(陣列)
+>陣列裡面是Object
 
-下列是插入資料的範例程式
+### 下列是插入資料的範例程式
 ```js
 const makeExpenseCategory = async () => {
   const temp = [
@@ -118,10 +118,10 @@ const makeExpenseCategory = async () => {
 
 makeExpenseCategory()
 ```
-這邊先連接了Database 後再進行插入
-如果沒有await 會有高機率報錯,因為Database 還沒連接進行插入
+這邊先連接了**Database**後再進行插入
+如果沒有`await`會有高機率報錯,因為**Database**還沒連接進行插入
 
-下列是執行結果
+### 下列是執行結果
 ```
 Connection OPEN!!!
 [
@@ -152,15 +152,15 @@ Connection OPEN!!!
   }
 ]
 ```
-[官方文檔](https://mongoosejs.com/docs/api/model.html#Model.insertMany())
+### [官方文檔](https://mongoosejs.com/docs/api/model.html#Model.insertMany())
 
 # 刪除資料
 
-語法
-await Character.deleteMany({ name: /Stark/, age: { $gte: 18 } }); 
-// returns {deletedCount: x} where x is the number of documents deleted.
+### 語法
+>await Character.deleteMany({ name: /Stark/, age: { $gte: 18 } }); 
+>// returns {deletedCount: x} where x is the number of documents deleted.
 
-下列是範例程式碼
+### 下列是範例程式碼
 ```js
 const deleteExpenseCategory = async () => {
   await connectDB()
@@ -171,7 +171,7 @@ const deleteExpenseCategory = async () => {
 }
 deleteExpenseCategory()
 ```
-範例輸出
+### 範例輸出
 ```
 { acknowledged: true, deletedCount: 1 }
 [  
@@ -197,11 +197,11 @@ deleteExpenseCategory()
   }
 ]
 ```
-[官方文檔](https://mongoosejs.com/docs/api/model.html#Model.deleteMany())
+### [官方文檔](https://mongoosejs.com/docs/api/model.html#Model.deleteMany())
 
 # 修改資料
 
-語法
+### 語法
 ```js
 A.findOneAndUpdate(conditions, update, options)  // returns Query
 A.findOneAndUpdate(conditions, update)           // returns Query
@@ -209,7 +209,7 @@ A.findOneAndUpdate()                             // returns Query
 ```
 
 
-下列是範例程式碼
+### 下列是範例程式碼
 ```js
 const updateExpenseCategory = async () => {
   await connectDB()
@@ -220,7 +220,7 @@ const updateExpenseCategory = async () => {
 }
 updateExpenseCategory()
 ```
-範例輸出
+### 範例輸出
 ```
 Connection OPEN!!!
 { _id: new ObjectId('67861bba58428e2f0bba12eb'), name: 'Bill', __v: 0 }
@@ -248,11 +248,11 @@ Connection OPEN!!!
 ]
 ```
 
-最後還有個參數Options 這邊沒有多做介紹有興趣可以去[官方文檔](https://mongoosejs.com/docs/api/query.html#Query.prototype.setOptions())查看
+最後還有個參數`Options`這邊沒有多做介紹有興趣可以去[官方文檔](https://mongoosejs.com/docs/api/query.html#Query.prototype.setOptions())查看
 
 # 資料關聯與查詢
 
-注意到我CashFlowSchema的category type 是
+注意到我**CashFlowSchema**的**category** `type` 是
 ```js
 category: {
   type: mongoose.Schema.Types.ObjectId,
@@ -262,12 +262,12 @@ category: {
   }
 }
 ```
-ref 的意思就是參照哪一個collection 
-這邊注意到我寫了一個function來控制要選擇哪一個collection
-這邊不能用arrow function,arrow function不會指定this 而是繼承外部的this
-所以用function的this會給定當前資料的this這樣才能動態選定要哪一個collection
+`ref` 的意思就是參照哪一個`collection` 
+這邊注意到我寫了一個`function`來控制要選擇哪一個`collection`
+這邊不能用`arrow function`,`arrow function`不會指定`this` 而是繼承外部的`this`
+所以用`function`的`this`會給定當前資料的`this`這樣才能動態選定要哪一個`collection`
 
-下面是範例程式
+### 下面是範例程式
 ```js
 const makeCashFlow = async () => {
   try {
@@ -337,7 +337,7 @@ const makeCashFlow = async () => {
 makeCashFlow()
 ```
 
-範例輸出
+### 範例輸出
 ```
 Connection OPEN!!!
 [
@@ -398,11 +398,11 @@ Connection OPEN!!!
 ]
 ```
 
-這邊介紹 .populate的用法
-可以看到上面的範例輸出category 後面的value是一個ObjectId
-我們希望找到對應的category裡面的資料,這裡就會用到.populate
+這邊介紹`.populate`的用法
+可以看到上面的範例輸出**category**後面的`value`是一個`ObjectId`
+我們希望找到對應的**category**裡面的資料,這裡就會用到`.populate`
 
-用法看下列範例程式
+### 用法看下列範例程式
 ```js
 const findCashFlow = async () => {
   await connectDB()
@@ -418,7 +418,7 @@ const findCashFlow = async () => {
 findCashFlow()
 ```
 
-範例輸出
+### 範例輸出
 ```
 Connection OPEN!!!
 [
@@ -488,5 +488,5 @@ Allowance
 WindFall
 ```
 
-.populate 還有很多有用的功能
+`.populate`還有很多有用的功能
 詳細用法可以到[官方文檔](https://mongoosejs.com/docs/populate.html)查看
