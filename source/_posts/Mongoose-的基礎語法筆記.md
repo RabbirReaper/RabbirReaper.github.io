@@ -1,7 +1,12 @@
 ---
 title: Mongoose 的基礎語法筆記
 date: 2025-01-15 11:56:28
-tags: [Mongoose, MongoDB, node.js]
+tags: 
+  - Mongoose
+  - MongoDB
+  - node.js
+categories:
+  - [程式語言筆記,node.js]
 ---
 # 前言
 
