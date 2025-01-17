@@ -3,6 +3,10 @@ title: Mongoose 的基礎語法筆記
 date: 2025-01-15 11:56:28
 tags: [Mongoose, MongoDB, node.js]
 ---
+# 前言
+
+這是一篇介紹Mongoose基礎語法的文章，內容有新增、修改、刪除，以及資料關聯`.populate`的基礎用法。
+
 
 # 建立連接 MongoDB
 
@@ -18,11 +22,11 @@ await mongoose.connect('mongodb://127.0.0.1:27017/shopApp')
 })
 ```
 如果是用雲端的話網址會長一點
-### [官方文檔](https://mongoosejs.com/docs/connections.html)
+## [官方文檔](https://mongoosejs.com/docs/connections.html)
 
 # Schema 與 Model 設計基礎
 
-### 下列程式碼展示了一些範例：
+## 程式碼範例：
 ```js
 const expenseCategorySchema = new mongoose.Schema({
   name: {
@@ -71,15 +75,16 @@ const cashFlowSchema = new mongoose.Schema({
 `value`裡面需要指定`type`,其他相關的`required`,`default`,`enum`,都是可選的
 根據需要加入適當的條件,官網裡有列出所有`validator`及相關的範例這裡只用到了一些
 
-### 下面補充說明,可以自訂義不符合時的報錯訊息
+## 補充說明
+**可以自訂義不符合時的報錯訊息**
 > You can configure the error message for individual validators in your schema. There are two equivalent ways to set the validator error message:
 
 >```Array syntax: min: [6, 'Must be at least 6, got {VALUE}']```
 >```Object syntax: enum: { values: ['Coffee', 'Tea'], message: '{VALUE} is not supported' }```
 
-### [官方文檔](https://mongoosejs.com/docs/validation.html)
+## [官方文檔](https://mongoosejs.com/docs/validation.html)
 
-### 在Schema 導出的部分,下面是範例程式碼：
+## Schema 導出的部分
 ```js
 const ExpenseCategory = mongoose.model('ExpenseCategory', expenseCategorySchema);
 const IncomeCategory = mongoose.model('IncomeCategory', incomeCategorySchema);
@@ -92,11 +97,11 @@ module.exports = { ExpenseCategory, IncomeCategory, CashFlow };
 
 # 插入資料
 
-### 語法
+## 語法
 >A.insertMany(陣列)
 >陣列裡面是Object
 
-### 下列是插入資料的範例程式
+## 範例程式：
 ```js
 const makeExpenseCategory = async () => {
   const temp = [
@@ -127,7 +132,7 @@ makeExpenseCategory()
 這邊先連接了**Database**後再進行插入
 如果沒有`await`會有高機率報錯,因為**Database**還沒連接進行插入
 
-### 下列是執行結果
+## 執行結果
 ```
 Connection OPEN!!!
 [
@@ -158,15 +163,15 @@ Connection OPEN!!!
   }
 ]
 ```
-### [官方文檔](https://mongoosejs.com/docs/api/model.html#Model.insertMany())
+## [官方文檔](https://mongoosejs.com/docs/api/model.html#Model.insertMany())
 
 # 刪除資料
 
-### 語法
+## 語法
 >await Character.deleteMany({ name: /Stark/, age: { $gte: 18 } }); 
 >// returns {deletedCount: x} where x is the number of documents deleted.
 
-### 下列是範例程式碼
+## 範例程式碼：
 ```js
 const deleteExpenseCategory = async () => {
   await connectDB()
@@ -177,7 +182,7 @@ const deleteExpenseCategory = async () => {
 }
 deleteExpenseCategory()
 ```
-### 範例輸出
+## 範例輸出
 ```
 { acknowledged: true, deletedCount: 1 }
 [  
@@ -203,19 +208,18 @@ deleteExpenseCategory()
   }
 ]
 ```
-### [官方文檔](https://mongoosejs.com/docs/api/model.html#Model.deleteMany())
+## [官方文檔](https://mongoosejs.com/docs/api/model.html#Model.deleteMany())
 
 # 修改資料
 
-### 語法
+## 語法
 ```js
 A.findOneAndUpdate(conditions, update, options)  // returns Query
 A.findOneAndUpdate(conditions, update)           // returns Query
 A.findOneAndUpdate()                             // returns Query
 ```
 
-
-### 下列是範例程式碼
+## 範例程式碼：
 ```js
 const updateExpenseCategory = async () => {
   await connectDB()
@@ -226,7 +230,7 @@ const updateExpenseCategory = async () => {
 }
 updateExpenseCategory()
 ```
-### 範例輸出
+## 範例輸出
 ```
 Connection OPEN!!!
 { _id: new ObjectId('67861bba58428e2f0bba12eb'), name: 'Bill', __v: 0 }
@@ -273,7 +277,7 @@ category: {
 這邊不能用`arrow function`,`arrow function`不會指定`this` 而是繼承外部的`this`
 所以用`function`的`this`會給定當前資料的`this`這樣才能動態選定要哪一個`collection`
 
-### 下面是範例程式
+## 範例程式：
 ```js
 const makeCashFlow = async () => {
   try {
@@ -343,7 +347,7 @@ const makeCashFlow = async () => {
 makeCashFlow()
 ```
 
-### 範例輸出
+## 範例輸出
 ```
 Connection OPEN!!!
 [
@@ -408,7 +412,7 @@ Connection OPEN!!!
 可以看到上面的範例輸出**category**後面的`value`是一個`ObjectId`
 我們希望找到對應的**category**裡面的資料,這裡就會用到`.populate`
 
-### 用法看下列範例程式
+## 範例程式：
 ```js
 const findCashFlow = async () => {
   await connectDB()
@@ -424,7 +428,7 @@ const findCashFlow = async () => {
 findCashFlow()
 ```
 
-### 範例輸出
+## 範例輸出
 ```
 Connection OPEN!!!
 [
