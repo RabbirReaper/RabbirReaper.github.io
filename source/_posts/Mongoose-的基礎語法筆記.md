@@ -7,6 +7,8 @@ tags:
   - node.js
 categories:
   - [程式語言筆記,node.js]
+
+description: 這是一篇介紹Mongoose基礎語法的文章，內容有新增、修改、刪除，以及資料關聯`.populate`的基礎用法。
 ---
 # 前言
 
