@@ -1,5 +1,5 @@
 ---
-title: j123. 2. 運貨站 O(c * r * n)
+title: j123. 2. 運貨站
 date: 2025-01-19 00:20:05
 tags:
   - Simulation
@@ -8,9 +8,9 @@ categories:
 ---
 
 # 題目
-zerojudge j123: 2. 運貨站 O(c * r * n)
+zerojudge j123: 2. 運貨站
 # 解題思路
-目前沒東西...
+O(c * r * n)
 
 # 程式碼
 ```cpp
