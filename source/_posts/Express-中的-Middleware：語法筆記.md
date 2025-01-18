@@ -225,6 +225,7 @@ app.use(async (req, res, next) => {
 app.use(express.urlencoded({ extended: true }))
 ```
 > http://localhost:3000/test?key1=value1&key2[subkey]=value2
+
 如果沒有上述的`middleware`，伺服器將無法解析後面的`key1=value1&key2[subkey]=value2`
 `req.body` 將會是`undefine`
 
