@@ -1,7 +1,7 @@
 ---
 title: Q-7-7. AOV 最早完工時間
 date: 2025-01-19 00:22:25
-ags:
+tags:
   - topological sort
 categories:
   - [解題紀錄,AP325]
