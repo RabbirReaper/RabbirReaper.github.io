@@ -125,6 +125,11 @@ app.use(function(err, req, res, next) {
 
 ## 路由器層次的`middleware`
 
+### 語法
+> app.use('/user', userRouter);
+> 第一個參數是網址的**前綴**，後面是引入的`router`
+> **userRouter**裡的`/:id` 完整網址會是 `/user/:id`
+
 ### 程式碼範例
 ```js
 // userRouter.js
