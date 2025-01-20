@@ -226,6 +226,9 @@ app.use(async (req, res, next) => {
 
 # 常見的`middleware`使用
 
+## 範例 1 
+
+### express.urlencoded
 ```js
 app.use(express.urlencoded({ extended: true }))
 ```
@@ -234,5 +237,50 @@ app.use(express.urlencoded({ extended: true }))
 如果沒有上述的`middleware`，伺服器將無法解析後面的`key1=value1&key2[subkey]=value2`
 `req.body` 將會是`undefine`
 
+### 補充介紹：`req.query`，`req.params`，`req.body`區別
+
+**1. `req.query` 和 `req.params` 是 Express 內建支持的**
+- `req.query` 和 `req.params` 是 Express 根據請求的 URL 和路由規則自動解析的。
+- 它們的數據來自 URL 本身（例如查詢字符串或路由參數），Express 無需額外的中介軟體即可提取並解析。
+```js
+router.get('/', (req,res) => {
+    res.send(`My id is ${req.query.id}`)
+})
+
+router.get('/test/:id', (req,res) => {
+    res.send(`I am testing ${req.params.id}`)
+})
+```
+
+**2. `req.body` 是原始數據，需要手動解析**
+- HTTP 請求體中的數據在到達 Express 應用時，仍然是未經處理的原始數據流（二進制或字符串格式）。
+- 這些原始數據需要通過中介軟體（如 `express.urlencoded` 或 `express.json`）進行解析，才能轉換成可用的 JavaScript 對象並存儲到 `req.body` 中。
+- 如果沒有啟用中介軟體，Express 不會自動處理這些數據，因此 `req.body` 默認為 `undefined`。
+
+**3. 程式碼範例**
+```html
+<form action="/products" method="post">
+  <label for="name">Product name</label>
+  <input type="text" name="name" id="name" placeholder="name...">
+  <label for="price">Product price</label>
+  <input type="number" name="price" id="price" placeholder="price...">
+  <label for="category">Product category</label>
+  <select name="categories" id="">
+    <option value="fruit">fruit</option>
+    <option value="vegetable">vegetable</option>
+    <option value="dairy">dairy</option>
+  </select>
+  <button>Submit</button>
+</form>
+```
+```js
+app.post('/products', async (req, res) => {
+  console.log(req.body)
+  res.send("Creat a new product")
+})
+```
+> 範例`body`內部的資料`{ name: 'testProduct', price: '888', categories: 'fruit' }`
+> 網址：`name=testProduct&price=888&categories=fruit`
+> 如果無法解析：`undefined`
 # 官方文檔
 https://expressjs.com/zh-tw/guide/using-middleware.html
