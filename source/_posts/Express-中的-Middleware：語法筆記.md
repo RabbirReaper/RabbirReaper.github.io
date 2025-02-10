@@ -125,6 +125,28 @@ app.use(function(err, req, res, next) {
 });
 ```
 
+## 有無`return`的差異
+
+在一個`middleware`沒有`return`會依序發送響應
+裡面的3個響應都會執行
+有`return`的話會提前終止響應
+```js
+app.use(function(req,res) {
+  res.send('Hi');
+  res.send('Hi Hi');
+  res.send('Hi Hi Hi Hi');
+});
+```
+
+下列的程式碼就只會有一個Hi被執行而已
+```js
+app.use(function(req,res) {
+  return res.send('Hi');
+  res.send('Hi Hi');
+  res.send('Hi Hi Hi Hi');
+});
+```
+
 ## 路由器層次的`middleware`
 
 ### 語法
