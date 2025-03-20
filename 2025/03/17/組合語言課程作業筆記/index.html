@@ -1,0 +1,261 @@
+<!DOCTYPE html><html lang="zh-TW" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>組合語言課程作業筆記 | Hexo</title><meta name="author" content="Rabbir_Reaper"><meta name="copyright" content="Rabbir_Reaper"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="2025&#x2F;03&#x2F;11 作業3.9.1 簡答題 (Short Answer Questions)(1). What does a debugger do?翻譯：除錯器的功能是什麼？   解題過程除錯器（Debugger）是一種軟體工具，可幫助程式設計師檢查記憶體和暫存器內容、逐步執行程式，以及設置中斷點，以便在特定位置暫停程式執行，以便檢查狀態和錯誤。   答案A debugg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="組合語言課程作業筆記">
+<meta property="og:url" content="https://rabbirreaper.github.io/2025/03/17/%E7%B5%84%E5%90%88%E8%AA%9E%E8%A8%80%E8%AA%B2%E7%A8%8B%E4%BD%9C%E6%A5%AD%E7%AD%86%E8%A8%98/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="2025&#x2F;03&#x2F;11 作業3.9.1 簡答題 (Short Answer Questions)(1). What does a debugger do?翻譯：除錯器的功能是什麼？   解題過程除錯器（Debugger）是一種軟體工具，可幫助程式設計師檢查記憶體和暫存器內容、逐步執行程式，以及設置中斷點，以便在特定位置暫停程式執行，以便檢查狀態和錯誤。   答案A debugg">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://rabbirreaper.github.io/img/butterfly-icon.png">
+<meta property="article:published_time" content="2025-03-17T13:06:26.000Z">
+<meta property="article:modified_time" content="2025-03-17T13:10:55.709Z">
+<meta property="article:author" content="Rabbir_Reaper">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://rabbirreaper.github.io/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "組合語言課程作業筆記",
+  "url": "https://rabbirreaper.github.io/2025/03/17/%E7%B5%84%E5%90%88%E8%AA%9E%E8%A8%80%E8%AA%B2%E7%A8%8B%E4%BD%9C%E6%A5%AD%E7%AD%86%E8%A8%98/",
+  "image": "https://rabbirreaper.github.io/img/butterfly-icon.png",
+  "datePublished": "2025-03-17T13:06:26.000Z",
+  "dateModified": "2025-03-17T13:10:55.709Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Rabbir_Reaper",
+      "url": "https://rabbirreaper.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://rabbirreaper.github.io/2025/03/17/%E7%B5%84%E5%90%88%E8%AA%9E%E8%A8%80%E8%AA%B2%E7%A8%8B%E4%BD%9C%E6%A5%AD%E7%AD%86%E8%A8%98/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '複製成功',
+    error: '複製失敗',
+    noSupport: '瀏覽器不支援'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '剛剛',
+    min: '分鐘前',
+    hour: '小時前',
+    day: '天前',
+    month: '個月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '載入更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '組合語言課程作業筆記',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">73</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">29</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">8</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Hexo</span></a><a class="nav-page-title" href="/"><span class="site-name">組合語言課程作業筆記</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> About</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">組合語言課程作業筆記</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">發表於</span><time class="post-meta-date-created" datetime="2025-03-17T13:06:26.000Z" title="發表於 2025-03-17 21:06:26">2025-03-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新於</span><time class="post-meta-date-updated" datetime="2025-03-17T13:10:55.709Z" title="更新於 2025-03-17 21:10:55">2025-03-17</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">瀏覽量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><hr>
+<h2 id="2025-03-11-作業"><a href="#2025-03-11-作業" class="headerlink" title="2025&#x2F;03&#x2F;11 作業"></a>2025&#x2F;03&#x2F;11 作業</h2><h3 id="3-9-1-簡答題-Short-Answer-Questions"><a href="#3-9-1-簡答題-Short-Answer-Questions" class="headerlink" title="3.9.1 簡答題 (Short Answer Questions)"></a><strong>3.9.1 簡答題 (Short Answer Questions)</strong></h3><h4 id="1-What-does-a-debugger-do"><a href="#1-What-does-a-debugger-do" class="headerlink" title="(1). What does a debugger do?"></a><strong>(1). What does a debugger do?</strong></h4><p><strong>翻譯：除錯器的功能是什麼？</strong>  </p>
+<p><strong>解題過程</strong><br>除錯器（Debugger）是一種軟體工具，可幫助程式設計師檢查記憶體和暫存器內容、逐步執行程式，以及設置中斷點，以便在特定位置暫停程式執行，以便檢查狀態和錯誤。  </p>
+<p><strong>答案</strong><br>A debugger allows the programmer to check memory and register contents, run programs in single-step mode, and insert breakpoints. All this helps programmers to debug their programs efficiently.</p>
+<hr>
+<h4 id="3-What-role-does-linker-and-loader-play-in-file-operation"><a href="#3-What-role-does-linker-and-loader-play-in-file-operation" class="headerlink" title="(3). What role does linker and loader play in file operation?"></a><strong>(3). What role does linker and loader play in file operation?</strong></h4><p><strong>翻譯：連結器和載入器在檔案運作中扮演什麼角色？</strong>  </p>
+<p><strong>解題過程</strong>  </p>
+<ul>
+<li><strong>連結器 (Linker)</strong>：負責將多個目標文件（如程式碼與函式庫）連結在一起，形成一個完整的可執行文件。  </li>
+<li><strong>載入器 (Loader)</strong>：將連結後的程式載入到記憶體，決定程式碼和數據應該放置在哪個位置，以便執行。</li>
+</ul>
+<p><strong>答案</strong>  </p>
+<ol>
+<li>The linker links multiple files together (including library files) before execution.  </li>
+<li>The loader loads the program into RAM, determining where the code should be stored before execution.</li>
+</ol>
+<hr>
+<h4 id="5-What-is-the-benefit-of-using-labels-in-assembly-languages"><a href="#5-What-is-the-benefit-of-using-labels-in-assembly-languages" class="headerlink" title="(5). What is the benefit of using labels in assembly languages?"></a><strong>(5). What is the benefit of using labels in assembly languages?</strong></h4><p><strong>翻譯：在組合語言中，使用標籤有什麼好處？</strong>  </p>
+<p><strong>解題過程</strong><br>標籤（Label）可以用來取代記憶體位址，使程式碼更容易閱讀和維護。例如，直接使用數字位址會使程式碼難以理解，而標籤則可以讓程式更具可讀性。  </p>
+<p><strong>答案</strong><br>Addresses are numbers and difficult to manage and track. Replacing addresses and constants with labels makes programs easier to track and understand.</p>
+<hr>
+<h4 id="7-What-is-the-difference-between-a-directive-and-an-instruction"><a href="#7-What-is-the-difference-between-a-directive-and-an-instruction" class="headerlink" title="(7). What is the difference between a directive and an instruction?"></a><strong>(7). What is the difference between a directive and an instruction?</strong></h4><p><strong>翻譯：指令 (Instruction) 和指引 (Directive) 的差別是什麼？</strong>  </p>
+<p><strong>解題過程</strong>  </p>
+<ul>
+<li><strong>指令 (Instruction)</strong>：可執行的命令，例如 MOV、ADD 等，會被轉換成機器碼。  </li>
+<li><strong>指引 (Directive)</strong>：不會被翻譯成機器碼，而是用來幫助組譯器，例如 <code>DUP</code>、<code>LABEL</code> 等。</li>
+</ul>
+<p><strong>答案</strong><br>A directive is a non-executable statement, while an instruction is an executable statement. A directive provides help for the assembler, while an instruction generates machine code.</p>
+<hr>
+<h4 id="8-Show-an-example-of-a-block-comment"><a href="#8-Show-an-example-of-a-block-comment" class="headerlink" title="(8). Show an example of a block comment."></a><strong>(8). Show an example of a block comment.</strong></h4><p><strong>翻譯：請顯示一個區塊註解的範例。</strong>  </p>
+<p><strong>解題過程</strong><br>在組合語言中，可以使用 <code>COMMENT</code> 指令來撰寫區塊註解。  </p>
+<p><strong>答案</strong>  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">COMMENT !</span><br><span class="line">this is the first comment line</span><br><span class="line">this is the second comment line</span><br><span class="line">!</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="13-Name-the-four-basic-parts-of-an-assembly-language-instruction"><a href="#13-Name-the-four-basic-parts-of-an-assembly-language-instruction" class="headerlink" title="(13). Name the four basic parts of an assembly language instruction."></a><strong>(13). Name the four basic parts of an assembly language instruction.</strong></h4><p><strong>翻譯：請列出組合語言指令的四個基本部分。</strong>  </p>
+<p><strong>解題過程</strong><br>組合語言指令通常由四個部分組成：  </p>
+<ol>
+<li><strong>標籤 (Label)</strong> - 可選擇性的標記，用於表示某個記憶體位址。  </li>
+<li><strong>助記符 (Mnemonic)</strong> - 表示指令，如 <code>MOV</code>、<code>ADD</code> 等。  </li>
+<li><strong>操作數 (Operand)</strong> - 指定運算對象，如暫存器或記憶體位置。  </li>
+<li><strong>註解 (Comment)</strong> - 說明程式碼的用途，提高可讀性。</li>
+</ol>
+<p><strong>答案</strong><br>Label, mnemonic, operand(s), comment.</p>
+<hr>
+<h4 id="14-True-False-MOV-is-an-example-of-an-instruction-mnemonic"><a href="#14-True-False-MOV-is-an-example-of-an-instruction-mnemonic" class="headerlink" title="(14). (True&#x2F;False) MOV is an example of an instruction mnemonic."></a><strong>(14). (True&#x2F;False) MOV is an example of an instruction mnemonic.</strong></h4><p><strong>翻譯：(是&#x2F;否) MOV 是指令助記符的範例。</strong>  </p>
+<p><strong>答案</strong><br><strong>True</strong>  </p>
+<hr>
+<h4 id="18-Write-a-program-that-copies-the-integer-12-to-AL-the-lowercase-letter-‘m’-to-BL-and-the-character-‘-’-to-CL-Then-move-them-to-AH-BH-and-CH-respectively"><a href="#18-Write-a-program-that-copies-the-integer-12-to-AL-the-lowercase-letter-‘m’-to-BL-and-the-character-‘-’-to-CL-Then-move-them-to-AH-BH-and-CH-respectively" class="headerlink" title="(18). Write a program that copies the integer 12 to AL, the lowercase letter ‘m’ to BL, and the character ‘$’ to CL. Then, move them to AH, BH, and CH respectively."></a><strong>(18). Write a program that copies the integer 12 to AL, the lowercase letter ‘m’ to BL, and the character ‘$’ to CL. Then, move them to AH, BH, and CH respectively.</strong></h4><p><strong>翻譯：撰寫一個程式，將數值 12 存入 AL，將字母 ‘m’ 存入 BL，將 ‘$’ 存入 CL，然後分別移動到 AH、BH 和 CH。</strong>  </p>
+<p><strong>答案</strong>  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">.MODEL TINY</span><br><span class="line">.CODE</span><br><span class="line">.STARTUP</span><br><span class="line">MOV AL, 12     ; copies the decimal value 12 to AL</span><br><span class="line">MOV BL, &#x27;m&#x27;    ; copies the ASCII code of &#x27;m&#x27; to BL</span><br><span class="line">MOV CL, &#x27;$&#x27;    ; copies the ASCII code of &#x27;$&#x27; to CL</span><br><span class="line">MOV AH, AL     ; moves value in AL to AH</span><br><span class="line">MOV BH, BL     ; moves value in BL to BH</span><br><span class="line">MOV CH, CL     ; moves value in CL to CH</span><br><span class="line">.EXIT</span><br><span class="line">END</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="21-How-is-a-source-file-different-from-a-listing-file"><a href="#21-How-is-a-source-file-different-from-a-listing-file" class="headerlink" title="(21). How is a source file different from a listing file?"></a><strong>(21). How is a source file different from a listing file?</strong></h4><p><strong>翻譯：原始碼文件 (source file) 和列表文件 (listing file) 有什麼不同？</strong>  </p>
+<p><strong>解題過程</strong>  </p>
+<ul>
+<li><strong>原始碼文件 (Source File)</strong>：包含組合語言的程式碼，由程式設計師編寫，並作為組譯器 (assembler) 的輸入。  </li>
+<li><strong>列表文件 (Listing File)</strong>：由組譯器產生，除了原始碼外，還包含記憶體位址、機器碼和錯誤資訊，幫助開發者理解程式如何被組譯。</li>
+</ul>
+<p><strong>答案</strong><br>A source file is given as input to the assembler. A listing file contains additional text that will not be assembled. It is generated by the assembler and provides information such as memory addresses and error messages.</p>
+<hr>
+<h3 id="3-9-2-算法工作台-Algorithm-Workbench"><a href="#3-9-2-算法工作台-Algorithm-Workbench" class="headerlink" title="3.9.2 算法工作台 (Algorithm Workbench)"></a><strong>3.9.2 算法工作台 (Algorithm Workbench)</strong></h3><h4 id="1-Define-four-symbolic-constants-that-represent-integer-25-in-decimal-binary-octal-and-hexadecimal-formats"><a href="#1-Define-four-symbolic-constants-that-represent-integer-25-in-decimal-binary-octal-and-hexadecimal-formats" class="headerlink" title="(1). Define four symbolic constants that represent integer 25 in decimal, binary, octal, and hexadecimal formats."></a><strong>(1). Define four symbolic constants that represent integer 25 in decimal, binary, octal, and hexadecimal formats.</strong></h4><p><strong>翻譯：定義四個符號常數，分別表示數值 25 的十進位、二進位、八進位和十六進位格式。</strong>  </p>
+<p><strong>答案</strong>  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">one   EQU 25      ; decimal</span><br><span class="line">two   EQU 11001b  ; binary</span><br><span class="line">three EQU 31o     ; octal</span><br><span class="line">four  EQU 19h     ; hexadecimal</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="3-Create-a-data-definition-for-a-doubleword-that-stores-it-in-memory-in-big-endian-format"><a href="#3-Create-a-data-definition-for-a-doubleword-that-stores-it-in-memory-in-big-endian-format" class="headerlink" title="(3). Create a data definition for a doubleword that stores it in memory in big endian format."></a><strong>(3). Create a data definition for a doubleword that stores it in memory in big endian format.</strong></h4><p><strong>翻譯：建立一個數據定義，使用 big endian 格式儲存一個雙字 (doubleword)。</strong>  </p>
+<p><strong>答案</strong>  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.DATA</span><br><span class="line">myVal LABEL DWORD</span><br><span class="line">BYTE 04h, 03h, 02h, 01h  ; big endian storage</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="5-Write-a-program-that-contains-two-instructions-1-add-the-number-5-to-the-EAX-register-and-2-add-5-to-the-EDX-register-Generate-a-listing-file-and-examine-the-machine-code-generated-by-the-assembler-What-differences-if-any-did-you-find-between-the-two-instructions"><a href="#5-Write-a-program-that-contains-two-instructions-1-add-the-number-5-to-the-EAX-register-and-2-add-5-to-the-EDX-register-Generate-a-listing-file-and-examine-the-machine-code-generated-by-the-assembler-What-differences-if-any-did-you-find-between-the-two-instructions" class="headerlink" title="(5). Write a program that contains two instructions: (1) add the number 5 to the EAX register, and (2) add 5 to the EDX register. Generate a listing file and examine the machine code generated by the assembler. What differences, if any, did you find between the two instructions?"></a><strong>(5). Write a program that contains two instructions: (1) add the number 5 to the EAX register, and (2) add 5 to the EDX register. Generate a listing file and examine the machine code generated by the assembler. What differences, if any, did you find between the two instructions?</strong></h4><p><strong>翻譯：撰寫一個程式，執行以下兩條指令：(1) 將數值 5 加到 EAX 暫存器，(2) 將 5 加到 EDX 暫存器。生成組譯列表文件，並比較這兩條指令的機器碼有何不同。</strong>  </p>
+<p><strong>答案</strong>  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ADD EAX, 5</span><br><span class="line">ADD EDX, 5</span><br></pre></td></tr></table></figure>
+<p><strong>分析</strong>：<br>這兩條指令的機器碼會有不同的操作碼，因為它們針對不同的暫存器。</p>
+<hr>
+<h4 id="7-Declare-an-array-of-120-uninitialized-unsigned-doubleword-values"><a href="#7-Declare-an-array-of-120-uninitialized-unsigned-doubleword-values" class="headerlink" title="(7). Declare an array of 120 uninitialized unsigned doubleword values."></a><strong>(7). Declare an array of 120 uninitialized unsigned doubleword values.</strong></h4><p><strong>翻譯：宣告一個包含 120 個未初始化的無符號雙字 (doubleword) 陣列。</strong>  </p>
+<p><strong>答案</strong>  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myArray DWORD 120 DUP(?)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="8-Declare-an-array-of-byte-and-initialize-it-to-the-first-5-letters-of-the-alphabet"><a href="#8-Declare-an-array-of-byte-and-initialize-it-to-the-first-5-letters-of-the-alphabet" class="headerlink" title="(8). Declare an array of byte and initialize it to the first 5 letters of the alphabet."></a><strong>(8). Declare an array of byte and initialize it to the first 5 letters of the alphabet.</strong></h4><p><strong>翻譯：宣告一個位元組陣列，並初始化為前五個英文字母。</strong>  </p>
+<p><strong>答案</strong>  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firstFive BYTE &quot;ABCDE&quot;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="10-Declare-a-32-bit-signed-integer-variable-and-initialize-it-with-the-smallest-possible-negative-decimal-value-Hint-Refer-to-integer-ranges-in-Chapter-1"><a href="#10-Declare-a-32-bit-signed-integer-variable-and-initialize-it-with-the-smallest-possible-negative-decimal-value-Hint-Refer-to-integer-ranges-in-Chapter-1" class="headerlink" title="(10). Declare a 32-bit signed integer variable and initialize it with the smallest possible negative decimal value. (Hint: Refer to integer ranges in Chapter 1.)"></a><strong>(10). Declare a 32-bit signed integer variable and initialize it with the smallest possible negative decimal value. (Hint: Refer to integer ranges in Chapter 1.)</strong></h4><p><strong>翻譯：宣告一個 32 位元的有符號整數變數，並初始化為最小的負數值。（提示：參考第 1 章的整數範圍。）</strong>  </p>
+<p><strong>解題過程</strong><br>32 位元的有符號整數範圍為 -2,147,483,648 到 2,147,483,647。最小值在十六進位表示為 <code>80000000h</code>。  </p>
+<p><strong>答案</strong>  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">smallVal SDWORD 80000000h  ; -2,147,483,648</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="12-Declare-a-string-variable-containing-the-name-of-your-favorite-color-Initialize-it-as-a-null-terminated-string"><a href="#12-Declare-a-string-variable-containing-the-name-of-your-favorite-color-Initialize-it-as-a-null-terminated-string" class="headerlink" title="(12). Declare a string variable containing the name of your favorite color. Initialize it as a null-terminated string."></a><strong>(12). Declare a string variable containing the name of your favorite color. Initialize it as a null-terminated string.</strong></h4><p><strong>翻譯：宣告一個包含你最喜歡顏色名稱的字串變數，並初始化為以 <code>null</code> 結尾的字串。</strong>  </p>
+<p><strong>解題過程</strong><br>組合語言中的字串必須手動加上 <code>0</code> (null 字元) 來標示結束，以符合 C 語言風格的字串終止標準。  </p>
+<p><strong>答案</strong>  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">favColor BYTE &quot;blue&quot;, 0  ; 字串 &quot;blue&quot;，以 null 結尾</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="14-True-False-MOV-is-an-example-of-an-instruction-mnemonic-1"><a href="#14-True-False-MOV-is-an-example-of-an-instruction-mnemonic-1" class="headerlink" title="(14). (True&#x2F;False) MOV is an example of an instruction mnemonic."></a><strong>(14). (True&#x2F;False) MOV is an example of an instruction mnemonic.</strong></h4><p><strong>翻譯：(是&#x2F;否) MOV 是指令助記符的範例。</strong>  </p>
+<p><strong>答案</strong><br><strong>True</strong></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://rabbirreaper.github.io">Rabbir_Reaper</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章連結: </span><span class="post-copyright-info"><a href="https://rabbirreaper.github.io/2025/03/17/%E7%B5%84%E5%90%88%E8%AA%9E%E8%A8%80%E8%AA%B2%E7%A8%8B%E4%BD%9C%E6%A5%AD%E7%AD%86%E8%A8%98/">https://rabbirreaper.github.io/2025/03/17/%E7%B5%84%E5%90%88%E8%AA%9E%E8%A8%80%E8%AA%B2%E7%A8%8B%E4%BD%9C%E6%A5%AD%E7%AD%86%E8%A8%98/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版權聲明: </span><span class="post-copyright-info">本部落格所有文章除特別聲明外，均採用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 授權協議。轉載請註明來源 <a href="https://rabbirreaper.github.io" target="_blank">Hexo</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Rabbir_Reaper</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">73</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">29</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">8</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目錄</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#2025-03-11-%E4%BD%9C%E6%A5%AD"><span class="toc-number">1.</span> <span class="toc-text">2025&#x2F;03&#x2F;11 作業</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-9-1-%E7%B0%A1%E7%AD%94%E9%A1%8C-Short-Answer-Questions"><span class="toc-number">1.1.</span> <span class="toc-text">3.9.1 簡答題 (Short Answer Questions)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-What-does-a-debugger-do"><span class="toc-number">1.1.1.</span> <span class="toc-text">(1). What does a debugger do?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-What-role-does-linker-and-loader-play-in-file-operation"><span class="toc-number">1.1.2.</span> <span class="toc-text">(3). What role does linker and loader play in file operation?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-What-is-the-benefit-of-using-labels-in-assembly-languages"><span class="toc-number">1.1.3.</span> <span class="toc-text">(5). What is the benefit of using labels in assembly languages?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-What-is-the-difference-between-a-directive-and-an-instruction"><span class="toc-number">1.1.4.</span> <span class="toc-text">(7). What is the difference between a directive and an instruction?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-Show-an-example-of-a-block-comment"><span class="toc-number">1.1.5.</span> <span class="toc-text">(8). Show an example of a block comment.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13-Name-the-four-basic-parts-of-an-assembly-language-instruction"><span class="toc-number">1.1.6.</span> <span class="toc-text">(13). Name the four basic parts of an assembly language instruction.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#14-True-False-MOV-is-an-example-of-an-instruction-mnemonic"><span class="toc-number">1.1.7.</span> <span class="toc-text">(14). (True&#x2F;False) MOV is an example of an instruction mnemonic.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#18-Write-a-program-that-copies-the-integer-12-to-AL-the-lowercase-letter-%E2%80%98m%E2%80%99-to-BL-and-the-character-%E2%80%98-%E2%80%99-to-CL-Then-move-them-to-AH-BH-and-CH-respectively"><span class="toc-number">1.1.8.</span> <span class="toc-text">(18). Write a program that copies the integer 12 to AL, the lowercase letter ‘m’ to BL, and the character ‘$’ to CL. Then, move them to AH, BH, and CH respectively.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#21-How-is-a-source-file-different-from-a-listing-file"><span class="toc-number">1.1.9.</span> <span class="toc-text">(21). How is a source file different from a listing file?</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-9-2-%E7%AE%97%E6%B3%95%E5%B7%A5%E4%BD%9C%E5%8F%B0-Algorithm-Workbench"><span class="toc-number">1.2.</span> <span class="toc-text">3.9.2 算法工作台 (Algorithm Workbench)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Define-four-symbolic-constants-that-represent-integer-25-in-decimal-binary-octal-and-hexadecimal-formats"><span class="toc-number">1.2.1.</span> <span class="toc-text">(1). Define four symbolic constants that represent integer 25 in decimal, binary, octal, and hexadecimal formats.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Create-a-data-definition-for-a-doubleword-that-stores-it-in-memory-in-big-endian-format"><span class="toc-number">1.2.2.</span> <span class="toc-text">(3). Create a data definition for a doubleword that stores it in memory in big endian format.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-Write-a-program-that-contains-two-instructions-1-add-the-number-5-to-the-EAX-register-and-2-add-5-to-the-EDX-register-Generate-a-listing-file-and-examine-the-machine-code-generated-by-the-assembler-What-differences-if-any-did-you-find-between-the-two-instructions"><span class="toc-number">1.2.3.</span> <span class="toc-text">(5). Write a program that contains two instructions: (1) add the number 5 to the EAX register, and (2) add 5 to the EDX register. Generate a listing file and examine the machine code generated by the assembler. What differences, if any, did you find between the two instructions?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-Declare-an-array-of-120-uninitialized-unsigned-doubleword-values"><span class="toc-number">1.2.4.</span> <span class="toc-text">(7). Declare an array of 120 uninitialized unsigned doubleword values.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-Declare-an-array-of-byte-and-initialize-it-to-the-first-5-letters-of-the-alphabet"><span class="toc-number">1.2.5.</span> <span class="toc-text">(8). Declare an array of byte and initialize it to the first 5 letters of the alphabet.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-Declare-a-32-bit-signed-integer-variable-and-initialize-it-with-the-smallest-possible-negative-decimal-value-Hint-Refer-to-integer-ranges-in-Chapter-1"><span class="toc-number">1.2.6.</span> <span class="toc-text">(10). Declare a 32-bit signed integer variable and initialize it with the smallest possible negative decimal value. (Hint: Refer to integer ranges in Chapter 1.)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-Declare-a-string-variable-containing-the-name-of-your-favorite-color-Initialize-it-as-a-null-terminated-string"><span class="toc-number">1.2.7.</span> <span class="toc-text">(12). Declare a string variable containing the name of your favorite color. Initialize it as a null-terminated string.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#14-True-False-MOV-is-an-example-of-an-instruction-mnemonic-1"><span class="toc-number">1.2.8.</span> <span class="toc-text">(14). (True&#x2F;False) MOV is an example of an instruction mnemonic.</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/17/%E7%B5%84%E5%90%88%E8%AA%9E%E8%A8%80%E8%AA%B2%E7%A8%8B%E4%BD%9C%E6%A5%AD%E7%AD%86%E8%A8%98/" title="組合語言課程作業筆記">組合語言課程作業筆記</a><time datetime="2025-03-17T13:06:26.000Z" title="發表於 2025-03-17 21:06:26">2025-03-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/02/21/Q-5-5-Closest-pair/" title="Q-5-5. Closest pair">Q-5-5. Closest pair</a><time datetime="2025-02-21T09:53:33.000Z" title="發表於 2025-02-21 17:53:33">2025-02-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/02/21/Vue3-%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/" title="Vue3 語法筆記">Vue3 語法筆記</a><time datetime="2025-02-21T04:55:08.000Z" title="發表於 2025-02-21 12:55:08">2025-02-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/02/07/%E5%B0%88%E6%A1%88%E7%AD%86%E8%A8%98-%E4%B8%80/" title="專案筆記 (一)">專案筆記 (一)</a><time datetime="2025-02-07T07:13:50.000Z" title="發表於 2025-02-07 15:13:50">2025-02-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/22/cookie-parser-%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/" title="cookie-parser 語法筆記">cookie-parser 語法筆記</a><time datetime="2025-01-21T17:24:33.000Z" title="發表於 2025-01-22 01:24:33">2025-01-22</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By Rabbir_Reaper</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主題 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="閱讀模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日夜模式切換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="單欄和雙欄切換"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目錄"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到頂端"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
