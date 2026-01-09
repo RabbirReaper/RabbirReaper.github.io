@@ -1,0 +1,642 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="プログラムを書けないうさぎは、ただのうさぎだ。" href="https://rabbirreaper.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="プログラムを書けないうさぎは、ただのうさぎだ。" href="https://rabbirreaper.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="プログラムを書けないうさぎは、ただのうさぎだ。" href="https://rabbirreaper.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="node.js,Express" />
+
+
+<link rel="canonical" href="https://rabbirreaper.github.io/2025/01/19/Express-%E4%B8%AD%E7%9A%84-Middleware%EF%BC%9A%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/">
+
+
+
+  <title>
+Express 中的 Middleware：語法筆記 - node.js - 程式語言筆記 |
+Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎだ。</title>
+<meta name="generator" content="Hexo 8.1.1"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Express 中的 Middleware：語法筆記
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="創建時間：2025-01-19 03:56:06">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">發表於</span>
+    <time itemprop="dateCreated datePublished" datetime="2025-01-19T03:56:06+08:00">2025-01-19</time>
+  </span>
+  <span class="item" title="文章字數">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">文章字數</span>
+    <span>6.4k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="所需閱讀時間">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">所需閱讀時間</span>
+    <span>6 分鐘</span>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切換導航欄">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Rabbir Reaper</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclwuom7cj20zk0m8dvn.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclg5ms2rj20zk0m8u0x.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclgi503lj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giph47e9vtj20zk0m8x6l.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicitspjpbj20zk0m81ky.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclize41wj20zk0m87gk.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首頁</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80%E7%AD%86%E8%A8%98/" itemprop="item" rel="index" title="分類於 程式語言筆記"><span itemprop="name">程式語言筆記</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80%E7%AD%86%E8%A8%98/node-js/" itemprop="item" rel="index" title="分類於 node.js"><span itemprop="name">node.js</span></a>
+<meta itemprop="position" content="2" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-TW">
+  <link itemprop="mainEntityOfPage" href="https://rabbirreaper.github.io/2025/01/19/Express-%E4%B8%AD%E7%9A%84-Middleware%EF%BC%9A%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="Rabbir_Reaper">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="プログラムを書けないうさぎは、ただのうさぎだ。">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="甚麼是middleware"><a class="anchor" href="#甚麼是middleware">#</a> 甚麼是 <code>Middleware</code></h1>
+<figure class="highlight js"><figcaption data-lang="JavaScript"></figcaption><table><tr><td data-num="1"></td><td><pre>app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>  res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">"Hello world"</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">)</span></pre></td></tr></table></figure><figure class="highlight js"><figcaption data-lang="JavaScript"></figcaption><table><tr><td data-num="1"></td><td><pre>app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Time:'</span><span class="token punctuation">,</span> Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="3"></td><td><pre>  <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr></table></figure><figure class="highlight js"><figcaption data-lang="JavaScript"></figcaption><table><tr><td data-num="1"></td><td><pre>app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>  console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>err<span class="token punctuation">.</span>stack<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="3"></td><td><pre>  res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">'Something broke!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr></table></figure><h1 id="middleware可以做什麼"><a class="anchor" href="#middleware可以做什麼">#</a>  <code>Middleware</code>  可以做什麼</h1>
+<blockquote>
+<p>執行任何程式碼。<br />
+對要求和回應物件進行變更。<br />
+結束要求 / 回應循環。<br />
+呼叫堆疊中的下一個中介軟體函數。</p>
+</blockquote>
+<h1 id="middleware-語法介紹"><a class="anchor" href="#middleware-語法介紹">#</a>  <code>Middleware</code>  語法介紹</h1>
+<h2 id="參數不同的middleware介紹"><a class="anchor" href="#參數不同的middleware介紹">#</a> 參數不同的 <code>Middleware</code>  介紹</h2>
+<h3 id="兩個參數的middleware"><a class="anchor" href="#兩個參數的middleware">#</a> 兩個參數的 <code>Middleware</code></h3>
+<p>當預設 <code>/</code> ，回傳 <code>Hello Woeld!</code></p>
+<figure class="highlight js"><figcaption data-lang="JavaScript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">var</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'express'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">var</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="3"></td><td><pre></pre></td></tr><tr><td data-num="4"></td><td><pre>app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="5"></td><td><pre>  res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">'Hello World!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="7"></td><td><pre></pre></td></tr><tr><td data-num="8"></td><td><pre>app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr></table></figure><h3 id="三個參數的middleware"><a class="anchor" href="#三個參數的middleware">#</a> 三個參數的 <code>Middleware</code></h3>
+<p>不一定要指定路徑，沒有指定代表都會觸發<br />
+每個參數的位置是固定的，雖然名字可以亂取但不會因為 <code>req</code>  的位置改叫 <code>res</code>  就變 <code>res</code>  的功能<br />
+如果 <code>res</code>  沒有使用，必須使用 <code>next()</code>  到下一個 <code>middleware</code>  不然會卡在這裡</p>
+<figure class="highlight js"><figcaption data-lang="JavaScript"></figcaption><table><tr><td data-num="1"></td><td><pre>app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token string">'/user/:id'</span><span class="token punctuation">,</span> logRequest<span class="token punctuation">,</span> validateUserId<span class="token punctuation">,</span> checkPermissions<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="2"></td><td><pre></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">function</span> <span class="token function">logRequest</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="4"></td><td><pre>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Request URL:'</span><span class="token punctuation">,</span> req<span class="token punctuation">.</span>originalUrl<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="5"></td><td><pre>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Request Type:'</span><span class="token punctuation">,</span> req<span class="token punctuation">.</span>method<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>  <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="8"></td><td><pre></pre></td></tr><tr><td data-num="9"></td><td><pre><span class="token keyword">function</span> <span class="token function">validateUserId</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="10"></td><td><pre>  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>req<span class="token punctuation">.</span>params<span class="token punctuation">.</span>id<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="11"></td><td><pre>    <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">'Missing ID'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="12"></td><td><pre>  <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="13"></td><td><pre>  <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="14"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="15"></td><td><pre></pre></td></tr><tr><td data-num="16"></td><td><pre><span class="token keyword">function</span> <span class="token function">checkPermissions</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="17"></td><td><pre>  <span class="token keyword">if</span> <span class="token punctuation">(</span>req<span class="token punctuation">.</span>params<span class="token punctuation">.</span>id <span class="token operator">!==</span> <span class="token string">'123'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="18"></td><td><pre>    <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">403</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">'Access Denied'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="19"></td><td><pre>  <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="20"></td><td><pre>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'User is valid'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="21"></td><td><pre>  <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="22"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><h3 id="應用程式層次的middleware"><a class="anchor" href="#應用程式層次的middleware">#</a> 應用程式層次的 <code>middleware</code></h3>
+<p><code>middleware</code>  裡面的 <code>function</code>  沒有限制幾個可以一直跌加，會依序執行<br />
+為什麼不要把所有邏輯寫在同一個 <code>middleware</code> ?<br />
+ 因為大量邏輯塞在同一個 <code>function</code>  裡不好維護</p>
+<figure class="highlight js"><figcaption data-lang="JavaScript"></figcaption><table><tr><td data-num="1"></td><td><pre>app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token string">'/user/:id'</span><span class="token punctuation">,</span> logRequest<span class="token punctuation">,</span> validateUserId<span class="token punctuation">,</span> checkPermissions<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="2"></td><td><pre></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">function</span> <span class="token function">logRequest</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="4"></td><td><pre>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Request URL:'</span><span class="token punctuation">,</span> req<span class="token punctuation">.</span>originalUrl<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="5"></td><td><pre>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Request Type:'</span><span class="token punctuation">,</span> req<span class="token punctuation">.</span>method<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>  <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="8"></td><td><pre></pre></td></tr><tr><td data-num="9"></td><td><pre><span class="token keyword">function</span> <span class="token function">validateUserId</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="10"></td><td><pre>  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>req<span class="token punctuation">.</span>params<span class="token punctuation">.</span>id<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="11"></td><td><pre>    <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">'Missing ID'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="12"></td><td><pre>  <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="13"></td><td><pre>  <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="14"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="15"></td><td><pre></pre></td></tr><tr><td data-num="16"></td><td><pre><span class="token keyword">function</span> <span class="token function">checkPermissions</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="17"></td><td><pre>  <span class="token keyword">if</span> <span class="token punctuation">(</span>req<span class="token punctuation">.</span>params<span class="token punctuation">.</span>id <span class="token operator">!==</span> <span class="token string">'123'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="18"></td><td><pre>    <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">403</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">'Access Denied'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="19"></td><td><pre>  <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="20"></td><td><pre>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'User is valid'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="21"></td><td><pre>  <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="22"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><h3 id="錯誤處理middleware"><a class="anchor" href="#錯誤處理middleware">#</a> 錯誤處理 <code>middleware</code></h3>
+<blockquote>
+<p>錯誤處理中介軟體一律會使用<strong>四個引數</strong>。您必須提供這四個引數，將它識別為錯誤處理中介軟體函數。即使您不需要使用 next 物件也必須指定，以維護簽章。否則，會將  <code>next</code>  物件解譯為一般中介軟體，而無法處理錯誤。</p>
+</blockquote>
+<figure class="highlight js"><figcaption data-lang="JavaScript"></figcaption><table><tr><td data-num="1"></td><td><pre>app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>  console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>err<span class="token punctuation">.</span>stack<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="3"></td><td><pre>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'I need next help.'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="4"></td><td><pre>  <span class="token function">next</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="7"></td><td><pre>  console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>err<span class="token punctuation">.</span>stack<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="8"></td><td><pre>  res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">'Something broke!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="9"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr></table></figure><h2 id="有無return的差異"><a class="anchor" href="#有無return的差異">#</a> 有無 <code>return</code>  的差異</h2>
+<p>在一個 <code>middleware</code>  沒有 <code>return</code>  會依序發送響應<br />
+裡面的 3 個響應都會執行<br />
+有 <code>return</code>  的話會提前終止響應</p>
+<figure class="highlight js"><figcaption data-lang="JavaScript"></figcaption><table><tr><td data-num="1"></td><td><pre>app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span>res</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>  res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">'Hi'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="3"></td><td><pre>  res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">'Hi Hi'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre>  res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">'Hi Hi Hi Hi'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr></table></figure><p>下列的程式碼就只會有一個 Hi 被執行而已</p>
+<figure class="highlight js"><figcaption data-lang="JavaScript"></figcaption><table><tr><td data-num="1"></td><td><pre>app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span>res</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>  <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">'Hi'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="3"></td><td><pre>  res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">'Hi Hi'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre>  res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">'Hi Hi Hi Hi'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr></table></figure><h2 id="路由器層次的middleware"><a class="anchor" href="#路由器層次的middleware">#</a> 路由器層次的 <code>middleware</code></h2>
+<h3 id="語法"><a class="anchor" href="#語法">#</a> 語法</h3>
+<blockquote>
+<p>app.use('/user', userRouter);<br />
+ 第一個參數是網址的<strong>前綴</strong>，後面是引入的 <code>router</code> <br />
+<strong>userRouter</strong> 裡的 <code>/:id</code>  完整網址會是  <code>/user/:id</code></p>
+</blockquote>
+<h3 id="程式碼範例"><a class="anchor" href="#程式碼範例">#</a> 程式碼範例</h3>
+<figure class="highlight js"><figcaption data-lang="JavaScript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment">// userRouter.js</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">var</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'express'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">var</span> userRouter <span class="token operator">=</span> express<span class="token punctuation">.</span><span class="token function">Router</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre></pre></td></tr><tr><td data-num="5"></td><td><pre>userRouter<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/:id'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>  res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">'User '</span> <span class="token operator">+</span> req<span class="token punctuation">.</span>params<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="8"></td><td><pre>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> userRouter<span class="token punctuation">;</span></pre></td></tr></table></figure><figure class="highlight js"><figcaption data-lang="JavaScript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment">// productRouter.js</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">var</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'express'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">var</span> productRouter <span class="token operator">=</span> express<span class="token punctuation">.</span><span class="token function">Router</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre></pre></td></tr><tr><td data-num="5"></td><td><pre>productRouter<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/:id'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>  res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">'Product '</span> <span class="token operator">+</span> req<span class="token punctuation">.</span>params<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="8"></td><td><pre>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> productRouter<span class="token punctuation">;</span></pre></td></tr></table></figure><figure class="highlight js"><figcaption data-lang="JavaScript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment">// app.js</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">var</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'express'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">var</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token keyword">var</span> userRouter <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./userRouter'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token keyword">var</span> productRouter <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./productRouter'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="6"></td><td><pre></pre></td></tr><tr><td data-num="7"></td><td><pre>app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token string">'/user'</span><span class="token punctuation">,</span> userRouter<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Mount user routes</span></pre></td></tr><tr><td data-num="8"></td><td><pre>app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token string">'/product'</span><span class="token punctuation">,</span> productRouter<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Mount product routes</span></pre></td></tr><tr><td data-num="9"></td><td><pre></pre></td></tr><tr><td data-num="10"></td><td><pre>app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr></table></figure><h3 id="為什麼要用router"><a class="anchor" href="#為什麼要用router">#</a> 為什麼要用 <code>Router</code> ?</h3>
+<p>因為可以把邏輯切分開，不必把所有東西都寫在同個檔案裡<br />
+增加可讀性，可維護性<br />
+ <code>router</code>  可以嵌套使用</p>
+<h1 id="程式範例"><a class="anchor" href="#程式範例">#</a> 程式範例</h1>
+<h2 id="範例-1-密碼驗證系統"><a class="anchor" href="#範例-1-密碼驗證系統">#</a> 範例 1 : 密碼驗證系統</h2>
+<figure class="highlight js"><figcaption data-lang="JavaScript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">const</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'express'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="2"></td><td><pre></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">const</span> <span class="token function-variable function">verifyPassword</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="4"></td><td><pre>  <span class="token keyword">const</span> <span class="token punctuation">&#123;</span> password <span class="token punctuation">&#125;</span> <span class="token operator">=</span> req<span class="token punctuation">.</span>query</pre></td></tr><tr><td data-num="5"></td><td><pre>  <span class="token keyword">if</span> <span class="token punctuation">(</span>password <span class="token operator">===</span> <span class="token string">'ccc'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>    <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="7"></td><td><pre>  <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="8"></td><td><pre>    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">"password Error!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="9"></td><td><pre>  <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="10"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="11"></td><td><pre></pre></td></tr><tr><td data-num="12"></td><td><pre>app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/products/new'</span><span class="token punctuation">,</span> verifyPassword<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="13"></td><td><pre>  res<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token string">'products/new'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="14"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="15"></td><td><pre></pre></td></tr><tr><td data-num="16"></td><td><pre>app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="17"></td><td><pre>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"***********ERROR*************"</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="18"></td><td><pre>  res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="19"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">)</span></pre></td></tr></table></figure><p>如果密碼錯誤會丟出 <code>err</code> ，下方是密碼錯誤的報錯<br />
+會看到第一行是我們定義的錯誤訊息，後面的內容是在告訴你程式哪邊出了問題</p>
+<pre><code>Error: passord Error!
+    at verifyPassword (D:\Coding_training\aboutWeb\mongoTest\index.js:28:11)
+    at Layer.handle [as handle_request] (D:\Coding_training\aboutWeb\mongoTest\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\Coding_training\aboutWeb\mongoTest\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\Coding_training\aboutWeb\mongoTest\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\Coding_training\aboutWeb\mongoTest\node_modules\express\lib\router\layer.js:95:5)
+    at D:\Coding_training\aboutWeb\mongoTest\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\Coding_training\aboutWeb\mongoTest\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\Coding_training\aboutWeb\mongoTest\node_modules\express\lib\router\index.js:280:10)
+    at D:\Coding_training\aboutWeb\mongoTest\index.js:38:3
+    at Layer.handle [as handle_request] (D:\Coding_training\aboutWeb\mongoTest\node_modules\express\lib\router\layer.js:95:5)
+</code></pre>
+<h2 id="範例-2-異步操作的處理方式"><a class="anchor" href="#範例-2-異步操作的處理方式">#</a> 範例 2 : 異步操作的處理方式</h2>
+<figure class="highlight js"><figcaption data-lang="JavaScript"></figcaption><table><tr><td data-num="1"></td><td><pre>app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>  <span class="token keyword">try</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="3"></td><td><pre>    <span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetchData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre>    req<span class="token punctuation">.</span>data <span class="token operator">=</span> data<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="5"></td><td><pre>    <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>  <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="7"></td><td><pre>    <span class="token function">next</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="8"></td><td><pre>  <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="9"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr></table></figure><h1 id="常見的middleware使用"><a class="anchor" href="#常見的middleware使用">#</a> 常見的 <code>middleware</code>  使用</h1>
+<h2 id="範例-1"><a class="anchor" href="#範例-1">#</a> 範例 1</h2>
+<h3 id="expressurlencoded"><a class="anchor" href="#expressurlencoded">#</a> express.urlencoded</h3>
+<figure class="highlight js"><figcaption data-lang="JavaScript"></figcaption><table><tr><td data-num="1"></td><td><pre>app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>express<span class="token punctuation">.</span><span class="token function">urlencoded</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span> <span class="token literal-property property">extended</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr></table></figure><blockquote>
+<p><span class="exturl" data-url="aHR0cDovL2xvY2FsaG9zdDozMDAwL3Rlc3Q/a2V5MT12YWx1ZTEmYW1wO2tleTIlNUJzdWJrZXklNUQ9dmFsdWUy">http://localhost:3000/test?key1=value1&amp;key2[subkey]=value2</span></p>
+</blockquote>
+<p>如果沒有上述的 <code>middleware</code> ，伺服器將無法解析後面的 <code>key1=value1&amp;key2[subkey]=value2</code> <br />
+ <code>req.body</code>  將會是 <code>undefine</code></p>
+<h3 id="補充介紹reqqueryreqparamsreqbody區別"><a class="anchor" href="#補充介紹reqqueryreqparamsreqbody區別">#</a> 補充介紹： <code>req.query</code> ， <code>req.params</code> ， <code>req.body</code>  區別</h3>
+<p><strong>1.  <code>req.query</code>  和  <code>req.params</code>  是 Express 內建支持的</strong></p>
+<ul>
+<li><code>req.query</code>  和  <code>req.params</code>  是 Express 根據請求的 URL 和路由規則自動解析的。</li>
+<li>它們的數據來自 URL 本身（例如查詢字符串或路由參數），Express 無需額外的中介軟體即可提取並解析。</li>
+</ul>
+<figure class="highlight js"><figcaption data-lang="JavaScript"></figcaption><table><tr><td data-num="1"></td><td><pre>router<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span>res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>    res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">My id is </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>req<span class="token punctuation">.</span>query<span class="token punctuation">.</span>id<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="4"></td><td><pre></pre></td></tr><tr><td data-num="5"></td><td><pre>router<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/test/:id'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span>res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>    res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">I am testing </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>req<span class="token punctuation">.</span>params<span class="token punctuation">.</span>id<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">)</span></pre></td></tr></table></figure><p><strong>2.  <code>req.body</code>  是原始數據，需要手動解析</strong></p>
+<ul>
+<li>HTTP 請求體中的數據在到達 Express 應用時，仍然是未經處理的原始數據流（二進制或字符串格式）。</li>
+<li>這些原始數據需要通過中介軟體（如  <code>express.urlencoded</code>  或  <code>express.json</code> ）進行解析，才能轉換成可用的 JavaScript 對象並存儲到  <code>req.body</code>  中。</li>
+<li>如果沒有啟用中介軟體，Express 不會自動處理這些數據，因此  <code>req.body</code>  默認為  <code>undefined</code> 。</li>
+</ul>
+<p><strong>3. 程式碼範例</strong></p>
+<figure class="highlight html"><figcaption data-lang="HTML"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/products<span class="token punctuation">"</span></span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>post<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="2"></td><td><pre>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>name<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Product name<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="3"></td><td><pre>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>name<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>name<span class="token punctuation">"</span></span> <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>name...<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="4"></td><td><pre>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>price<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Product price<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="5"></td><td><pre>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>number<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>price<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>price<span class="token punctuation">"</span></span> <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>price...<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="6"></td><td><pre>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>category<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Product category<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="7"></td><td><pre>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>select</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>categories<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="8"></td><td><pre>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fruit<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>fruit<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="9"></td><td><pre>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>vegetable<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>vegetable<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="10"></td><td><pre>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>dairy<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>dairy<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="11"></td><td><pre>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>select</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="12"></td><td><pre>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span><span class="token punctuation">></span></span>Submit<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="13"></td><td><pre><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span></pre></td></tr></table></figure><figure class="highlight js"><figcaption data-lang="JavaScript"></figcaption><table><tr><td data-num="1"></td><td><pre>app<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">'/products'</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>body<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="3"></td><td><pre>  res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">"Creat a new product"</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">)</span></pre></td></tr></table></figure><blockquote>
+<p>範例 <code>body</code>  內部的資料 <code>{ name: 'testProduct', price: '888', categories: 'fruit' }</code> <br />
+ 網址： <code>name=testProduct&amp;price=888&amp;categories=fruit</code> <br />
+ 如果無法解析： <code>undefined</code></p>
+</blockquote>
+<h1 id="官方文檔"><a class="anchor" href="#官方文檔">#</a> 官方文檔</h1>
+<p><span class="exturl" data-url="aHR0cHM6Ly9leHByZXNzanMuY29tL3poLXR3L2d1aWRlL3VzaW5nLW1pZGRsZXdhcmUuaHRtbA==">https://expressjs.com/zh-tw/guide/using-middleware.html</span></p>
+
+      <div class="tags">
+          <a href="/tags/node-js/" rel="tag"><i class="ic i-tag"></i> node.js</a>
+          <a href="/tags/Express/" rel="tag"><i class="ic i-tag"></i> Express</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新於</span>
+    <time title="修改時間：2025-02-10 21:55:12" itemprop="dateModified" datetime="2025-02-10T21:55:12+08:00">2025-02-10</time>
+  </span>
+  <span id="2025/01/19/Express-中的-Middleware：語法筆記/" class="item leancloud_visitors" data-flag-title="Express 中的 Middleware：語法筆記" title="閱讀次數">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">閱讀次數</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">次</span>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>作者： </strong>Rabbir_Reaper <i class="ic i-at"><em>@</em></i>プログラムを書けないうさぎは、ただのうさぎだ。
+  </li>
+  <li class="link">
+    <strong>文章連結：</strong>
+    <a href="https://rabbirreaper.github.io/2025/01/19/Express-%E4%B8%AD%E7%9A%84-Middleware%EF%BC%9A%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/" title="Express 中的 Middleware：語法筆記">https://rabbirreaper.github.io/2025/01/19/Express-中的-Middleware：語法筆記/</a>
+  </li>
+  <li class="license">
+    <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 許可協議。轉載請註明出處！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2025/01/19/c123-00514-Rails/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclfb3vzhj20zk0m8wny.jpg" title="c123. 00514 - Rails">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> 其他</span>
+  <h3>c123. 00514 - Rails</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2025/01/22/cookie-parser-%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclimtf7dj20zk0m8qav.jpg" title="cookie-parser 語法筆記">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> node.js</span>
+  <h3>cookie-parser 語法筆記</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目錄">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%9A%E9%BA%BC%E6%98%AFmiddleware"><span class="toc-number">1.</span> <span class="toc-text"> 甚麼是 Middleware</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#middleware%E5%8F%AF%E4%BB%A5%E5%81%9A%E4%BB%80%E9%BA%BC"><span class="toc-number">2.</span> <span class="toc-text">  Middleware  可以做什麼</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#middleware-%E8%AA%9E%E6%B3%95%E4%BB%8B%E7%B4%B9"><span class="toc-number">3.</span> <span class="toc-text">  Middleware  語法介紹</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%83%E6%95%B8%E4%B8%8D%E5%90%8C%E7%9A%84middleware%E4%BB%8B%E7%B4%B9"><span class="toc-number">3.1.</span> <span class="toc-text"> 參數不同的 Middleware  介紹</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A9%E5%80%8B%E5%8F%83%E6%95%B8%E7%9A%84middleware"><span class="toc-number">3.1.1.</span> <span class="toc-text"> 兩個參數的 Middleware</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E5%80%8B%E5%8F%83%E6%95%B8%E7%9A%84middleware"><span class="toc-number">3.1.2.</span> <span class="toc-text"> 三個參數的 Middleware</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F%E5%B1%A4%E6%AC%A1%E7%9A%84middleware"><span class="toc-number">3.1.3.</span> <span class="toc-text"> 應用程式層次的 middleware</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%8C%AF%E8%AA%A4%E8%99%95%E7%90%86middleware"><span class="toc-number">3.1.4.</span> <span class="toc-text"> 錯誤處理 middleware</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E7%84%A1return%E7%9A%84%E5%B7%AE%E7%95%B0"><span class="toc-number">3.2.</span> <span class="toc-text"> 有無 return  的差異</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E5%99%A8%E5%B1%A4%E6%AC%A1%E7%9A%84middleware"><span class="toc-number">3.3.</span> <span class="toc-text"> 路由器層次的 middleware</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AA%9E%E6%B3%95"><span class="toc-number">3.3.1.</span> <span class="toc-text"> 語法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BC%8F%E7%A2%BC%E7%AF%84%E4%BE%8B"><span class="toc-number">3.3.2.</span> <span class="toc-text"> 程式碼範例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E7%94%A8router"><span class="toc-number">3.3.3.</span> <span class="toc-text"> 為什麼要用 Router ?</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A8%8B%E5%BC%8F%E7%AF%84%E4%BE%8B"><span class="toc-number">4.</span> <span class="toc-text"> 程式範例</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AF%84%E4%BE%8B-1-%E5%AF%86%E7%A2%BC%E9%A9%97%E8%AD%89%E7%B3%BB%E7%B5%B1"><span class="toc-number">4.1.</span> <span class="toc-text"> 範例 1 : 密碼驗證系統</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AF%84%E4%BE%8B-2-%E7%95%B0%E6%AD%A5%E6%93%8D%E4%BD%9C%E7%9A%84%E8%99%95%E7%90%86%E6%96%B9%E5%BC%8F"><span class="toc-number">4.2.</span> <span class="toc-text"> 範例 2 : 異步操作的處理方式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E8%A6%8B%E7%9A%84middleware%E4%BD%BF%E7%94%A8"><span class="toc-number">5.</span> <span class="toc-text"> 常見的 middleware  使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AF%84%E4%BE%8B-1"><span class="toc-number">5.1.</span> <span class="toc-text"> 範例 1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#expressurlencoded"><span class="toc-number">5.1.1.</span> <span class="toc-text"> express.urlencoded</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A3%9C%E5%85%85%E4%BB%8B%E7%B4%B9reqqueryreqparamsreqbody%E5%8D%80%E5%88%A5"><span class="toc-number">5.1.2.</span> <span class="toc-text"> 補充介紹： req.query ， req.params ， req.body  區別</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%98%E6%96%B9%E6%96%87%E6%AA%94"><span class="toc-number">6.</span> <span class="toc-text"> 官方文檔</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li><a href="/2025/01/15/Mongoose-%E7%9A%84%E5%9F%BA%E7%A4%8E%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/" rel="bookmark" title="Mongoose 的基礎語法筆記">Mongoose 的基礎語法筆記</a></li><li class="active"><a href="/2025/01/19/Express-%E4%B8%AD%E7%9A%84-Middleware%EF%BC%9A%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/" rel="bookmark" title="Express 中的 Middleware：語法筆記">Express 中的 Middleware：語法筆記</a></li><li><a href="/2025/01/22/cookie-parser-%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/" rel="bookmark" title="cookie-parser 語法筆記">cookie-parser 語法筆記</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="本站概要">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Rabbir_Reaper"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">Rabbir_Reaper</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">82</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">11</span>
+        <span class="name">分類</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">36</span>
+        <span class="name">標籤</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>首頁</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>關於</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>歸檔</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分類</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>標籤</a>
+  </li>
+
+  </ul>
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2025/01/19/c123-00514-Rails/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2025/01/22/cookie-parser-%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>隨機文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/APCS-%E6%A8%A1%E6%93%AC%E5%9C%98%E9%9A%8A/" title="分類於 APCS 模擬團隊">APCS 模擬團隊</a>
+</div>
+
+    <span><a href="/2025/01/18/apcs0103%E6%A8%B9%E8%A3%A1%E8%B3%87%E5%84%AA%E7%8F%AD-Tree-Gifted-Class/" title="apcs0103樹裡資優班 (Tree Gifted Class)">apcs0103樹裡資優班 (Tree Gifted Class)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/APCS/" title="分類於 APCS">APCS</a>
+</div>
+
+    <span><a href="/2025/01/19/j125-4-%E8%93%8B%E6%AD%A5%E9%81%93/" title="j125. 4. 蓋步道">j125. 4. 蓋步道</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/APCS/" title="分類於 APCS">APCS</a>
+</div>
+
+    <span><a href="/2025/01/19/j608-4-%E6%A9%9F%E5%99%A8%E5%87%BA%E7%A7%9F/" title="j608. 4. 機器出租">j608. 4. 機器出租</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/APCS/" title="分類於 APCS">APCS</a>
+</div>
+
+    <span><a href="/2025/01/18/k734-4-%E9%96%8B%E5%95%9F%E5%AF%B6%E7%9B%92/" title="k734. 4. 開啟寶盒">k734. 4. 開啟寶盒</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/18/P-6-13-%E5%91%A8%E4%BC%AF%E9%80%9A%E7%9A%84%E5%9F%BA%E5%9C%B0%E5%8F%B0/" title="P-6-13. 周伯通的基地台 (@@)">P-6-13. 周伯通的基地台 (@@)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/18/Q-2-10-%E5%AD%90%E9%9B%86%E5%90%88%E7%9A%84%E5%92%8C-%E6%8A%98%E5%8D%8A%E6%9E%9A%E8%88%89/" title="Q-2-10. 子集合的和(折半枚舉)">Q-2-10. 子集合的和(折半枚舉)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/APCS/" title="分類於 APCS">APCS</a>
+</div>
+
+    <span><a href="/2025/01/18/j607-3-%E5%85%88%E5%8A%A0%E5%BE%8C%E4%B9%98%E8%88%87%E5%87%BD%E6%95%B8/" title="j607. 3. 先加後乘與函數">j607. 3. 先加後乘與函數</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/%E5%85%B6%E4%BB%96/" title="分類於 其他">其他</a>
+</div>
+
+    <span><a href="/2025/01/18/a117-%E4%B8%89%E8%89%B2%E6%B2%B3%E5%85%A7%E5%A1%94/" title="a117 三色河內塔">a117 三色河內塔</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Hexo/" title="分類於 Hexo">Hexo</a>
+</div>
+
+    <span><a href="/2026/01/08/hexo-mermaid-fix/" title="Hexo Shoka 主題 Mermaid 渲染問題排查與修復">Hexo Shoka 主題 Mermaid 渲染問題排查與修復</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/%E5%85%B6%E4%BB%96/" title="分類於 其他">其他</a>
+</div>
+
+    <span><a href="/2025/01/18/d016-%E9%85%8D%E9%80%81%E5%95%8F%E9%A1%8C/" title="d016 配送問題">d016 配送問題</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新評論</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2025 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Rabbir_Reaper @ Rabbir Reaper</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="總字數">282k 字</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">4:16</span>
+  </div>
+  <div class="powered-by">
+    基於 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2025/01/19/Express-中的-Middleware：語法筆記/',
+    favicon: {
+      show: "（●´3｀●）復活成功",
+      hide: "(´Д｀)瀏覽器崩潰啦"
+    },
+    search : {
+      placeholder: "文章搜尋",
+      empty: "關於 「 ${query} 」 ，什麼也沒搜到",
+      stats: "${time} ms 內找到 ${hits} 條結果"
+    },
+    valine: true,fancybox: true,
+    copyright: '複製成功，轉載請遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 協議。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

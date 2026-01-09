@@ -1,0 +1,600 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="プログラムを書けないうさぎは、ただのうさぎだ。" href="https://rabbirreaper.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="プログラムを書けないうさぎは、ただのうさぎだ。" href="https://rabbirreaper.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="プログラムを書けないうさぎは、ただのうさぎだ。" href="https://rabbirreaper.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="vue3" />
+
+
+<link rel="canonical" href="https://rabbirreaper.github.io/2025/02/21/Vue3-%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/">
+
+
+
+  <title>
+Vue3 語法筆記 |
+Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎだ。</title>
+<meta name="generator" content="Hexo 8.1.1"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Vue3 語法筆記
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="創建時間：2025-02-21 12:55:08">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">發表於</span>
+    <time itemprop="dateCreated datePublished" datetime="2025-02-21T12:55:08+08:00">2025-02-21</time>
+  </span>
+  <span class="item" title="文章字數">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">文章字數</span>
+    <span>5.8k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="所需閱讀時間">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">所需閱讀時間</span>
+    <span>5 分鐘</span>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切換導航欄">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Rabbir Reaper</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipesx5fdwj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicljgocqbj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicitcxhpij20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipev1x5e4j20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclx6phq6j20zk0m8e36.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicliierfjj20zk0m8npd.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首頁</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-TW">
+  <link itemprop="mainEntityOfPage" href="https://rabbirreaper.github.io/2025/02/21/Vue3-%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="Rabbir_Reaper">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="プログラムを書けないうさぎは、ただのうさぎだ。">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="父子組件的溝通"><a class="anchor" href="#父子組件的溝通">#</a> 父子組件的溝通</h1>
+<h2 id="父傳子"><a class="anchor" href="#父傳子">#</a> 父傳子</h2>
+<h3 id="父組件"><a class="anchor" href="#父組件">#</a> 父組件</h3>
+<figure class="highlight html"><figcaption data-lang="HTML"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">setup</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"></pre></td></tr><tr><td data-num="2"></td><td><pre>  <span class="token keyword">import</span> <span class="token punctuation">&#123;</span> ref <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'vue'</span></pre></td></tr><tr><td data-num="3"></td><td><pre>  <span class="token keyword">import</span> Child <span class="token keyword">from</span> <span class="token string">'./components/Child.vue'</span></pre></td></tr><tr><td data-num="4"></td><td><pre>  <span class="token keyword">const</span> testText <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="5"></td><td><pre></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="6"></td><td><pre></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="8"></td><td><pre>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="9"></td><td><pre>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>testText<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span></pre></td></tr><tr><td data-num="10"></td><td><pre>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Child</span> <span class="token attr-name">:data</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>testText<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span></pre></td></tr><tr><td data-num="11"></td><td><pre>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="12"></td><td><pre><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span></pre></td></tr></table></figure><h3 id="子組件"><a class="anchor" href="#子組件">#</a> 子組件</h3>
+<figure class="highlight html"><figcaption data-lang="HTML"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="2"></td><td><pre>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="3"></td><td><pre>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span> 字數：<span class="token comment"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="4"></td><td><pre>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="6"></td><td><pre></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">setup</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token keyword">import</span> <span class="token punctuation">&#123;</span> computed <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'vue'</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="9"></td><td><pre></pre></td></tr><tr><td data-num="10"></td><td><pre><span class="token keyword">const</span> props <span class="token operator">=</span> <span class="token function">defineProps</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="11"></td><td><pre>  <span class="token literal-property property">data</span><span class="token operator">:</span> String</pre></td></tr><tr><td data-num="12"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="13"></td><td><pre></pre></td></tr><tr><td data-num="14"></td><td><pre><span class="token keyword">const</span> msgCount <span class="token operator">=</span> <span class="token function">computed</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="15"></td><td><pre>  <span class="token keyword">return</span> props<span class="token punctuation">.</span>data<span class="token punctuation">.</span>length</pre></td></tr><tr><td data-num="16"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="17"></td><td><pre></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></pre></td></tr></table></figure><h3 id="說明"><a class="anchor" href="#說明">#</a> 說明</h3>
+<p>這邊的範例是一個 input 輸入字串，下列輸出字數的程式<br />
+傳入 Child 組件在 <code>v-bind</code>  的地方名稱不用跟父組件原來的名稱一樣<br />
+可是在子組件裡必須跟 <code>v-bind</code>  的名稱一樣不然會找不到</p>
+<blockquote>
+<p>當我們要使用  <code>data</code>  我們必須有一個變數  <code>props</code>   <code>來去接defineProps</code>  回傳的東西才能做使用<br />
+可是我們即使沒有去接 <code>defineProps</code>  回傳的東西  <code>在template</code>  的地方仍然可以做使用 這是為什麼？</p>
+</blockquote>
+<p>這是因為 Vue 3 的  <code>&lt;script setup&gt;</code>  內部會在編譯階段自動將通過  <code>defineProps</code>  定義的  <code>props</code>  暴露到模板作用域中。也就是說：</p>
+<ul>
+<li>
+<p>如果你這樣寫：</p>
+<figure class="highlight js"><figcaption data-lang="JavaScript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">defineProps</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>  <span class="token literal-property property">data</span><span class="token operator">:</span> String</pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">)</span></pre></td></tr></table></figure><p>那麼 Vue 會自動把  <code>data</code>  注入到模板中，讓你在模板裡可以直接使用  <code>data</code> 。</p>
+</li>
+<li>
+<p>但是在  <code>&lt;script setup&gt;</code>  裡面的 JavaScript 邏輯中，如果你要使用這個 prop，你就必須先將  <code>defineProps</code>  的返回值賦值給一個變數（例如  <code>props</code> ），然後透過  <code>props.data</code>  來存取。</p>
+</li>
+</ul>
+<p>這樣設計的目的就是為了讓模板的使用更簡潔，而在腳本部分能夠清楚地知道哪個變量是  <code>props</code> 。</p>
+<h2 id="子傳父"><a class="anchor" href="#子傳父">#</a> 子傳父</h2>
+<h3 id="父組件-2"><a class="anchor" href="#父組件-2">#</a> 父組件</h3>
+<figure class="highlight html"><figcaption data-lang="HTML"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">setup</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"></pre></td></tr><tr><td data-num="2"></td><td><pre>  <span class="token keyword">import</span> <span class="token punctuation">&#123;</span> ref <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'vue'</span></pre></td></tr><tr><td data-num="3"></td><td><pre>  <span class="token keyword">import</span> Child <span class="token keyword">from</span> <span class="token string">'./components/Child.vue'</span></pre></td></tr><tr><td data-num="4"></td><td><pre>  <span class="token keyword">const</span> testText <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="5"></td><td><pre>  <span class="token keyword">const</span> <span class="token function-variable function">updateHandle</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">newVal<span class="token punctuation">,</span> oldVal</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'newVal:'</span><span class="token punctuation">,</span> newVal<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="7"></td><td><pre>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'oldVal:'</span><span class="token punctuation">,</span> oldVal<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="8"></td><td><pre>  <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="9"></td><td><pre></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="10"></td><td><pre></pre></td></tr><tr><td data-num="11"></td><td><pre><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="12"></td><td><pre>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="13"></td><td><pre>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>testText<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span></pre></td></tr><tr><td data-num="14"></td><td><pre>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Child</span> <span class="token attr-name">:data</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>testText<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">@update:</span>data</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>updateHandle<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span></pre></td></tr><tr><td data-num="15"></td><td><pre>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="16"></td><td><pre><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span></pre></td></tr></table></figure><h3 id="子組件-2"><a class="anchor" href="#子組件-2">#</a> 子組件</h3>
+<figure class="highlight html"><figcaption data-lang="HTML"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="2"></td><td><pre>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="3"></td><td><pre>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span> 字數：<span class="token comment"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="4"></td><td><pre>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="6"></td><td><pre></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">setup</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token keyword">import</span> <span class="token punctuation">&#123;</span> computed <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'vue'</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="9"></td><td><pre></pre></td></tr><tr><td data-num="10"></td><td><pre><span class="token keyword">const</span> props <span class="token operator">=</span> <span class="token function">defineProps</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="11"></td><td><pre>  <span class="token literal-property property">data</span><span class="token operator">:</span> String</pre></td></tr><tr><td data-num="12"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="13"></td><td><pre></pre></td></tr><tr><td data-num="14"></td><td><pre><span class="token keyword">const</span> msgCount <span class="token operator">=</span> <span class="token function">computed</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="15"></td><td><pre>  <span class="token keyword">return</span> props<span class="token punctuation">.</span>data<span class="token punctuation">.</span>length</pre></td></tr><tr><td data-num="16"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="17"></td><td><pre></pre></td></tr><tr><td data-num="18"></td><td><pre></pre></td></tr><tr><td data-num="19"></td><td><pre><span class="token keyword">const</span> emits <span class="token operator">=</span> <span class="token function">defineEmits</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'update:data'</span><span class="token punctuation">]</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="20"></td><td><pre><span class="token function">watch</span><span class="token punctuation">(</span>msgCount<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">newVal<span class="token punctuation">,</span> oldVal</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="21"></td><td><pre>  <span class="token function">emits</span><span class="token punctuation">(</span><span class="token string">'update:data'</span><span class="token punctuation">,</span> newVal<span class="token punctuation">,</span> oldVal<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="22"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span> <span class="token literal-property property">immediate</span><span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">&#125;</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="23"></td><td><pre></pre></td></tr><tr><td data-num="24"></td><td><pre></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></pre></td></tr></table></figure><h3 id="說明-2"><a class="anchor" href="#說明-2">#</a> 說明</h3>
+<p><code>defineEmits</code>  裡面放的東西是定義要發出去給父組件的東西<br />
+ <code>watch</code>  這邊的作用是監聽 msgCount，後面 <code>function</code>  有兩個參數一個是新資料，一個是舊資料<br />
+監聽到變更發出 update:data 事件夾帶 newVal 與 oldVal</p>
+<p><strong>@update:data=&quot;updateHandle&quot;</strong> 這邊的意思是</p>
+<ul>
+<li>當子組件發出名稱為 update:data 的事件時，</li>
+<li>父組件會呼叫 updateHandle 方法，並將事件的參數傳入這個方法。<br />
+注意這邊的 update:data 要與子組件 <code>defineEmits(['update:data'])</code>  裡面的名稱要一致</li>
+</ul>
+<p><strong>{ immediate: false }</strong><br />
+ 這邊如果改成 <code>true</code>  救世會在組件掛載時立即執行一次</p>
+<h2 id="官方文檔"><a class="anchor" href="#官方文檔">#</a> 官方文檔</h2>
+<p><span class="exturl" data-url="aHR0cHM6Ly92dWVqcy5vcmcvYXBpL3NmYy1zY3JpcHQtc2V0dXAuaHRtbCNkZWZpbmVwcm9wcy1kZWZpbmVlbWl0cw==">https://vuejs.org/api/sfc-script-setup.html#defineprops-defineemits</span></p>
+<h1 id="nexttick"><a class="anchor" href="#nexttick">#</a> nextTick</h1>
+<h2 id="基本概念"><a class="anchor" href="#基本概念">#</a> 基本概念</h2>
+<p>Vue 3 採用異步更新機制。當你更改響應式狀態時，Vue 不會立即更新 DOM，而是將更新任務排入異步隊列，等待當前執行堆疊中的所有資料變更完成後，才一次性進行 DOM 更新。 <code>nextTick</code>  方法讓我們可以等待這個 DOM 更新完成後再執行特定代碼。</p>
+<h2 id="為什麼需要nexttick"><a class="anchor" href="#為什麼需要nexttick">#</a> 為什麼需要 nextTick</h2>
+<p>當你更改資料後，想要立即操作更新後的 DOM 元素時，就需要使用 <code>nextTick</code> 。因為 Vue 的響應式更新是異步的，如果不使用 <code>nextTick</code> ，可能會操作到尚未更新的 DOM。</p>
+<h2 id="使用方式"><a class="anchor" href="#使用方式">#</a> 使用方式</h2>
+<p>在 Vue 3 中， <code>nextTick</code>  可以通過以下方式使用：</p>
+<figure class="highlight javascript"><figcaption data-lang="javascript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">import</span> <span class="token punctuation">&#123;</span> nextTick <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'vue'</span></pre></td></tr><tr><td data-num="2"></td><td><pre></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token comment">// 作為全局 API 使用</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token function">nextTick</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="5"></td><td><pre>  <span class="token comment">// 這裡的代碼會在 DOM 更新後執行</span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="7"></td><td><pre></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token comment">// 也可以使用 async/await 語法</span></pre></td></tr><tr><td data-num="9"></td><td><pre><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">example</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="10"></td><td><pre>  <span class="token keyword">await</span> <span class="token function">nextTick</span><span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="11"></td><td><pre>  <span class="token comment">// 這裡的代碼會在 DOM 更新後執行</span></pre></td></tr><tr><td data-num="12"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><h2 id="實際範例"><a class="anchor" href="#實際範例">#</a> 實際範例</h2>
+<p>我很樂意將之前的範例改寫為 Vue 3 的 Composition API 形式。以下是每個範例的改進版本：</p>
+<h3 id="範例1更新後獲取dom元素尺寸composition-api"><a class="anchor" href="#範例1更新後獲取dom元素尺寸composition-api">#</a> 範例 1：更新後獲取 DOM 元素尺寸（Composition API）</h3>
+<figure class="highlight javascript"><figcaption data-lang="javascript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token operator">&lt;</span>template<span class="token operator">></span></pre></td></tr><tr><td data-num="2"></td><td><pre>  <span class="token operator">&lt;</span>div<span class="token operator">></span></pre></td></tr><tr><td data-num="3"></td><td><pre>    <span class="token operator">&lt;</span>div ref<span class="token operator">=</span><span class="token string">"textBox"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>swig￼<span class="token number">2</span><span class="token operator">--</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span></pre></td></tr><tr><td data-num="4"></td><td><pre>    <span class="token operator">&lt;</span>button @click<span class="token operator">=</span><span class="token string">"updateMessage"</span><span class="token operator">></span>更新訊息<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span></pre></td></tr><tr><td data-num="5"></td><td><pre>  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">></span></pre></td></tr><tr><td data-num="7"></td><td><pre></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token operator">&lt;</span>script setup<span class="token operator">></span></pre></td></tr><tr><td data-num="9"></td><td><pre><span class="token keyword">import</span> <span class="token punctuation">&#123;</span> ref<span class="token punctuation">,</span> nextTick <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'vue'</span></pre></td></tr><tr><td data-num="10"></td><td><pre></pre></td></tr><tr><td data-num="11"></td><td><pre><span class="token keyword">const</span> message <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token string">'原始訊息'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="12"></td><td><pre><span class="token keyword">const</span> textBox <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="13"></td><td><pre></pre></td></tr><tr><td data-num="14"></td><td><pre><span class="token keyword">const</span> <span class="token function-variable function">updateMessage</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="15"></td><td><pre>  message<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token string">'訊息已經更新，且內容變得非常長...'</span></pre></td></tr><tr><td data-num="16"></td><td><pre>  </pre></td></tr><tr><td data-num="17"></td><td><pre>  <span class="token comment">// 如果不使用 nextTick，這裡獲取的可能是更新前的高度</span></pre></td></tr><tr><td data-num="18"></td><td><pre>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'立即獲取高度:'</span><span class="token punctuation">,</span> textBox<span class="token punctuation">.</span>value<span class="token punctuation">.</span>offsetHeight<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="19"></td><td><pre>  </pre></td></tr><tr><td data-num="20"></td><td><pre>  <span class="token comment">// 使用 nextTick 等待 DOM 更新完成</span></pre></td></tr><tr><td data-num="21"></td><td><pre>  <span class="token keyword">await</span> <span class="token function">nextTick</span><span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="22"></td><td><pre>  <span class="token comment">// 這時獲取的才是更新後的實際高度</span></pre></td></tr><tr><td data-num="23"></td><td><pre>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'nextTick後獲取高度:'</span><span class="token punctuation">,</span> textBox<span class="token punctuation">.</span>value<span class="token punctuation">.</span>offsetHeight<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="24"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="25"></td><td><pre><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span></pre></td></tr></table></figure><h3 id="範例2基於更新後的dom進行操作composition-api"><a class="anchor" href="#範例2基於更新後的dom進行操作composition-api">#</a> 範例 2：基於更新後的 DOM 進行操作（Composition API）</h3>
+<figure class="highlight javascript"><figcaption data-lang="javascript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token operator">&lt;</span>template<span class="token operator">></span></pre></td></tr><tr><td data-num="2"></td><td><pre>  <span class="token operator">&lt;</span>div<span class="token operator">></span></pre></td></tr><tr><td data-num="3"></td><td><pre>    <span class="token operator">&lt;</span>div v<span class="token operator">-</span><span class="token keyword">if</span><span class="token operator">=</span><span class="token string">"showList"</span><span class="token operator">></span></pre></td></tr><tr><td data-num="4"></td><td><pre>      <span class="token operator">&lt;</span>ul ref<span class="token operator">=</span><span class="token string">"list"</span><span class="token operator">></span></pre></td></tr><tr><td data-num="5"></td><td><pre>        <span class="token operator">&lt;</span>li v<span class="token operator">-</span><span class="token keyword">for</span><span class="token operator">=</span><span class="token string">"item in items"</span> <span class="token operator">:</span>key<span class="token operator">=</span><span class="token string">"item"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>swig￼<span class="token number">3</span><span class="token operator">--</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">></span></pre></td></tr><tr><td data-num="6"></td><td><pre>      <span class="token operator">&lt;</span><span class="token operator">/</span>ul<span class="token operator">></span></pre></td></tr><tr><td data-num="7"></td><td><pre>    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span></pre></td></tr><tr><td data-num="8"></td><td><pre>    <span class="token operator">&lt;</span>button @click<span class="token operator">=</span><span class="token string">"addItemAndScroll"</span><span class="token operator">></span>添加項目並滾動到底部<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span></pre></td></tr><tr><td data-num="9"></td><td><pre>  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span></pre></td></tr><tr><td data-num="10"></td><td><pre><span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">></span></pre></td></tr><tr><td data-num="11"></td><td><pre></pre></td></tr><tr><td data-num="12"></td><td><pre><span class="token operator">&lt;</span>script setup<span class="token operator">></span></pre></td></tr><tr><td data-num="13"></td><td><pre><span class="token keyword">import</span> <span class="token punctuation">&#123;</span> ref<span class="token punctuation">,</span> nextTick <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'vue'</span></pre></td></tr><tr><td data-num="14"></td><td><pre></pre></td></tr><tr><td data-num="15"></td><td><pre><span class="token keyword">const</span> items <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'項目1'</span><span class="token punctuation">,</span> <span class="token string">'項目2'</span><span class="token punctuation">,</span> <span class="token string">'項目3'</span><span class="token punctuation">]</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="16"></td><td><pre><span class="token keyword">const</span> list <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="17"></td><td><pre><span class="token keyword">const</span> showList <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="18"></td><td><pre></pre></td></tr><tr><td data-num="19"></td><td><pre><span class="token keyword">const</span> <span class="token function-variable function">addItemAndScroll</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="20"></td><td><pre>  <span class="token comment">// 添加新項目</span></pre></td></tr><tr><td data-num="21"></td><td><pre>  items<span class="token punctuation">.</span>value<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">項目</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>items<span class="token punctuation">.</span>value<span class="token punctuation">.</span>length <span class="token operator">+</span> <span class="token number">1</span><span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="22"></td><td><pre>  </pre></td></tr><tr><td data-num="23"></td><td><pre>  <span class="token comment">// 等待 DOM 更新完成</span></pre></td></tr><tr><td data-num="24"></td><td><pre>  <span class="token keyword">await</span> <span class="token function">nextTick</span><span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="25"></td><td><pre>  </pre></td></tr><tr><td data-num="26"></td><td><pre>  <span class="token comment">// 現在可以安全地滾動到底部</span></pre></td></tr><tr><td data-num="27"></td><td><pre>  <span class="token keyword">if</span> <span class="token punctuation">(</span>list<span class="token punctuation">.</span>value<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="28"></td><td><pre>    list<span class="token punctuation">.</span>value<span class="token punctuation">.</span>scrollTop <span class="token operator">=</span> list<span class="token punctuation">.</span>value<span class="token punctuation">.</span>scrollHeight</pre></td></tr><tr><td data-num="29"></td><td><pre>  <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="30"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="31"></td><td><pre><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span></pre></td></tr></table></figure><h3 id="範例3條件渲染後聚焦元素composition-api"><a class="anchor" href="#範例3條件渲染後聚焦元素composition-api">#</a> 範例 3：條件渲染後聚焦元素（Composition API）</h3>
+<figure class="highlight javascript"><figcaption data-lang="javascript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token operator">&lt;</span>template<span class="token operator">></span></pre></td></tr><tr><td data-num="2"></td><td><pre>  <span class="token operator">&lt;</span>div<span class="token operator">></span></pre></td></tr><tr><td data-num="3"></td><td><pre>    <span class="token operator">&lt;</span>button @click<span class="token operator">=</span><span class="token string">"focusInput"</span><span class="token operator">></span>顯示輸入框<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span></pre></td></tr><tr><td data-num="4"></td><td><pre>    <span class="token operator">&lt;</span>input v<span class="token operator">-</span><span class="token keyword">if</span><span class="token operator">=</span><span class="token string">"showInput"</span> ref<span class="token operator">=</span><span class="token string">"inputField"</span> placeholder<span class="token operator">=</span><span class="token string">"請輸入..."</span> <span class="token operator">/</span><span class="token operator">></span></pre></td></tr><tr><td data-num="5"></td><td><pre>  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">></span></pre></td></tr><tr><td data-num="7"></td><td><pre></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token operator">&lt;</span>script setup<span class="token operator">></span></pre></td></tr><tr><td data-num="9"></td><td><pre><span class="token keyword">import</span> <span class="token punctuation">&#123;</span> ref<span class="token punctuation">,</span> nextTick <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'vue'</span></pre></td></tr><tr><td data-num="10"></td><td><pre></pre></td></tr><tr><td data-num="11"></td><td><pre><span class="token keyword">const</span> showInput <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="12"></td><td><pre><span class="token keyword">const</span> inputField <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="13"></td><td><pre></pre></td></tr><tr><td data-num="14"></td><td><pre><span class="token keyword">const</span> <span class="token function-variable function">focusInput</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="15"></td><td><pre>  showInput<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token boolean">true</span></pre></td></tr><tr><td data-num="16"></td><td><pre>  </pre></td></tr><tr><td data-num="17"></td><td><pre>  <span class="token comment">// 需要等待 DOM 更新後，input 元素才存在</span></pre></td></tr><tr><td data-num="18"></td><td><pre>  <span class="token keyword">await</span> <span class="token function">nextTick</span><span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="19"></td><td><pre>  </pre></td></tr><tr><td data-num="20"></td><td><pre>  <span class="token comment">// 現在可以安全地聚焦 input 元素</span></pre></td></tr><tr><td data-num="21"></td><td><pre>  inputField<span class="token punctuation">.</span>value<span class="token punctuation">.</span><span class="token function">focus</span><span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="22"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="23"></td><td><pre><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span></pre></td></tr></table></figure><h3 id="範例4基本用法-獲取dom元素composition-api"><a class="anchor" href="#範例4基本用法-獲取dom元素composition-api">#</a> 範例 4：基本用法 - 獲取 DOM 元素（Composition API）</h3>
+<figure class="highlight javascript"><figcaption data-lang="javascript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token operator">&lt;</span>template<span class="token operator">></span></pre></td></tr><tr><td data-num="2"></td><td><pre>  <span class="token operator">&lt;</span>div<span class="token operator">></span></pre></td></tr><tr><td data-num="3"></td><td><pre>    <span class="token operator">&lt;</span>p ref<span class="token operator">=</span><span class="token string">"paragraph"</span><span class="token operator">></span>這是一段文字<span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">></span></pre></td></tr><tr><td data-num="4"></td><td><pre>    <span class="token operator">&lt;</span>button @click<span class="token operator">=</span><span class="token string">"highlightText"</span><span class="token operator">></span>高亮文字<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span></pre></td></tr><tr><td data-num="5"></td><td><pre>  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">></span></pre></td></tr><tr><td data-num="7"></td><td><pre></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token operator">&lt;</span>script setup<span class="token operator">></span></pre></td></tr><tr><td data-num="9"></td><td><pre><span class="token keyword">import</span> <span class="token punctuation">&#123;</span> ref <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'vue'</span></pre></td></tr><tr><td data-num="10"></td><td><pre></pre></td></tr><tr><td data-num="11"></td><td><pre><span class="token keyword">const</span> paragraph <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="12"></td><td><pre></pre></td></tr><tr><td data-num="13"></td><td><pre><span class="token keyword">const</span> <span class="token function-variable function">highlightText</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="14"></td><td><pre>  <span class="token comment">// 直接操作 DOM 元素</span></pre></td></tr><tr><td data-num="15"></td><td><pre>  <span class="token keyword">if</span> <span class="token punctuation">(</span>paragraph<span class="token punctuation">.</span>value<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="16"></td><td><pre>    paragraph<span class="token punctuation">.</span>value<span class="token punctuation">.</span>style<span class="token punctuation">.</span>color <span class="token operator">=</span> <span class="token string">'red'</span></pre></td></tr><tr><td data-num="17"></td><td><pre>    paragraph<span class="token punctuation">.</span>value<span class="token punctuation">.</span>style<span class="token punctuation">.</span>fontWeight <span class="token operator">=</span> <span class="token string">'bold'</span></pre></td></tr><tr><td data-num="18"></td><td><pre>  <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="19"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="20"></td><td><pre><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span></pre></td></tr></table></figure><h3 id="範例5獲取多個元素的引用composition-api"><a class="anchor" href="#範例5獲取多個元素的引用composition-api">#</a> 範例 5：獲取多個元素的引用（Composition API）</h3>
+<figure class="highlight javascript"><figcaption data-lang="javascript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token operator">&lt;</span>template<span class="token operator">></span></pre></td></tr><tr><td data-num="2"></td><td><pre>  <span class="token operator">&lt;</span>div<span class="token operator">></span></pre></td></tr><tr><td data-num="3"></td><td><pre>    <span class="token operator">&lt;</span>div v<span class="token operator">-</span><span class="token keyword">for</span><span class="token operator">=</span><span class="token string">"(item, index) in items"</span> <span class="token operator">:</span>key<span class="token operator">=</span><span class="token string">"index"</span><span class="token operator">></span></pre></td></tr><tr><td data-num="4"></td><td><pre>      <span class="token operator">&lt;</span>input <span class="token operator">:</span>ref<span class="token operator">=</span><span class="token string">"el => &#123; if (el) inputRefs[index] = el &#125;"</span><span class="token operator">></span></pre></td></tr><tr><td data-num="5"></td><td><pre>    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span></pre></td></tr><tr><td data-num="6"></td><td><pre>    <span class="token operator">&lt;</span>button @click<span class="token operator">=</span><span class="token string">"focusLast"</span><span class="token operator">></span>聚焦最後一個輸入框<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span></pre></td></tr><tr><td data-num="7"></td><td><pre>  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">></span></pre></td></tr><tr><td data-num="9"></td><td><pre></pre></td></tr><tr><td data-num="10"></td><td><pre><span class="token operator">&lt;</span>script setup<span class="token operator">></span></pre></td></tr><tr><td data-num="11"></td><td><pre><span class="token keyword">import</span> <span class="token punctuation">&#123;</span> ref<span class="token punctuation">,</span> reactive <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'vue'</span></pre></td></tr><tr><td data-num="12"></td><td><pre></pre></td></tr><tr><td data-num="13"></td><td><pre><span class="token keyword">const</span> items <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="14"></td><td><pre><span class="token keyword">const</span> inputRefs <span class="token operator">=</span> <span class="token function">reactive</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="15"></td><td><pre></pre></td></tr><tr><td data-num="16"></td><td><pre><span class="token keyword">const</span> <span class="token function-variable function">focusLast</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="17"></td><td><pre>  <span class="token keyword">const</span> lastIndex <span class="token operator">=</span> items<span class="token punctuation">.</span>value<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span></pre></td></tr><tr><td data-num="18"></td><td><pre>  <span class="token keyword">if</span> <span class="token punctuation">(</span>inputRefs<span class="token punctuation">[</span>lastIndex<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="19"></td><td><pre>    inputRefs<span class="token punctuation">[</span>lastIndex<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">focus</span><span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="20"></td><td><pre>  <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="21"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="22"></td><td><pre><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span></pre></td></tr></table></figure><h3 id="範例6結合nexttick使用composition-api"><a class="anchor" href="#範例6結合nexttick使用composition-api">#</a> 範例 6：結合 nextTick 使用（Composition API）</h3>
+<figure class="highlight javascript"><figcaption data-lang="javascript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token operator">&lt;</span>template<span class="token operator">></span></pre></td></tr><tr><td data-num="2"></td><td><pre>  <span class="token operator">&lt;</span>div<span class="token operator">></span></pre></td></tr><tr><td data-num="3"></td><td><pre>    <span class="token operator">&lt;</span>div v<span class="token operator">-</span><span class="token keyword">if</span><span class="token operator">=</span><span class="token string">"show"</span><span class="token operator">></span></pre></td></tr><tr><td data-num="4"></td><td><pre>      <span class="token operator">&lt;</span>ul ref<span class="token operator">=</span><span class="token string">"list"</span><span class="token operator">></span></pre></td></tr><tr><td data-num="5"></td><td><pre>        <span class="token operator">&lt;</span>li v<span class="token operator">-</span><span class="token keyword">for</span><span class="token operator">=</span><span class="token string">"item in items"</span> <span class="token operator">:</span>key<span class="token operator">=</span><span class="token string">"item"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>swig￼<span class="token number">4</span><span class="token operator">--</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">></span></pre></td></tr><tr><td data-num="6"></td><td><pre>      <span class="token operator">&lt;</span><span class="token operator">/</span>ul<span class="token operator">></span></pre></td></tr><tr><td data-num="7"></td><td><pre>    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span></pre></td></tr><tr><td data-num="8"></td><td><pre>    <span class="token operator">&lt;</span>button @click<span class="token operator">=</span><span class="token string">"toggleAndLog"</span><span class="token operator">></span>切換顯示並記錄元素<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span></pre></td></tr><tr><td data-num="9"></td><td><pre>  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span></pre></td></tr><tr><td data-num="10"></td><td><pre><span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">></span></pre></td></tr><tr><td data-num="11"></td><td><pre></pre></td></tr><tr><td data-num="12"></td><td><pre><span class="token operator">&lt;</span>script setup<span class="token operator">></span></pre></td></tr><tr><td data-num="13"></td><td><pre><span class="token keyword">import</span> <span class="token punctuation">&#123;</span> ref<span class="token punctuation">,</span> nextTick <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'vue'</span></pre></td></tr><tr><td data-num="14"></td><td><pre></pre></td></tr><tr><td data-num="15"></td><td><pre><span class="token keyword">const</span> show <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="16"></td><td><pre><span class="token keyword">const</span> list <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="17"></td><td><pre><span class="token keyword">const</span> items <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'蘋果'</span><span class="token punctuation">,</span> <span class="token string">'香蕉'</span><span class="token punctuation">,</span> <span class="token string">'橙子'</span><span class="token punctuation">]</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="18"></td><td><pre></pre></td></tr><tr><td data-num="19"></td><td><pre><span class="token keyword">const</span> <span class="token function-variable function">toggleAndLog</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="20"></td><td><pre>  show<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token operator">!</span>show<span class="token punctuation">.</span>value</pre></td></tr><tr><td data-num="21"></td><td><pre>  </pre></td></tr><tr><td data-num="22"></td><td><pre>  <span class="token comment">// 如果是顯示元素，需要等待 DOM 更新後才能訪問</span></pre></td></tr><tr><td data-num="23"></td><td><pre>  <span class="token keyword">if</span> <span class="token punctuation">(</span>show<span class="token punctuation">.</span>value<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="24"></td><td><pre>    <span class="token keyword">await</span> <span class="token function">nextTick</span><span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="25"></td><td><pre>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'列表元素:'</span><span class="token punctuation">,</span> list<span class="token punctuation">.</span>value<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="26"></td><td><pre>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'列表項目數量:'</span><span class="token punctuation">,</span> list<span class="token punctuation">.</span>value<span class="token punctuation">.</span>children<span class="token punctuation">.</span>length<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="27"></td><td><pre>  <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="28"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="29"></td><td><pre><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span></pre></td></tr></table></figure><h2 id="nexttick的實現原理"><a class="anchor" href="#nexttick的實現原理">#</a> nextTick 的實現原理</h2>
+<p>Vue 3 的 <code>nextTick</code>  基於 JavaScript 的微任務 (microtask) 機制實現，它會利用 Promise.then、MutationObserver 或 setTimeout 等方法來確保回調函數在 DOM 更新後執行。在大多數現代瀏覽器中，Vue 優先使用 Promise 來實現這一機制。</p>
+
+      <div class="tags">
+          <a href="/tags/vue3/" rel="tag"><i class="ic i-tag"></i> vue3</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新於</span>
+    <time title="修改時間：2026-01-01 10:44:17" itemprop="dateModified" datetime="2026-01-01T10:44:17+08:00">2026-01-01</time>
+  </span>
+  <span id="2025/02/21/Vue3-語法筆記/" class="item leancloud_visitors" data-flag-title="Vue3 語法筆記" title="閱讀次數">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">閱讀次數</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">次</span>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>作者： </strong>Rabbir_Reaper <i class="ic i-at"><em>@</em></i>プログラムを書けないうさぎは、ただのうさぎだ。
+  </li>
+  <li class="link">
+    <strong>文章連結：</strong>
+    <a href="https://rabbirreaper.github.io/2025/02/21/Vue3-%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/" title="Vue3 語法筆記">https://rabbirreaper.github.io/2025/02/21/Vue3-語法筆記/</a>
+  </li>
+  <li class="license">
+    <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 許可協議。轉載請註明出處！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2025/02/07/%E5%B0%88%E6%A1%88%E7%AD%86%E8%A8%98-%E4%B8%80/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicit31ffoj20zk0m8naf.jpg" title="專案筆記 (未完成)">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>專案筆記 (未完成)</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2025/02/21/Q-5-5-Closest-pair/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclwrdwyaj20zk0m8are.jpg" title="Q-5-5. Closest pair">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> AP325</span>
+  <h3>Q-5-5. Closest pair</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目錄">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%88%B6%E5%AD%90%E7%B5%84%E4%BB%B6%E7%9A%84%E6%BA%9D%E9%80%9A"><span class="toc-number">1.</span> <span class="toc-text"> 父子組件的溝通</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%88%B6%E5%82%B3%E5%AD%90"><span class="toc-number">1.1.</span> <span class="toc-text"> 父傳子</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%88%B6%E7%B5%84%E4%BB%B6"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 父組件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%90%E7%B5%84%E4%BB%B6"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 子組件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AA%AA%E6%98%8E"><span class="toc-number">1.1.3.</span> <span class="toc-text"> 說明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%90%E5%82%B3%E7%88%B6"><span class="toc-number">1.2.</span> <span class="toc-text"> 子傳父</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%88%B6%E7%B5%84%E4%BB%B6-2"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 父組件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%90%E7%B5%84%E4%BB%B6-2"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 子組件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AA%AA%E6%98%8E-2"><span class="toc-number">1.2.3.</span> <span class="toc-text"> 說明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%98%E6%96%B9%E6%96%87%E6%AA%94"><span class="toc-number">1.3.</span> <span class="toc-text"> 官方文檔</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#nexttick"><span class="toc-number">2.</span> <span class="toc-text"> nextTick</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">2.1.</span> <span class="toc-text"> 基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E9%9C%80%E8%A6%81nexttick"><span class="toc-number">2.2.</span> <span class="toc-text"> 為什麼需要 nextTick</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">2.3.</span> <span class="toc-text"> 使用方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%A6%E9%9A%9B%E7%AF%84%E4%BE%8B"><span class="toc-number">2.4.</span> <span class="toc-text"> 實際範例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AF%84%E4%BE%8B1%E6%9B%B4%E6%96%B0%E5%BE%8C%E7%8D%B2%E5%8F%96dom%E5%85%83%E7%B4%A0%E5%B0%BA%E5%AF%B8composition-api"><span class="toc-number">2.4.1.</span> <span class="toc-text"> 範例 1：更新後獲取 DOM 元素尺寸（Composition API）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AF%84%E4%BE%8B2%E5%9F%BA%E6%96%BC%E6%9B%B4%E6%96%B0%E5%BE%8C%E7%9A%84dom%E9%80%B2%E8%A1%8C%E6%93%8D%E4%BD%9Ccomposition-api"><span class="toc-number">2.4.2.</span> <span class="toc-text"> 範例 2：基於更新後的 DOM 進行操作（Composition API）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AF%84%E4%BE%8B3%E6%A2%9D%E4%BB%B6%E6%B8%B2%E6%9F%93%E5%BE%8C%E8%81%9A%E7%84%A6%E5%85%83%E7%B4%A0composition-api"><span class="toc-number">2.4.3.</span> <span class="toc-text"> 範例 3：條件渲染後聚焦元素（Composition API）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AF%84%E4%BE%8B4%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95-%E7%8D%B2%E5%8F%96dom%E5%85%83%E7%B4%A0composition-api"><span class="toc-number">2.4.4.</span> <span class="toc-text"> 範例 4：基本用法 - 獲取 DOM 元素（Composition API）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AF%84%E4%BE%8B5%E7%8D%B2%E5%8F%96%E5%A4%9A%E5%80%8B%E5%85%83%E7%B4%A0%E7%9A%84%E5%BC%95%E7%94%A8composition-api"><span class="toc-number">2.4.5.</span> <span class="toc-text"> 範例 5：獲取多個元素的引用（Composition API）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AF%84%E4%BE%8B6%E7%B5%90%E5%90%88nexttick%E4%BD%BF%E7%94%A8composition-api"><span class="toc-number">2.4.6.</span> <span class="toc-text"> 範例 6：結合 nextTick 使用（Composition API）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nexttick%E7%9A%84%E5%AF%A6%E7%8F%BE%E5%8E%9F%E7%90%86"><span class="toc-number">2.5.</span> <span class="toc-text"> nextTick 的實現原理</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+      </div>
+      <div class="overview panel" data-title="本站概要">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Rabbir_Reaper"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">Rabbir_Reaper</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">82</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">11</span>
+        <span class="name">分類</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">36</span>
+        <span class="name">標籤</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>首頁</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>關於</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>歸檔</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分類</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>標籤</a>
+  </li>
+
+  </ul>
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2025/02/07/%E5%B0%88%E6%A1%88%E7%AD%86%E8%A8%98-%E4%B8%80/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2025/02/21/Q-5-5-Closest-pair/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>隨機文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/" title="分類於 加密文章">加密文章</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/%E6%97%A5%E6%9C%9F/" title="分類於 日期">日期</a>
+</div>
+
+    <span><a href="/2025/11/08/251108/" title="251108">251108</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/18/Q-1-4-%E6%94%AF%E9%BB%9E%E5%88%87%E5%89%B2/" title="Q-1-4. 支點切割">Q-1-4. 支點切割</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/APCS-%E6%A8%A1%E6%93%AC%E5%9C%98%E9%9A%8A/" title="分類於 APCS 模擬團隊">APCS 模擬團隊</a>
+</div>
+
+    <span><a href="/2025/01/18/apcs0203-S-%E7%9B%92%E6%A8%A1%E6%93%AC-S-BOX-Simulate/" title="apcs0203:S 盒模擬 (S-BOX-Simulate)">apcs0203:S 盒模擬 (S-BOX-Simulate)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/APCS/" title="分類於 APCS">APCS</a>
+</div>
+
+    <span><a href="/2025/01/18/k734-4-%E9%96%8B%E5%95%9F%E5%AF%B6%E7%9B%92/" title="k734. 4. 開啟寶盒">k734. 4. 開啟寶盒</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/APCS-%E6%A8%A1%E6%93%AC%E5%9C%98%E9%9A%8A/" title="分類於 APCS 模擬團隊">APCS 模擬團隊</a>
+</div>
+
+    <span><a href="/2025/01/18/apcs0403%E6%84%9B%E5%90%83%E5%AD%97%E6%AF%8D%E7%9A%84%E6%80%AA%E7%8D%B8-Alphabet-Monster/" title="apcs0403愛吃字母的怪獸 (Alphabet Monster)">apcs0403愛吃字母的怪獸 (Alphabet Monster)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2025/02/21/Vue3-%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/" title="Vue3 語法筆記">Vue3 語法筆記</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/18/Q-6-4-%E9%97%96%E9%97%9C%E4%BA%8C%E9%81%B8%E4%B8%80/" title="Q-6-4. 闖關二選一">Q-6-4. 闖關二選一</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/%E5%85%B6%E4%BB%96/" title="分類於 其他">其他</a>
+</div>
+
+    <span><a href="/2025/01/18/c889-2-%E4%BA%8C%E5%88%86%E5%9C%96/" title="c889. 2. 二分圖">c889. 2. 二分圖</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2025/04/28/Vue-%E6%B8%AC%E8%A9%A6%E7%AD%86%E8%A8%98/" title="Vue 測試筆記 (未完成)">Vue 測試筆記 (未完成)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/18/Q-1-5-%E4%BA%8C%E7%B6%AD%E9%BB%91%E7%99%BD%E5%BD%B1%E5%83%8F%E7%B7%A8%E7%A2%BC-DF-expression/" title="Q-1-5. 二維黑白影像編碼(DF-expression)">Q-1-5. 二維黑白影像編碼(DF-expression)</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新評論</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2025 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Rabbir_Reaper @ Rabbir Reaper</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="總字數">282k 字</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">4:16</span>
+  </div>
+  <div class="powered-by">
+    基於 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2025/02/21/Vue3-語法筆記/',
+    favicon: {
+      show: "（●´3｀●）復活成功",
+      hide: "(´Д｀)瀏覽器崩潰啦"
+    },
+    search : {
+      placeholder: "文章搜尋",
+      empty: "關於 「 ${query} 」 ，什麼也沒搜到",
+      stats: "${time} ms 內找到 ${hits} 條結果"
+    },
+    valine: true,fancybox: true,
+    copyright: '複製成功，轉載請遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 協議。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

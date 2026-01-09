@@ -1,0 +1,586 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="プログラムを書けないうさぎは、ただのうさぎだ。" href="https://rabbirreaper.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="プログラムを書けないうさぎは、ただのうさぎだ。" href="https://rabbirreaper.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="プログラムを書けないうさぎは、ただのうさぎだ。" href="https://rabbirreaper.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="node.js" />
+
+
+<link rel="canonical" href="https://rabbirreaper.github.io/2025/10/29/Hono%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/">
+
+
+
+  <title>
+Hono 語法筆記 |
+Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎだ。</title>
+<meta name="generator" content="Hexo 8.1.1"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Hono 語法筆記
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="創建時間：2025-10-29 13:31:19">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">發表於</span>
+    <time itemprop="dateCreated datePublished" datetime="2025-10-29T13:31:19+08:00">2025-10-29</time>
+  </span>
+  <span class="item" title="文章字數">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">文章字數</span>
+    <span>7.1k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="所需閱讀時間">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">所需閱讀時間</span>
+    <span>6 分鐘</span>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切換導航欄">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Rabbir Reaper</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicitht3xtj20zk0m8k5v.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclhfehz7j20zk0m8u0x.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclip4jbpj20zk0m87cv.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclx29mstj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipevuctzzj20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicm0n457cj20zk0m8e81.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首頁</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-TW">
+  <link itemprop="mainEntityOfPage" href="https://rabbirreaper.github.io/2025/10/29/Hono%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="Rabbir_Reaper">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="プログラムを書けないうさぎは、ただのうさぎだ。">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h2 id="express-vs-hono核心概念差異"><a class="anchor" href="#express-vs-hono核心概念差異">#</a> Express vs Hono：核心概念差異</h2>
+<p>首先讓我們從整體架構來理解這兩個框架的設計哲學。Express 是一個成熟且功能完整的 Node.js 框架，它在過去十年主導了後端開發。而 Hono 則是新一代的輕量級框架，它的設計目標是「快速、輕量、並且能夠在任何 JavaScript 運行環境中執行」，包括 Node.js、Deno、Bun，甚至是 Cloudflare Workers 這類邊緣運算平台。</p>
+<p>Express 的設計理念是提供一個最小化但可擴展的核心，然後透過大量的中介軟體生態系統來擴充功能。Hono 則追求極致的效能和簡潔性，它的 API 設計受到 Express 的啟發，但做了現代化的改進。</p>
+<h2 id="路由定義的差異"><a class="anchor" href="#路由定義的差異">#</a> 路由定義的差異</h2>
+<p><strong>Express 版本：</strong></p>
+<figure class="highlight javascript"><figcaption data-lang="javascript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">import</span> express <span class="token keyword">from</span> <span class="token string">'express'</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> orderController <span class="token keyword">from</span> <span class="token string">'../controllers/Order/orderAdmin.js'</span></pre></td></tr><tr><td data-num="3"></td><td><pre></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token keyword">const</span> router <span class="token operator">=</span> express<span class="token punctuation">.</span><span class="token function">Router</span><span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="5"></td><td><pre></pre></td></tr><tr><td data-num="6"></td><td><pre>router<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span></pre></td></tr><tr><td data-num="7"></td><td><pre>  <span class="token string">'/brands/:brandId/stores/:storeId/orders'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="8"></td><td><pre>  <span class="token function">authenticate</span><span class="token punctuation">(</span><span class="token string">'admin'</span><span class="token punctuation">)</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="9"></td><td><pre>  <span class="token function">requireRole</span><span class="token punctuation">(</span><span class="token string">'primary_system_admin'</span><span class="token punctuation">,</span> <span class="token string">'system_admin'</span><span class="token punctuation">)</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="10"></td><td><pre>  requireBrandAccess<span class="token punctuation">,</span></pre></td></tr><tr><td data-num="11"></td><td><pre>  requireStoreAccess<span class="token punctuation">,</span></pre></td></tr><tr><td data-num="12"></td><td><pre>  orderController<span class="token punctuation">.</span>getStoreOrders</pre></td></tr><tr><td data-num="13"></td><td><pre><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="14"></td><td><pre></pre></td></tr><tr><td data-num="15"></td><td><pre><span class="token keyword">export</span> <span class="token keyword">default</span> router</pre></td></tr></table></figure><p><strong>Hono 版本：</strong></p>
+<figure class="highlight javascript"><figcaption data-lang="javascript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">import</span> <span class="token punctuation">&#123;</span> Hono <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'hono'</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> orderController <span class="token keyword">from</span> <span class="token string">'../controllers/Order/orderAdmin.js'</span></pre></td></tr><tr><td data-num="3"></td><td><pre></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Hono</span><span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="5"></td><td><pre></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token comment">// Hono 的路由定義非常相似，但有些微妙的差異</span></pre></td></tr><tr><td data-num="7"></td><td><pre>app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span></pre></td></tr><tr><td data-num="8"></td><td><pre>  <span class="token string">'/brands/:brandId/stores/:storeId/orders'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="9"></td><td><pre>  <span class="token function">authenticate</span><span class="token punctuation">(</span><span class="token string">'admin'</span><span class="token punctuation">)</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="10"></td><td><pre>  <span class="token function">requireRole</span><span class="token punctuation">(</span><span class="token string">'primary_system_admin'</span><span class="token punctuation">,</span> <span class="token string">'system_admin'</span><span class="token punctuation">)</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="11"></td><td><pre>  requireBrandAccess<span class="token punctuation">,</span></pre></td></tr><tr><td data-num="12"></td><td><pre>  requireStoreAccess<span class="token punctuation">,</span></pre></td></tr><tr><td data-num="13"></td><td><pre>  orderController<span class="token punctuation">.</span>getStoreOrders</pre></td></tr><tr><td data-num="14"></td><td><pre><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="15"></td><td><pre></pre></td></tr><tr><td data-num="16"></td><td><pre><span class="token keyword">export</span> <span class="token keyword">default</span> app</pre></td></tr></table></figure><p>你會發現表面上看起來幾乎一樣！這是 Hono 的優點之一，它的 API 設計讓從 Express 遷移變得相對容易。但底層有很大的不同，讓我們深入看看。</p>
+<h2 id="中介軟體middleware的重要差異"><a class="anchor" href="#中介軟體middleware的重要差異">#</a> 中介軟體（Middleware）的重要差異</h2>
+<p>這是最關鍵的差異點：</p>
+<p><strong>Express 版本：</strong></p>
+<figure class="highlight javascript"><figcaption data-lang="javascript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">export</span> <span class="token keyword">const</span> authenticate <span class="token operator">=</span> <span class="token punctuation">(</span>userType <span class="token operator">=</span> <span class="token string">'admin'</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>  <span class="token keyword">try</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="3"></td><td><pre>    <span class="token keyword">if</span> <span class="token punctuation">(</span>userType <span class="token operator">===</span> <span class="token string">'admin'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="4"></td><td><pre>      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>req<span class="token punctuation">.</span>session<span class="token operator">?.</span>adminId<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="5"></td><td><pre>        <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">401</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>          <span class="token literal-property property">success</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="7"></td><td><pre>          <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">'請先登入'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="8"></td><td><pre>        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="9"></td><td><pre>      <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="10"></td><td><pre>      </pre></td></tr><tr><td data-num="11"></td><td><pre>      <span class="token keyword">const</span> admin <span class="token operator">=</span> <span class="token keyword">await</span> Admin<span class="token punctuation">.</span><span class="token function">findById</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>session<span class="token punctuation">.</span>adminId<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="12"></td><td><pre>      </pre></td></tr><tr><td data-num="13"></td><td><pre>      <span class="token comment">// 在 Express 中，我們直接修改 req 物件</span></pre></td></tr><tr><td data-num="14"></td><td><pre>      req<span class="token punctuation">.</span>auth <span class="token operator">=</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="15"></td><td><pre>        <span class="token literal-property property">id</span><span class="token operator">:</span> admin<span class="token punctuation">.</span>_id<span class="token punctuation">,</span></pre></td></tr><tr><td data-num="16"></td><td><pre>        <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">'admin'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="17"></td><td><pre>        <span class="token literal-property property">role</span><span class="token operator">:</span> admin<span class="token punctuation">.</span>role<span class="token punctuation">,</span></pre></td></tr><tr><td data-num="18"></td><td><pre>      <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="19"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="20"></td><td><pre>    </pre></td></tr><tr><td data-num="21"></td><td><pre>    <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// Express 使用 next () 來傳遞控制權</span></pre></td></tr><tr><td data-num="22"></td><td><pre>  <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="23"></td><td><pre>    <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="24"></td><td><pre>      <span class="token literal-property property">success</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="25"></td><td><pre>      <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">'伺服器錯誤'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="26"></td><td><pre>    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="27"></td><td><pre>  <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="28"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><p><strong>Hono 版本：</strong></p>
+<figure class="highlight javascript"><figcaption data-lang="javascript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">export</span> <span class="token keyword">const</span> authenticate <span class="token operator">=</span> <span class="token punctuation">(</span>userType <span class="token operator">=</span> <span class="token string">'admin'</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>  <span class="token keyword">return</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">c<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="3"></td><td><pre>    <span class="token keyword">try</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="4"></td><td><pre>      <span class="token comment">// 在 Hono 中，c 是 Context 物件，包含了請求和回應的所有資訊</span></pre></td></tr><tr><td data-num="5"></td><td><pre>      </pre></td></tr><tr><td data-num="6"></td><td><pre>      <span class="token keyword">if</span> <span class="token punctuation">(</span>userType <span class="token operator">===</span> <span class="token string">'admin'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="7"></td><td><pre>        <span class="token comment">// 從 session 取得資料的方式可能需要調整</span></pre></td></tr><tr><td data-num="8"></td><td><pre>        <span class="token keyword">const</span> session <span class="token operator">=</span> c<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'session'</span><span class="token punctuation">)</span> <span class="token comment">// Hono 使用 get/set 來存取上下文變數</span></pre></td></tr><tr><td data-num="9"></td><td><pre>        </pre></td></tr><tr><td data-num="10"></td><td><pre>        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>session<span class="token operator">?.</span>adminId<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="11"></td><td><pre>          <span class="token keyword">return</span> c<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="12"></td><td><pre>            <span class="token literal-property property">success</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="13"></td><td><pre>            <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">'請先登入'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="14"></td><td><pre>          <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token number">401</span><span class="token punctuation">)</span> <span class="token comment">// Hono 的回應方法更簡潔，狀態碼作為第二個參數</span></pre></td></tr><tr><td data-num="15"></td><td><pre>        <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="16"></td><td><pre>        </pre></td></tr><tr><td data-num="17"></td><td><pre>        <span class="token keyword">const</span> admin <span class="token operator">=</span> <span class="token keyword">await</span> Admin<span class="token punctuation">.</span><span class="token function">findById</span><span class="token punctuation">(</span>session<span class="token punctuation">.</span>adminId<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="18"></td><td><pre>        </pre></td></tr><tr><td data-num="19"></td><td><pre>        <span class="token comment">// 在 Hono 中，我們使用 c.set () 來儲存資料供後續中介軟體使用</span></pre></td></tr><tr><td data-num="20"></td><td><pre>        c<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">'auth'</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="21"></td><td><pre>          <span class="token literal-property property">id</span><span class="token operator">:</span> admin<span class="token punctuation">.</span>_id<span class="token punctuation">,</span></pre></td></tr><tr><td data-num="22"></td><td><pre>          <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">'admin'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="23"></td><td><pre>          <span class="token literal-property property">role</span><span class="token operator">:</span> admin<span class="token punctuation">.</span>role<span class="token punctuation">,</span></pre></td></tr><tr><td data-num="24"></td><td><pre>        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="25"></td><td><pre>      <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="26"></td><td><pre>      </pre></td></tr><tr><td data-num="27"></td><td><pre>      <span class="token comment">// Hono 也使用 await next () 來傳遞控制權</span></pre></td></tr><tr><td data-num="28"></td><td><pre>      <span class="token comment">// 但它是 async 的，這讓你可以在 next () 之後執行程式碼</span></pre></td></tr><tr><td data-num="29"></td><td><pre>      <span class="token keyword">await</span> <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="30"></td><td><pre>      </pre></td></tr><tr><td data-num="31"></td><td><pre>      <span class="token comment">// 這裡可以加入「後處理」邏輯，例如記錄回應時間</span></pre></td></tr><tr><td data-num="32"></td><td><pre>      <span class="token comment">// 這在 Express 中比較難實現</span></pre></td></tr><tr><td data-num="33"></td><td><pre>    <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="34"></td><td><pre>      <span class="token keyword">return</span> c<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="35"></td><td><pre>        <span class="token literal-property property">success</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="36"></td><td><pre>        <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">'伺服器錯誤'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="37"></td><td><pre>      <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token number">500</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="38"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="39"></td><td><pre>  <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="40"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><p>關鍵差異在於：</p>
+<p>Express 使用三個分離的參數  <code>(req, res, next)</code> ，而 Hono 將所有東西整合進一個 Context 物件  <code>c</code> 。這個設計讓 Hono 更容易處理不同的運行環境（因為不同環境的請求和回應物件可能不同）。</p>
+<h2 id="控制器controller的改寫"><a class="anchor" href="#控制器controller的改寫">#</a> 控制器（Controller）的改寫</h2>
+<p><strong>Express 版本：</strong></p>
+<figure class="highlight javascript"><figcaption data-lang="javascript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">export</span> <span class="token keyword">const</span> getStoreOrders <span class="token operator">=</span> <span class="token function">asyncHandler</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>  <span class="token keyword">const</span> <span class="token punctuation">&#123;</span> storeId <span class="token punctuation">&#125;</span> <span class="token operator">=</span> req<span class="token punctuation">.</span>params</pre></td></tr><tr><td data-num="3"></td><td><pre>  </pre></td></tr><tr><td data-num="4"></td><td><pre>  <span class="token keyword">const</span> options <span class="token operator">=</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="5"></td><td><pre>    <span class="token literal-property property">status</span><span class="token operator">:</span> req<span class="token punctuation">.</span>query<span class="token punctuation">.</span>status<span class="token punctuation">,</span></pre></td></tr><tr><td data-num="6"></td><td><pre>    <span class="token literal-property property">page</span><span class="token operator">:</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>query<span class="token punctuation">.</span>page<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token number">1</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="7"></td><td><pre>    <span class="token literal-property property">limit</span><span class="token operator">:</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>query<span class="token punctuation">.</span>limit<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token number">20</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="8"></td><td><pre>  <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="9"></td><td><pre>  </pre></td></tr><tr><td data-num="10"></td><td><pre>  <span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token keyword">await</span> orderService<span class="token punctuation">.</span><span class="token function">getStoreOrders</span><span class="token punctuation">(</span>storeId<span class="token punctuation">,</span> options<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="11"></td><td><pre>  </pre></td></tr><tr><td data-num="12"></td><td><pre>  res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="13"></td><td><pre>    <span class="token literal-property property">success</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="14"></td><td><pre>    <span class="token literal-property property">orders</span><span class="token operator">:</span> result<span class="token punctuation">.</span>orders<span class="token punctuation">,</span></pre></td></tr><tr><td data-num="15"></td><td><pre>    <span class="token literal-property property">pagination</span><span class="token operator">:</span> result<span class="token punctuation">.</span>pagination<span class="token punctuation">,</span></pre></td></tr><tr><td data-num="16"></td><td><pre>  <span class="token punctuation">&#125;</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="17"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">)</span></pre></td></tr></table></figure><p><strong>Hono 版本：</strong></p>
+<figure class="highlight javascript"><figcaption data-lang="javascript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">getStoreOrders</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">c</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>  <span class="token comment">// 從 Context 中取得路徑參數</span></pre></td></tr><tr><td data-num="3"></td><td><pre>  <span class="token keyword">const</span> <span class="token punctuation">&#123;</span> storeId <span class="token punctuation">&#125;</span> <span class="token operator">=</span> c<span class="token punctuation">.</span>req<span class="token punctuation">.</span><span class="token function">param</span><span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="4"></td><td><pre>  </pre></td></tr><tr><td data-num="5"></td><td><pre>  <span class="token comment">// 取得 query 參數</span></pre></td></tr><tr><td data-num="6"></td><td><pre>  <span class="token keyword">const</span> status <span class="token operator">=</span> c<span class="token punctuation">.</span>req<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span><span class="token string">'status'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="7"></td><td><pre>  <span class="token keyword">const</span> page <span class="token operator">=</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span>req<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span><span class="token string">'page'</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token string">'1'</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="8"></td><td><pre>  <span class="token keyword">const</span> limit <span class="token operator">=</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span>req<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span><span class="token string">'limit'</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token string">'20'</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="9"></td><td><pre>  </pre></td></tr><tr><td data-num="10"></td><td><pre>  <span class="token keyword">const</span> options <span class="token operator">=</span> <span class="token punctuation">&#123;</span> status<span class="token punctuation">,</span> page<span class="token punctuation">,</span> limit <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="11"></td><td><pre>  </pre></td></tr><tr><td data-num="12"></td><td><pre>  <span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token keyword">await</span> orderService<span class="token punctuation">.</span><span class="token function">getStoreOrders</span><span class="token punctuation">(</span>storeId<span class="token punctuation">,</span> options<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="13"></td><td><pre>  </pre></td></tr><tr><td data-num="14"></td><td><pre>  <span class="token comment">// 回應 JSON</span></pre></td></tr><tr><td data-num="15"></td><td><pre>  <span class="token keyword">return</span> c<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="16"></td><td><pre>    <span class="token literal-property property">success</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="17"></td><td><pre>    <span class="token literal-property property">orders</span><span class="token operator">:</span> result<span class="token punctuation">.</span>orders<span class="token punctuation">,</span></pre></td></tr><tr><td data-num="18"></td><td><pre>    <span class="token literal-property property">pagination</span><span class="token operator">:</span> result<span class="token punctuation">.</span>pagination<span class="token punctuation">,</span></pre></td></tr><tr><td data-num="19"></td><td><pre>  <span class="token punctuation">&#125;</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="20"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><p>注意幾個重要的差異：</p>
+<p>首先，Hono 使用  <code>c.req.param()</code>  來取得路徑參數，而 Express 直接從  <code>req.params</code>  取得。其次，Hono 使用  <code>c.req.query('key')</code>  來取得個別的 query 參數，而不是直接存取  <code>req.query</code>  物件。最後，在 Hono 中我們需要  <code>return</code>  回應，而 Express 則是調用  <code>res.json()</code>  就結束了。</p>
+<h2 id="錯誤處理的差異"><a class="anchor" href="#錯誤處理的差異">#</a> 錯誤處理的差異</h2>
+<p><strong>Express 版本：</strong></p>
+<figure class="highlight javascript"><figcaption data-lang="javascript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">errorHandler</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>  console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'API Error:'</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="3"></td><td><pre>  </pre></td></tr><tr><td data-num="4"></td><td><pre>  <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">.</span>name <span class="token operator">===</span> <span class="token string">'ValidationError'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="5"></td><td><pre>    <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>      <span class="token literal-property property">success</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="7"></td><td><pre>      <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">'資料驗證失敗'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="8"></td><td><pre>    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="9"></td><td><pre>  <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="10"></td><td><pre>  </pre></td></tr><tr><td data-num="11"></td><td><pre>  res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="12"></td><td><pre>    <span class="token literal-property property">success</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="13"></td><td><pre>    <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">'伺服器錯誤'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="14"></td><td><pre>  <span class="token punctuation">&#125;</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="15"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><p><strong>Hono 版本：</strong></p>
+<figure class="highlight javascript"><figcaption data-lang="javascript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">import</span> <span class="token punctuation">&#123;</span> HTTPException <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'hono/http-exception'</span></pre></td></tr><tr><td data-num="2"></td><td><pre></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token comment">// Hono 有內建的錯誤處理機制</span></pre></td></tr><tr><td data-num="4"></td><td><pre>app<span class="token punctuation">.</span><span class="token function">onError</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> c</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="5"></td><td><pre>  console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'API Error:'</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="6"></td><td><pre>  </pre></td></tr><tr><td data-num="7"></td><td><pre>  <span class="token comment">// Hono 推薦使用 HTTPException</span></pre></td></tr><tr><td data-num="8"></td><td><pre>  <span class="token keyword">if</span> <span class="token punctuation">(</span>err <span class="token keyword">instanceof</span> <span class="token class-name">HTTPException</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="9"></td><td><pre>    <span class="token keyword">return</span> c<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="10"></td><td><pre>      <span class="token literal-property property">success</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="11"></td><td><pre>      <span class="token literal-property property">message</span><span class="token operator">:</span> err<span class="token punctuation">.</span>message<span class="token punctuation">,</span></pre></td></tr><tr><td data-num="12"></td><td><pre>    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> err<span class="token punctuation">.</span>status<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="13"></td><td><pre>  <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="14"></td><td><pre>  </pre></td></tr><tr><td data-num="15"></td><td><pre>  <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">.</span>name <span class="token operator">===</span> <span class="token string">'ValidationError'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="16"></td><td><pre>    <span class="token keyword">return</span> c<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="17"></td><td><pre>      <span class="token literal-property property">success</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="18"></td><td><pre>      <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">'資料驗證失敗'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="19"></td><td><pre>    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token number">400</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="20"></td><td><pre>  <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="21"></td><td><pre>  </pre></td></tr><tr><td data-num="22"></td><td><pre>  <span class="token keyword">return</span> c<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="23"></td><td><pre>    <span class="token literal-property property">success</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="24"></td><td><pre>    <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">'伺服器錯誤'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="25"></td><td><pre>  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token number">500</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="26"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="27"></td><td><pre></pre></td></tr><tr><td data-num="28"></td><td><pre><span class="token comment">// 自定義錯誤類別的改寫</span></pre></td></tr><tr><td data-num="29"></td><td><pre><span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">AppError</span> <span class="token keyword">extends</span> <span class="token class-name">HTTPException</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="30"></td><td><pre>  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">message<span class="token punctuation">,</span> statusCode</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="31"></td><td><pre>    <span class="token keyword">super</span><span class="token punctuation">(</span>statusCode<span class="token punctuation">,</span> <span class="token punctuation">&#123;</span> message <span class="token punctuation">&#125;</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="32"></td><td><pre>  <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="33"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><p>Hono 提供了  <code>HTTPException</code>  作為標準的錯誤類別，這比 Express 的自訂錯誤處理更加一致和強型別。</p>
+<h2 id="參數驗證的改寫"><a class="anchor" href="#參數驗證的改寫">#</a> 參數驗證的改寫</h2>
+<p><strong>Hono 版本（使用內建的 validator）：</strong></p>
+<figure class="highlight javascript"><figcaption data-lang="javascript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">import</span> <span class="token punctuation">&#123;</span> validator <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'hono/validator'</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">import</span> <span class="token punctuation">&#123;</span> z <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'zod'</span> <span class="token comment">// Hono 推薦搭配 Zod 使用</span></pre></td></tr><tr><td data-num="3"></td><td><pre></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token comment">// Hono 推薦使用 Zod 進行驗證，更加型別安全</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token keyword">export</span> <span class="token keyword">const</span> validateOrder <span class="token operator">=</span> <span class="token function">validator</span><span class="token punctuation">(</span><span class="token string">'json'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">value<span class="token punctuation">,</span> c</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>  <span class="token comment">// 定義驗證 schema</span></pre></td></tr><tr><td data-num="7"></td><td><pre>  <span class="token keyword">const</span> schema <span class="token operator">=</span> z<span class="token punctuation">.</span><span class="token function">object</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="8"></td><td><pre>    <span class="token literal-property property">orderType</span><span class="token operator">:</span> z<span class="token punctuation">.</span><span class="token function">enum</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'dine_in'</span><span class="token punctuation">,</span> <span class="token string">'takeout'</span><span class="token punctuation">,</span> <span class="token string">'delivery'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="9"></td><td><pre>    <span class="token literal-property property">items</span><span class="token operator">:</span> z<span class="token punctuation">.</span><span class="token function">array</span><span class="token punctuation">(</span>z<span class="token punctuation">.</span><span class="token function">object</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="10"></td><td><pre>      <span class="token literal-property property">itemType</span><span class="token operator">:</span> z<span class="token punctuation">.</span><span class="token function">enum</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'dish'</span><span class="token punctuation">,</span> <span class="token string">'bundle'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="11"></td><td><pre>      <span class="token literal-property property">quantity</span><span class="token operator">:</span> z<span class="token punctuation">.</span><span class="token function">number</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="12"></td><td><pre>      <span class="token literal-property property">subtotal</span><span class="token operator">:</span> z<span class="token punctuation">.</span><span class="token function">number</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="13"></td><td><pre>    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="14"></td><td><pre>    <span class="token literal-property property">total</span><span class="token operator">:</span> z<span class="token punctuation">.</span><span class="token function">number</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="15"></td><td><pre>  <span class="token punctuation">&#125;</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="16"></td><td><pre>  </pre></td></tr><tr><td data-num="17"></td><td><pre>  <span class="token keyword">const</span> parsed <span class="token operator">=</span> schema<span class="token punctuation">.</span><span class="token function">safeParse</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="18"></td><td><pre>  </pre></td></tr><tr><td data-num="19"></td><td><pre>  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>parsed<span class="token punctuation">.</span>success<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="20"></td><td><pre>    <span class="token keyword">return</span> c<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="21"></td><td><pre>      <span class="token literal-property property">success</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="22"></td><td><pre>      <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">'輸入資料驗證失敗'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="23"></td><td><pre>      <span class="token literal-property property">errors</span><span class="token operator">:</span> parsed<span class="token punctuation">.</span>error<span class="token punctuation">.</span><span class="token function">flatten</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="24"></td><td><pre>    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token number">400</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="25"></td><td><pre>  <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="26"></td><td><pre>  </pre></td></tr><tr><td data-num="27"></td><td><pre>  <span class="token keyword">return</span> parsed<span class="token punctuation">.</span>data</pre></td></tr><tr><td data-num="28"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="29"></td><td><pre></pre></td></tr><tr><td data-num="30"></td><td><pre><span class="token comment">// 使用方式</span></pre></td></tr><tr><td data-num="31"></td><td><pre>app<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">'/orders'</span><span class="token punctuation">,</span> validateOrder<span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">c</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="32"></td><td><pre>  <span class="token keyword">const</span> validatedData <span class="token operator">=</span> c<span class="token punctuation">.</span>req<span class="token punctuation">.</span><span class="token function">valid</span><span class="token punctuation">(</span><span class="token string">'json'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="33"></td><td><pre>  <span class="token comment">//validatedData 已經被驗證和型別檢查過了</span></pre></td></tr><tr><td data-num="34"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">)</span></pre></td></tr></table></figure><p>Hono 的驗證機制與 TypeScript 整合得更好，如果你使用 TypeScript，你會得到完整的型別推斷。</p>
+<h2 id="session-管理的重要注意事項"><a class="anchor" href="#session-管理的重要注意事項">#</a> Session 管理的重要注意事項</h2>
+<p>這是一個需要特別小心的地方！一般用戶登入驗證大量使用了  <code>req.session</code> ，但 Hono 並沒有內建的 session 支援。你需要額外安裝中介軟體：</p>
+<figure class="highlight javascript"><figcaption data-lang="javascript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">import</span> <span class="token punctuation">&#123;</span> Hono <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'hono'</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">import</span> <span class="token punctuation">&#123;</span> getCookie<span class="token punctuation">,</span> setCookie <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'hono/cookie'</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">import</span> <span class="token punctuation">&#123;</span> sign<span class="token punctuation">,</span> verify <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'hono/jwt'</span></pre></td></tr><tr><td data-num="4"></td><td><pre></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Hono</span><span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="6"></td><td><pre></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token comment">// 你可能需要自己實現 session 邏輯</span></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token comment">// 或者使用第三方套件，但 Hono 生態系統還不如 Express 成熟</span></pre></td></tr><tr><td data-num="9"></td><td><pre></pre></td></tr><tr><td data-num="10"></td><td><pre><span class="token comment">// 簡單的 JWT-based session 範例</span></pre></td></tr><tr><td data-num="11"></td><td><pre>app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token string">'*'</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">c<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="12"></td><td><pre>  <span class="token keyword">const</span> token <span class="token operator">=</span> <span class="token function">getCookie</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> <span class="token string">'session'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="13"></td><td><pre>  </pre></td></tr><tr><td data-num="14"></td><td><pre>  <span class="token keyword">if</span> <span class="token punctuation">(</span>token<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="15"></td><td><pre>    <span class="token keyword">try</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="16"></td><td><pre>      <span class="token keyword">const</span> payload <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">verify</span><span class="token punctuation">(</span>token<span class="token punctuation">,</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">JWT_SECRET</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="17"></td><td><pre>      c<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">'session'</span><span class="token punctuation">,</span> payload<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="18"></td><td><pre>    <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="19"></td><td><pre>      <span class="token comment">// Token 無效</span></pre></td></tr><tr><td data-num="20"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="21"></td><td><pre>  <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="22"></td><td><pre>  </pre></td></tr><tr><td data-num="23"></td><td><pre>  <span class="token keyword">await</span> <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="24"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">)</span></pre></td></tr></table></figure><p>這是從 Express 遷移到 Hono 時最大的挑戰之一。你需要重新思考 session 管理的實現方式。</p>
+<h2 id="主應用程式的組裝"><a class="anchor" href="#主應用程式的組裝">#</a> 主應用程式的組裝</h2>
+<p>最後，讓我們看看如何組裝整個應用程式：</p>
+<p><strong>Express 版本：</strong></p>
+<figure class="highlight javascript"><figcaption data-lang="javascript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">import</span> express <span class="token keyword">from</span> <span class="token string">'express'</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">import</span> orderAdminRoutes <span class="token keyword">from</span> <span class="token string">'./routes/orderAdmin.js'</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">import</span> orderCustomerRoutes <span class="token keyword">from</span> <span class="token string">'./routes/orderCustomer.js'</span></pre></td></tr><tr><td data-num="4"></td><td><pre></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="6"></td><td><pre></pre></td></tr><tr><td data-num="7"></td><td><pre>app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>express<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="8"></td><td><pre>app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token string">'/api/admin'</span><span class="token punctuation">,</span> orderAdminRoutes<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="9"></td><td><pre>app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token string">'/api/customer'</span><span class="token punctuation">,</span> orderCustomerRoutes<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="10"></td><td><pre></pre></td></tr><tr><td data-num="11"></td><td><pre>app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token number">3000</span><span class="token punctuation">)</span></pre></td></tr></table></figure><p><strong>Hono 版本：</strong></p>
+<figure class="highlight javascript"><figcaption data-lang="javascript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">import</span> <span class="token punctuation">&#123;</span> Hono <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'hono'</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">import</span> <span class="token punctuation">&#123;</span> serve <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'@hono/node-server'</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">import</span> orderAdminRoutes <span class="token keyword">from</span> <span class="token string">'./routes/orderAdmin.js'</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token keyword">import</span> orderCustomerRoutes <span class="token keyword">from</span> <span class="token string">'./routes/orderCustomer.js'</span></pre></td></tr><tr><td data-num="5"></td><td><pre></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Hono</span><span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="7"></td><td><pre></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token comment">// Hono 會自動解析 JSON，不需要額外的中介軟體</span></pre></td></tr><tr><td data-num="9"></td><td><pre></pre></td></tr><tr><td data-num="10"></td><td><pre><span class="token comment">// 路由掛載方式相同</span></pre></td></tr><tr><td data-num="11"></td><td><pre>app<span class="token punctuation">.</span><span class="token function">route</span><span class="token punctuation">(</span><span class="token string">'/api/admin'</span><span class="token punctuation">,</span> orderAdminRoutes<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="12"></td><td><pre>app<span class="token punctuation">.</span><span class="token function">route</span><span class="token punctuation">(</span><span class="token string">'/api/customer'</span><span class="token punctuation">,</span> orderCustomerRoutes<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="13"></td><td><pre></pre></td></tr><tr><td data-num="14"></td><td><pre><span class="token comment">// 啟動伺服器的方式不同</span></pre></td></tr><tr><td data-num="15"></td><td><pre><span class="token function">serve</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="16"></td><td><pre>  <span class="token literal-property property">fetch</span><span class="token operator">:</span> app<span class="token punctuation">.</span>fetch<span class="token punctuation">,</span></pre></td></tr><tr><td data-num="17"></td><td><pre>  <span class="token literal-property property">port</span><span class="token operator">:</span> <span class="token number">3000</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="18"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">)</span></pre></td></tr></table></figure><h2 id="核心重點功能總結"><a class="anchor" href="#核心重點功能總結">#</a> 核心重點功能總結</h2>
+<p>讓我為你總結 Hono 的核心優勢和需要注意的地方：</p>
+<p><strong>Hono 的核心優勢：</strong></p>
+<p>第一，效能卓越。Hono 的路由匹配演算法比 Express 快很多，特別是在有大量路由的情況下。第二，跨平台執行能力。同一套程式碼可以在 Node.js、Deno、Bun、Cloudflare Workers 等環境中運行。第三，更好的 TypeScript 支援。Hono 從頭開始就考慮了型別安全，如果你使用 TypeScript，會有很好的開發體驗。第四，內建了許多實用功能，像是 CORS、JWT、Cookie 處理等，不需要安裝額外套件。</p>
+<p><strong>需要特別小心的地方：</strong></p>
+<p>首先，生態系統還不夠成熟。Express 有成千上萬的中介軟體可用，而 Hono 的生態系統還在建立中。其次，學習曲線雖然不陡，但概念上的轉換需要時間，特別是 Context 物件的使用方式。第三，Session 管理需要自己實現或尋找適合的解決方案。第四，某些 Express 的中介軟體無法直接在 Hono 中使用，需要改寫。第五，社群資源和教學資料相對較少，遇到問題時可能需要自己摸索。</p>
+<p><strong>遷移建議：</strong></p>
+<p>如果你想從 Express 遷移到 Hono，我建議採取漸進式的方法。首先，先在一個小型專案或新功能上試用 Hono，熟悉它的 API 和概念。其次，重點關注中介軟體的改寫，這是最大的改變。第三，建立一套通用的工具函數來處理常見任務，比如 session 管理、錯誤處理等。最後，充分利用 Hono 的型別系統，如果可能的話使用 TypeScript 來獲得最佳體驗。</p>
+
+      <div class="tags">
+          <a href="/tags/node-js/" rel="tag"><i class="ic i-tag"></i> node.js</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新於</span>
+    <time title="修改時間：2026-01-08 14:46:30" itemprop="dateModified" datetime="2026-01-08T14:46:30+08:00">2026-01-08</time>
+  </span>
+  <span id="2025/10/29/Hono語法筆記/" class="item leancloud_visitors" data-flag-title="Hono 語法筆記" title="閱讀次數">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">閱讀次數</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">次</span>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>作者： </strong>Rabbir_Reaper <i class="ic i-at"><em>@</em></i>プログラムを書けないうさぎは、ただのうさぎだ。
+  </li>
+  <li class="link">
+    <strong>文章連結：</strong>
+    <a href="https://rabbirreaper.github.io/2025/10/29/Hono%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/" title="Hono 語法筆記">https://rabbirreaper.github.io/2025/10/29/Hono語法筆記/</a>
+  </li>
+  <li class="license">
+    <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 許可協議。轉載請註明出處！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2025/06/18/%E9%AB%98%E7%AD%89%E6%BC%94%E7%AE%97%E6%B3%95%E6%9C%9F%E6%9C%AB%E4%BD%9C%E6%A5%AD/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giciryrr3rj20zk0m8nhk.jpg" title="高等演算法期末作業">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>高等演算法期末作業</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2025/10/31/251031/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclfdu6exj20zk0m87hw.jpg" title="251031">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> 日期</span>
+  <h3>251031</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目錄">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#express-vs-hono%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5%E5%B7%AE%E7%95%B0"><span class="toc-number">1.</span> <span class="toc-text"> Express vs Hono：核心概念差異</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E5%AE%9A%E7%BE%A9%E7%9A%84%E5%B7%AE%E7%95%B0"><span class="toc-number">2.</span> <span class="toc-text"> 路由定義的差異</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E4%BB%8B%E8%BB%9F%E9%AB%94middleware%E7%9A%84%E9%87%8D%E8%A6%81%E5%B7%AE%E7%95%B0"><span class="toc-number">3.</span> <span class="toc-text"> 中介軟體（Middleware）的重要差異</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E5%99%A8controller%E7%9A%84%E6%94%B9%E5%AF%AB"><span class="toc-number">4.</span> <span class="toc-text"> 控制器（Controller）的改寫</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%8C%AF%E8%AA%A4%E8%99%95%E7%90%86%E7%9A%84%E5%B7%AE%E7%95%B0"><span class="toc-number">5.</span> <span class="toc-text"> 錯誤處理的差異</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%83%E6%95%B8%E9%A9%97%E8%AD%89%E7%9A%84%E6%94%B9%E5%AF%AB"><span class="toc-number">6.</span> <span class="toc-text"> 參數驗證的改寫</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#session-%E7%AE%A1%E7%90%86%E7%9A%84%E9%87%8D%E8%A6%81%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85"><span class="toc-number">7.</span> <span class="toc-text"> Session 管理的重要注意事項</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F%E7%9A%84%E7%B5%84%E8%A3%9D"><span class="toc-number">8.</span> <span class="toc-text"> 主應用程式的組裝</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E9%87%8D%E9%BB%9E%E5%8A%9F%E8%83%BD%E7%B8%BD%E7%B5%90"><span class="toc-number">9.</span> <span class="toc-text"> 核心重點功能總結</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+      </div>
+      <div class="overview panel" data-title="本站概要">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Rabbir_Reaper"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">Rabbir_Reaper</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">82</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">11</span>
+        <span class="name">分類</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">36</span>
+        <span class="name">標籤</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>首頁</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>關於</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>歸檔</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分類</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>標籤</a>
+  </li>
+
+  </ul>
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2025/06/18/%E9%AB%98%E7%AD%89%E6%BC%94%E7%AE%97%E6%B3%95%E6%9C%9F%E6%9C%AB%E4%BD%9C%E6%A5%AD/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2025/10/31/251031/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>隨機文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/APCS/" title="分類於 APCS">APCS</a>
+</div>
+
+    <span><a href="/2025/01/18/j607-3-%E5%85%88%E5%8A%A0%E5%BE%8C%E4%B9%98%E8%88%87%E5%87%BD%E6%95%B8/" title="j607. 3. 先加後乘與函數">j607. 3. 先加後乘與函數</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/18/Q-1-10-%E6%9C%80%E5%A4%9A%E5%BE%97%E5%88%86%E7%9A%84%E7%9A%87%E5%90%8E/" title="Q-1-10. 最多得分的皇后">Q-1-10. 最多得分的皇后</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/%E5%85%B6%E4%BB%96/" title="分類於 其他">其他</a>
+</div>
+
+    <span><a href="/2025/01/19/i177-%E5%B0%8F%E7%95%AB%E5%AE%B6-Painter/" title="i177. 小畫家 (Painter)">i177. 小畫家 (Painter)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/18/Q-1-8-%E5%AD%90%E9%9B%86%E5%90%88%E7%9A%84%E5%92%8C/" title="Q-1-8. 子集合的和">Q-1-8. 子集合的和</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/" title="分類於 加密文章">加密文章</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/%E6%97%A5%E6%9C%9F/" title="分類於 日期">日期</a>
+</div>
+
+    <span><a href="/2025/11/08/251108/" title="251108">251108</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/18/Q-4-6-%E5%B0%91%E6%9E%97%E5%AF%BA%E7%9A%84%E8%87%AA%E5%8B%95%E5%AF%84%E7%89%A9%E6%AB%83-APCS/" title="Q-4-6. 少林寺的自動寄物櫃(APCS)">Q-4-6. 少林寺的自動寄物櫃(APCS)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2026/01/08/hello-world/" title="Hello World">Hello World</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80%E7%AD%86%E8%A8%98/" title="分類於 程式語言筆記">程式語言筆記</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80%E7%AD%86%E8%A8%98/node-js/" title="分類於 node.js">node.js</a>
+</div>
+
+    <span><a href="/2025/01/15/Mongoose-%E7%9A%84%E5%9F%BA%E7%A4%8E%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/" title="Mongoose 的基礎語法筆記">Mongoose 的基礎語法筆記</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/APCS-%E6%A8%A1%E6%93%AC%E5%9C%98%E9%9A%8A/" title="分類於 APCS 模擬團隊">APCS 模擬團隊</a>
+</div>
+
+    <span><a href="/2025/01/18/apcs0403%E6%84%9B%E5%90%83%E5%AD%97%E6%AF%8D%E7%9A%84%E6%80%AA%E7%8D%B8-Alphabet-Monster/" title="apcs0403愛吃字母的怪獸 (Alphabet Monster)">apcs0403愛吃字母的怪獸 (Alphabet Monster)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/18/Q-6-10-%E7%BD%AE%E7%89%A9%E6%AB%83%E5%87%BA%E7%A7%9F/" title="Q-6-10. 置物櫃出租">Q-6-10. 置物櫃出租</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新評論</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2025 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Rabbir_Reaper @ Rabbir Reaper</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="總字數">282k 字</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">4:16</span>
+  </div>
+  <div class="powered-by">
+    基於 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2025/10/29/Hono語法筆記/',
+    favicon: {
+      show: "（●´3｀●）復活成功",
+      hide: "(´Д｀)瀏覽器崩潰啦"
+    },
+    search : {
+      placeholder: "文章搜尋",
+      empty: "關於 「 ${query} 」 ，什麼也沒搜到",
+      stats: "${time} ms 內找到 ${hits} 條結果"
+    },
+    valine: true,fancybox: true,
+    copyright: '複製成功，轉載請遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 協議。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
