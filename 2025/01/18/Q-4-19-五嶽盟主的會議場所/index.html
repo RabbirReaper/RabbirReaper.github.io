@@ -24,7 +24,7 @@
 <link rel="stylesheet" href="/css/app.css?v=0.2.5">
 
   
-  <meta name="keywords" content="Sorting,Heap (Priority Queue)" />
+  <meta name="keywords" content="Heap (Priority Queue),Sorting" />
 
 
 <link rel="canonical" href="https://rabbirreaper.github.io/2025/01/18/Q-4-19-%E4%BA%94%E5%B6%BD%E7%9B%9F%E4%B8%BB%E7%9A%84%E6%9C%83%E8%AD%B0%E5%A0%B4%E6%89%80/">
@@ -117,12 +117,12 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicitzannuj20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicm0n457cj20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclwuom7cj20zk0m8dvn.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclj61ylzj20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclh5u05ej20zk0m87df.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclxfdlttj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipet4bz0yj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipetfk5zwj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipesrnqv3j20zk0m8ava.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicljitigmj20zk0m87fp.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeun65urj20zk0m81ii.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipexw3o58j20zk0m8e81.jpg"></li>
         </ul>
       </div>
     </header>
@@ -178,8 +178,8 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
 <h1 id="程式碼"><a class="anchor" href="#程式碼">#</a> 程式碼</h1>
 <figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h></span></span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">Rabbir_Reaper</span> <span class="token expression">ios_base<span class="token double-colon punctuation">::</span><span class="token function">sync_with_stdio</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> cin<span class="token punctuation">.</span><span class="token function">tie</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token keyword">struct</span> <span class="token class-name">mstt</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="5"></td><td><pre>    <span class="token keyword">int</span> s<span class="token punctuation">,</span>t<span class="token punctuation">,</span>m<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token keyword">bool</span> <span class="token function">cmp</span><span class="token punctuation">(</span>mstt a<span class="token punctuation">,</span>mstt b<span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="8"></td><td><pre>    <span class="token keyword">return</span> a<span class="token punctuation">.</span>s<span class="token operator">&lt;</span>b<span class="token punctuation">.</span>s<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="9"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="10"></td><td><pre>vector<span class="token operator">&lt;</span>mstt<span class="token operator">></span> sect<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="11"></td><td><pre>priority_queue<span class="token operator">&lt;</span>pair<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span><span class="token keyword">int</span><span class="token operator">>></span> pq<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="12"></td><td><pre><span class="token keyword">int</span> sum<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>mx<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="13"></td><td><pre><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="14"></td><td><pre>    <span class="token keyword">int</span> n<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="15"></td><td><pre>    cin<span class="token operator">>></span>n<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="16"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>m<span class="token punctuation">,</span>s<span class="token punctuation">,</span>t<span class="token punctuation">;</span>i<span class="token operator">&lt;</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="17"></td><td><pre>        cin<span class="token operator">>></span>m<span class="token operator">>></span>s<span class="token operator">>></span>t<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="18"></td><td><pre>        sect<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>s<span class="token punctuation">,</span>t<span class="token punctuation">,</span>m<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="19"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="20"></td><td><pre>    <span class="token function">sort</span><span class="token punctuation">(</span>sect<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>sect<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>cmp<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="21"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="22"></td><td><pre>        <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">!</span>pq<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">-</span>pq<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>first <span class="token operator">&lt;</span> sect<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>s<span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="23"></td><td><pre>            sum <span class="token operator">-=</span> pq<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>second<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="24"></td><td><pre>            pq<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="25"></td><td><pre>        <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="26"></td><td><pre>        sum <span class="token operator">+=</span> sect<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>m<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="27"></td><td><pre>        pq<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token operator">-</span>sect<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>t<span class="token punctuation">,</span>sect<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>m<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="28"></td><td><pre>        mx <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>mx<span class="token punctuation">,</span>sum<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="29"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="30"></td><td><pre>    cout<span class="token operator">&lt;&lt;</span>mx<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="31"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure>
       <div class="tags">
-          <a href="/tags/Sorting/" rel="tag"><i class="ic i-tag"></i> Sorting</a>
           <a href="/tags/Heap-Priority-Queue/" rel="tag"><i class="ic i-tag"></i> Heap (Priority Queue)</a>
+          <a href="/tags/Sorting/" rel="tag"><i class="ic i-tag"></i> Sorting</a>
       </div>
   </div>
 
@@ -231,7 +231,7 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
     <div class="item left">
       
 
-  <a href="/2025/01/18/Q-4-18-%E5%B0%91%E6%9E%97%E5%AF%BA%E7%9A%84%E6%AB%83%E5%A7%90/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giph4fomxoj20zk0m8axp.jpg" title="Q-4-18. 少林寺的櫃姐">
+  <a href="/2025/01/18/Q-4-18-%E5%B0%91%E6%9E%97%E5%AF%BA%E7%9A%84%E6%AB%83%E5%A7%90/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicitht3xtj20zk0m8k5v.jpg" title="Q-4-18. 少林寺的櫃姐">
   <span class="type">上一篇</span>
   <span class="category"><i class="ic i-flag"></i> AP325</span>
   <h3>Q-4-18. 少林寺的櫃姐</h3>
@@ -241,7 +241,7 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
     <div class="item right">
       
 
-  <a href="/2025/01/18/Q-4-20-%E7%9B%A3%E7%9C%8B%E8%8F%AF%E5%B1%B1%E7%B7%B4%E5%8A%9F%E5%A0%B4/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipex2cdtbj20zk0m8x6p.jpg" title="Q-4-20. 監看華山練功場">
+  <a href="/2025/01/18/Q-4-20-%E7%9B%A3%E7%9C%8B%E8%8F%AF%E5%B1%B1%E7%B7%B4%E5%8A%9F%E5%A0%B4/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclxxcb6rj20zk0m8b29.jpg" title="Q-4-20. 監看華山練功場">
   <span class="type">下一篇</span>
   <span class="category"><i class="ic i-flag"></i> AP325</span>
   <h3>Q-4-20. 監看華山練功場</h3>
@@ -376,16 +376,7 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
 <a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
 </div>
 
-    <span><a href="/2025/01/18/P-6-13-%E5%91%A8%E4%BC%AF%E9%80%9A%E7%9A%84%E5%9F%BA%E5%9C%B0%E5%8F%B0/" title="P-6-13. 周伯通的基地台 (@@)">P-6-13. 周伯通的基地台 (@@)</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2025/06/18/%E9%AB%98%E7%AD%89%E6%BC%94%E7%AE%97%E6%B3%95%E6%9C%9F%E6%9C%AB%E4%BD%9C%E6%A5%AD/" title="高等演算法期末作業">高等演算法期末作業</a></span>
+    <span><a href="/2025/01/18/Q-6-14-K%E6%AC%A1%E8%B2%B7%E8%B3%A3/" title="Q-6-14. K次買賣">Q-6-14. K次買賣</a></span>
   </li>
 
       
@@ -397,61 +388,7 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
 <a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
 </div>
 
-    <span><a href="/2025/01/18/Q-4-16-%E8%B3%BA%E9%8C%A2%E8%88%87%E7%BD%B0%E6%AC%BE/" title="Q-4-16. 賺錢與罰款">Q-4-16. 賺錢與罰款</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2025/04/28/Vue-%E6%B8%AC%E8%A9%A6%E7%AD%86%E8%A8%98/" title="Vue 測試筆記 (未完成)">Vue 測試筆記 (未完成)</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2025/01/15/My-First-Post/" title="My First Post">My First Post</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/%E5%85%B6%E4%BB%96/" title="分類於 其他">其他</a>
-</div>
-
-    <span><a href="/2025/01/18/c889-2-%E4%BA%8C%E5%88%86%E5%9C%96/" title="c889. 2. 二分圖">c889. 2. 二分圖</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/CHSH-OJ/" title="分類於 CHSH OJ">CHSH OJ</a>
-</div>
-
-    <span><a href="/2025/01/18/c003-%E7%99%BE%E9%AC%BC%E5%A4%9C%E8%A1%8C/" title="c003 百鬼夜行">c003 百鬼夜行</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80%E7%AD%86%E8%A8%98/" title="分類於 程式語言筆記">程式語言筆記</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80%E7%AD%86%E8%A8%98/node-js/" title="分類於 node.js">node.js</a>
-</div>
-
-    <span><a href="/2025/01/19/Express-%E4%B8%AD%E7%9A%84-Middleware%EF%BC%9A%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/" title="Express 中的 Middleware：語法筆記">Express 中的 Middleware：語法筆記</a></span>
+    <span><a href="/2025/01/19/Q-2-4-%E5%BF%AB%E9%80%9F%E5%86%AA-200-%E4%BD%8D%E6%95%B4%E6%95%B8/" title="Q-2-4. 快速冪--200 位整數">Q-2-4. 快速冪--200 位整數</a></span>
   </li>
 
       
@@ -463,7 +400,7 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
 <a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
 </div>
 
-    <span><a href="/2025/01/19/Q-8-15-%E6%A8%B9%E4%B8%8A%E4%B8%80%E4%BD%8D%E4%B8%8D%E5%9B%9E%E5%AE%B6%E7%9A%84%E6%8E%A8%E9%8A%B7%E5%93%A1/" title="Q-8-15. 樹上一位不回家的推銷員">Q-8-15. 樹上一位不回家的推銷員</a></span>
+    <span><a href="/2025/01/19/Q-8-6-%E6%A8%B9%E7%8B%80%E5%9C%96%E7%9A%84%E8%B7%9D%E9%9B%A2%E7%B8%BD%E5%92%8C/" title="Q-8-6.樹狀圖的距離總和">Q-8-6.樹狀圖的距離總和</a></span>
   </li>
 
       
@@ -472,10 +409,82 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
 <div class="breadcrumb">
 <a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/APCS-%E6%A8%A1%E6%93%AC%E5%9C%98%E9%9A%8A/" title="分類於 APCS 模擬團隊">APCS 模擬團隊</a>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
 </div>
 
-    <span><a href="/2025/01/18/apcs0304-cpp-%E8%AA%BF%E9%85%92%E5%B0%88%E5%AE%B6-Mixologist/" title="apcs0304-cpp:調酒專家 (Mixologist)">apcs0304-cpp:調酒專家 (Mixologist)</a></span>
+    <span><a href="/2025/01/18/Q-2-7-%E4%BA%92%E8%A3%9C%E5%9C%98%E9%9A%8A-APCS/" title="Q-2-7. 互補團隊(APCS)">Q-2-7. 互補團隊(APCS)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/APCS/" title="分類於 APCS">APCS</a>
+</div>
+
+    <span><a href="/2025/01/18/b967-4-%E8%A1%80%E7%B7%A3%E9%97%9C%E4%BF%82/" title="b967. 4. 血緣關係">b967. 4. 血緣關係</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/" title="分類於 加密文章">加密文章</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/%E6%97%A5%E6%9C%9F/" title="分類於 日期">日期</a>
+</div>
+
+    <span><a href="/2025/10/31/251031/" title="251031">251031</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/18/Q-2-10-%E5%AD%90%E9%9B%86%E5%90%88%E7%9A%84%E5%92%8C-%E6%8A%98%E5%8D%8A%E6%9E%9A%E8%88%89/" title="Q-2-10. 子集合的和(折半枚舉)">Q-2-10. 子集合的和(折半枚舉)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/18/Q-1-2-%E5%90%88%E6%88%90%E5%87%BD%E6%95%B8-2/" title="Q-1-2. 合成函數(2)">Q-1-2. 合成函數(2)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/19/Q-7-11-%E7%B4%85%E7%99%BD%E5%BD%A9%E5%B8%B6-APCS/" title="Q-7-11. 紅白彩帶(APCS)">Q-7-11. 紅白彩帶(APCS)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/18/Q-3-5-%E5%B8%B6%E8%91%97%E6%9D%BF%E5%87%B3%E6%8E%92%E9%9B%9E%E6%8E%92%E7%9A%84%E9%AB%98%E4%BA%BA-APCS/" title="Q-3-5. 帶著板凳排雞排的高人(APCS)">Q-3-5. 帶著板凳排雞排的高人(APCS)</a></span>
   </li>
 
   </ul>
