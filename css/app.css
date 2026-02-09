@@ -1208,8 +1208,8 @@ textarea {
 }
 .table-container table th,
 .table-container table td {
-  border: 0.0625rem solid var(--grey-3);
-  border-bottom: 0.1875rem solid var(--grey-3);
+  border: 0.0625rem solid var(--grey-5);
+  border-bottom: 0.1875rem solid var(--grey-5);
 }
 .table-container table th {
   font-weight: 700;
