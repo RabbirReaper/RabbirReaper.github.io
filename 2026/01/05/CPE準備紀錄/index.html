@@ -74,7 +74,7 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
       <i class="ic i-pen"></i>
     </span>
     <span class="text">文章字數</span>
-    <span>11k</span>
+    <span>12k</span>
     <span class="text">字</span>
   </span>
   <span class="item" title="所需閱讀時間">
@@ -82,7 +82,7 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
       <i class="ic i-clock"></i>
     </span>
     <span class="text">所需閱讀時間</span>
-    <span>10 分鐘</span>
+    <span>11 分鐘</span>
   </span>
 </div>
 
@@ -115,12 +115,12 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/91.jpg"></li>
-          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/14.jpg"></li>
-          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/79.jpg"></li>
-          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/32.jpg"></li>
-          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/50.jpg"></li>
-          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/4.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/46.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/40.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/1.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/27.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/75.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/80.jpg"></li>
         </ul>
       </div>
     </header>
@@ -165,7 +165,7 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
     
 
     <h1 id="前言"><a class="anchor" href="#前言">#</a> 前言</h1>
-<p>今天 1 月 5 日，我突然開始想要考 CPE，下次考試是 3/24，我的目標是破台，希望可以成功，現在是凌晨，睡覺起來開始準備，準備的內容預計是從 <code>CSES</code>   <code>Leetcode</code>   <code>CPE歷屆來寫</code> ，全英文真的有點頭痛，不過我應該行的。</p>
+<p>今天 2026 年 1 月 5 日，我突然開始想要考 CPE，下次考試是 3/24，我的目標是破台，希望可以成功，現在是凌晨，睡覺起來開始準備，準備的內容預計是從 <code>CSES</code>   <code>Leetcode</code>   <code>CPE歷屆來寫</code> ，全英文真的有點頭痛，不過我應該行的。</p>
 <p>這篇文章主要是紀錄我每天有沒有好好練習，寫了什麼題目，學了甚麼之類的。</p>
 <h1 id="15"><a class="anchor" href="#15">#</a> 1/5</h1>
 <h2 id="1975-maximum-matrix-sum"><a class="anchor" href="#1975-maximum-matrix-sum">#</a> 1975. Maximum Matrix Sum</h2>
@@ -237,7 +237,10 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
 <p>看來必須先終止這個準備了。</p>
 <p>最近突然要忙別的事情</p>
 <p>不知道什麼時候會忙完...</p>
-
+<h1 id="330"><a class="anchor" href="#330">#</a> 3/30</h1>
+<p>今天開始應該會回歸刷題，今天的題目是關於 <code>hashtable</code>  不過我的寫法沒有使用到這個概念，當下直覺就這樣寫了，時間與空間的複雜度都不太好，下面再附上官解與解釋</p>
+<h2 id="2840-check-if-strings-can-be-made-equal-with-operations-ii"><a class="anchor" href="#2840-check-if-strings-can-be-made-equal-with-operations-ii">#</a> 2840. Check if Strings Can be Made Equal With Operations II</h2>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment">//Rabbir</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">public</span><span class="token operator">:</span></pre></td></tr><tr><td data-num="4"></td><td><pre>    <span class="token keyword">bool</span> <span class="token function">checkStrings</span><span class="token punctuation">(</span>string s1<span class="token punctuation">,</span> string s2<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="5"></td><td><pre>        vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> odd<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>        vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> even<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="7"></td><td><pre></pre></td></tr><tr><td data-num="8"></td><td><pre>        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>s1<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="9"></td><td><pre>            <span class="token keyword">if</span><span class="token punctuation">(</span>i<span class="token operator">&amp;</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="10"></td><td><pre>                odd<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>s1<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="11"></td><td><pre>                odd<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>s2<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="12"></td><td><pre>            <span class="token punctuation">&#125;</span><span class="token keyword">else</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="13"></td><td><pre>                even<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>s1<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="14"></td><td><pre>                even<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>s2<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="15"></td><td><pre>            <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="16"></td><td><pre>        <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="17"></td><td><pre>        <span class="token function">sort</span><span class="token punctuation">(</span>odd<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>odd<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="18"></td><td><pre>        <span class="token function">sort</span><span class="token punctuation">(</span>odd<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>odd<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="19"></td><td><pre>        <span class="token function">sort</span><span class="token punctuation">(</span>even<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>even<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="20"></td><td><pre>        <span class="token function">sort</span><span class="token punctuation">(</span>even<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>even<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="21"></td><td><pre></pre></td></tr><tr><td data-num="22"></td><td><pre>        <span class="token keyword">return</span> <span class="token punctuation">(</span>odd<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span> odd<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> even<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span> even<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token boolean">true</span> <span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">;</span></pre></td></tr><tr><td data-num="23"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="24"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">;</span></pre></td></tr></table></figure><figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment">// 官解</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">public</span><span class="token operator">:</span></pre></td></tr><tr><td data-num="4"></td><td><pre>    <span class="token keyword">bool</span> <span class="token function">checkStrings</span><span class="token punctuation">(</span>string s1<span class="token punctuation">,</span> string s2<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="5"></td><td><pre>        <span class="token keyword">if</span> <span class="token punctuation">(</span>s1<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> s2<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="7"></td><td><pre>        <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="8"></td><td><pre></pre></td></tr><tr><td data-num="9"></td><td><pre>        <span class="token keyword">int</span> counts<span class="token punctuation">[</span><span class="token number">256</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token number">0</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span class="token comment">// 宣告 hashtable</span></pre></td></tr><tr><td data-num="10"></td><td><pre></pre></td></tr><tr><td data-num="11"></td><td><pre>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> s1<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="12"></td><td><pre>            <span class="token keyword">int</span> offset <span class="token operator">=</span> <span class="token punctuation">(</span>i <span class="token operator">&amp;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">7</span><span class="token punctuation">;</span><span class="token comment">// 因為小寫字母從 97 開始</span></pre></td></tr><tr><td data-num="13"></td><td><pre>            <span class="token comment">// 這邊分成兩個區塊 0~127,128~255</span></pre></td></tr><tr><td data-num="14"></td><td><pre>            <span class="token comment">// 實際上會用到的區塊 97~122 , 128~183</span></pre></td></tr><tr><td data-num="15"></td><td><pre>            <span class="token comment">// 如果希望節省空間</span></pre></td></tr><tr><td data-num="16"></td><td><pre>            <span class="token comment">// 可以宣告 64 個空間</span></pre></td></tr><tr><td data-num="17"></td><td><pre>            <span class="token comment">// 每次減掉 (int)'a'=97</span></pre></td></tr><tr><td data-num="18"></td><td><pre>            <span class="token comment">// 就可以使用 0~25 , 32~57</span></pre></td></tr><tr><td data-num="19"></td><td><pre>            <span class="token comment">// 想要更省 當然可以宣告剛好 2*26</span></pre></td></tr><tr><td data-num="20"></td><td><pre>            <span class="token comment">// 不過會需要多個 if 判斷與設定，不能用上面快速的寫法</span></pre></td></tr><tr><td data-num="21"></td><td><pre>            counts<span class="token punctuation">[</span>offset <span class="token operator">+</span> s1<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="22"></td><td><pre>            counts<span class="token punctuation">[</span>offset <span class="token operator">+</span> s2<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">--</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="23"></td><td><pre>        <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="24"></td><td><pre></pre></td></tr><tr><td data-num="25"></td><td><pre>        <span class="token comment">// 如果正負都抵銷代表剛好一樣</span></pre></td></tr><tr><td data-num="26"></td><td><pre>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">256</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="27"></td><td><pre>            <span class="token keyword">if</span> <span class="token punctuation">(</span>counts<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="28"></td><td><pre>                <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="29"></td><td><pre>            <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="30"></td><td><pre>        <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="31"></td><td><pre></pre></td></tr><tr><td data-num="32"></td><td><pre>        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="33"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="34"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">;</span></pre></td></tr></table></figure>
   </div>
 
    <footer>
@@ -248,7 +251,7 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">更新於</span>
-    <time title="修改時間：2026-01-28 15:50:24" itemprop="dateModified" datetime="2026-01-28T15:50:24+08:00">2026-01-28</time>
+    <time title="修改時間：2026-03-30 15:16:55" itemprop="dateModified" datetime="2026-03-30T15:16:55+08:00">2026-03-30</time>
   </span>
   <span id="2026/01/05/CPE準備紀錄/" class="item leancloud_visitors" data-flag-title="CPE 準備紀錄" title="閱讀次數">
       <span class="icon">
@@ -288,7 +291,7 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
     <div class="item left">
       
 
-  <a href="/2025/12/30/%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B-%E6%9C%9F%E6%9C%AB%E5%B0%88%E9%A1%8C-%E6%A6%82%E5%BF%B5%E8%AC%9B%E8%A7%A3/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;pub-da440be71028438aa9683b63bef5ccf1.r2.dev&#x2F;73.jpg" title="資料結構-期末專題-概念講解">
+  <a href="/2025/12/30/%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B-%E6%9C%9F%E6%9C%AB%E5%B0%88%E9%A1%8C-%E6%A6%82%E5%BF%B5%E8%AC%9B%E8%A7%A3/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;pub-da440be71028438aa9683b63bef5ccf1.r2.dev&#x2F;85.jpg" title="資料結構-期末專題-概念講解">
   <span class="type">上一篇</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>資料結構-期末專題-概念講解</h3>
@@ -298,7 +301,7 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
     <div class="item right">
       
 
-  <a href="/2026/01/08/hello-world/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;pub-da440be71028438aa9683b63bef5ccf1.r2.dev&#x2F;41.jpg" title="Hello World">
+  <a href="/2026/01/08/hello-world/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;pub-da440be71028438aa9683b63bef5ccf1.r2.dev&#x2F;77.jpg" title="Hello World">
   <span class="type">下一篇</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Hello World</h3>
@@ -320,7 +323,7 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="文章目錄">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text"> 前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#15"><span class="toc-number">2.</span> <span class="toc-text"> 1&#x2F;5</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1975-maximum-matrix-sum"><span class="toc-number">2.1.</span> <span class="toc-text"> 1975. Maximum Matrix Sum</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10041vitos-family"><span class="toc-number">2.2.</span> <span class="toc-text"> 10041	Vito&#39;s Family</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10055hashmat-the-brave-warrior"><span class="toc-number">2.3.</span> <span class="toc-text"> 10055	Hashmat the Brave Warrior</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10035primary-arithmetic"><span class="toc-number">2.4.</span> <span class="toc-text"> 10035	Primary Arithmetic</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#100the-3n-1-problem"><span class="toc-number">2.5.</span> <span class="toc-text"> 100	The 3n + 1 problem</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#16"><span class="toc-number">3.</span> <span class="toc-text"> 1&#x2F;6</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1161-maximum-level-sum-of-a-binary-tree"><span class="toc-number">3.1.</span> <span class="toc-text"> 1161. Maximum Level Sum of a Binary Tree</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#17"><span class="toc-number">4.</span> <span class="toc-text"> 1&#x2F;7</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1339-maximum-product-of-splitted-binary-tree"><span class="toc-number">4.1.</span> <span class="toc-text"> 1339. Maximum Product of Splitted Binary Tree</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#q-8-9-%E6%9C%8D%E5%8B%99%E4%B8%AD%E5%BF%83%E9%81%B8%E4%BD%8D%E7%BD%AE"><span class="toc-number">4.2.</span> <span class="toc-text"> Q-8-9. 服務中心選位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#01292-strategic-game"><span class="toc-number">4.3.</span> <span class="toc-text"> 01292 - Strategic game</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#18"><span class="toc-number">5.</span> <span class="toc-text"> 1&#x2F;8</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1458-max-dot-product-of-two-subsequences"><span class="toc-number">5.1.</span> <span class="toc-text"> 1458. Max Dot Product of Two Subsequences</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#19"><span class="toc-number">6.</span> <span class="toc-text"> 1&#x2F;9</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#865-smallest-subtree-with-all-the-deepest-nodes"><span class="toc-number">6.1.</span> <span class="toc-text"> 865. Smallest Subtree with all the Deepest Nodes</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#110"><span class="toc-number">7.</span> <span class="toc-text"> 1&#x2F;10</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#712-minimum-ascii-delete-sum-for-two-strings"><span class="toc-number">7.1.</span> <span class="toc-text"> 712. Minimum ASCII Delete Sum for Two Strings</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#112"><span class="toc-number">8.</span> <span class="toc-text"> 1&#x2F;12</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1266-minimum-time-visiting-all-points"><span class="toc-number">8.1.</span> <span class="toc-text"> 1266. Minimum Time Visiting All Points</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#113"><span class="toc-number">9.</span> <span class="toc-text"> 1&#x2F;13</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3453-separate-squares-i"><span class="toc-number">9.1.</span> <span class="toc-text"> 3453. Separate Squares I</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#128"><span class="toc-number">10.</span> <span class="toc-text"> 1&#x2F;28</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text"> 前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#15"><span class="toc-number">2.</span> <span class="toc-text"> 1&#x2F;5</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1975-maximum-matrix-sum"><span class="toc-number">2.1.</span> <span class="toc-text"> 1975. Maximum Matrix Sum</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10041vitos-family"><span class="toc-number">2.2.</span> <span class="toc-text"> 10041	Vito&#39;s Family</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10055hashmat-the-brave-warrior"><span class="toc-number">2.3.</span> <span class="toc-text"> 10055	Hashmat the Brave Warrior</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10035primary-arithmetic"><span class="toc-number">2.4.</span> <span class="toc-text"> 10035	Primary Arithmetic</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#100the-3n-1-problem"><span class="toc-number">2.5.</span> <span class="toc-text"> 100	The 3n + 1 problem</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#16"><span class="toc-number">3.</span> <span class="toc-text"> 1&#x2F;6</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1161-maximum-level-sum-of-a-binary-tree"><span class="toc-number">3.1.</span> <span class="toc-text"> 1161. Maximum Level Sum of a Binary Tree</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#17"><span class="toc-number">4.</span> <span class="toc-text"> 1&#x2F;7</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1339-maximum-product-of-splitted-binary-tree"><span class="toc-number">4.1.</span> <span class="toc-text"> 1339. Maximum Product of Splitted Binary Tree</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#q-8-9-%E6%9C%8D%E5%8B%99%E4%B8%AD%E5%BF%83%E9%81%B8%E4%BD%8D%E7%BD%AE"><span class="toc-number">4.2.</span> <span class="toc-text"> Q-8-9. 服務中心選位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#01292-strategic-game"><span class="toc-number">4.3.</span> <span class="toc-text"> 01292 - Strategic game</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#18"><span class="toc-number">5.</span> <span class="toc-text"> 1&#x2F;8</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1458-max-dot-product-of-two-subsequences"><span class="toc-number">5.1.</span> <span class="toc-text"> 1458. Max Dot Product of Two Subsequences</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#19"><span class="toc-number">6.</span> <span class="toc-text"> 1&#x2F;9</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#865-smallest-subtree-with-all-the-deepest-nodes"><span class="toc-number">6.1.</span> <span class="toc-text"> 865. Smallest Subtree with all the Deepest Nodes</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#110"><span class="toc-number">7.</span> <span class="toc-text"> 1&#x2F;10</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#712-minimum-ascii-delete-sum-for-two-strings"><span class="toc-number">7.1.</span> <span class="toc-text"> 712. Minimum ASCII Delete Sum for Two Strings</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#112"><span class="toc-number">8.</span> <span class="toc-text"> 1&#x2F;12</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1266-minimum-time-visiting-all-points"><span class="toc-number">8.1.</span> <span class="toc-text"> 1266. Minimum Time Visiting All Points</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#113"><span class="toc-number">9.</span> <span class="toc-text"> 1&#x2F;13</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3453-separate-squares-i"><span class="toc-number">9.1.</span> <span class="toc-text"> 3453. Separate Squares I</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#128"><span class="toc-number">10.</span> <span class="toc-text"> 1&#x2F;28</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#330"><span class="toc-number">11.</span> <span class="toc-text"> 3&#x2F;30</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2840-check-if-strings-can-be-made-equal-with-operations-ii"><span class="toc-number">11.1.</span> <span class="toc-text"> 2840. Check if Strings Can be Made Equal With Operations II</span></a></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="系列文章">
       </div>
@@ -427,10 +430,22 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
 <div class="breadcrumb">
 <a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
 <i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/%E5%85%B6%E4%BB%96/" title="分類於 其他">其他</a>
+</div>
+
+    <span><a href="/2025/01/19/i177-%E5%B0%8F%E7%95%AB%E5%AE%B6-Painter/" title="i177. 小畫家 (Painter)">i177. 小畫家 (Painter)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
 <a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/APCS-%E6%A8%A1%E6%93%AC%E5%9C%98%E9%9A%8A/" title="分類於 APCS 模擬團隊">APCS 模擬團隊</a>
 </div>
 
-    <span><a href="/2025/01/18/apcs0203-S-%E7%9B%92%E6%A8%A1%E6%93%AC-S-BOX-Simulate/" title="apcs0203:S 盒模擬 (S-BOX-Simulate)">apcs0203:S 盒模擬 (S-BOX-Simulate)</a></span>
+    <span><a href="/2025/01/18/apcs0204-%E9%80%83%E8%84%AB%E9%81%8A%E6%88%B2-Game/" title="apcs0204:逃脫遊戲 (Game)">apcs0204:逃脫遊戲 (Game)</a></span>
   </li>
 
       
@@ -439,10 +454,19 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
 <div class="breadcrumb">
 <a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/APCS/" title="分類於 APCS">APCS</a>
 </div>
 
-    <span><a href="/2025/01/18/Q-4-20-%E7%9B%A3%E7%9C%8B%E8%8F%AF%E5%B1%B1%E7%B7%B4%E5%8A%9F%E5%A0%B4/" title="Q-4-20. 監看華山練功場">Q-4-20. 監看華山練功場</a></span>
+    <span><a href="/2025/01/19/j123-2-%E9%81%8B%E8%B2%A8%E7%AB%99-O-c-r-n/" title="j123. 2. 運貨站">j123. 2. 運貨站</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2025/02/07/%E5%B0%88%E6%A1%88%E7%AD%86%E8%A8%98-%E4%B8%80/" title="專案筆記 (未完成)">專案筆記 (未完成)</a></span>
   </li>
 
       
@@ -451,70 +475,10 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
 <div class="breadcrumb">
 <a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/APCS/" title="分類於 APCS">APCS</a>
 </div>
 
-    <span><a href="/2025/01/18/Q-4-10-%E6%81%A2%E5%BE%A9%E8%83%BD%E9%87%8F%E7%9A%84%E7%99%BD%E9%9B%B2%E7%86%8A%E8%86%BD%E4%B8%B8/" title="Q-4-10. 恢復能量的白雲熊膽丸">Q-4-10. 恢復能量的白雲熊膽丸</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
-</div>
-
-    <span><a href="/2025/01/19/Q-8-6-%E6%A8%B9%E7%8B%80%E5%9C%96%E7%9A%84%E8%B7%9D%E9%9B%A2%E7%B8%BD%E5%92%8C/" title="Q-8-6.樹狀圖的距離總和">Q-8-6.樹狀圖的距離總和</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
-</div>
-
-    <span><a href="/2025/01/18/Q-1-8-%E5%AD%90%E9%9B%86%E5%90%88%E7%9A%84%E5%92%8C/" title="Q-1-8. 子集合的和">Q-1-8. 子集合的和</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
-</div>
-
-    <span><a href="/2025/01/19/Q-8-16-%E7%97%85%E6%AF%92%E6%BC%94%E5%8C%96-APCS202007-O-nm/" title="Q-8-16. 病毒演化 (APCS202007) O(nm)">Q-8-16. 病毒演化 (APCS202007) O(nm)</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/" title="分類於 加密文章">加密文章</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/%E6%97%A5%E6%9C%9F/" title="分類於 日期">日期</a>
-</div>
-
-    <span><a href="/2026/01/12/260112/" title="260112">260112</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
-</div>
-
-    <span><a href="/2025/01/19/Q-8-15-%E6%A8%B9%E4%B8%8A%E4%B8%80%E4%BD%8D%E4%B8%8D%E5%9B%9E%E5%AE%B6%E7%9A%84%E6%8E%A8%E9%8A%B7%E5%93%A1/" title="Q-8-15. 樹上一位不回家的推銷員">Q-8-15. 樹上一位不回家的推銷員</a></span>
+    <span><a href="/2025/01/18/b967-4-%E8%A1%80%E7%B7%A3%E9%97%9C%E4%BF%82/" title="b967. 4. 血緣關係">b967. 4. 血緣關係</a></span>
   </li>
 
       
@@ -535,10 +499,46 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
 <div class="breadcrumb">
 <a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/%E5%85%B6%E4%BB%96/" title="分類於 其他">其他</a>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
 </div>
 
-    <span><a href="/2025/01/19/c123-00514-Rails/" title="c123. 00514 - Rails">c123. 00514 - Rails</a></span>
+    <span><a href="/2025/01/18/Q-6-12-%E6%A5%8A%E9%90%B5%E5%BF%83%E5%81%9A-1-%E4%BC%91-K/" title="Q-6-12. 楊鐵心做 1 休 K">Q-6-12. 楊鐵心做 1 休 K</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/18/Q-7-5-%E9%97%96%E9%97%9C%E8%B7%AF%E7%B7%9A/" title="Q-7-5. 闖關路線">Q-7-5. 闖關路線</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/" title="分類於 加密文章">加密文章</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/%E8%B5%A4%E5%85%94%E9%BB%9E%E9%BB%9E/" title="分類於 赤兔點點">赤兔點點</a>
+</div>
+
+    <span><a href="/2026/02/23/%E7%B3%BB%E7%B5%B1%E7%9B%B8%E9%97%9C%E6%B5%81%E7%A8%8B/" title="系統相關流程">系統相關流程</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/18/Q-1-4-%E6%94%AF%E9%BB%9E%E5%88%87%E5%89%B2/" title="Q-1-4. 支點切割">Q-1-4. 支點切割</a></span>
   </li>
 
   </ul>
@@ -563,13 +563,13 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="總字數">344k 字</span>
+    <span title="總字數">345k 字</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">5:13</span>
+    <span title="所需總閱讀時間">5:14</span>
   </div>
   <div class="powered-by">
     基於 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
