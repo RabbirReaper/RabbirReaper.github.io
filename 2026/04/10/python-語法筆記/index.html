@@ -74,7 +74,7 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
       <i class="ic i-pen"></i>
     </span>
     <span class="text">文章字數</span>
-    <span>105</span>
+    <span>5.3k</span>
     <span class="text">字</span>
   </span>
   <span class="item" title="所需閱讀時間">
@@ -82,7 +82,7 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
       <i class="ic i-clock"></i>
     </span>
     <span class="text">所需閱讀時間</span>
-    <span>1 分鐘</span>
+    <span>5 分鐘</span>
   </span>
 </div>
 
@@ -115,12 +115,12 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/66.jpg"></li>
-          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/12.jpg"></li>
-          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/32.jpg"></li>
-          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/65.jpg"></li>
-          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/82.jpg"></li>
-          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/86.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/14.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/13.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/41.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/20.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/90.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/52.jpg"></li>
         </ul>
       </div>
     </header>
@@ -165,15 +165,268 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
     
 
     <h1 id="前言"><a class="anchor" href="#前言">#</a> 前言</h1>
-<p>這篇筆記僅會記錄一些我覺得比較特別的語法跟我熟悉的 <code>C++</code>  差異比較大的部分，並不會系統性的介紹所有語法。</p>
+<p>這篇筆記僅會記錄一些我覺得比較特別的語法跟我熟悉的 <code>C++</code>  差異比較大的部分，並不會系統性的介紹所有語法。<br />
+還有一些 <code>python</code>  常用套件的語法。</p>
 <h1 id="語法介紹"><a class="anchor" href="#語法介紹">#</a> 語法介紹</h1>
-<h2 id="lambda"><a class="anchor" href="#lambda">#</a> lambda</h2>
-<h2 id="reduce"><a class="anchor" href="#reduce">#</a> reduce</h2>
-<h2 id="zip"><a class="anchor" href="#zip">#</a> zip</h2>
-<h2 id="map"><a class="anchor" href="#map">#</a> map</h2>
-<h2 id="matplotlibpyplot"><a class="anchor" href="#matplotlibpyplot">#</a> matplotlib.pyplot</h2>
-<h2 id="numpy"><a class="anchor" href="#numpy">#</a> numpy</h2>
-
+<h2 id="單行-if三元運算子"><a class="anchor" href="#單行-if三元運算子">#</a> 單行 if（三元運算子）</h2>
+<p>Python 沒有  <code>? :</code>  運算子，而是用以下語法表達：</p>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre>值A <span class="token keyword">if</span> 條件 <span class="token keyword">else</span> 值B</pre></td></tr></table></figure><figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre>x <span class="token operator">=</span> <span class="token number">10</span></pre></td></tr><tr><td data-num="2"></td><td><pre>result <span class="token operator">=</span> <span class="token string">"big"</span> <span class="token keyword">if</span> x <span class="token operator">></span> <span class="token number">5</span> <span class="token keyword">else</span> <span class="token string">"small"</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token comment"># result = "big"</span></pre></td></tr><tr><td data-num="4"></td><td><pre></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token comment"># 可直接用在運算式或函式參數中</span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"even"</span> <span class="token keyword">if</span> x <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token keyword">else</span> <span class="token string">"odd"</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="7"></td><td><pre></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token comment"># 可巢狀（不建議超過兩層，可讀性差）</span></pre></td></tr><tr><td data-num="9"></td><td><pre>label <span class="token operator">=</span> <span class="token string">"high"</span> <span class="token keyword">if</span> x <span class="token operator">></span> <span class="token number">8</span> <span class="token keyword">else</span> <span class="token string">"mid"</span> <span class="token keyword">if</span> x <span class="token operator">></span> <span class="token number">4</span> <span class="token keyword">else</span> <span class="token string">"low"</span></pre></td></tr></table></figure><p>單行  <code>if</code>  沒有  <code>else</code>  的版本只能用在 Comprehension 的篩選條件，不能單獨用在賦值：</p>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment"># 合法：用在 Comprehension 篩選（沒有 else）</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token punctuation">[</span>x <span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token keyword">if</span> x <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">]</span></pre></td></tr><tr><td data-num="3"></td><td><pre></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token comment"># 不合法：單獨賦值時沒有 else 會報錯</span></pre></td></tr><tr><td data-num="5"></td><td><pre>result <span class="token operator">=</span> x <span class="token keyword">if</span> x <span class="token operator">></span> <span class="token number">5</span>  <span class="token comment"># SyntaxError</span></pre></td></tr></table></figure><h2 id="comprehension推導式"><a class="anchor" href="#comprehension推導式">#</a> Comprehension（推導式）</h2>
+<p>將  <code>for</code>  迴圈濃縮成一行的語法，根據包裝的括號不同，產生不同的資料結構。</p>
+<h3 id="list-comprehension列表推導式"><a class="anchor" href="#list-comprehension列表推導式">#</a> List Comprehension（列表推導式）</h3>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment"># 基本</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token punctuation">[</span>x <span class="token operator">*</span> <span class="token number">2</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">]</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token comment"># [0, 2, 4, 6, 8]</span></pre></td></tr><tr><td data-num="4"></td><td><pre></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token comment"># 搭配 if 篩選</span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token punctuation">[</span>x <span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token keyword">if</span> x <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">]</span></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token comment"># [0, 2, 4, 6, 8]</span></pre></td></tr><tr><td data-num="8"></td><td><pre></pre></td></tr><tr><td data-num="9"></td><td><pre><span class="token comment"># 搭配三元 if/else</span></pre></td></tr><tr><td data-num="10"></td><td><pre><span class="token punctuation">[</span><span class="token string-interpolation"><span class="token string">f"small-</span><span class="token interpolation"><span class="token punctuation">&#123;</span>x<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span> <span class="token keyword">if</span> x <span class="token operator">&lt;=</span> <span class="token number">3</span> <span class="token keyword">else</span> <span class="token builtin">str</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">]</span></pre></td></tr><tr><td data-num="11"></td><td><pre><span class="token comment"># ['small-1', 'small-2', 'small-3', '4', '5']</span></pre></td></tr></table></figure><h3 id="set-comprehension集合推導式"><a class="anchor" href="#set-comprehension集合推導式">#</a> Set Comprehension（集合推導式）</h3>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment"># 基本</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token punctuation">&#123;</span>x <span class="token operator">*</span> <span class="token number">2</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token comment"># &#123;0, 2, 4, 6, 8&#125;</span></pre></td></tr><tr><td data-num="4"></td><td><pre></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token comment"># 搭配 if 篩選</span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token punctuation">&#123;</span>x <span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token keyword">if</span> x <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token comment"># &#123;0, 2, 4, 6, 8&#125;</span></pre></td></tr><tr><td data-num="8"></td><td><pre></pre></td></tr><tr><td data-num="9"></td><td><pre><span class="token comment"># 搭配三元 if/else</span></pre></td></tr><tr><td data-num="10"></td><td><pre><span class="token punctuation">&#123;</span><span class="token string">"small"</span> <span class="token keyword">if</span> x <span class="token operator">&lt;=</span> <span class="token number">3</span> <span class="token keyword">else</span> <span class="token string">"big"</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="11"></td><td><pre><span class="token comment"># &#123;'small', 'big'&#125;</span></pre></td></tr></table></figure><h3 id="dict-comprehension字典推導式"><a class="anchor" href="#dict-comprehension字典推導式">#</a> Dict Comprehension（字典推導式）</h3>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment"># 基本</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token punctuation">&#123;</span>x<span class="token punctuation">:</span> x<span class="token operator">**</span><span class="token number">2</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token comment"># &#123;0: 0, 1: 1, 2: 4, 3: 9, 4: 16&#125;</span></pre></td></tr><tr><td data-num="4"></td><td><pre></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token comment"># 搭配 if 篩選</span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token punctuation">&#123;</span>x<span class="token punctuation">:</span> x<span class="token operator">**</span><span class="token number">2</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token keyword">if</span> x <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token comment"># &#123;0: 0, 2: 4, 4: 16, 6: 36, 8: 64&#125;</span></pre></td></tr><tr><td data-num="8"></td><td><pre></pre></td></tr><tr><td data-num="9"></td><td><pre><span class="token comment"># 搭配三元 if/else</span></pre></td></tr><tr><td data-num="10"></td><td><pre><span class="token punctuation">&#123;</span>x<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token string">"small"</span> <span class="token keyword">if</span> x <span class="token operator">&lt;=</span> <span class="token number">3</span> <span class="token keyword">else</span> <span class="token string">"big"</span><span class="token punctuation">)</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="11"></td><td><pre><span class="token comment"># &#123;1: 'small', 2: 'small', 3: 'small', 4: 'big', 5: 'big'&#125;</span></pre></td></tr></table></figure><h3 id="generator-expression生成器表達式"><a class="anchor" href="#generator-expression生成器表達式">#</a> Generator Expression（生成器表達式）</h3>
+<p>不會一次產生整個資料結構，而是逐個產生值，適合大量資料時節省記憶體。</p>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment"># 基本</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token punctuation">(</span>x <span class="token operator">*</span> <span class="token number">2</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="3"></td><td><pre></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token comment"># 搭配 if 篩選</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token punctuation">(</span>x <span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token keyword">if</span> x <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="6"></td><td><pre></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token comment"># 搭配三元 if/else</span></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"small-</span><span class="token interpolation"><span class="token punctuation">&#123;</span>x<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span> <span class="token keyword">if</span> x <span class="token operator">&lt;=</span> <span class="token number">3</span> <span class="token keyword">else</span> <span class="token builtin">str</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="9"></td><td><pre></pre></td></tr><tr><td data-num="10"></td><td><pre><span class="token comment"># 常見用法：直接放入函式</span></pre></td></tr><tr><td data-num="11"></td><td><pre><span class="token builtin">sum</span><span class="token punctuation">(</span>x<span class="token operator">**</span><span class="token number">2</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="12"></td><td><pre><span class="token keyword">print</span><span class="token punctuation">(</span>x <span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 括號由函式呼叫提供</span></pre></td></tr></table></figure><h2 id="lambda"><a class="anchor" href="#lambda">#</a> lambda</h2>
+<p>匿名函式，適合用在需要傳入函式的場合（如  <code>map</code> 、 <code>sorted</code> ）。</p>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment"># 基本語法</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">lambda</span> 參數<span class="token punctuation">:</span> 運算式</pre></td></tr><tr><td data-num="3"></td><td><pre></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token comment"># 範例</span></pre></td></tr><tr><td data-num="5"></td><td><pre>add <span class="token operator">=</span> <span class="token keyword">lambda</span> x<span class="token punctuation">,</span> y<span class="token punctuation">:</span> x <span class="token operator">+</span> y</pre></td></tr><tr><td data-num="6"></td><td><pre>add<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>  <span class="token comment"># 5</span></pre></td></tr><tr><td data-num="7"></td><td><pre></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token comment"># 搭配 sorted</span></pre></td></tr><tr><td data-num="9"></td><td><pre>words <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"banana"</span><span class="token punctuation">,</span> <span class="token string">"apple"</span><span class="token punctuation">,</span> <span class="token string">"cherry"</span><span class="token punctuation">]</span></pre></td></tr><tr><td data-num="10"></td><td><pre><span class="token builtin">sorted</span><span class="token punctuation">(</span>words<span class="token punctuation">,</span> key<span class="token operator">=</span><span class="token keyword">lambda</span> w<span class="token punctuation">:</span> <span class="token builtin">len</span><span class="token punctuation">(</span>w<span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="11"></td><td><pre><span class="token comment"># ['apple', 'banana', 'cherry']</span></pre></td></tr></table></figure><h2 id="map"><a class="anchor" href="#map">#</a> map</h2>
+<p>對可迭代物件的每個元素套用函式，回傳一個 map 物件（惰性求值）。</p>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment"># 基本語法</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token builtin">map</span><span class="token punctuation">(</span>函式<span class="token punctuation">,</span> 可迭代物件<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="3"></td><td><pre></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token comment"># 範例</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">map</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token operator">**</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token comment"># [1, 4, 9, 16]</span></pre></td></tr><tr><td data-num="7"></td><td><pre></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token comment"># 搭配內建函式</span></pre></td></tr><tr><td data-num="9"></td><td><pre><span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">map</span><span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="10"></td><td><pre><span class="token comment"># ['1', '2', '3']</span></pre></td></tr><tr><td data-num="11"></td><td><pre></pre></td></tr><tr><td data-num="12"></td><td><pre><span class="token comment"># 多個可迭代物件</span></pre></td></tr><tr><td data-num="13"></td><td><pre><span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">map</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">,</span> y<span class="token punctuation">:</span> x <span class="token operator">+</span> y<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="14"></td><td><pre><span class="token comment"># [11, 22, 33]</span></pre></td></tr></table></figure><h2 id="zip"><a class="anchor" href="#zip">#</a> zip</h2>
+<p>將多個可迭代物件「拉鍊」合併，逐一配對成 tuple。</p>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment"># 基本語法</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token builtin">zip</span><span class="token punctuation">(</span>可迭代物件<span class="token number">1</span><span class="token punctuation">,</span> 可迭代物件<span class="token number">2</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="3"></td><td><pre></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token comment"># 範例</span></pre></td></tr><tr><td data-num="5"></td><td><pre>names <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"Alice"</span><span class="token punctuation">,</span> <span class="token string">"Bob"</span><span class="token punctuation">,</span> <span class="token string">"Carol"</span><span class="token punctuation">]</span></pre></td></tr><tr><td data-num="6"></td><td><pre>scores <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">90</span><span class="token punctuation">,</span> <span class="token number">85</span><span class="token punctuation">,</span> <span class="token number">92</span><span class="token punctuation">]</span></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">zip</span><span class="token punctuation">(</span>names<span class="token punctuation">,</span> scores<span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token comment"># [('Alice', 90), ('Bob', 85), ('Carol', 92)]</span></pre></td></tr><tr><td data-num="9"></td><td><pre></pre></td></tr><tr><td data-num="10"></td><td><pre><span class="token comment"># 常見用法：同時迭代兩個列表</span></pre></td></tr><tr><td data-num="11"></td><td><pre><span class="token keyword">for</span> name<span class="token punctuation">,</span> score <span class="token keyword">in</span> <span class="token builtin">zip</span><span class="token punctuation">(</span>names<span class="token punctuation">,</span> scores<span class="token punctuation">)</span><span class="token punctuation">:</span></pre></td></tr><tr><td data-num="12"></td><td><pre>    <span class="token keyword">print</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> score<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="13"></td><td><pre></pre></td></tr><tr><td data-num="14"></td><td><pre><span class="token comment"># 長度不同時，以最短的為準</span></pre></td></tr><tr><td data-num="15"></td><td><pre><span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">zip</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="16"></td><td><pre><span class="token comment"># [(1, 'a'), (2, 'b')]</span></pre></td></tr></table></figure><h2 id="reduce"><a class="anchor" href="#reduce">#</a> reduce</h2>
+<p>對可迭代物件進行累積運算，需從  <code>functools</code>  匯入。</p>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">from</span> functools <span class="token keyword">import</span> <span class="token builtin">reduce</span></pre></td></tr><tr><td data-num="2"></td><td><pre></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token comment"># 基本語法</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token builtin">reduce</span><span class="token punctuation">(</span>函式<span class="token punctuation">,</span> 可迭代物件<span class="token punctuation">,</span> 初始值<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="5"></td><td><pre></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token comment"># 範例：累加</span></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token builtin">reduce</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> acc<span class="token punctuation">,</span> x<span class="token punctuation">:</span> acc <span class="token operator">+</span> x<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token comment"># 15</span></pre></td></tr><tr><td data-num="9"></td><td><pre></pre></td></tr><tr><td data-num="10"></td><td><pre><span class="token comment"># 有初始值</span></pre></td></tr><tr><td data-num="11"></td><td><pre><span class="token builtin">reduce</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> acc<span class="token punctuation">,</span> x<span class="token punctuation">:</span> acc <span class="token operator">+</span> x<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="12"></td><td><pre><span class="token comment"># 106</span></pre></td></tr><tr><td data-num="13"></td><td><pre></pre></td></tr><tr><td data-num="14"></td><td><pre><span class="token comment"># 找最大值</span></pre></td></tr><tr><td data-num="15"></td><td><pre><span class="token builtin">reduce</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> a<span class="token punctuation">,</span> b<span class="token punctuation">:</span> a <span class="token keyword">if</span> a <span class="token operator">></span> b <span class="token keyword">else</span> b<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="16"></td><td><pre><span class="token comment"># 9</span></pre></td></tr></table></figure><h2 id="matplotlibpyplot"><a class="anchor" href="#matplotlibpyplot">#</a> matplotlib.pyplot</h2>
+<p>Python 最常用的繪圖套件。</p>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt</pre></td></tr></table></figure><h3 id="pltplot-折線圖"><a class="anchor" href="#pltplot-折線圖">#</a> plt.plot () — 折線圖</h3>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre>plt<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> fmt<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span></pre></td></tr></table></figure><table>
+<thead>
+<tr>
+<th>參數</th>
+<th>型態</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td>list /ndarray/ 可迭代</td>
+<td>X 軸資料，可省略（省略時以索引為 x）</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td>list /ndarray/ 可迭代</td>
+<td>Y 軸資料（必填）</td>
+</tr>
+<tr>
+<td><code>fmt</code></td>
+<td>str</td>
+<td>格式字串，組合顏色 + 標記 + 線型，如  <code>'r--o'</code></td>
+</tr>
+<tr>
+<td><code>color</code></td>
+<td>str</td>
+<td>線條顏色，如  <code>'red'</code> 、 <code>'#FF0000'</code> 、 <code>(1,0,0)</code></td>
+</tr>
+<tr>
+<td><code>linewidth</code>  /  <code>lw</code></td>
+<td>float</td>
+<td>線條寬度，預設 1.5</td>
+</tr>
+<tr>
+<td><code>linestyle</code>  /  <code>ls</code></td>
+<td>str</td>
+<td>線型： <code>'-'</code> 、 <code>'--'</code> 、 <code>'-.'</code> 、 <code>':'</code> 、 <code>'None'</code></td>
+</tr>
+<tr>
+<td><code>marker</code></td>
+<td>str</td>
+<td>資料點標記： <code>'o'</code> 、 <code>'s'</code> 、 <code>'^'</code> 、 <code>'x'</code> 、 <code>'.'</code>  等</td>
+</tr>
+<tr>
+<td><code>markersize</code>  /  <code>ms</code></td>
+<td>float</td>
+<td>標記大小</td>
+</tr>
+<tr>
+<td><code>label</code></td>
+<td>str</td>
+<td>圖例文字，搭配  <code>plt.legend()</code>  使用</td>
+</tr>
+<tr>
+<td><code>alpha</code></td>
+<td>float (0~1)</td>
+<td>透明度，0 全透明，1 不透明</td>
+</tr>
+<tr>
+<td><code>zorder</code></td>
+<td>int</td>
+<td>繪圖層序，數值越大越在上層</td>
+</tr>
+</tbody>
+</table>
+<p><strong>fmt 格式字串語法： <code>'[顏色][標記][線型]'</code> </strong></p>
+<table>
+<thead>
+<tr>
+<th>類別</th>
+<th>常用值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>顏色</td>
+<td><code>b</code>  藍、 <code>g</code>  綠、 <code>r</code>  紅、 <code>c</code>  青、 <code>m</code>  洋紅、 <code>y</code>  黃、 <code>k</code>  黑、 <code>w</code>  白</td>
+</tr>
+<tr>
+<td>標記</td>
+<td><code>o</code>  圓、 <code>s</code>  方、 <code>^</code>  三角、 <code>x</code>  X、 <code>+</code>  加、 <code>*</code>  星、 <code>.</code>  點</td>
+</tr>
+<tr>
+<td>線型</td>
+<td><code>-</code>  實線、 <code>--</code>  虛線、 <code>-.</code>  點虛線、 <code>:</code>  點線</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre>x <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span></pre></td></tr><tr><td data-num="2"></td><td><pre>y <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span></pre></td></tr><tr><td data-num="3"></td><td><pre></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token comment"># 基本用法</span></pre></td></tr><tr><td data-num="5"></td><td><pre>plt<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="6"></td><td><pre></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token comment"># 紅色虛線 + 圓形標記</span></pre></td></tr><tr><td data-num="8"></td><td><pre>plt<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> <span class="token string">'r--o'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="9"></td><td><pre></pre></td></tr><tr><td data-num="10"></td><td><pre><span class="token comment"># 用關鍵字參數詳細控制</span></pre></td></tr><tr><td data-num="11"></td><td><pre>plt<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span></pre></td></tr><tr><td data-num="12"></td><td><pre>    color<span class="token operator">=</span><span class="token string">'steelblue'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="13"></td><td><pre>    linewidth<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="14"></td><td><pre>    linestyle<span class="token operator">=</span><span class="token string">'--'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="15"></td><td><pre>    marker<span class="token operator">=</span><span class="token string">'o'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="16"></td><td><pre>    markersize<span class="token operator">=</span><span class="token number">8</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="17"></td><td><pre>    label<span class="token operator">=</span><span class="token string">'series A'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="18"></td><td><pre>    alpha<span class="token operator">=</span><span class="token number">0.8</span></pre></td></tr><tr><td data-num="19"></td><td><pre><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="20"></td><td><pre></pre></td></tr><tr><td data-num="21"></td><td><pre><span class="token comment"># 省略 x（自動以 0,1,2... 為索引）</span></pre></td></tr><tr><td data-num="22"></td><td><pre>plt<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>y<span class="token punctuation">)</span></pre></td></tr></table></figure><hr />
+<h3 id="pltbar-長條圖"><a class="anchor" href="#pltbar-長條圖">#</a> plt.bar () — 長條圖</h3>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre>plt<span class="token punctuation">.</span>bar<span class="token punctuation">(</span>x<span class="token punctuation">,</span> height<span class="token punctuation">,</span> width<span class="token operator">=</span><span class="token number">0.8</span><span class="token punctuation">,</span> bottom<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> align<span class="token operator">=</span><span class="token string">'center'</span><span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span></pre></td></tr></table></figure><table>
+<thead>
+<tr>
+<th>參數</th>
+<th>型態</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td>list / ndarray</td>
+<td>每根長條的 X 位置</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td>list / ndarray</td>
+<td>每根長條的高度</td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td>float / list</td>
+<td>長條寬度，預設 0.8</td>
+</tr>
+<tr>
+<td><code>bottom</code></td>
+<td>float / list</td>
+<td>長條底部起點，堆疊圖時使用</td>
+</tr>
+<tr>
+<td><code>align</code></td>
+<td>str</td>
+<td><code>'center'</code> （預設）或  <code>'edge'</code></td>
+</tr>
+<tr>
+<td><code>color</code></td>
+<td>str / list</td>
+<td>填充顏色</td>
+</tr>
+<tr>
+<td><code>edgecolor</code></td>
+<td>str</td>
+<td>邊框顏色</td>
+</tr>
+<tr>
+<td><code>label</code></td>
+<td>str</td>
+<td>圖例文字</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre>categories <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'A'</span><span class="token punctuation">,</span> <span class="token string">'B'</span><span class="token punctuation">,</span> <span class="token string">'C'</span><span class="token punctuation">,</span> <span class="token string">'D'</span><span class="token punctuation">]</span></pre></td></tr><tr><td data-num="2"></td><td><pre>values <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">]</span></pre></td></tr><tr><td data-num="3"></td><td><pre></pre></td></tr><tr><td data-num="4"></td><td><pre>plt<span class="token punctuation">.</span>bar<span class="token punctuation">(</span>categories<span class="token punctuation">,</span> values<span class="token punctuation">,</span> color<span class="token operator">=</span><span class="token string">'steelblue'</span><span class="token punctuation">,</span> edgecolor<span class="token operator">=</span><span class="token string">'black'</span><span class="token punctuation">,</span> width<span class="token operator">=</span><span class="token number">0.6</span><span class="token punctuation">)</span></pre></td></tr></table></figure><hr />
+<h3 id="pltscatter-散佈圖"><a class="anchor" href="#pltscatter-散佈圖">#</a> plt.scatter () — 散佈圖</h3>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre>plt<span class="token punctuation">.</span>scatter<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> s<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> c<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> marker<span class="token operator">=</span><span class="token string">'o'</span><span class="token punctuation">,</span> cmap<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> alpha<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span></pre></td></tr></table></figure><table>
+<thead>
+<tr>
+<th>參數</th>
+<th>型態</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td>list / ndarray</td>
+<td>X 軸資料</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td>list / ndarray</td>
+<td>Y 軸資料</td>
+</tr>
+<tr>
+<td><code>s</code></td>
+<td>float / list</td>
+<td>每個點的大小（面積），預設約 36</td>
+</tr>
+<tr>
+<td><code>c</code></td>
+<td>str / list / ndarray</td>
+<td>每個點的顏色，可傳入數值陣列搭配  <code>cmap</code></td>
+</tr>
+<tr>
+<td><code>marker</code></td>
+<td>str</td>
+<td>標記形狀，同  <code>plot()</code></td>
+</tr>
+<tr>
+<td><code>cmap</code></td>
+<td>str</td>
+<td>colormap 名稱，如  <code>'viridis'</code> 、 <code>'plasma'</code> 、 <code>'coolwarm'</code></td>
+</tr>
+<tr>
+<td><code>alpha</code></td>
+<td>float</td>
+<td>透明度</td>
+</tr>
+<tr>
+<td><code>edgecolors</code></td>
+<td>str</td>
+<td>點的邊框顏色</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np</pre></td></tr><tr><td data-num="2"></td><td><pre>x <span class="token operator">=</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="3"></td><td><pre>y <span class="token operator">=</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="4"></td><td><pre>sizes <span class="token operator">=</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="5"></td><td><pre>colors <span class="token operator">=</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>rand<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="6"></td><td><pre></pre></td></tr><tr><td data-num="7"></td><td><pre>plt<span class="token punctuation">.</span>scatter<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> s<span class="token operator">=</span>sizes<span class="token punctuation">,</span> c<span class="token operator">=</span>colors<span class="token punctuation">,</span> cmap<span class="token operator">=</span><span class="token string">'viridis'</span><span class="token punctuation">,</span> alpha<span class="token operator">=</span><span class="token number">0.7</span><span class="token punctuation">,</span> edgecolors<span class="token operator">=</span><span class="token string">'k'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="8"></td><td><pre>plt<span class="token punctuation">.</span>colorbar<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 顯示顏色對應的數值條</span></pre></td></tr></table></figure><hr />
+<h3 id="常用標籤與版面設定"><a class="anchor" href="#常用標籤與版面設定">#</a> 常用標籤與版面設定</h3>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre>plt<span class="token punctuation">.</span>title<span class="token punctuation">(</span><span class="token string">"標題"</span><span class="token punctuation">,</span> fontsize<span class="token operator">=</span><span class="token number">14</span><span class="token punctuation">,</span> fontweight<span class="token operator">=</span><span class="token string">'bold'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="2"></td><td><pre>plt<span class="token punctuation">.</span>xlabel<span class="token punctuation">(</span><span class="token string">"X 軸標籤"</span><span class="token punctuation">,</span> fontsize<span class="token operator">=</span><span class="token number">12</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="3"></td><td><pre>plt<span class="token punctuation">.</span>ylabel<span class="token punctuation">(</span><span class="token string">"Y 軸標籤"</span><span class="token punctuation">,</span> fontsize<span class="token operator">=</span><span class="token number">12</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="4"></td><td><pre>plt<span class="token punctuation">.</span>legend<span class="token punctuation">(</span><span class="token punctuation">)</span>                    <span class="token comment"># 顯示圖例（需各繪圖函式有設 label）</span></pre></td></tr><tr><td data-num="5"></td><td><pre>plt<span class="token punctuation">.</span>xlim<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span>                 <span class="token comment"># 設定 X 軸範圍</span></pre></td></tr><tr><td data-num="6"></td><td><pre>plt<span class="token punctuation">.</span>ylim<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">15</span><span class="token punctuation">)</span>                <span class="token comment"># 設定 Y 軸範圍</span></pre></td></tr><tr><td data-num="7"></td><td><pre>plt<span class="token punctuation">.</span>xticks<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'A'</span><span class="token punctuation">,</span><span class="token string">'B'</span><span class="token punctuation">,</span><span class="token string">'C'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment"># 自訂刻度與標籤</span></pre></td></tr><tr><td data-num="8"></td><td><pre>plt<span class="token punctuation">.</span>grid<span class="token punctuation">(</span><span class="token boolean">True</span><span class="token punctuation">,</span> linestyle<span class="token operator">=</span><span class="token string">'--'</span><span class="token punctuation">,</span> alpha<span class="token operator">=</span><span class="token number">0.5</span><span class="token punctuation">)</span>  <span class="token comment"># 顯示格線</span></pre></td></tr><tr><td data-num="9"></td><td><pre>plt<span class="token punctuation">.</span>tight_layout<span class="token punctuation">(</span><span class="token punctuation">)</span>              <span class="token comment"># 自動調整版面避免重疊</span></pre></td></tr><tr><td data-num="10"></td><td><pre>plt<span class="token punctuation">.</span>savefig<span class="token punctuation">(</span><span class="token string">'output.png'</span><span class="token punctuation">,</span> dpi<span class="token operator">=</span><span class="token number">150</span><span class="token punctuation">,</span> bbox_inches<span class="token operator">=</span><span class="token string">'tight'</span><span class="token punctuation">)</span>  <span class="token comment"># 存檔</span></pre></td></tr><tr><td data-num="11"></td><td><pre>plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>                      <span class="token comment"># 顯示圖表</span></pre></td></tr></table></figure><hr />
+<h3 id="pltsubplots-多圖並排"><a class="anchor" href="#pltsubplots-多圖並排">#</a> plt.subplots () — 多圖並排</h3>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre>fig<span class="token punctuation">,</span> axes <span class="token operator">=</span> plt<span class="token punctuation">.</span>subplots<span class="token punctuation">(</span>nrows<span class="token punctuation">,</span> ncols<span class="token punctuation">,</span> figsize<span class="token operator">=</span><span class="token punctuation">(</span>寬<span class="token punctuation">,</span> 高<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span></pre></td></tr></table></figure><table>
+<thead>
+<tr>
+<th>參數</th>
+<th>型態</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nrows</code></td>
+<td>int</td>
+<td>列數，預設 1</td>
+</tr>
+<tr>
+<td><code>ncols</code></td>
+<td>int</td>
+<td>欄數，預設 1</td>
+</tr>
+<tr>
+<td><code>figsize</code></td>
+<td>tuple (w, h)</td>
+<td>整張圖的尺寸，單位為英吋</td>
+</tr>
+<tr>
+<td><code>sharex</code></td>
+<td>bool / str</td>
+<td>是否共用 X 軸</td>
+</tr>
+<tr>
+<td><code>sharey</code></td>
+<td>bool / str</td>
+<td>是否共用 Y 軸</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre>x <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span></pre></td></tr><tr><td data-num="2"></td><td><pre>y <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span></pre></td></tr><tr><td data-num="3"></td><td><pre></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token comment"># 單列雙欄</span></pre></td></tr><tr><td data-num="5"></td><td><pre>fig<span class="token punctuation">,</span> <span class="token punctuation">(</span>ax1<span class="token punctuation">,</span> ax2<span class="token punctuation">)</span> <span class="token operator">=</span> plt<span class="token punctuation">.</span>subplots<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="6"></td><td><pre>ax1<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> <span class="token string">'b-o'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="7"></td><td><pre>ax1<span class="token punctuation">.</span>set_title<span class="token punctuation">(</span><span class="token string">"折線圖"</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="8"></td><td><pre>ax2<span class="token punctuation">.</span>bar<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> color<span class="token operator">=</span><span class="token string">'orange'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="9"></td><td><pre>ax2<span class="token punctuation">.</span>set_title<span class="token punctuation">(</span><span class="token string">"長條圖"</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="10"></td><td><pre>plt<span class="token punctuation">.</span>tight_layout<span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="11"></td><td><pre>plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="12"></td><td><pre></pre></td></tr><tr><td data-num="13"></td><td><pre><span class="token comment"># 2x2 格線</span></pre></td></tr><tr><td data-num="14"></td><td><pre>fig<span class="token punctuation">,</span> axes <span class="token operator">=</span> plt<span class="token punctuation">.</span>subplots<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="15"></td><td><pre>axes<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>plot<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="16"></td><td><pre>axes<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>bar<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="17"></td><td><pre>axes<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>scatter<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="18"></td><td><pre>axes<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>hist<span class="token punctuation">(</span>y<span class="token punctuation">,</span> bins<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="19"></td><td><pre>plt<span class="token punctuation">.</span>tight_layout<span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="20"></td><td><pre>plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span></pre></td></tr></table></figure><h2 id="numpy"><a class="anchor" href="#numpy">#</a> numpy</h2>
+<p>科學計算套件，核心是 ndarray（N 維陣列），支援向量化運算。</p>
+<figure class="highlight python"><figcaption data-lang="python"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np</pre></td></tr><tr><td data-num="2"></td><td><pre></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token comment"># 建立陣列</span></pre></td></tr><tr><td data-num="4"></td><td><pre>np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>          <span class="token comment"># 一維</span></pre></td></tr><tr><td data-num="5"></td><td><pre>np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>   <span class="token comment"># 二維</span></pre></td></tr><tr><td data-num="6"></td><td><pre>np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>             <span class="token comment"># 全 0</span></pre></td></tr><tr><td data-num="7"></td><td><pre>np<span class="token punctuation">.</span>ones<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span>              <span class="token comment"># 全 1</span></pre></td></tr><tr><td data-num="8"></td><td><pre>np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>         <span class="token comment"># [0, 2, 4, 6, 8]</span></pre></td></tr><tr><td data-num="9"></td><td><pre>np<span class="token punctuation">.</span>linspace<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span>        <span class="token comment"># [0, 0.25, 0.5, 0.75, 1.0]</span></pre></td></tr><tr><td data-num="10"></td><td><pre></pre></td></tr><tr><td data-num="11"></td><td><pre><span class="token comment"># 向量化運算（不需要 for 迴圈）</span></pre></td></tr><tr><td data-num="12"></td><td><pre>a <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="13"></td><td><pre>a <span class="token operator">*</span> <span class="token number">2</span>       <span class="token comment"># [2, 4, 6]</span></pre></td></tr><tr><td data-num="14"></td><td><pre>a <span class="token operator">**</span> <span class="token number">2</span>      <span class="token comment"># [1, 4, 9]</span></pre></td></tr><tr><td data-num="15"></td><td><pre>a <span class="token operator">+</span> a       <span class="token comment"># [2, 4, 6]</span></pre></td></tr><tr><td data-num="16"></td><td><pre></pre></td></tr><tr><td data-num="17"></td><td><pre><span class="token comment"># 常用屬性</span></pre></td></tr><tr><td data-num="18"></td><td><pre>a<span class="token punctuation">.</span>shape     <span class="token comment"># (3,)</span></pre></td></tr><tr><td data-num="19"></td><td><pre>a<span class="token punctuation">.</span>dtype     <span class="token comment"># int64</span></pre></td></tr><tr><td data-num="20"></td><td><pre>a<span class="token punctuation">.</span>ndim      <span class="token comment"># 1</span></pre></td></tr><tr><td data-num="21"></td><td><pre></pre></td></tr><tr><td data-num="22"></td><td><pre><span class="token comment"># 常用函式</span></pre></td></tr><tr><td data-num="23"></td><td><pre>np<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>       <span class="token comment"># 6</span></pre></td></tr><tr><td data-num="24"></td><td><pre>np<span class="token punctuation">.</span>mean<span class="token punctuation">(</span>a<span class="token punctuation">)</span>      <span class="token comment"># 2.0</span></pre></td></tr><tr><td data-num="25"></td><td><pre>np<span class="token punctuation">.</span><span class="token builtin">max</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>       <span class="token comment"># 3</span></pre></td></tr><tr><td data-num="26"></td><td><pre>np<span class="token punctuation">.</span><span class="token builtin">min</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>       <span class="token comment"># 1</span></pre></td></tr><tr><td data-num="27"></td><td><pre>np<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>a<span class="token punctuation">)</span>      <span class="token comment"># 排序</span></pre></td></tr></table></figure>
   </div>
 
    <footer>
@@ -184,7 +437,7 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">更新於</span>
-    <time title="修改時間：2026-04-11 12:55:52" itemprop="dateModified" datetime="2026-04-11T12:55:52+08:00">2026-04-11</time>
+    <time title="修改時間：2026-04-11 13:44:07" itemprop="dateModified" datetime="2026-04-11T13:44:07+08:00">2026-04-11</time>
   </span>
   <span id="2026/04/10/python-語法筆記/" class="item leancloud_visitors" data-flag-title="python 語法筆記" title="閱讀次數">
       <span class="icon">
@@ -224,7 +477,7 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
     <div class="item left">
       
 
-  <a href="/2026/04/09/260409/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;pub-da440be71028438aa9683b63bef5ccf1.r2.dev&#x2F;52.jpg" title="260409">
+  <a href="/2026/04/09/260409/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;pub-da440be71028438aa9683b63bef5ccf1.r2.dev&#x2F;64.jpg" title="260409">
   <span class="type">上一篇</span>
   <span class="category"><i class="ic i-flag"></i> 日期</span>
   <h3>260409</h3>
@@ -248,7 +501,7 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="文章目錄">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text"> 前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AA%9E%E6%B3%95%E4%BB%8B%E7%B4%B9"><span class="toc-number">2.</span> <span class="toc-text"> 語法介紹</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#lambda"><span class="toc-number">2.1.</span> <span class="toc-text"> lambda</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#reduce"><span class="toc-number">2.2.</span> <span class="toc-text"> reduce</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#zip"><span class="toc-number">2.3.</span> <span class="toc-text"> zip</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#map"><span class="toc-number">2.4.</span> <span class="toc-text"> map</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#matplotlibpyplot"><span class="toc-number">2.5.</span> <span class="toc-text"> matplotlib.pyplot</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#numpy"><span class="toc-number">2.6.</span> <span class="toc-text"> numpy</span></a></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text"> 前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AA%9E%E6%B3%95%E4%BB%8B%E7%B4%B9"><span class="toc-number">2.</span> <span class="toc-text"> 語法介紹</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%96%AE%E8%A1%8C-if%E4%B8%89%E5%85%83%E9%81%8B%E7%AE%97%E5%AD%90"><span class="toc-number">2.1.</span> <span class="toc-text"> 單行 if（三元運算子）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#comprehension%E6%8E%A8%E5%B0%8E%E5%BC%8F"><span class="toc-number">2.2.</span> <span class="toc-text"> Comprehension（推導式）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#list-comprehension%E5%88%97%E8%A1%A8%E6%8E%A8%E5%B0%8E%E5%BC%8F"><span class="toc-number">2.2.1.</span> <span class="toc-text"> List Comprehension（列表推導式）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#set-comprehension%E9%9B%86%E5%90%88%E6%8E%A8%E5%B0%8E%E5%BC%8F"><span class="toc-number">2.2.2.</span> <span class="toc-text"> Set Comprehension（集合推導式）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dict-comprehension%E5%AD%97%E5%85%B8%E6%8E%A8%E5%B0%8E%E5%BC%8F"><span class="toc-number">2.2.3.</span> <span class="toc-text"> Dict Comprehension（字典推導式）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#generator-expression%E7%94%9F%E6%88%90%E5%99%A8%E8%A1%A8%E9%81%94%E5%BC%8F"><span class="toc-number">2.2.4.</span> <span class="toc-text"> Generator Expression（生成器表達式）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lambda"><span class="toc-number">2.3.</span> <span class="toc-text"> lambda</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#map"><span class="toc-number">2.4.</span> <span class="toc-text"> map</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#zip"><span class="toc-number">2.5.</span> <span class="toc-text"> zip</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#reduce"><span class="toc-number">2.6.</span> <span class="toc-text"> reduce</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#matplotlibpyplot"><span class="toc-number">2.7.</span> <span class="toc-text"> matplotlib.pyplot</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#pltplot-%E6%8A%98%E7%B7%9A%E5%9C%96"><span class="toc-number">2.7.1.</span> <span class="toc-text"> plt.plot () — 折線圖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pltbar-%E9%95%B7%E6%A2%9D%E5%9C%96"><span class="toc-number">2.7.2.</span> <span class="toc-text"> plt.bar () — 長條圖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pltscatter-%E6%95%A3%E4%BD%88%E5%9C%96"><span class="toc-number">2.7.3.</span> <span class="toc-text"> plt.scatter () — 散佈圖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%A8%99%E7%B1%A4%E8%88%87%E7%89%88%E9%9D%A2%E8%A8%AD%E5%AE%9A"><span class="toc-number">2.7.4.</span> <span class="toc-text"> 常用標籤與版面設定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pltsubplots-%E5%A4%9A%E5%9C%96%E4%B8%A6%E6%8E%92"><span class="toc-number">2.7.5.</span> <span class="toc-text"> plt.subplots () — 多圖並排</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#numpy"><span class="toc-number">2.8.</span> <span class="toc-text"> numpy</span></a></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="系列文章">
       </div>
@@ -351,12 +604,9 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/APCS/" title="分類於 APCS">APCS</a>
 </div>
 
-    <span><a href="/2025/01/19/j608-4-%E6%A9%9F%E5%99%A8%E5%87%BA%E7%A7%9F/" title="j608. 4. 機器出租">j608. 4. 機器出租</a></span>
+    <span><a href="/2025/06/18/%E9%AB%98%E7%AD%89%E6%BC%94%E7%AE%97%E6%B3%95%E6%9C%9F%E6%9C%AB%E4%BD%9C%E6%A5%AD/" title="高等演算法期末作業">高等演算法期末作業</a></span>
   </li>
 
       
@@ -365,43 +615,10 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
 <div class="breadcrumb">
 <a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/%E5%85%B6%E4%BB%96/" title="分類於 其他">其他</a>
 </div>
 
-    <span><a href="/2025/01/18/Q-4-20-%E7%9B%A3%E7%9C%8B%E8%8F%AF%E5%B1%B1%E7%B7%B4%E5%8A%9F%E5%A0%B4/" title="Q-4-20. 監看華山練功場">Q-4-20. 監看華山練功場</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2026/03/13/DCF-%E7%8F%BE%E9%87%91%E6%B5%81%E6%8A%98%E7%8F%BE%E4%BC%B0%E5%80%BC%E6%A8%A1%E5%9E%8B/" title="DCF 現金流折現估值模型">DCF 現金流折現估值模型</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/APCS/" title="分類於 APCS">APCS</a>
-</div>
-
-    <span><a href="/2025/01/18/j607-3-%E5%85%88%E5%8A%A0%E5%BE%8C%E4%B9%98%E8%88%87%E5%87%BD%E6%95%B8/" title="j607. 3. 先加後乘與函數">j607. 3. 先加後乘與函數</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/APCS-%E6%A8%A1%E6%93%AC%E5%9C%98%E9%9A%8A/" title="分類於 APCS 模擬團隊">APCS 模擬團隊</a>
-</div>
-
-    <span><a href="/2025/01/18/apcs0303%E7%A4%A6%E5%9D%91-Mine/" title="apcs0303礦坑 (Mine)">apcs0303礦坑 (Mine)</a></span>
+    <span><a href="/2025/01/18/a117-%E4%B8%89%E8%89%B2%E6%B2%B3%E5%85%A7%E5%A1%94/" title="a117 三色河內塔">a117 三色河內塔</a></span>
   </li>
 
       
@@ -413,7 +630,7 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
 <a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
 </div>
 
-    <span><a href="/2025/01/19/Q-8-9-%E6%9C%8D%E5%8B%99%E4%B8%AD%E5%BF%83%E9%81%B8%E4%BD%8D%E7%BD%AE/" title="Q-8-9. 服務中心選位置">Q-8-9. 服務中心選位置</a></span>
+    <span><a href="/2025/01/18/Q-1-4-%E6%94%AF%E9%BB%9E%E5%88%87%E5%89%B2/" title="Q-1-4. 支點切割">Q-1-4. 支點切割</a></span>
   </li>
 
       
@@ -425,7 +642,7 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
 <a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
 </div>
 
-    <span><a href="/2025/01/18/Q-1-10-%E6%9C%80%E5%A4%9A%E5%BE%97%E5%88%86%E7%9A%84%E7%9A%87%E5%90%8E/" title="Q-1-10. 最多得分的皇后">Q-1-10. 最多得分的皇后</a></span>
+    <span><a href="/2025/01/19/Q-8-15-%E6%A8%B9%E4%B8%8A%E4%B8%80%E4%BD%8D%E4%B8%8D%E5%9B%9E%E5%AE%B6%E7%9A%84%E6%8E%A8%E9%8A%B7%E5%93%A1/" title="Q-8-15. 樹上一位不回家的推銷員">Q-8-15. 樹上一位不回家的推銷員</a></span>
   </li>
 
       
@@ -437,7 +654,7 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
 <a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
 </div>
 
-    <span><a href="/2025/01/18/Q-3-5-%E5%B8%B6%E8%91%97%E6%9D%BF%E5%87%B3%E6%8E%92%E9%9B%9E%E6%8E%92%E7%9A%84%E9%AB%98%E4%BA%BA-APCS/" title="Q-3-5. 帶著板凳排雞排的高人(APCS)">Q-3-5. 帶著板凳排雞排的高人(APCS)</a></span>
+    <span><a href="/2025/01/18/Q-2-10-%E5%AD%90%E9%9B%86%E5%90%88%E7%9A%84%E5%92%8C-%E6%8A%98%E5%8D%8A%E6%9E%9A%E8%88%89/" title="Q-2-10. 子集合的和(折半枚舉)">Q-2-10. 子集合的和(折半枚舉)</a></span>
   </li>
 
       
@@ -446,10 +663,22 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
 <div class="breadcrumb">
 <a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/APCS-%E6%A8%A1%E6%93%AC%E5%9C%98%E9%9A%8A/" title="分類於 APCS 模擬團隊">APCS 模擬團隊</a>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
 </div>
 
-    <span><a href="/2025/01/18/apcs0403%E6%84%9B%E5%90%83%E5%AD%97%E6%AF%8D%E7%9A%84%E6%80%AA%E7%8D%B8-Alphabet-Monster/" title="apcs0403愛吃字母的怪獸 (Alphabet Monster)">apcs0403愛吃字母的怪獸 (Alphabet Monster)</a></span>
+    <span><a href="/2025/01/18/Q-6-5-%E4%BA%8C%E7%B6%AD%E6%9C%80%E5%A4%A7%E5%AD%90%E7%9F%A9%E9%99%A3/" title="Q-6-5. 二維最大子矩陣">Q-6-5. 二維最大子矩陣</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/18/Q-4-6-%E5%B0%91%E6%9E%97%E5%AF%BA%E7%9A%84%E8%87%AA%E5%8B%95%E5%AF%84%E7%89%A9%E6%AB%83-APCS/" title="Q-4-6. 少林寺的自動寄物櫃(APCS)">Q-4-6. 少林寺的自動寄物櫃(APCS)</a></span>
   </li>
 
       
@@ -458,7 +687,31 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2025/10/29/Hono%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/" title="Hono 語法筆記">Hono 語法筆記</a></span>
+    <span><a href="/2025/04/17/MIPS-%E6%8C%87%E4%BB%A4%E9%9B%86%E7%AD%86%E8%A8%98/" title="MIPS 指令集筆記">MIPS 指令集筆記</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80%E7%AD%86%E8%A8%98/" title="分類於 程式語言筆記">程式語言筆記</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80%E7%AD%86%E8%A8%98/node-js/" title="分類於 node.js">node.js</a>
+</div>
+
+    <span><a href="/2025/01/22/cookie-parser-%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/" title="cookie-parser 語法筆記">cookie-parser 語法筆記</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/" title="分類於 加密文章">加密文章</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/%E6%97%A5%E6%9C%9F/" title="分類於 日期">日期</a>
+</div>
+
+    <span><a href="/2026/04/09/260409/" title="260409">260409</a></span>
   </li>
 
   </ul>
@@ -483,13 +736,13 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="總字數">352k 字</span>
+    <span title="總字數">358k 字</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">5:20</span>
+    <span title="所需總閱讀時間">5:25</span>
   </div>
   <div class="powered-by">
     基於 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
