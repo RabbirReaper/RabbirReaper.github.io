@@ -1,0 +1,859 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/https:/pub-da440be71028438aa9683b63bef5ccf1.r2.devimages/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/https:/pub-da440be71028438aa9683b63bef5ccf1.r2.dev/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="プログラムを書けないうさぎは、ただのうさぎだ。" href="https://rabbirreaper.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="プログラムを書けないうさぎは、ただのうさぎだ。" href="https://rabbirreaper.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="プログラムを書けないうさぎは、ただのうさぎだ。" href="https://rabbirreaper.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="大學筆記" />
+
+
+<link rel="canonical" href="https://rabbirreaper.github.io/2026/07/03/%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5%E7%AD%86%E8%A8%98/">
+
+
+
+  <title>
+深度學習核心概念筆記 |
+Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎだ。</title>
+<meta name="generator" content="Hexo 8.1.1"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">深度學習核心概念筆記
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="創建時間：2026-07-03 16:22:23">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">發表於</span>
+    <time itemprop="dateCreated datePublished" datetime="2026-07-03T16:22:23+08:00">2026-07-03</time>
+  </span>
+  <span class="item" title="文章字數">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">文章字數</span>
+    <span>6.8k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="所需閱讀時間">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">所需閱讀時間</span>
+    <span>6 分鐘</span>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切換導航欄">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Rabbir Reaper</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/70.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/31.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/99.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/71.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/52.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/26.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首頁</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-TW">
+  <link itemprop="mainEntityOfPage" href="https://rabbirreaper.github.io/2026/07/03/%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5%E7%AD%86%E8%A8%98/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/https:/pub-da440be71028438aa9683b63bef5ccf1.r2.dev/images/avatar.jpg">
+    <meta itemprop="name" content="Rabbir">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="プログラムを書けないうさぎは、ただのうさぎだ。">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="ai-的起點-perceptron"><a class="anchor" href="#ai-的起點-perceptron">#</a> AI 的起點  <code>Perceptron</code></h1>
+<h2 id="甚麼是artificial-intelligence"><a class="anchor" href="#甚麼是artificial-intelligence">#</a> 甚麼是 <code>Artificial Intelligence</code></h2>
+<p>一個能夠像人一樣判斷做決定的機器。</p>
+<h2 id="該如何讓機器判斷"><a class="anchor" href="#該如何讓機器判斷">#</a> 該如何讓機器判斷</h2>
+<p>人類看到資料，很容易判斷「這是 A 類，那是 B 類」。但如果要讓機器做同樣的事，機器一開始什麼都不知道，必須有一套方法讓它自己慢慢調整、找到答案。這就是這個主題要解決的核心問題：機器要怎麼從「亂猜」進步到「猜對」？</p>
+<p>最早的起源是利用 <code>Perceptron（感知機）</code> 。</p>
+<h2 id="perceptron感知機是什麼"><a class="anchor" href="#perceptron感知機是什麼">#</a> Perceptron（感知機）是什麼？</h2>
+<p><code>Perceptron</code>  是模仿生物神經細胞的最早期數學模型。</p>
+<ul>
+<li>生物神經細胞會接收前端訊號，整合後決定要不要往下傳遞。</li>
+<li><code>Perceptron</code>  把這個過程簡化成：輸入（X）× 權重（W）相加，再加上一個門檻值（Bias, B）。</li>
+</ul>
+<p>數學式：</p>
+<pre><code>S = W·X + B
+S = W1·X1 + W2·X2 + B
+</code></pre>
+<p><strong>判斷方式：</strong></p>
+<ul>
+<li>把一個點代入這條直線方程式</li>
+<li>結果 &gt; 0 → 在直線上方（屬於某一類）</li>
+<li>結果 &lt; 0 → 在直線下方（屬於另一類）</li>
+</ul>
+<blockquote>
+<p>W 控制直線的傾斜角度，B 控制直線的上下位置。</p>
+</blockquote>
+<blockquote>
+<p>這其實就是國高中學過的「點斜式直線方程式」。所以 Perceptron 的本質，就是在嘗試找出一條最適合的直線（或超平面），把兩類資料分開。</p>
+</blockquote>
+<blockquote>
+<p>如果參數超過一個，就無法在二維平面上畫出線條，可以想像每個參數都有對應的權重，然後根據實際狀況帶入數值，最後得出 <code>S</code> ，然後再根據 <code>S</code>  是否大於小於 0 來判斷。</p>
+</blockquote>
+<h2 id="如何讓perceptron判斷更準確"><a class="anchor" href="#如何讓perceptron判斷更準確">#</a> 如何讓 <code>Perceptron</code>  判斷更準確</h2>
+<p>因為機器一開始的 W、B 是隨機初始化的，那條「直線」幾乎不可能一開始就是對的。所以我們需要一個機制，讓機器看到自己的猜測距離正確答案有多遠，然後据此修正 —— 這就是 Training（訓練）的目的。</p>
+<h2 id="training訓練在做什麼"><a class="anchor" href="#training訓練在做什麼">#</a>  <code>Training（訓練）</code> 在做什麼</h2>
+<blockquote>
+<p>讓機器看到自己的猜測距離正確答案有多遠，然後据此修正</p>
+</blockquote>
+<p>距離正確答案有多遠，我們稱為 誤差（Error / Loss）。常見計算方式：</p>
+<ul>
+<li>MSE（均方誤差）：(預測值 − 真實值)² 取平均</li>
+<li>RMSE：MSE 再開根號</li>
+</ul>
+<p>這個誤差函式也叫 目標函式（Objective Function）—— 因為我們的目標就是讓輸出盡量逼近這個函式所定義的標準答案。</p>
+<h2 id="為什麼-perceptron-需要被升級成-sigmoid-神經元"><a class="anchor" href="#為什麼-perceptron-需要被升級成-sigmoid-神經元">#</a> 為什麼  <code>Perceptron</code>  需要被「升級」成  <code>Sigmoid</code>  神經元？</h2>
+<h3 id="perceptron-遇到的問題"><a class="anchor" href="#perceptron-遇到的問題">#</a>  <code>Perceptron</code>  遇到的問題</h3>
+<p>Perceptron 原始使用的是 Step Function（階梯函式）：超過門檻輸出 1，否則輸出 0。Step Function 是不可微分的，沒辦法用微分去計算「我該往哪個方向調整參數」。</p>
+<p>而我們要更新參數，勢必需要知道「調整這個參數，誤差會變大還是變小」—— 這正是微分（梯度）告訴我們的事。所以實務上會把 Step Function 換成 Sigmoid Function（可微分、輸出壓縮在 0~1 之間）。</p>
+<blockquote>
+<p>一開始只會得出 1 或是 0，算出的 S 大於 0 或是小於 0，不會知道占比，像是大於 0 多少，小於 0 多少<br />
+可能會想說，S 算出來是友值的為什麼不用 S 判斷<br />
+因為 S 是沒有範圍的，所以你沒辦法用 S 的大小來判斷「模型有多確定」，因為每個 S 的「確定程度」差很多，卻沒有一個統一的標準來衡量。</p>
+</blockquote>
+<h3 id="sigmoid-function-在做什麼"><a class="anchor" href="#sigmoid-function-在做什麼">#</a>  <code>Sigmoid Function</code>  在做什麼</h3>
+<p>Sigmoid 就是把這個「沒有範圍的 S」，壓縮成一個有意義的範圍 0~1：</p>
+<blockquote>
+<p>不管 S 多大或多小<br />
+→ 輸出永遠在 0~1 之間<br />
+→ 可以直接解讀成機率<br />
+→ 才能計算出有意義的 Loss<br />
+→ 才能微分調整 W</p>
+</blockquote>
+<p>所以 Sigmoid 解決的根本問題就是：給 S 一個統一的衡量標準。</p>
+<p>我們要更新參數，勢必需要知道「調整這個參數，誤差會變大還是變小」—— 這正是微分（梯度）告訴我們的事。</p>
+<blockquote>
+<p>換成 Sigmoid 之後，這個元件才正式被稱為 Neuron（神經元），而不再叫 Perceptron。</p>
+</blockquote>
+<h2 id="梯度下降gradient-descent是甚麼"><a class="anchor" href="#梯度下降gradient-descent是甚麼">#</a> 梯度下降（Gradient Descent）是甚麼</h2>
+<p>梯度下降就是「找 Loss 最低點」的方法。</p>
+<hr />
+<p>想像一個山谷的地形，你站在某個位置，想走到最低點：</p>
+<pre><code>高度 = Loss
+你的位置 = 目前的 W
+</code></pre>
+<p><strong>梯度</strong>就是你腳下地面的坡度，告訴你：</p>
+<pre><code>往左是上坡還是下坡
+往右是上坡還是下坡
+</code></pre>
+<p><strong>下降</strong>就是每次都往下坡的方向走一步。</p>
+<hr />
+<p>重複這個動作：</p>
+<pre><code>1. 站在某個位置（目前的 W）
+2. 感受腳下的坡度（對 W 微分）
+3. 往下坡方向走一步（更新 W）
+4. 重複，直到走到最低點（Loss 最小）
+</code></pre>
+<hr />
+<p>用公式表示就是：</p>
+<pre><code>W_new = W_old - 學習率 × 坡度
+</code></pre>
+<p>減掉坡度，就是確保每次都往低處走。</p>
+<hr />
+<p>所以梯度下降的本質就是：</p>
+<blockquote>
+<p><strong>用坡度當導航，一步一步把 W 調整到讓 Loss 最小的位置</strong></p>
+</blockquote>
+<h2 id="梯度下降gradient-descent實作原理"><a class="anchor" href="#梯度下降gradient-descent實作原理">#</a> 梯度下降（Gradient Descent）實作原理</h2>
+<h3 id="第一步"><a class="anchor" href="#第一步">#</a> 第一步</h3>
+<p>我們有：</p>
+<pre><code>W, B → 算出 S → Sigmoid(S) → 輸出 Ŷ
+</code></pre>
+<p>Loss 就是輸出跟正確答案的差距：</p>
+<pre><code>Loss = (正確答案 Y - 模型輸出 Ŷ)²
+</code></pre>
+<hr />
+<h3 id="對-w-微分得到斜率"><a class="anchor" href="#對-w-微分得到斜率">#</a> 對 W 微分，得到斜率</h3>
+<pre><code>斜率 = dLoss/dW
+</code></pre>
+<p>這個斜率告訴你：</p>
+<pre><code>斜率 &gt; 0 → W 越大，Loss 越大（W 要調小）
+斜率 &lt; 0 → W 越大，Loss 越小（W 要調大）
+</code></pre>
+<hr />
+<h3 id="為什麼要往反方向走"><a class="anchor" href="#為什麼要往反方向走">#</a> 為什麼要往反方向走？</h3>
+<p>帶入數字來看：</p>
+<pre><code>假設目前 W = 2，斜率 = 3（正的）
+代表 W 再變大，Loss 會更大
+所以 W 要往反方向走 → 變小
+</code></pre>
+<pre><code>假設目前 W = 2，斜率 = -3（負的）
+代表 W 再變大，Loss 會變小
+所以 W 繼續往這個方向走 → 變大
+</code></pre>
+<p>兩種情況「減掉斜率」都能自動處理：</p>
+<pre><code>W = 2 - (+3) = -1  （變小）
+W = 2 - (-3) = 5   （變大）
+</code></pre>
+<hr />
+<h3 id="更新-w-和-b-的公式"><a class="anchor" href="#更新-w-和-b-的公式">#</a> 更新 W 和 B 的公式</h3>
+<pre><code>W_new = W_old - 學習率 × 斜率
+B_new = B_old - 學習率 × 斜率
+</code></pre>
+<p>學習率控制每次走多大步：</p>
+<pre><code>學習率太大 → 可能跳過最低點
+學習率太小 → 走得太慢
+</code></pre>
+<h2 id="目前遇到的問題"><a class="anchor" href="#目前遇到的問題">#</a> 目前遇到的問題</h2>
+<p>學到這個，我們學會了如何判斷，如何畫一條線，但是有種問題叫做 XOR 問題</p>
+<p>XOR 問題的核心是：</p>
+<p><strong>一條直線沒辦法把資料分開</strong></p>
+<h3 id="先看一個一條線就是分不開的例子"><a class="anchor" href="#先看一個一條線就是分不開的例子">#</a> 先看一個「一條線就是分不開」的例子</h3>
+<p>直覺上會想：那就多加幾個特徵不就好了？但問題不在特徵夠不夠多，而在於<strong>特徵之間的關係</strong>。有一種關係，是一條線天生處理不了的。</p>
+<p>舉個生活化的例子：一杯飲料好不好喝，取決於<strong>加不加糖</strong>和<strong>加不加鹽</strong>這兩個特徵：</p>
+<pre><code>不加糖、不加鹽 → 難喝（沒味道）
+   加糖、  加鹽 → 難喝（又甜又鹹，衝突）
+   加糖、不加鹽 → 好喝
+不加糖、  加鹽 → 好喝（例如鹽味咖啡）
+</code></pre>
+<p>規則很清楚：<strong>兩個「一樣」（都加或都不加）就難喝，兩個「不一樣」就好喝。</strong> 這就是 XOR。</p>
+<p>現在讓那個「平的計分板」（一條線）用固定的加減分來判斷「好喝」，它會陷入死結：</p>
+<ul>
+<li>如果把「加糖」加分 → 「加糖加鹽」分數高了，但它其實是難喝的。</li>
+<li>如果把「加鹽」加分 → 「加鹽加糖」又更高了，一樣搞錯。</li>
+<li>想把「加鹽」扣分來救？那「只加鹽」的鹽味咖啡（好喝）也被冤枉扣分了。</li>
+</ul>
+<p>不管權重怎麼調，只要它對「加糖」「加鹽」各自是<strong>固定加分或固定扣分</strong>，就永遠無法表達「加鹽好不好，得看有沒有同時加糖」這種<strong>條件式關係</strong>。這正是一條線在 XOR 上分不開的根本原因。</p>
+<h3 id="問題解釋"><a class="anchor" href="#問題解釋">#</a> 問題解釋</h3>
+<p>有一個非常著名的數學定理 ——<strong> 卡佛定理（Cover's Theorem）</strong>。</p>
+<p>這個定理的大意是：<strong>「只要把資料丟進足夠高維度的空間裡，原本分不開的資料，幾乎都能用一條直線（超平面）完美切開。」</strong></p>
+<p>用剛才的 XOR 還有「特徵組合」來做個數學實測，來證實為甚麼可以，以及為什麼實際工程上大家不這麼做。</p>
+<hr />
+<h4 id="數學證明是可以的"><a class="anchor" href="#數學證明是可以的">#</a> 數學證明：是可以的</h4>
+<p>我們來看最純粹的 XOR 問題。原本只有兩個特徵  <code>A</code>  和  <code>B</code> （數值只有 0 或 1）：</p>
+<pre><code>(0, 0) → 輸出 0
+(1, 1) → 輸出 0
+(1, 0) → 輸出 1
+(0, 1) → 輸出 1
+</code></pre>
+<p><strong>先說明這裡的參數是什麼：</strong></p>
+<ul>
+<li><code>A</code> 、 <code>B</code> ：兩個原始特徵，各自只有 0 或 1 兩種值（可以想成「開關」）。</li>
+<li>輸出：這組特徵對應的正確答案（標籤）。XOR 的規則是「兩個一樣 → 0，兩個不一樣 → 1」。</li>
+</ul>
+<p>在二維平面上，這四個點無法用一條直線把 0 和 1 分開（這就是 XOR 分不開的原因）。</p>
+<p><strong>接著加入新參數  <code>C</code> ：</strong></p>
+<p><code>C</code>  是<strong>手動創造出來的新特徵</strong>，定義成  <code>C = A × B</code> （把  <code>A</code>  和  <code>B</code>  相乘）。它不是新資料，而是從既有特徵「組合」出來的。加了  <code>C</code>  之後，每筆資料就從兩個維度  <code>(A, B)</code>  變成三個維度  <code>(A, B, C)</code> ：</p>
+<pre><code>原來的 (0, 0) 變成 (0, 0, 0) → 輸出 0
+原來的 (1, 1) 變成 (1, 1, 1) → 輸出 0
+原來的 (1, 0) 變成 (1, 0, 0) → 輸出 1
+原來的 (0, 1) 變成 (0, 1, 0) → 輸出 1
+</code></pre>
+<blockquote>
+<p><code>C</code>  的作用：只有在  <code>A</code>  和  <code>B</code>  <strong>同時為 1</strong> 時  <code>C</code>  才會是 1，其餘情況都是 0。等於是用  <code>C</code>  幫「兩個都成立」這個特殊狀況做了一個獨立的標記。</p>
+</blockquote>
+<p><strong>下面這段例子，是要證明「加了  <code>C</code>  之後，原本畫不出的線，現在畫得出來了」。</strong></p>
+<p>升到三維後，就能只靠一個神經元（一條線）解決。這個神經元的計分規則可以設計成：</p>
+<blockquote>
+<p><strong>總分</strong> =  <code>A + B - 2C</code> （總分大於 0.5 判為 1，否則判為 0）</p>
+</blockquote>
+<p>把四筆資料都代入這條規則驗算：</p>
+<pre><code>(0, 0, 0) → 0 + 0 - 0 = 0  （小於 0.5 → 判為 0，正確）
+(1, 1, 1) → 1 + 1 - 2 = 0  （小於 0.5 → 判為 0，正確）
+(1, 0, 0) → 1 + 0 - 0 = 1  （大於 0.5 → 判為 1，正確）
+(0, 1, 0) → 0 + 1 - 0 = 1  （大於 0.5 → 判為 1，正確）
+</code></pre>
+<p>四筆資料套用同一條規則全部判斷正確，代表這條線真的把 0 和 1 分開了。</p>
+<p><strong>回頭呼應前面「加糖加鹽」的例子：</strong></p>
+<p>前面那杯飲料就是這個 XOR 的具象版。把  <code>A = 加糖</code> 、 <code>B = 加鹽</code> 、輸出 1 = 好喝 對應回去，四筆資料完全一致：</p>
+<pre><code>不加糖、不加鹽 → (0, 0) → 難喝(0)
+   加糖、  加鹽 → (1, 1) → 難喝(0)
+   加糖、不加鹽 → (1, 0) → 好喝(1)
+不加糖、  加鹽 → (0, 1) → 好喝(1)
+</code></pre>
+<p>之前計分板卡關，是因為它對「加糖」「加鹽」只能各自固定加減分，沒辦法判斷「加鹽好不好，要看有沒有同時加糖」。而  <code>C = A × B</code> （加糖 <strong>且</strong> 加鹽）這個組合特徵，正好標記出「兩個都加」這個唯一會出問題的狀況 —— 四筆裡只有「加糖加鹽」的  <code>C</code>  是 1。於是計分規則  <code>A + B - 2C</code>  就能靠  <code>-2C</code>  精準地把「又甜又鹹」這杯壓成難喝，同時完全不影響其他三杯。<strong>這就是為什麼加了  <code>C</code>  之後，原本卡關的判斷現在解得開了 —— 組合特徵幫線性計分板補上了它缺的「條件式判斷」能力。</strong></p>
+<p><strong>結論：</strong> 只要增加像  <code>C</code>  這種「乘在一起」的組合參數，把資料升到更高維度，原本一條直線分不開的非線性問題，就變得可以用一條直線解決。</p>
+<hr />
+<h4 id="那為什麼實際上無法這麼做"><a class="anchor" href="#那為什麼實際上無法這麼做">#</a> 那為什麼「實際上無法」這麼做？</h4>
+<p>既然理論上可行，為什麼科學家最後放棄了這個路線，轉去研究「多層神經網路」？因為現實生活中的「狗」，會讓參數數量產生<strong>維度災難（Curse of Dimensionality）</strong>。</p>
+<p>假設我們判斷一隻狗，手頭上有 100 個基本特徵（眼睛、鼻子、毛色、腿長、耳朵形狀…… 等等）。</p>
+<p>如果我們要像上面一樣，把所有可能「兩兩相乘」的組合參數都列出來：</p>
+<ul>
+<li><code>眼睛 * 鼻子</code> 、 <code>眼睛 * 毛色</code> 、 <code>腿長 * 耳朵</code> ……</li>
+<li>光是兩兩組合，就會產生將近 <strong>5,000 個新參數</strong>。</li>
+</ul>
+<p>但如果只乘兩個不夠呢？萬一真實的狗需要三個特徵同時成立（例如： <code>黃色 * 體型大 * 垂耳</code>  才是黃金獵犬），我們要列出三個相乘的組合：</p>
+<ul>
+<li>這會產生將近 <strong>16 萬個新參數</strong>。</li>
+</ul>
+<p>如果要四個相乘、五個相乘呢？參數總數會呈<strong>指數級暴增</strong>，變成幾百萬、幾千萬個。</p>
+<blockquote>
+<p><strong>實際上的困境：</strong></p>
+<ol>
+<li><strong>記憶體與計算量爆炸：</strong> 電腦根本吃不消。</li>
+<li><strong>我們根本不知道該列哪些：</strong> 也許狗的真正秘密是  <code>特徵3 * 特徵28 * 特徵99</code> ，但我們漏列了，那這條線就永遠畫不出來。</li>
+<li><strong>流氓科學（過擬合）：</strong> 當參數比資料點還多的時候，這條線確實能完美分開現有的資料，但只要來一隻稍微不一樣的狗，它就會完全猜錯。</li>
+</ol>
+</blockquote>
+<hr />
+<h4 id="多層神經網路是怎麼優雅解決這個問題的"><a class="anchor" href="#多層神經網路是怎麼優雅解決這個問題的">#</a> 多層神經網路，是怎麼優雅解決這個問題的？</h4>
+<p>多層神經網路（深度學習）的精妙之處，就在於它<strong>不搞「一次列出所有組合」這種暴力破解</strong>。</p>
+<p>它採取的是「層層遞進」的結構：</p>
+<ul>
+<li><strong>第一層（只做簡單組合）</strong>：神經元 A 負責把  <code>黃色</code>  和  <code>體型大</code>  加在一起；神經元 B 負責把  <code>垂耳</code>  和  <code>長尾巴</code>  加在一起。</li>
+<li><strong>第二層（把第一層的結果再組合）</strong>：神經元 C 只需要把（神經元 A 的結果）和（神經元 B 的結果）加在一起。</li>
+</ul>
+<p>這樣做，參數的數量是<strong>線性增加</strong>的（可能只要幾百個），而不是指數暴增（幾千萬個）。它利用「疊豆腐」的方式，用少量的參數，就達到了和幾千萬個組合參數一樣強大的表達能力。</p>
+<p>所以整體結論是：<br />
+<strong>理論上，列出所有組合參數，確實可以用一條直線解決非線性問題；但實際上，因為組合太多、人類無法預知，所以改用「多層神經網路」讓電腦自己去層層組合。</strong></p>
+<p>這就是「多層」這個概念存在的理由。</p>
+<h1 id="神經網路的完整訓練流程前傳遞-倒傳遞-資料集-overfitting"><a class="anchor" href="#神經網路的完整訓練流程前傳遞-倒傳遞-資料集-overfitting">#</a> 神經網路的完整訓練流程：前傳遞、倒傳遞、資料集、Overfitting</h1>
+<h2 id="出發點有了多層神經元要怎麼讓整個網路一起學習"><a class="anchor" href="#出發點有了多層神經元要怎麼讓整個網路一起學習">#</a> 出發點：有了多層神經元，要怎麼讓「整個網路」一起學習？</h2>
+<p>上一個主題解決了「一個神經元怎麼學」，但 XOR 問題告訴我們，真實世界的問題往往需要<strong>多層、多個神經元</strong>合作。那麼問題來了：資料怎麼流過這麼多層？又該怎麼一次更新「所有」神經元的參數？這就是本篇要解決的核心問題。</p>
+<hr />
+<h2 id="神經網路是什麼"><a class="anchor" href="#神經網路是什麼">#</a> 神經網路是什麼？</h2>
+<p>神經網路（Neural Network）由三個主要部分組成：</p>
+<ul>
+<li><strong>輸入層</strong>：負責把資料餵進去</li>
+<li><strong>隱藏層</strong>：負責做特徵的整理與轉換（Feature Transform），可以有很多層</li>
+<li><strong>輸出層</strong>：負責把整理好的特徵轉換成最終答案</li>
+</ul>
+<p>一個關鍵原則：<strong>神經網路只接受數值化的輸入與輸出</strong>。所以圖片、聲音、文字都必須先想辦法轉換成數字（後面在 CNN、NLP 主題會分別講怎麼做）。</p>
+<h2 id="為什麼隱藏層要模組化分工"><a class="anchor" href="#為什麼隱藏層要模組化分工">#</a> 為什麼隱藏層要「模組化分工」？</h2>
+<p>可以把隱藏層想成寫程式時拆出來的子程式：每一層只負責處理一小部分任務，而不是用一顆超大函式硬解決所有事情。</p>
+<p>舉影像分類為例：</p>
+<ul>
+<li>第一層可能只負責偵測「有沒有特定顏色」</li>
+<li>第二層可能負責偵測「紋路」（石頭紋、木頭紋…）</li>
+<li>最後幾層才綜合判斷「這是輪胎還是人」</li>
+</ul>
+<p>這種<strong>漸進式抽象</strong>正是深度學習能處理複雜問題的關鍵，也是為什麼網路需要疊很多層（deep）。</p>
+<hr />
+<h2 id="前傳遞forward-propagation實作原理"><a class="anchor" href="#前傳遞forward-propagation實作原理">#</a> 前傳遞（Forward Propagation）實作原理</h2>
+<p>前傳遞就是資料「正向」流過整個網路的過程：</p>
+<ol>
+<li>輸入資料（例如圖片，需要先展平 flatten 成一維向量）</li>
+<li>第一層：輸入 × 權重相加，丟進啟用函式，得到輸出 Ŷ</li>
+<li>把這個 Ŷ 當作下一層的輸入，重複這個過程</li>
+<li>一直到輸出層 —— 但輸出層的啟用函式通常不是 Sigmoid，而是 <strong>Softmax</strong>（把輸出轉成各類別的機率分布）</li>
+</ol>
+<p>簡單說：<strong>前傳遞 = 從輸入一路往前算到輸出</strong>。</p>
+<h2 id="為什麼需要倒傳遞backpropagation"><a class="anchor" href="#為什麼需要倒傳遞backpropagation">#</a> 為什麼需要倒傳遞（Backpropagation）？</h2>
+<p>前傳遞只負責「算出答案」，但這個答案一開始一定是錯的。我們需要一個方法，把這個錯誤「歸因」回每一層、每一個參數，才知道該怎麼修正 —— 這就是倒傳遞要做的事。</p>
+<p><strong>倒傳遞的方向，恰好與前傳遞相反</strong>：先算出輸出層的誤差，再用梯度，從輸出層往回一層一層更新隱藏層，直到輸入層為止。本質上用的公式跟單一神經元的梯度下降是一樣的，只是規模擴大到整個網路。</p>
+<blockquote>
+<p>一筆資料完整跑完一次前傳遞 + 倒傳遞，這次更新才算結束，接著才會輸入下一筆資料繼續訓練。</p>
+</blockquote>
+<h3 id="為什麼-sigmoid-會造成梯度消失爆炸"><a class="anchor" href="#為什麼-sigmoid-會造成梯度消失爆炸">#</a> 為什麼 Sigmoid 會造成梯度消失／爆炸？</h3>
+<p>Sigmoid 的特性是把輸入壓縮到 0~1 之間。倒傳遞時需要連鎖律不斷把各層的微分值「相乘」，而 Sigmoid 的微分值本身就偏小（最大也只有 0.25），連續相乘很多層之後，數值會越乘越小，最終趨近於 0 —— 這就是<strong>梯度消失</strong>，會導致前面幾層幾乎學不到東西。</p>
+<p><strong>改用 ReLU</strong> 是常見解法：正值區間是線性輸出（不會被壓縮），能有效緩解梯度消失。雖然 ReLU 在輸入小於 0 時「不可微分」，但因為那個區域剛好輸出是 0（代表這個神經元不會更新），所以實務上不需要太擔心這個不可微分點。</p>
+<hr />
+<h2 id="資料集dataset的設計原理"><a class="anchor" href="#資料集dataset的設計原理">#</a> 資料集（Dataset）的設計原理</h2>
+<h3 id="為什麼資料集要有意義"><a class="anchor" href="#為什麼資料集要有意義">#</a> 為什麼資料集要「有意義」？</h3>
+<p>模型學到的東西，完全取決於餵給它的資料。如果你要做「貓 vs 狗」分類器：</p>
+<ul>
+<li>貓與狗的照片數量不能差太多（類別要平衡）</li>
+<li>不相關的照片（如駱駝、馬）數量也不能超過目標類別</li>
+</ul>
+<p>一般經驗上，資料量至少要達到上千筆以上才稱得上是一個夠用的資料集，實務上百萬級的資料集效果通常更好。</p>
+<h3 id="資料集的切分"><a class="anchor" href="#資料集的切分">#</a> 資料集的切分</h3>
+<ul>
+<li><strong>訓練資料集（Training Set）</strong>：用來實際訓練模型</li>
+<li><strong>驗證資料集（Validation Set）</strong>：像「隨堂小考」，訓練過程中檢查模型是否往對的方向發展</li>
+<li><strong>測試資料集（Test Set）</strong>：像「期末考」，訓練完成後才拿出來最終評估</li>
+</ul>
+<h3 id="為什麼需要不同的訓練方式batch-mini-batch-sgd"><a class="anchor" href="#為什麼需要不同的訓練方式batch-mini-batch-sgd">#</a> 為什麼需要不同的訓練方式（Batch / Mini-batch / SGD）？</h3>
+<p>理論上應該讓模型「看完全部資料」再更新一次參數最穩定，但現實中記憶體（GPU 顯存）容量有限，無法一次塞進全部資料，所以衍生出三種策略：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>做法</th>
+<th>特性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Batch（BGD）</strong></td>
+<td>一次用全部資料訓練一次</td>
+<td>路徑平穩，但記憶體需求最大</td>
+</tr>
+<tr>
+<td><strong>Mini-batch（MGD）</strong></td>
+<td>切成固定大小的小批次（如一次 3 筆）訓練</td>
+<td>介於兩者之間，最常用於兼顧記憶體與效果</td>
+</tr>
+<tr>
+<td><strong>隨機梯度下降（SGD）</strong></td>
+<td>每次只隨機抓 1 筆資料訓練</td>
+<td>路徑震盪（看起來很亂），但運算快、最終仍會收斂，目前最常用</td>
+</tr>
+</tbody>
+</table>
+<p>完整跑完一次「全部資料集」（不論用哪種切分方式），就稱為一個 <strong>Epoch（世代）</strong>。</p>
+<hr />
+<h2 id="overfitting過擬合是什麼為什麼會發生"><a class="anchor" href="#overfitting過擬合是什麼為什麼會發生">#</a> Overfitting（過擬合）是什麼？為什麼會發生？</h2>
+<p>理想狀態下，模型應該學到資料背後的「規律」（一條能大致貼合所有資料趨勢的曲線）。</p>
+<p>但如果<strong>訓練次數太多</strong>或<strong>資料集太小</strong>，模型會開始「死記」訓練資料的答案，而不是學習規律 —— 這就是 Overfitting。</p>
+<p>後果：模型在訓練資料上表現很好，但換一批稍有差異的測試資料，準確度就會明顯下滑。</p>
+<blockquote>
+<p>這個概念在後面 CNN 主題會延伸出具體解法（如 Data Augmentation 資料增強）。</p>
+</blockquote>
+<h2 id="銜接下一步"><a class="anchor" href="#銜接下一步">#</a> 銜接下一步</h2>
+<p>現在我們已經知道神經網路「理論上」怎麼運作，但實際動手刻一個多層網路、手動算每一層的梯度，工程上非常繁瑣。下一個主題會介紹<strong>深度學習框架</strong>，看它怎麼幫我們自動完成這整套流程。</p>
+
+      <div class="tags">
+          <a href="/tags/%E5%A4%A7%E5%AD%B8%E7%AD%86%E8%A8%98/" rel="tag"><i class="ic i-tag"></i> 大學筆記</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新於</span>
+    <time title="修改時間：2026-07-03 23:25:53" itemprop="dateModified" datetime="2026-07-03T23:25:53+08:00">2026-07-03</time>
+  </span>
+  <span id="2026/07/03/深度學習核心概念筆記/" class="item leancloud_visitors" data-flag-title="深度學習核心概念筆記" title="閱讀次數">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">閱讀次數</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">次</span>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>作者： </strong>Rabbir <i class="ic i-at"><em>@</em></i>プログラムを書けないうさぎは、ただのうさぎだ。
+  </li>
+  <li class="link">
+    <strong>文章連結：</strong>
+    <a href="https://rabbirreaper.github.io/2026/07/03/%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5%E7%AD%86%E8%A8%98/" title="深度學習核心概念筆記">https://rabbirreaper.github.io/2026/07/03/深度學習核心概念筆記/</a>
+  </li>
+  <li class="license">
+    <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 許可協議。轉載請註明出處！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2026/05/11/%E8%89%BE%E7%95%A5%E7%89%B9%E6%B3%A2%E6%B5%AA%E7%90%86%E8%AB%96/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;pub-da440be71028438aa9683b63bef5ccf1.r2.dev&#x2F;75.jpg" title="艾略特波浪理論">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>艾略特波浪理論</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目錄">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ai-%E7%9A%84%E8%B5%B7%E9%BB%9E-perceptron"><span class="toc-number">1.</span> <span class="toc-text"> AI 的起點  Perceptron</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9A%E9%BA%BC%E6%98%AFartificial-intelligence"><span class="toc-number">1.1.</span> <span class="toc-text"> 甚麼是 Artificial Intelligence</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A9%B2%E5%A6%82%E4%BD%95%E8%AE%93%E6%A9%9F%E5%99%A8%E5%88%A4%E6%96%B7"><span class="toc-number">1.2.</span> <span class="toc-text"> 該如何讓機器判斷</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#perceptron%E6%84%9F%E7%9F%A5%E6%A9%9F%E6%98%AF%E4%BB%80%E9%BA%BC"><span class="toc-number">1.3.</span> <span class="toc-text"> Perceptron（感知機）是什麼？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%AE%93perceptron%E5%88%A4%E6%96%B7%E6%9B%B4%E6%BA%96%E7%A2%BA"><span class="toc-number">1.4.</span> <span class="toc-text"> 如何讓 Perceptron  判斷更準確</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#training%E8%A8%93%E7%B7%B4%E5%9C%A8%E5%81%9A%E4%BB%80%E9%BA%BC"><span class="toc-number">1.5.</span> <span class="toc-text">  Training（訓練） 在做什麼</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC-perceptron-%E9%9C%80%E8%A6%81%E8%A2%AB%E5%8D%87%E7%B4%9A%E6%88%90-sigmoid-%E7%A5%9E%E7%B6%93%E5%85%83"><span class="toc-number">1.6.</span> <span class="toc-text"> 為什麼  Perceptron  需要被「升級」成  Sigmoid  神經元？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#perceptron-%E9%81%87%E5%88%B0%E7%9A%84%E5%95%8F%E9%A1%8C"><span class="toc-number">1.6.1.</span> <span class="toc-text">  Perceptron  遇到的問題</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sigmoid-function-%E5%9C%A8%E5%81%9A%E4%BB%80%E9%BA%BC"><span class="toc-number">1.6.2.</span> <span class="toc-text">  Sigmoid Function  在做什麼</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8Dgradient-descent%E6%98%AF%E7%94%9A%E9%BA%BC"><span class="toc-number">1.7.</span> <span class="toc-text"> 梯度下降（Gradient Descent）是甚麼</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8Dgradient-descent%E5%AF%A6%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">1.8.</span> <span class="toc-text"> 梯度下降（Gradient Descent）實作原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5"><span class="toc-number">1.8.1.</span> <span class="toc-text"> 第一步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8D-w-%E5%BE%AE%E5%88%86%E5%BE%97%E5%88%B0%E6%96%9C%E7%8E%87"><span class="toc-number">1.8.2.</span> <span class="toc-text"> 對 W 微分，得到斜率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E5%BE%80%E5%8F%8D%E6%96%B9%E5%90%91%E8%B5%B0"><span class="toc-number">1.8.3.</span> <span class="toc-text"> 為什麼要往反方向走？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0-w-%E5%92%8C-b-%E7%9A%84%E5%85%AC%E5%BC%8F"><span class="toc-number">1.8.4.</span> <span class="toc-text"> 更新 W 和 B 的公式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%89%8D%E9%81%87%E5%88%B0%E7%9A%84%E5%95%8F%E9%A1%8C"><span class="toc-number">1.9.</span> <span class="toc-text"> 目前遇到的問題</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%88%E7%9C%8B%E4%B8%80%E5%80%8B%E4%B8%80%E6%A2%9D%E7%B7%9A%E5%B0%B1%E6%98%AF%E5%88%86%E4%B8%8D%E9%96%8B%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="toc-number">1.9.1.</span> <span class="toc-text"> 先看一個「一條線就是分不開」的例子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%95%8F%E9%A1%8C%E8%A7%A3%E9%87%8B"><span class="toc-number">1.9.2.</span> <span class="toc-text"> 問題解釋</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B8%E5%AD%B8%E8%AD%89%E6%98%8E%E6%98%AF%E5%8F%AF%E4%BB%A5%E7%9A%84"><span class="toc-number">1.9.2.1.</span> <span class="toc-text"> 數學證明：是可以的</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%82%A3%E7%82%BA%E4%BB%80%E9%BA%BC%E5%AF%A6%E9%9A%9B%E4%B8%8A%E7%84%A1%E6%B3%95%E9%80%99%E9%BA%BC%E5%81%9A"><span class="toc-number">1.9.2.2.</span> <span class="toc-text"> 那為什麼「實際上無法」這麼做？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E5%B1%A4%E7%A5%9E%E7%B6%93%E7%B6%B2%E8%B7%AF%E6%98%AF%E6%80%8E%E9%BA%BC%E5%84%AA%E9%9B%85%E8%A7%A3%E6%B1%BA%E9%80%99%E5%80%8B%E5%95%8F%E9%A1%8C%E7%9A%84"><span class="toc-number">1.9.2.3.</span> <span class="toc-text"> 多層神經網路，是怎麼優雅解決這個問題的？</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A5%9E%E7%B6%93%E7%B6%B2%E8%B7%AF%E7%9A%84%E5%AE%8C%E6%95%B4%E8%A8%93%E7%B7%B4%E6%B5%81%E7%A8%8B%E5%89%8D%E5%82%B3%E9%81%9E-%E5%80%92%E5%82%B3%E9%81%9E-%E8%B3%87%E6%96%99%E9%9B%86-overfitting"><span class="toc-number">2.</span> <span class="toc-text"> 神經網路的完整訓練流程：前傳遞、倒傳遞、資料集、Overfitting</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BA%E7%99%BC%E9%BB%9E%E6%9C%89%E4%BA%86%E5%A4%9A%E5%B1%A4%E7%A5%9E%E7%B6%93%E5%85%83%E8%A6%81%E6%80%8E%E9%BA%BC%E8%AE%93%E6%95%B4%E5%80%8B%E7%B6%B2%E8%B7%AF%E4%B8%80%E8%B5%B7%E5%AD%B8%E7%BF%92"><span class="toc-number">2.1.</span> <span class="toc-text"> 出發點：有了多層神經元，要怎麼讓「整個網路」一起學習？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A5%9E%E7%B6%93%E7%B6%B2%E8%B7%AF%E6%98%AF%E4%BB%80%E9%BA%BC"><span class="toc-number">2.2.</span> <span class="toc-text"> 神經網路是什麼？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E9%9A%B1%E8%97%8F%E5%B1%A4%E8%A6%81%E6%A8%A1%E7%B5%84%E5%8C%96%E5%88%86%E5%B7%A5"><span class="toc-number">2.3.</span> <span class="toc-text"> 為什麼隱藏層要「模組化分工」？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E5%82%B3%E9%81%9Eforward-propagation%E5%AF%A6%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">2.4.</span> <span class="toc-text"> 前傳遞（Forward Propagation）實作原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E9%9C%80%E8%A6%81%E5%80%92%E5%82%B3%E9%81%9Ebackpropagation"><span class="toc-number">2.5.</span> <span class="toc-text"> 為什麼需要倒傳遞（Backpropagation）？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC-sigmoid-%E6%9C%83%E9%80%A0%E6%88%90%E6%A2%AF%E5%BA%A6%E6%B6%88%E5%A4%B1%E7%88%86%E7%82%B8"><span class="toc-number">2.5.1.</span> <span class="toc-text"> 為什麼 Sigmoid 會造成梯度消失／爆炸？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B3%87%E6%96%99%E9%9B%86dataset%E7%9A%84%E8%A8%AD%E8%A8%88%E5%8E%9F%E7%90%86"><span class="toc-number">2.6.</span> <span class="toc-text"> 資料集（Dataset）的設計原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E8%B3%87%E6%96%99%E9%9B%86%E8%A6%81%E6%9C%89%E6%84%8F%E7%BE%A9"><span class="toc-number">2.6.1.</span> <span class="toc-text"> 為什麼資料集要「有意義」？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B3%87%E6%96%99%E9%9B%86%E7%9A%84%E5%88%87%E5%88%86"><span class="toc-number">2.6.2.</span> <span class="toc-text"> 資料集的切分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E9%9C%80%E8%A6%81%E4%B8%8D%E5%90%8C%E7%9A%84%E8%A8%93%E7%B7%B4%E6%96%B9%E5%BC%8Fbatch-mini-batch-sgd"><span class="toc-number">2.6.3.</span> <span class="toc-text"> 為什麼需要不同的訓練方式（Batch &#x2F; Mini-batch &#x2F; SGD）？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#overfitting%E9%81%8E%E6%93%AC%E5%90%88%E6%98%AF%E4%BB%80%E9%BA%BC%E7%82%BA%E4%BB%80%E9%BA%BC%E6%9C%83%E7%99%BC%E7%94%9F"><span class="toc-number">2.7.</span> <span class="toc-text"> Overfitting（過擬合）是什麼？為什麼會發生？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%8A%9C%E6%8E%A5%E4%B8%8B%E4%B8%80%E6%AD%A5"><span class="toc-number">2.8.</span> <span class="toc-text"> 銜接下一步</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+      </div>
+      <div class="overview panel" data-title="本站概要">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Rabbir"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">Rabbir</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">98</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">12</span>
+        <span class="name">分類</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">36</span>
+        <span class="name">標籤</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>首頁</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>關於</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>歸檔</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分類</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>標籤</a>
+  </li>
+
+  </ul>
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>隨機文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/CHSH-OJ/" title="分類於 CHSH OJ">CHSH OJ</a>
+</div>
+
+    <span><a href="/2025/01/18/c004-%E5%85%B5%E9%95%B7%E7%A0%8D%E7%8C%B4/" title="c004 兵長砍猴">c004 兵長砍猴</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/02/21/Q-5-5-Closest-pair/" title="Q-5-5. Closest pair">Q-5-5. Closest pair</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2026/04/10/python-%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/" title="python 語法筆記">python 語法筆記</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/18/Q-7-5-%E9%97%96%E9%97%9C%E8%B7%AF%E7%B7%9A/" title="Q-7-5. 闖關路線">Q-7-5. 闖關路線</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2026/01/08/hello-world/" title="Hello World">Hello World</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/18/Q-3-5-%E5%B8%B6%E8%91%97%E6%9D%BF%E5%87%B3%E6%8E%92%E9%9B%9E%E6%8E%92%E7%9A%84%E9%AB%98%E4%BA%BA-APCS/" title="Q-3-5. 帶著板凳排雞排的高人(APCS)">Q-3-5. 帶著板凳排雞排的高人(APCS)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/18/Q-2-10-%E5%AD%90%E9%9B%86%E5%90%88%E7%9A%84%E5%92%8C-%E6%8A%98%E5%8D%8A%E6%9E%9A%E8%88%89/" title="Q-2-10. 子集合的和(折半枚舉)">Q-2-10. 子集合的和(折半枚舉)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2025/02/21/Vue3-%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/" title="Vue3 語法筆記">Vue3 語法筆記</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2025/01/15/My-First-Post/" title="My First Post">My First Post</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80%E7%AD%86%E8%A8%98/" title="分類於 程式語言筆記">程式語言筆記</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80%E7%AD%86%E8%A8%98/node-js/" title="分類於 node.js">node.js</a>
+</div>
+
+    <span><a href="/2025/01/15/Mongoose-%E7%9A%84%E5%9F%BA%E7%A4%8E%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/" title="Mongoose 的基礎語法筆記">Mongoose 的基礎語法筆記</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新評論</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2025 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Rabbir @ Rabbir Reaper</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="總字數">383k 字</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">5:48</span>
+  </div>
+  <div class="powered-by">
+    基於 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2026/07/03/深度學習核心概念筆記/',
+    favicon: {
+      show: "（●´3｀●）復活成功",
+      hide: "(´Д｀)瀏覽器崩潰啦"
+    },
+    search : {
+      placeholder: "文章搜尋",
+      empty: "關於 「 ${query} 」 ，什麼也沒搜到",
+      stats: "${time} ms 內找到 ${hits} 條結果"
+    },
+    valine: true,fancybox: true,
+    copyright: '複製成功，轉載請遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 協議。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
