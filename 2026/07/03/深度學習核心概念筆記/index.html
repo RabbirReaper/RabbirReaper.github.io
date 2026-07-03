@@ -76,7 +76,7 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
       <i class="ic i-pen"></i>
     </span>
     <span class="text">文章字數</span>
-    <span>6.8k</span>
+    <span>21k</span>
     <span class="text">字</span>
   </span>
   <span class="item" title="所需閱讀時間">
@@ -84,7 +84,7 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
       <i class="ic i-clock"></i>
     </span>
     <span class="text">所需閱讀時間</span>
-    <span>6 分鐘</span>
+    <span>19 分鐘</span>
   </span>
 </div>
 
@@ -117,12 +117,12 @@ Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎ�
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/70.jpg"></li>
-          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/31.jpg"></li>
-          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/99.jpg"></li>
-          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/71.jpg"></li>
-          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/52.jpg"></li>
-          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/26.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/74.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/77.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/6.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/46.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/21.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/19.jpg"></li>
         </ul>
       </div>
     </header>
@@ -496,8 +496,501 @@ B_new = B_old - 學習率 × 斜率
 <blockquote>
 <p>這個概念在後面 CNN 主題會延伸出具體解法（如 Data Augmentation 資料增強）。</p>
 </blockquote>
+<h1 id="深度學習框架與-pytorch"><a class="anchor" href="#深度學習框架與-pytorch">#</a> 深度學習框架與 PyTorch</h1>
+<h2 id="出發點理論都懂了但自己手刻一個神經網路太痛苦"><a class="anchor" href="#出發點理論都懂了但自己手刻一個神經網路太痛苦">#</a> 出發點：理論都懂了，但自己手刻一個神經網路太痛苦</h2>
+<p>前面的主題我們已經知道神經網路的數學原理：矩陣運算、連鎖律算梯度、逐層更新參數。但如果每次設計一個新模型，都要自己手寫每一層的矩陣相乘、手算每個參數的偏微分，工程成本會非常高，而且很容易出錯。<strong>框架</strong>就是為了解決這個工程問題而存在的。</p>
+<hr />
+<h2 id="為什麼需要深度學習框架"><a class="anchor" href="#為什麼需要深度學習框架">#</a> 為什麼需要深度學習框架？</h2>
+<p>深度學習裡最重要、最核心的兩件事是：</p>
+<ol>
+<li><strong>矩陣運算</strong>：神經網路每一層的本質就是「輸入向量 × 權重矩陣 + Bias」，這正好可以用矩陣運算高效完成。</li>
+<li><strong>自動計算梯度（Autograd）</strong>：如果自訂一個比較複雜的神經網路架構，每次都要手算微分公式太麻煩，框架要能自動幫我們算出每個參數的梯度。</li>
+</ol>
+<p>除此之外，框架還提供：</p>
+<ol start="3">
+<li><strong>GPU 加速</strong>：矩陣運算非常適合用 GPU 做平行化處理，框架幫我們處理好底層的加速。</li>
+<li><strong>High-level API</strong>：框架內建很多現成的函式、甚至預訓練好的模型，可以直接呼叫使用，不用每次從零開始寫。</li>
+</ol>
+<hr />
+<h2 id="主流框架是什麼-tensorflow-vs-pytorch"><a class="anchor" href="#主流框架是什麼-tensorflow-vs-pytorch">#</a> 主流框架是什麼？—— TensorFlow vs PyTorch</h2>
+<h3 id="tensorflowgoogle-開發"><a class="anchor" href="#tensorflowgoogle-開發">#</a> TensorFlow（Google 開發）</h3>
+<ul>
+<li>名稱來源：Tensor（張量，本質上就是矩陣 / 向量）+ Flow（資料在張量之間流動）。</li>
+<li><strong>1.x 版本</strong>：使用 <strong>靜態計算圖（Static Computational Graph）</strong>，運作方式是 <em>define and run</em>—— 你必須先把整個網路結構定義完，才開一個 Session 一次性建好整個計算圖再執行。
+<ul>
+<li>優點：因為是整個圖一次建好，執行效率較高，適合業界正式部署。</li>
+<li>缺點：除錯不方便（你無法在中間下中斷點去看某個變數當下的值，因為圖根本還沒真正建好）。</li>
+</ul>
+</li>
+<li><strong>2.x 版本</strong>：改用 <strong>Eager Execution</strong>（動態圖），運作方式變得跟 PyTorch 很像，並把 Keras（高階 API）整合進來。</li>
+</ul>
+<h3 id="pytorchfacebook-開發前身為-torch"><a class="anchor" href="#pytorchfacebook-開發前身為-torch">#</a> PyTorch（Facebook 開發，前身為 Torch）</h3>
+<ul>
+<li>使用 <strong>動態計算圖（Dynamic Computational Graph）</strong>，運作方式是 <em>define by run</em>—— 程式執行到哪一行，計算圖就同步建到哪裡。
+<ul>
+<li>優點：方便除錯（可以隨時下中斷點看當下的 Tensor 長什麼樣子），更適合研究人員快速試錯。</li>
+</ul>
+</li>
+<li>與 NumPy 高度相容，資料格式轉換方便（很多影像讀取套件如 OpenCV 讀進來的格式就是 NumPy）。</li>
+</ul>
+<blockquote>
+<p>因為 TensorFlow 1.x 與 2.x 版本之間的用法落差較大，網路教學常常新舊混雜，容易造成混淆。這也是為什麼教學上通常會優先選 PyTorch 來示範。</p>
+</blockquote>
+<hr />
+<h2 id="pytorch-訓練流程的實作原理"><a class="anchor" href="#pytorch-訓練流程的實作原理">#</a> PyTorch 訓練流程的實作原理</h2>
+<h3 id="整體-workflow"><a class="anchor" href="#整體-workflow">#</a> 整體 Workflow</h3>
+<pre><code>準備資料 → 建立模型
+   ↓
+資料前處理
+   ↓
+餵進模型做預測（前傳遞）
+   ↓
+用 Loss Function 計算預測值與真實答案的誤差
+   ↓
+對每個權重 / Bias 計算梯度（loss.backward()）
+   ↓
+用 Optimizer 更新權重
+   ↓
+（重複以上步驟，稱為 Training Loop）
+</code></pre>
+<h3 id="資料前處理的具體步驟"><a class="anchor" href="#資料前處理的具體步驟">#</a> 資料前處理的具體步驟</h3>
+<ol>
+<li><strong>收集資料（Collect）</strong></li>
+<li><strong>正規化（Normalization）/ 標準化（Standardization）</strong>
+<ul>
+<li><strong>Normalization（Min-Max）</strong>：把每個資料點減去最小值，再除以（最大值−最小值），把數值縮放到 0~1 之間。</li>
+<li><strong>Standardization</strong>：把每個資料點減去平均值，再除以標準差，讓不同維度的「變動幅度」趨於一致。</li>
+<li><strong>為什�麼需要這一步</strong>：如果不同維度的數值範圍差異很大（例如 X 軸是 0~1，Y 軸是 0~1000），整個誤差曲面會被拉得很扁，學習率稍大就容易在曲面上來回震盪，難以收斂。做完正規化後，誤差曲面會比較接近圓形，訓練更穩定。</li>
+<li>⚠️ <strong>務必對 Train / Validation / Test 三份資料「同步」處理</strong>，不能各自獨立計算，否則資料分布會跑掉。</li>
+</ul>
+</li>
+<li><strong>切分資料集</strong>：Training / Validation / Test</li>
+<li><strong>切分 Batch</strong>：資料量太大時，分批送進模型訓練（對應前一主題提到的 Mini-batch）</li>
+</ol>
+<h3 id="為什麼要手動把梯度歸零zero_grad"><a class="anchor" href="#為什麼要手動把梯度歸零zero_grad">#</a> 為什麼要手動把梯度「歸零」（zero_grad）？</h3>
+<p>這跟框架底層的 <strong>Computational Graph（計算圖）</strong> 機制有關：框架會把每一個運算拆解成最小單位（加、乘、平方…），這樣才能套用連鎖律的規則，自動算出每個參數的梯度。</p>
+<p>但因為梯度是「累加」計算的（連鎖律一路往回乘加），框架沒辦法自己判斷「你想要一筆資料更新一次，還是累積一個 batch 才更新一次」，所以需要工程師自己決定何時呼叫  <code>zero_grad()</code>  把梯度歸零，避免梯度不小心累加到下一輪。</p>
+<hr />
+<h2 id="應用一個典型的-pytorch-訓練範例"><a class="anchor" href="#應用一個典型的-pytorch-訓練範例">#</a> 應用：一個典型的 PyTorch 訓練範例</h2>
+<p>以乳癌資料集（來自 sklearn）為例的典型流程：</p>
+<ol>
+<li>用 sklearn 載入資料集</li>
+<li>做 Normalization / Standardization</li>
+<li>切分 Train / Validation / Test</li>
+<li>定義模型架構（幾層、每層幾顆神經元）</li>
+<li>定義 Loss Function（如 MSE 或 Cross Entropy）與 Optimizer（如 SGD）</li>
+<li>寫 Training Loop：前傳遞 → 算 Loss →  <code>loss.backward()</code>  算梯度 → Optimizer 更新權重</li>
+<li>用 Validation Set 檢查訓練是否正常（例如畫出 Loss / Accuracy 曲線）</li>
+<li>訓練完成後，用 Test Set 做最終評估</li>
+</ol>
+<h1 id="分類任務的核心元件encoding-softmax-啟用-損失函式-optimizer"><a class="anchor" href="#分類任務的核心元件encoding-softmax-啟用-損失函式-optimizer">#</a> 分類任務的核心元件：Encoding、Softmax、啟用 / 損失函式、Optimizer</h1>
+<h2 id="出發點模型要怎麼理解類別輸出又要怎麼變成一個合理的答案"><a class="anchor" href="#出發點模型要怎麼理解類別輸出又要怎麼變成一個合理的答案">#</a> 出發點：模型要怎麼「理解」類別？輸出又要怎麼變成一個合理的答案？</h2>
+<p>前面我們已經能用 PyTorch 跑出一個完整的訓練流程，但中間還有幾個關鍵問題沒解決：類別標籤（如「貓」「狗」「鳥」）要怎麼變成數字？模型輸出一堆雜亂的數字，要怎麼變成「這張圖 89% 像狗」這種合理的機率？還有，Optimizer 除了基本的梯度下降，還有哪些更聰明的更新策略？這個主題就是補上這些拼圖。</p>
+<hr />
+<h2 id="label-encoding標籤編碼把類別變成數字"><a class="anchor" href="#label-encoding標籤編碼把類別變成數字">#</a> Label Encoding（標籤編碼）：把類別變成數字</h2>
+<h3 id="整數編碼是什麼"><a class="anchor" href="#整數編碼是什麼">#</a> 整數編碼是什麼？</h3>
+<p>最直覺的做法：類別 0、1、2、3… 依序編號。例如乳癌資料集裡，0 代表惡性、1 代表良性。</p>
+<h3 id="為什麼整數編碼會有問題"><a class="anchor" href="#為什麼整數編碼會有問題">#</a> 為什麼整數編碼會有問題？</h3>
+<p>問題出在：整數編碼隱含了一種「距離關係」，但類別之間其實<strong>沒有距離關係</strong>。</p>
+<p>舉例：如果有貓、狗、老鼠三類，分別編碼成 0、1、2，等於暗示「貓跟狗的距離比貓跟老鼠近」—— 但這完全是人為的、沒有意義的假設。</p>
+<p>另外，類別數越多時（例如上千類），模型要把輸出從接近 0 調整到接近 1000，需要花非常多時間訓練，而且過程一點都不直覺。</p>
+<h3 id="one-hot-encoding-是什麼為什麼需要它"><a class="anchor" href="#one-hot-encoding-是什麼為什麼需要它">#</a> One-hot Encoding 是什麼？為什麼需要它？</h3>
+<p><strong>核心想法</strong>：不要用「一條數線上的距離」表示類別，而是改用「不同的維度」表示類別。</p>
+<p>例如兩個類別（惡性 / 良性），就用兩個維度（X 軸、Y 軸）分別代表；三個類別就用三維空間，依此類推。</p>
+<p>這樣做的好處：</p>
+<ol>
+<li><strong>每個類別到原點的距離都相等</strong> —— 不會有「某兩類比較近、某兩類比較遠」的錯誤暗示，模型不需要為了「移動到某個類別」而走比較遠的路。</li>
+<li><strong>更符合「分類」任務的本質是機率分佈</strong>：模型最後輸出的應該是「70% 像 A、30% 像 B」這種機率描述，而不是一個帶有距離意義的數字。</li>
+</ol>
+<blockquote>
+<p>補充：整數 / 小數編碼比較適合用在<strong>迴歸</strong>任務（如預測房價：300 萬、600 萬本身就有實際的數值意義），而非分類任務。</p>
+</blockquote>
+<hr />
+<h2 id="softmax把雜亂的輸出變成機率分佈"><a class="anchor" href="#softmax把雜亂的輸出變成機率分佈">#</a> Softmax：把雜亂的輸出變成機率分佈</h2>
+<h3 id="為什麼需要-softmax"><a class="anchor" href="#為什麼需要-softmax">#</a> 為什麼需要 Softmax？</h3>
+<p>模型訓練初期，權重幾乎是隨機的，所以輸出層算出來的數值通常很雜亂（可能是 4.3、-2.1、6.4…），但我們希望輸出的是一個機率分佈（每個類別 0~1 之間，且總和為 1），這樣才好跟 One-hot 的標籤做比較、計算誤差。</p>
+<h3 id="為什麼不能直接做簡單的正規化除以總和"><a class="anchor" href="#為什麼不能直接做簡單的正規化除以總和">#</a> 為什麼不能直接做簡單的「正規化」（除以總和）？</h3>
+<p>直覺的做法是把每個輸出除以總和（normalization）。問題是：如果輸出是 1 跟 2，正規化後是 1/3 跟 2/3；但如果輸出是 10 跟 20（差距明顯更懸殊），正規化後一樣是 1/3 跟 2/3——<strong> 這樣完全看不出模型對哪個類別「更有信心」的程度差異</strong>。</p>
+<h3 id="softmax-的實作原理"><a class="anchor" href="#softmax-的實作原理">#</a> Softmax 的實作原理</h3>
+<p>Softmax 透過<strong>指數函式</strong>來放大數值間的相對差異：</p>
+<pre><code>Softmax(xi) = exp(xi) / Σ exp(xj)
+</code></pre>
+<p>因為指數成長非常快（例如 2 的 10 次方是 1024、2 的 20 次方更巨大），原本數值差距不明顯的兩個輸出，經過指數放大後，差距會被凸顯出來，越強烈的訊號會得到越高的機率。</p>
+<h3 id="softmax-放在哪裡"><a class="anchor" href="#softmax-放在哪裡">#</a> Softmax 放在哪裡？</h3>
+<p><strong>只會放在模型的最後一層</strong>。原因：如果放在中間層，後面還要再經過一次「權重相乘 + 相加」的運算，輸出又會變回雜亂的數字，等於白做。只有放在最後一層，才能確保最終輸出維持機率分佈的形式（且總和恆等於 1）。</p>
+<hr />
+<h2 id="啟用函式-損失函式複習與延伸"><a class="anchor" href="#啟用函式-損失函式複習與延伸">#</a> 啟用函式 / 損失函式：複習與延伸</h2>
+<p>這部分延續前面提過的概念：</p>
+<ul>
+<li><strong>啟用函式</strong>（如 Sigmoid、ReLU）：決定神經元的非線性輸出特性。</li>
+<li><strong>損失函式</strong>（如 MSE、Cross Entropy）：衡量模型輸出與真實答案的差距，分類任務通常搭配 Cross Entropy，迴歸任務常用 MSE。</li>
+</ul>
+<hr />
+<h2 id="optimizer-進階自動調整學習率的方法"><a class="anchor" href="#optimizer-進階自動調整學習率的方法">#</a> Optimizer 進階：自動調整學習率的方法</h2>
+<h3 id="為什麼基本梯度下降sgd不夠好"><a class="anchor" href="#為什麼基本梯度下降sgd不夠好">#</a> 為什麼基本梯度下降（SGD）不夠好？</h3>
+<p>固定的學習率（Learning Rate）有個問題：如果誤差曲面在某個方向非常陡峭、另一個方向卻很平緩，固定的學習率很難兩邊都兼顧 —— 陡的地方容易震盪，平緩的地方又學得太慢。</p>
+<h3 id="adagrad依方向自動調整學習率"><a class="anchor" href="#adagrad依方向自動調整學習率">#</a> Adagrad：依方向自動調整學習率</h3>
+<p><strong>原理</strong>：把「之前每一步梯度的平方」累加起來，學習率除以這個累加值的開根號：</p>
+<pre><code>W_new = W_old − (學習率 / √(Σ過去梯度² + ε)) × 當前梯度
+</code></pre>
+<ul>
+<li>如果某個方向過去的梯度一直很陡峭（數值大），累加值會變大，學習率就會被自動調小。</li>
+<li>如果某個方向一直很平緩，累加值小，學習率相對維持較大。</li>
+</ul>
+<p>➡️ 等於讓模型在不同維度自動「客製化」學習率。</p>
+<p><strong>Adagrad 的問題</strong>：因為它會把「所有過去的梯度」全部累加，對於梯度突然劇烈變化的狀況反應太慢 —— 過去累積的歷史會稀釋掉當下的變化。</p>
+<h3 id="rmsprop改善-adagrad-反應太慢的問題"><a class="anchor" href="#rmsprop改善-adagrad-反應太慢的問題">#</a> RMSProp：改善 Adagrad 反應太慢的問題</h3>
+<p><strong>原理</strong>：除了考慮過去累積的梯度，也加入一個權重（alpha）去參考「當前」的梯度值，讓模型可以更快反應劇烈變化的梯度方向（例如誤差曲面是彎曲的月牙形時）。alpha 由使用者自行調整，決定要「比較聽過去」還是「比較聽當下」。</p>
+<h3 id="adam結合-momentum-與-rmsprop"><a class="anchor" href="#adam結合-momentum-與-rmsprop">#</a> Adam：結合 Momentum 與 RMSProp</h3>
+<p>Adam 同時結合兩種技巧：</p>
+<ul>
+<li><strong>Momentum（動量）</strong>：累積之前下降的「動能」，幫助模型跳脫局部最小值或停滯在平坦區（高原）的問題。</li>
+<li><strong>RMSProp</strong>：依方向自動調整學習率。</li>
+</ul>
+<blockquote>
+<p>補充：雖然 Adam 曾經是業界最常用的預設選擇，但近年也有研究指出它在某些情境下有缺陷，選擇 Optimizer 時仍建議依任務實際測試效果。</p>
+</blockquote>
+<hr />
+<h2 id="應用銜接到影像辨識"><a class="anchor" href="#應用銜接到影像辨識">#</a> 應用：銜接到影像辨識</h2>
+<p>有了 One-hot Encoding、Softmax、合適的 Loss Function 與 Optimizer，我們就具備了做「分類」任務的完整工具。這個階段會先嘗試用<strong>全連接的 DNN</strong> 直接做影像辨識：把圖片展平成一維向量輸入。</p>
+<p><strong>但馬上會遇到問題</strong>：一張 50×50 像素的圖片，展平後就有 2500 個輸入神經元，整個網路的參數量很快會膨脹到數百萬等級，運算量爆炸且容易過擬合。</p>
+<p>➡️ 這個侵略性的參數量問題，正是促使下一個主題「CNN」誕生的根本原因。</p>
+<h1 id="cnn-與物件偵測"><a class="anchor" href="#cnn-與物件偵測">#</a> CNN 與物件偵測</h1>
+<h2 id="出發點用-dnn-做影像辨識參數量會直接爆炸"><a class="anchor" href="#出發點用-dnn-做影像辨識參數量會直接爆炸">#</a> 出發點：用 DNN 做影像辨識，參數量會直接爆炸</h2>
+<p>上一個主題已經點出問題：如果直接把圖片展平成一維向量丟進全連接的 DNN，光是一張 50×50 的小圖，輸入層就要 2500 個神經元，整個網路參數量輕鬆突破數百萬。這不只運算成本高，也更容易過擬合。<strong>CNN（卷積神經網路）就是為了解決這個參數爆炸問題而生的架構。</strong></p>
+<hr />
+<h2 id="cnn-是什麼"><a class="anchor" href="#cnn-是什麼">#</a> CNN 是什麼？</h2>
+<p>CNN 是 DNN 的一種特化版本，核心想法是：<strong>不要讓每個輸出神經元都連接前一層的「每一個」輸入</strong>（全連接），而是讓每個神經元只關注一小塊「局部區域」的特徵，並且讓同一個濾波器（卷積核）重複套用在整張圖上 —— 這樣可以大幅減少需要學習的參數量。</p>
+<p>CNN 主要由三個部分構成：</p>
+<ol>
+<li><strong>Convolution（卷積）</strong>：負責做特徵擷取</li>
+<li><strong>Pooling（池化）</strong>：把前一層的 Feature Map 做簡化、降維</li>
+<li><strong>Flatten + Fully Connected（全連接層）</strong>：把最後提取出來的特徵展平，接到一般分類器做最終分類（如 Softmax 輸出）</li>
+</ol>
+<p>Convolution 跟 Pooling 通常會重複堆疊很多次，才接到最後的全連接層。</p>
+<h2 id="為什麼-cnn-可以比-dnn-表現更好"><a class="anchor" href="#為什麼-cnn-可以比-dnn-表現更好">#</a> 為什麼 CNN 可以比 DNN 表現更好？</h2>
+<p>因為 CNN 會先「擷取特徵」再交給分類器判斷，而不是把原始像素直接硬塞進分類器。經過卷積層處理後的特徵，已經是比較精簡、有意義的資訊，分類器處理起來自然更有效率、效果更好。</p>
+<hr />
+<h2 id="怎麼比較不同-cnn-模型的好壞-imagenet-與-benchmark"><a class="anchor" href="#怎麼比較不同-cnn-模型的好壞-imagenet-與-benchmark">#</a> 怎麼比較不同 CNN 模型的好壞？—— ImageNet 與 Benchmark</h2>
+<p>要客觀比較不同模型誰更強，需要一個大家都用同一份資料來測試的「基準（Benchmark）」。<strong>ImageNet</strong> 就是影像辨識領域最重要的 Benchmark：</p>
+<ul>
+<li>約 1400 多萬張圖片</li>
+<li>2 萬多個類別</li>
+<li>對應比賽 <strong>ILSVRC</strong>（2010~2017 年舉辦）</li>
+</ul>
+<p>早期（2010、2011 年）非深度學習方法的錯誤率很高；自從深度學習模型（如 AlexNet）出現後，錯誤率大幅下降，到 2017 年甚至已經低於人類的判斷錯誤率（人類約 5~10%，因為 2 萬多類裡有很多容易混淆的細分類別）。</p>
+<hr />
+<h2 id="經典-cnn-模型的演進原理"><a class="anchor" href="#經典-cnn-模型的演進原理">#</a> 經典 CNN 模型的演進原理</h2>
+<h3 id="lenet1998"><a class="anchor" href="#lenet1998">#</a> LeNet（1998）</h3>
+<p>最早的 CNN 之一，網路很淺，主要應用在手寫數字辨識，效果很好。但因為當時沒有 GPU 加速，加上使用 Sigmoid /tanh 作為啟用函式（有梯度消失問題），在更複雜的影像任務（如多類別、大圖）上表現不佳。</p>
+<h3 id="alexnet2012"><a class="anchor" href="#alexnet2012">#</a> AlexNet（2012）</h3>
+<ul>
+<li><strong>第一個使用 GPU 訓練</strong>的 CNN 模型，讓整個電腦視覺領域開始起飛。</li>
+<li>改用 <strong>ReLU</strong> 取代 Sigmoid/tanh，緩解梯度消失問題。</li>
+<li>首次大量使用 <strong>Data Augmentation（資料增強）</strong>。</li>
+<li>架構上分成上下兩半，是因為當時 GPU 顯存不夠大，必須把模型拆成兩半分別放進兩張 GPU 訓練，最後再合併。</li>
+</ul>
+<h3 id="vggnet2014牛津大學提出"><a class="anchor" href="#vggnet2014牛津大學提出">#</a> VGGNet（2014，牛津大學提出）</h3>
+<ul>
+<li>比 AlexNet 更深（16 或 19 層）。</li>
+<li>核心創新：<strong>全部統一使用 3×3 的小卷積核</strong>，取代過去常用的 11×11、5×5 等大卷積核。</li>
+</ul>
+<p><strong>為什麼兩個 3×3 卷積疊在一起，效果等同一個 5×5？</strong></p>
+<p>把一張圖經過一次 3×3 卷積後，視野範圍縮小；再經過一次 3×3 卷積，視野範圍會等同於直接用一個 5×5 卷積核掃過去的效果 —— 也就是說，<strong>疊兩層小卷積核，可以達到跟一層大卷積核相同的「視野範圍（Receptive Field）」</strong>。</p>
+<p>但兩者參數量差很多：5×5 卷積核需要 25 個參數，而兩個 3×3 疊加只需要 9+9=18 個參數。<strong>參數量越少，越能緩解過擬合</strong>，這正是 VGG 全面採用小卷積核的原因。</p>
+<h3 id="inception-googlenet2014"><a class="anchor" href="#inception-googlenet2014">#</a> Inception / GoogLeNet（2014）</h3>
+<p><strong>核心想法</strong>：與其讓人類「猜」這一層該用多大的卷積核（3×3？5×5？），不如讓網路同時嘗試各種大小的卷積核，再讓網路自己決定該重視哪一種結果。</p>
+<p>做法：在同一層裡，平行跑 1×1、3×3、5×5 卷積以及 Max Pooling，把這幾種運算的輸出結果（Feature Map）** 串接（Filter Concatenation）** 起來，一起送進下一層。這個結構稱為 <strong>Inception Module</strong>。</p>
+<blockquote>
+<p>名稱來自電影《全面啟動》（Inception）的台詞「We need to go deeper」—— 呼應這個時期模型「越疊越深」的趨勢。</p>
+</blockquote>
+<hr />
+<h2 id="物件偵測object-detection不只要分類還要定位"><a class="anchor" href="#物件偵測object-detection不只要分類還要定位">#</a> 物件偵測（Object Detection）：不只要分類，還要定位</h2>
+<h3 id="為什麼分類不夠用"><a class="anchor" href="#為什麼分類不夠用">#</a> 為什麼分類不夠用？</h3>
+<p>單純的影像分類只能回答「這張圖是什麼」，但很多應用需要知道「<strong>東西在哪裡</strong>」，甚至「圖中有<strong>幾個</strong>東西」。</p>
+<h3 id="兩階段方法如-r-cnn-系列"><a class="anchor" href="#兩階段方法如-r-cnn-系列">#</a> 兩階段方法（如 R-CNN 系列）</h3>
+<p>先用某種方式提出「候選區域」（Region Proposal，猜測哪裡可能有物件），再把每個候選區域分別丟進 CNN 判斷類別。準確度較高，但因為要對每個候選區域都跑一次 CNN，速度較慢。</p>
+<h3 id="一階段方法yoloyou-only-look-once"><a class="anchor" href="#一階段方法yoloyou-only-look-once">#</a> 一階段方法：YOLO（You Only Look Once）</h3>
+<p><strong>核心想法</strong>：能不能跳過候選區域的步驟，直接把整張圖丟進一個大 CNN，一次性輸出所有物件的位置與類別？</p>
+<p><strong>怎麼解決「圖中物件數量不固定」的問題？</strong></p>
+<p>把圖片在邏輯上切成固定數量的格子（如 7×7），讓每個格子各自負責回答：「這個格子有沒有物件？如果有，邊界框在哪裡、是哪個類別？」這樣輸出的維度就固定了，不會因為圖中物件數量變化而改變。</p>
+<p><strong>YOLO 的優缺點</strong>：</p>
+<ul>
+<li>優點：只需要一次 CNN 前傳遞，速度非常快，可以做到即時偵測（約 60fps）。</li>
+<li>缺點：因為每個格子只能代表「一個」物件的判斷，當同一格子裡有很多小物件時（如密集的小紅綠燈），就容易判斷不準；整體準確度也略低於兩階段方法。</li>
+</ul>
+<hr />
+<h2 id="為什麼需要-data-augmentation資料增強"><a class="anchor" href="#為什麼需要-data-augmentation資料增強">#</a> 為什麼需要 Data Augmentation（資料增強）？</h2>
+<h3 id="一個有趣的反例shortcut-learning捷徑學習"><a class="anchor" href="#一個有趣的反例shortcut-learning捷徑學習">#</a> 一個有趣的反例：Shortcut Learning（捷徑學習）</h3>
+<p>假設訓練資料裡，星星總是出現在左下角／右上角，月亮總是出現在右下角／左上角 —— 模型可能會「偷懶」，學到「位置」這個捷徑特徵，而不是真正學到「形狀」這個我們想要的特徵。一旦換一批位置分布不同的測試資料，模型就會判斷錯誤。</p>
+<h3 id="data-augmentation-怎麼解決這個問題"><a class="anchor" href="#data-augmentation-怎麼解決這個問題">#</a> Data Augmentation 怎麼解決這個問題？</h3>
+<p>對訓練圖片做模糊化、變色、翻轉、旋轉等變化，讓同一個物件出現在更多不同的位置與外觀組合中，逼模型必須學習「形狀」本身的特徵，而不是死記某種捷徑模式。這也是緩解 Overfitting 的常見手段之一（資料量較少時特別需要）。</p>
+<h2 id="延伸應用文字定位"><a class="anchor" href="#延伸應用文字定位">#</a> 延伸應用：文字定位</h2>
+<p>文字定位（Text Detection）也可以視為物件偵測的一種應用（把「文字」當成要偵測的物件）。但因為文字常常很小、排列方式多變，YOLO 這類方法在小物件上表現較弱，實務上更常改用 ** 語意分割（Semantic Segmentation）** 等方法處理。</p>
 <h2 id="銜接下一步"><a class="anchor" href="#銜接下一步">#</a> 銜接下一步</h2>
-<p>現在我們已經知道神經網路「理論上」怎麼運作，但實際動手刻一個多層網路、手動算每一層的梯度，工程上非常繁瑣。下一個主題會介紹<strong>深度學習框架</strong>，看它怎麼幫我們自動完成這整套流程。</p>
+<p>CNN 解決了「影像」這種二維、空間連續的資料該怎麼處理。但語言（文字）是另一種完全不同性質的資料 —— 它是<strong>序列性</strong>的，順序會影響意義。下一個主題會進入 NLP（自然語言處理）領域，介紹專門處理序列資料的模型 RNN。</p>
+<h1 id="nlp-基礎與-rnn-lstm-gru-詞嵌入"><a class="anchor" href="#nlp-基礎與-rnn-lstm-gru-詞嵌入">#</a> NLP 基礎與 RNN / LSTM / GRU / 詞嵌入</h1>
+<h2 id="出發點cnn-處理得了圖片但文字是另一種完全不同的資料"><a class="anchor" href="#出發點cnn-處理得了圖片但文字是另一種完全不同的資料">#</a> 出發點：CNN 處理得了「圖片」，但「文字」是另一種完全不同的資料</h2>
+<p>圖片是空間性的資料（上下左右的鄰近關係很重要），但文字是<strong>序列性</strong>的資料 —— 順序會直接改變意義（「我打你」跟「你打我」完全不同）。CNN 的卷積運算並不是為了處理這種「前後關係」設計的，所以我們需要一套全新的思路，這就是自然語言處理（NLP）與 RNN 系列模型要解決的問題。</p>
+<hr />
+<h2 id="語言是什麼機器要怎麼看懂語言"><a class="anchor" href="#語言是什麼機器要怎麼看懂語言">#</a> 語言是什麼？機器要怎麼「看懂」語言？</h2>
+<p>語言本質上是一套用來<strong>交換訊息的系統</strong> —— 不只是文字，連聲音、音樂都可以算是語言的一種範疇。</p>
+<p>人類學習語言的方式，其實是兩個步驟反覆進行：</p>
+<ol>
+<li>遇到不會的詞 → 查字典 / 詢問 → 理解這個詞的意思</li>
+<li>把這個詞的意思帶回句子裡 → 理解整句的意思</li>
+</ol>
+<p>機器要理解語言，基本上也是模仿這個流程：先理解「詞」，再理解「句子」。</p>
+<h3 id="為什麼要先做斷詞segmentation"><a class="anchor" href="#為什麼要先做斷詞segmentation">#</a> 為什麼要先做斷詞（Segmentation）？</h3>
+<p>詞是組成句子最小的有意義單位，要理解整句話的意思，必須先知道句子裡有哪些詞。英文用空白就能輕鬆分詞，但<strong>中文沒有空白分隔</strong>，所以斷詞在中文 NLP 裡是一個專門的技術問題。</p>
+<h3 id="斷詞的實作原理長詞優先法"><a class="anchor" href="#斷詞的實作原理長詞優先法">#</a> 斷詞的實作原理：長詞優先法</h3>
+<ol>
+<li>建立一個詞彙字典</li>
+<li>把句子丟進字典裡比對，找到字典裡有的詞就把它從句子中切出來</li>
+<li>重複上述步驟，直到整句話都被切完</li>
+</ol>
+<p><strong>這個方法的兩個限制</strong>：</p>
+<ul>
+<li><strong>歧義性</strong>：同一個詞在不同句子裡可能有不同意思（例如「才能」在「努力才能成功」是「才可以」，在「他的領導才能很突出」是「能力」），單純查字典無法判斷。</li>
+<li><strong>未知詞問題</strong>：人名、新創專有名詞無法窮舉收錄進字典。</li>
+</ul>
+<p>➡️ 因此衍生出更完整的多步驟流程（如中研院提出的 7 步驟）：初步斷詞 → 偵測未知詞 → 嘗試識別是否為人名 / 外來語 → 複合詞擷取 → 重新斷詞，逐步修正初步結果的不足。</p>
+<h3 id="語意分析詞性標記與句法結構樹"><a class="anchor" href="#語意分析詞性標記與句法結構樹">#</a> 語意分析：詞性標記與句法結構樹</h3>
+<p>斷詞只解決了「詞有哪些」，但還不知道整句話的意思。<strong>詞性標記（POS Tagging）</strong> 會透過建立 <strong>句法結構樹（Parsing Tree）</strong> 來分析每個詞在句子裡的語法角色，進而幫助機器判斷「張三打李四」跟「李四被張三打」其實是同一個意思（只是主被動不同）。</p>
+<h3 id="nlp-的常見應用"><a class="anchor" href="#nlp-的常見應用">#</a> NLP 的常見應用</h3>
+<p>機器翻譯、情緒分析（文字分類）、命名實體辨識（NER，識別人名地名）、文字摘要、<strong>填槽（Slot Filling）</strong>（如訂票系統判斷一句話裡哪部分是時間、哪部分是地點）。</p>
+<hr />
+<h2 id="為什麼需要-rnn遞迴神經網路"><a class="anchor" href="#為什麼需要-rnn遞迴神經網路">#</a> 為什麼需要 RNN（遞迴神經網路）？</h2>
+<p>一般的 DNN／CNN 在處理輸入時，並不會考慮「順序」與「前後文」這件事 —— 每個輸入彼此獨立。但語言的意義高度依賴順序與上下文，所以我們需要一種架構，能夠<strong>把「之前看過的內容」帶到「現在的判斷」裡</strong>。</p>
+<h3 id="rnn-的實作原理"><a class="anchor" href="#rnn-的實作原理">#</a> RNN 的實作原理</h3>
+<p>RNN 引入了「內部記憶」的概念：在處理序列中的每一個時間點（Time Step）時，它會同時參考：</p>
+<ol>
+<li>目前這個時間點的輸入</li>
+<li>前一個時間點傳遞過來的「記憶」（隱藏狀態）</li>
+</ol>
+<p>把這兩者融合，得到目前的輸出，再把這個輸出（記憶）繼續往下一個時間點傳遞。這種結構特別適合處理像 NLP 這種有先後關係的序列資料。</p>
+<h3 id="為什麼-rnn-還會遇到梯度消失的問題"><a class="anchor" href="#為什麼-rnn-還會遇到梯度消失的問題">#</a> 為什麼 RNN 還會遇到梯度消失的問題？</h3>
+<p>RNN 在做倒傳遞時，需要沿著時間序列一路往回傳遞梯度，序列一長，梯度同樣會像之前提過的 Sigmoid 連乘問題一樣，越乘越小，導致前面時間點的資訊難以被有效更新。</p>
+<h3 id="lstm用三個閘門解決梯度消失"><a class="anchor" href="#lstm用三個閘門解決梯度消失">#</a> LSTM：用「三個閘門」解決梯度消失</h3>
+<p>LSTM（Long Short-Term Memory）在 RNN 的基礎上新增了一個獨立的記憶單元（Cell State），並用三個閘門控制資訊的流動：</p>
+<ul>
+<li><strong>輸入閘（Input Gate）</strong>：控制目前這個時間點的輸入要不要寫進記憶體</li>
+<li><strong>遺忘閘（Forget Gate）</strong>：控制前面傳過來的記憶要不要被遺忘</li>
+<li><strong>輸出閘（Output Gate）</strong>：控制目前記憶體裡的資訊要輸出多少</li>
+</ul>
+<p>本質上，每個閘門其實仍然是「輸入 × 權重 + Bias，再套用啟用函式」的神經元結構（這裡用的是 tanh），只是多了這套「閘門機制」來決定資訊的取捨。</p>
+<h3 id="grulstm-的簡化版"><a class="anchor" href="#grulstm-的簡化版">#</a> GRU：LSTM 的簡化版</h3>
+<p>GRU 把 LSTM 的三個閘門濃縮成兩個（合併部分邏輯為「更新門」），參數量更少，運算速度更快，但在某些任務上的效果可能與 LSTM 略有差異。</p>
+<hr />
+<h2 id="詞嵌入word-embedding怎麼把詞變成模型看得懂的數字"><a class="anchor" href="#詞嵌入word-embedding怎麼把詞變成模型看得懂的數字">#</a> 詞嵌入（Word Embedding）：怎麼把「詞」變成模型看得懂的數字</h2>
+<h3 id="為什麼-one-hot-encoding-在詞向量上會出問題"><a class="anchor" href="#為什麼-one-hot-encoding-在詞向量上會出問題">#</a> 為什麼 One-hot Encoding 在詞向量上會出問題？</h3>
+<p>回顧前面提過的 One-hot Encoding：每個類別獨立佔一個維度。問題是用在「詞彙」上時：</p>
+<ol>
+<li><strong>維度爆炸</strong>：詞彙量動輒上萬甚至更多（而且會隨時間不斷增加新詞），每個詞都要佔一個維度，非常浪費空間。</li>
+<li><strong>無法表達詞與詞之間的語意關係</strong>：One-hot 編碼下，「蘋果」跟「香蕉」的距離跟「蘋果」跟「車子」的距離是一樣的（都是互相垂直、距離相等），完全看不出蘋果跟香蕉其實語意上更接近。</li>
+</ol>
+<h3 id="詞嵌入的核心想法"><a class="anchor" href="#詞嵌入的核心想法">#</a> 詞嵌入的核心想法</h3>
+<p><strong>用「座標」取代「維度互相獨立的編碼」</strong>：把每個詞對應到一個低維度的向量（座標點），讓語意相近的詞在這個空間中彼此距離也比較近（例如「蝴蝶」跟「飛」的座標會比較靠近）。</p>
+<h3 id="怎麼訓練出這些座標-word2vec"><a class="anchor" href="#怎麼訓練出這些座標-word2vec">#</a> 怎麼訓練出這些座標？—— Word2Vec</h3>
+<p>Word2Vec 用一個只有三層（輸入層、隱藏層、輸出層）的簡單神經網路來訓練，輸入仍然是 One-hot（因為當時還沒有更好的轉換方式），但訓練完成後，<strong>把中間隱藏層的權重拿出來</strong>當作詞的座標轉換器。兩種訓練方式：</p>
+<ul>
+<li><strong>CBOW（Continuous Bag of Words）</strong>：給模型周圍的詞，預測中間的詞</li>
+<li><strong>Skip-gram</strong>：給模型中間的詞，預測周圍可能出現的詞</li>
+</ul>
+<h3 id="訓練後會出現什麼有趣現象"><a class="anchor" href="#訓練後會出現什麼有趣現象">#</a> 訓練後會出現什麼有趣現象？</h3>
+<p>詞向量空間中會出現語意上的「平行向量」關係，例如：</p>
+<ul>
+<li>國王 − 皇后 ≈ 男人 − 女人（性別關係）</li>
+<li>walking − walk ≈ swung − swing（時態關係）</li>
+<li>中國 − 北京 ≈ 日本 − 東京（國家 - 首都關係）</li>
+</ul>
+<p>這代表模型透過無監督訓練，自己學到了詞與詞之間的語意關聯結構。</p>
+<hr />
+<h2 id="textcnncnn-也能拿來做文字分類"><a class="anchor" href="#textcnncnn-也能拿來做文字分類">#</a> TextCNN：CNN 也能拿來做文字分類</h2>
+<p>把句子中每個詞的詞向量依序併接起來，整個句子就會變成一張「類圖片」的矩陣。這時候就可以套用 CNN 的卷積運算來做文字分類 —— 但卷積核的寬度必須等於詞向量的維度（不能只取詞向量裡的某一部分，否則該維度代表的語意就會被破壞），長度則可自行設定（決定一次看幾個詞）。</p>
+<p>實務上，TextCNN 在某些任務上的速度與準確度甚至優於 RNN / GRU。</p>
+<h2 id="銜接下一步-2"><a class="anchor" href="#銜接下一步-2">#</a> 銜接下一步</h2>
+<p>RNN／LSTM／GRU 雖然解決了序列建模的問題，但仍然受限於「必須依序、一步一步計算」，無法平行運算，速度較慢；而且當句子中兩個有關聯的詞距離很遠時，記憶也容易隨著時間衰減。下一個主題的 <strong>Attention 機制與 Transformer</strong> 正是為了突破這些限制而誕生的，並進一步催生出 <strong>BERT</strong> 這樣的預訓練語言模型。</p>
+<h1 id="attention-mechanism-transformer-bert"><a class="anchor" href="#attention-mechanism-transformer-bert">#</a> Attention Mechanism、Transformer、BERT</h1>
+<h2 id="出發點rnn-系列模型的兩個根本限制"><a class="anchor" href="#出發點rnn-系列模型的兩個根本限制">#</a> 出發點：RNN 系列模型的兩個根本限制</h2>
+<p>RNN／LSTM／GRU 已經能處理序列資料，但有兩個結構性的問題一直存在：</p>
+<ol>
+<li><strong>無法平行運算</strong>：因為每個時間點的計算都依賴前一個時間點的結果，必須依序、一步一步算下去，速度天生較慢。</li>
+<li><strong>長距離依賴會衰減</strong>：句子裡如果第一個詞跟最後一個詞關係密切，但中間隔了很多詞，RNN 的記憶會隨著傳遞距離被稀釋，導致這種長距離的關聯性容易被模型遺漏。</li>
+</ol>
+<p><strong>Attention Mechanism</strong> 與後續的 <strong>Transformer</strong>，正是為了同時解決這兩個問題而誕生的。</p>
+<hr />
+<h2 id="attention-mechanism注意力機制是什麼"><a class="anchor" href="#attention-mechanism注意力機制是什麼">#</a> Attention Mechanism（注意力機制）是什麼？</h2>
+<p>2017 年 Google 發表的論文《Attention Is All You Need》提出了這個機制。核心目的：<strong>計算兩個序列之間的相依性（Dependency）</strong>，而且這個計算不受序列距離限制 —— 不管兩個詞距離多遠，都可以直接計算它們之間的關聯程度，不需要像 RNN 一樣依賴中間每一步的傳遞。</p>
+<h3 id="attention-的實作原理"><a class="anchor" href="#attention-的實作原理">#</a> Attention 的實作原理</h3>
+<p>把兩個序列分別稱為 <strong>Source（來源序列）</strong> 與 <strong>Target（目標序列）</strong>：</p>
+<ul>
+<li>Source 拆解成多組 <strong>Key-Value</strong> 配對</li>
+<li>Target 拆解成多個 <strong>Query</strong></li>
+</ul>
+<p>計算方式：每一個 Query 分別跟 Source 裡的每一個 Key 計算「相依性」（得到權重），再把這些權重乘上對應的 Value 後加總，就得到這個 Query 對整個 Source 的 <strong>Attention Value</strong>。</p>
+<h3 id="具體的數學運算dot-product-attention"><a class="anchor" href="#具體的數學運算dot-product-attention">#</a> 具體的數學運算：Dot-Product Attention</h3>
+<p>實務上最常用的計算方式是 <strong>Dot-Product Attention</strong>（比另一種 Additive Attention 運算更快、空間效率更好，且可以直接套用最佳化過的矩陣乘法）：</p>
+<pre><code>Attention(Q, K, V) = Softmax(Q · K^T / √d_k) · V
+</code></pre>
+<ul>
+<li>先用 Query 矩陣對 Key 矩陣做點積，相當於計算相依性</li>
+<li>除以序列維度的開根號（√d_k）—— 這一步是為了避免當維度很大時，點積結果數值暴增，導致梯度更新陷入停滯（類似前面提過的梯度消失概念，數值過大同樣會讓 Softmax 的梯度趨近於 0）</li>
+<li>用 Softmax 把結果轉換成機率分佈（這跟前面提過的 Softmax 是同一個概念）</li>
+<li>最後對 Value 矩陣做點積，得到最終的 Attention 結果</li>
+</ul>
+<h3 id="self-attention序列自己跟自己算-attention"><a class="anchor" href="#self-attention序列自己跟自己算-attention">#</a> Self-Attention：序列「自己跟自己」算 Attention</h3>
+<p>如果 Source 跟 Target 是<strong>同一個序列</strong>，這種特殊情況就叫做 <strong>Self-Attention</strong>—— 計算的是同一個序列裡，每個詞跟其他所有詞之間的相依性。這正是 Transformer 的核心運算機制。</p>
+<hr />
+<h2 id="transformer-是什麼為什麼需要它"><a class="anchor" href="#transformer-是什麼為什麼需要它">#</a> Transformer 是什麼？為什麼需要它？</h2>
+<p>Transformer 同樣發表於 2017 年同一篇論文。它跟 RNN、CNN 一樣是用來處理序列資料的模型，但完全<strong>不依賴依序計算</strong>，而是完全依賴 Self-Attention 機制來建立序列內部的關聯。</p>
+<h3 id="transformer-的兩大優勢"><a class="anchor" href="#transformer-的兩大優勢">#</a> Transformer 的兩大優勢</h3>
+<ol>
+<li><strong>可以平行運算</strong>：因為不需要等前一個時間點算完才能算下一個，可以同時對整個序列做計算，大幅提升運算效率。</li>
+<li><strong>不受位置距離限制</strong>：序列中任意兩個位置（即使距離很遠）都能直接計算相依性，不會像 RNN 一樣隨著距離衰減。</li>
+</ol>
+<h3 id="encoder-decoder-架構"><a class="anchor" href="#encoder-decoder-架構">#</a> Encoder-Decoder 架構</h3>
+<p>Transformer 遵循 Encoder-Decoder 架構：輸入序列先經過 Encoder 轉換成一個中間表示（類似 Java 程式編譯成 Bytecode 這種中間碼的概念），再由 Decoder 把這個中間表示解碼成輸出序列。</p>
+<blockquote>
+<p>補充：BERT 只使用了 Transformer 的 <strong>Encoder</strong> 部分（因為 BERT 的目標是「理解」語言，不是「生成」語言）。</p>
+</blockquote>
+<h3 id="transformer-block-的內部結構"><a class="anchor" href="#transformer-block-的內部結構">#</a> Transformer Block 的內部結構</h3>
+<p>Encoder 由 N 個相同的 Transformer Block 堆疊組成，每個 Block 包含兩個 Sub-layer：</p>
+<ol>
+<li><strong>Multi-Head Attention</strong></li>
+<li><strong>Feed Forward（全連接層）</strong></li>
+</ol>
+<p>兩個 Sub-layer 後面都會接上 <strong>Residual Connection（殘差連接）</strong> 與 <strong>Layer Normalization（層正規化）</strong>。</p>
+<h4 id="為什麼需要-multi-head-attention"><a class="anchor" href="#為什麼需要-multi-head-attention">#</a> 為什麼需要 Multi-Head Attention？</h4>
+<p>單一組 Attention 運算，只能從一個「角度」去看詞與詞之間的關係。<strong>Multi-Head Attention 的想法是：讓模型同時用多組不同的線性轉換（Head），從不同的語意子空間去觀察序列</strong>，最後再把這些不同角度算出來的結果串接起來。</p>
+<p>巧妙的設計在於：假設模型維度是 512，切成 8 個 Head，每個 Head 的維度就是 512÷8=64。雖然 Head 數量增加了，但因為每個 Head 的運算維度也同步縮小，<strong>總計算量跟原本單一個 512 維 Head 是一樣的</strong> —— 等於是用相同的運算成本，換來多角度觀察的能力。</p>
+<h4 id="為什麼需要-residual-connection殘差連接"><a class="anchor" href="#為什麼需要-residual-connection殘差連接">#</a> 為什麼需要 Residual Connection（殘差連接）？</h4>
+<p>網路疊得非常深時，梯度在倒傳遞過程中可能無法完整地傳遞回前面的層（稱為 Degradation 問題），導致訓練效果變差。Residual Connection 的做法是讓某一層的輸出，直接加上這一層原本的輸入，確保訊號至少有一條「捷徑」可以直接傳遞下去，緩解這個問題。</p>
+<h4 id="為什麼需要-layer-normalization"><a class="anchor" href="#為什麼需要-layer-normalization">#</a> 為什麼需要 Layer Normalization？</h4>
+<p>這是 Batch Normalization 的改進版本，目的是減少 <strong>Covariate Shift</strong> 的問題（訓練資料與測試資料的數值分佈差異太大，導致模型預測效果變差），讓每一層的輸入分佈更穩定，有助於訓練收斂。</p>
+<hr />
+<h2 id="bert-是什麼"><a class="anchor" href="#bert-是什麼">#</a> BERT 是什麼？</h2>
+<p><strong>BERT（Bidirectional Encoder Representations from Transformers）</strong>：用多層 Transformer Encoder 堆疊而成的語言表示模型，「雙向」指的是它在學習一個詞的表示時，會<strong>同時考慮這個詞的上文與下文</strong>，而不像傳統語言模型只能看前面或只能看後面。</p>
+<h3 id="為什麼需要-bert-這種預訓練模型"><a class="anchor" href="#為什麼需要-bert-這種預訓練模型">#</a> 為什麼需要 BERT 這種「預訓練」模型？</h3>
+<p>BERT 的核心策略是：先用大量「沒有標籤」的文字去做預訓練，學會語言本身的通用表示，之後針對具體任務（如問答、分類），只需要在 BERT 後面接上一個小型的下游網路，再做少量的微調（Fine-tuning），就能適用到各種不同的 NLP 任務 ——<strong> 不需要每個任務都重新設計、重新訓練一個全新的大模型</strong>。</p>
+<h3 id="兩種規格"><a class="anchor" href="#兩種規格">#</a> 兩種規格</h3>
+<table>
+<thead>
+<tr>
+<th>規格</th>
+<th>Transformer Block 數（L）</th>
+<th>模型維度（H）</th>
+<th>Attention Head 數（A）</th>
+<th>參數量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BERT-Base</td>
+<td>12</td>
+<td>768</td>
+<td>12</td>
+<td>約 1.1 億</td>
+</tr>
+<tr>
+<td>BERT-Large</td>
+<td>24</td>
+<td>1024</td>
+<td>16</td>
+<td>約 3.4 億</td>
+</tr>
+</tbody>
+</table>
+<h3 id="bert-的輸入表示input-representation原理"><a class="anchor" href="#bert-的輸入表示input-representation原理">#</a> BERT 的輸入表示（Input Representation）原理</h3>
+<p>每個輸入序列的最終向量，是三種 Embedding 加總而成：</p>
+<ol>
+<li><strong>Token Embedding</strong>：類似一般的 Word Embedding，把每個詞轉成向量</li>
+<li><strong>Segment Embedding</strong>：標示這個詞屬於第一個句子還是第二個句子（用於句子配對任務）</li>
+<li><strong>Position Embedding</strong>：標示這個詞在序列中的位置順序</li>
+</ol>
+<h4 id="兩個特殊符號"><a class="anchor" href="#兩個特殊符號">#</a> 兩個特殊符號</h4>
+<ul>
+<li><strong>[CLS]</strong>：放在序列最前面，用來整合整個序列的語意表示，後續做分類任務時，會把下游網路接在這個符號對應的輸出上。</li>
+<li><strong>[SEP]</strong>：用來標示兩個句子之間的分界點。</li>
+</ul>
+<h4 id="wordpiece-embedding為什麼要把詞拆得更細"><a class="anchor" href="#wordpiece-embedding為什麼要把詞拆得更細">#</a> WordPiece Embedding：為什麼要把詞拆得更細？</h4>
+<p>把詞拆成更小的子詞單位（例如 Playing 拆成 Play + ##ing）。好處：</p>
+<ol>
+<li>不需要把整個詞彙表建得太大（許多詞形變化可以共用同一個詞根）。</li>
+<li>把詞根與詞形變化（如進行式、過去式）分開後，可以減少詞形變化對詞根本身語意的干擾。</li>
+</ol>
+<h3 id="bert-的兩種預訓練任務"><a class="anchor" href="#bert-的兩種預訓練任務">#</a> BERT 的兩種預訓練任務</h3>
+<h4 id="1-masked-language-modelmlm"><a class="anchor" href="#1-masked-language-modelmlm">#</a> 1. Masked Language Model（MLM）</h4>
+<p>為了訓練「雙向」的語言表示，BERT 隨機遮蔽掉序列中 15% 的詞，讓模型去預測被遮住的詞是什麼。具體規則（避免訓練與微調階段不一致）：</p>
+<table>
+<thead>
+<tr>
+<th>機率</th>
+<th>處理方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>80%</td>
+<td>換成特殊符號 [MASK]</td>
+</tr>
+<tr>
+<td>10%</td>
+<td>換成一個隨機詞</td>
+</tr>
+<tr>
+<td>10%</td>
+<td>保持原詞不變</td>
+</tr>
+</tbody>
+</table>
+<p><strong>為什麼要保留 10% 不變、10% 換成隨機詞？</strong> 因為真實世界的句子裡根本不會出現 [MASK] 這個符號。如果訓練時 100% 都用 [MASK] 取代，模型在微調、實際應用階段看到正常句子（沒有 [MASK]）時，會表現得不適應。保留一部分不變、一部分隨機替換，能讓模型更貼近真實使用情境。</p>
+<h4 id="2-next-sentence-predictionnsp"><a class="anchor" href="#2-next-sentence-predictionnsp">#</a> 2. Next Sentence Prediction（NSP）</h4>
+<p>許多下游任務（如問答、自然語言推論）需要模型理解「兩個句子之間的關係」。NSP 的訓練方式：</p>
+<ul>
+<li>50% 機率：取兩個真實相鄰的句子，標記為 <strong>Is Next</strong></li>
+<li>50% 機率：第二個句子隨機從語料庫抓一句不相關的句子，標記為 <strong>Not Next</strong></li>
+</ul>
+<p>讓模型透過這個任務學習句子與句子之間的關聯性。</p>
+<hr />
+<h2 id="bert-的應用下游任務怎麼接"><a class="anchor" href="#bert-的應用下游任務怎麼接">#</a> BERT 的應用：下游任務怎麼接</h2>
+<table>
+<thead>
+<tr>
+<th>任務類型</th>
+<th>做法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>單句分類</strong>（Single Sentence Classification）</td>
+<td>在 [CLS] 對應的輸出後接分類網路</td>
+</tr>
+<tr>
+<td><strong>句對分類</strong>（Sentence Pair Classification）</td>
+<td>兩句話用 [SEP] 分隔，同樣從 [CLS] 輸出接分類網路，判斷兩句關係</td>
+</tr>
+<tr>
+<td><strong>問答系統</strong>（Question Answering）</td>
+<td>輸入「問題 + [SEP] + 文章」，從文章對應的輸出位置接網路，找出答案所在範圍</td>
+</tr>
+<tr>
+<td><strong>序列標記</strong>（Single Sentence Tagging）</td>
+<td>對句子中<strong>每一個</strong> Token 的輸出分別做標記（如命名實體辨識、詞性標記）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="整體脈絡回顧"><a class="anchor" href="#整體脈絡回顧">#</a> 整體脈絡回顧</h2>
+<pre><code>RNN（順序記憶）的限制：無法平行運算、長距離依賴會衰減
+        ↓
+Attention Mechanism：直接計算任意兩個位置之間的相依性，不受距離限制
+        ↓
+Transformer：完全用 Self-Attention 取代序列依序計算，可以平行運算
+        ↓
+BERT：疊多層 Transformer Encoder + 雙向預訓練（MLM + NSP），
+      成為一個可以微調適用到各種 NLP 任務的通用語言表示模型
+</code></pre>
+<p>這也是整個深度學習 NLP 領域演進的核心邏輯：每一代新架構，都是為了解決前一代架構在「效率」或「長距離關聯」上的具體限制而誕生的。</p>
 
       <div class="tags">
           <a href="/tags/%E5%A4%A7%E5%AD%B8%E7%AD%86%E8%A8%98/" rel="tag"><i class="ic i-tag"></i> 大學筆記</a>
@@ -512,7 +1005,7 @@ B_new = B_old - 學習率 × 斜率
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">更新於</span>
-    <time title="修改時間：2026-07-03 23:25:53" itemprop="dateModified" datetime="2026-07-03T23:25:53+08:00">2026-07-03</time>
+    <time title="修改時間：2026-07-04 00:30:01" itemprop="dateModified" datetime="2026-07-04T00:30:01+08:00">2026-07-04</time>
   </span>
   <span id="2026/07/03/深度學習核心概念筆記/" class="item leancloud_visitors" data-flag-title="深度學習核心概念筆記" title="閱讀次數">
       <span class="icon">
@@ -552,7 +1045,7 @@ B_new = B_old - 學習率 × 斜率
     <div class="item left">
       
 
-  <a href="/2026/05/11/%E8%89%BE%E7%95%A5%E7%89%B9%E6%B3%A2%E6%B5%AA%E7%90%86%E8%AB%96/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;pub-da440be71028438aa9683b63bef5ccf1.r2.dev&#x2F;75.jpg" title="艾略特波浪理論">
+  <a href="/2026/05/11/%E8%89%BE%E7%95%A5%E7%89%B9%E6%B3%A2%E6%B5%AA%E7%90%86%E8%AB%96/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;pub-da440be71028438aa9683b63bef5ccf1.r2.dev&#x2F;46.jpg" title="艾略特波浪理論">
   <span class="type">上一篇</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>艾略特波浪理論</h3>
@@ -576,7 +1069,7 @@ B_new = B_old - 學習率 × 斜率
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="文章目錄">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ai-%E7%9A%84%E8%B5%B7%E9%BB%9E-perceptron"><span class="toc-number">1.</span> <span class="toc-text"> AI 的起點  Perceptron</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9A%E9%BA%BC%E6%98%AFartificial-intelligence"><span class="toc-number">1.1.</span> <span class="toc-text"> 甚麼是 Artificial Intelligence</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A9%B2%E5%A6%82%E4%BD%95%E8%AE%93%E6%A9%9F%E5%99%A8%E5%88%A4%E6%96%B7"><span class="toc-number">1.2.</span> <span class="toc-text"> 該如何讓機器判斷</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#perceptron%E6%84%9F%E7%9F%A5%E6%A9%9F%E6%98%AF%E4%BB%80%E9%BA%BC"><span class="toc-number">1.3.</span> <span class="toc-text"> Perceptron（感知機）是什麼？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%AE%93perceptron%E5%88%A4%E6%96%B7%E6%9B%B4%E6%BA%96%E7%A2%BA"><span class="toc-number">1.4.</span> <span class="toc-text"> 如何讓 Perceptron  判斷更準確</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#training%E8%A8%93%E7%B7%B4%E5%9C%A8%E5%81%9A%E4%BB%80%E9%BA%BC"><span class="toc-number">1.5.</span> <span class="toc-text">  Training（訓練） 在做什麼</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC-perceptron-%E9%9C%80%E8%A6%81%E8%A2%AB%E5%8D%87%E7%B4%9A%E6%88%90-sigmoid-%E7%A5%9E%E7%B6%93%E5%85%83"><span class="toc-number">1.6.</span> <span class="toc-text"> 為什麼  Perceptron  需要被「升級」成  Sigmoid  神經元？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#perceptron-%E9%81%87%E5%88%B0%E7%9A%84%E5%95%8F%E9%A1%8C"><span class="toc-number">1.6.1.</span> <span class="toc-text">  Perceptron  遇到的問題</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sigmoid-function-%E5%9C%A8%E5%81%9A%E4%BB%80%E9%BA%BC"><span class="toc-number">1.6.2.</span> <span class="toc-text">  Sigmoid Function  在做什麼</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8Dgradient-descent%E6%98%AF%E7%94%9A%E9%BA%BC"><span class="toc-number">1.7.</span> <span class="toc-text"> 梯度下降（Gradient Descent）是甚麼</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8Dgradient-descent%E5%AF%A6%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">1.8.</span> <span class="toc-text"> 梯度下降（Gradient Descent）實作原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5"><span class="toc-number">1.8.1.</span> <span class="toc-text"> 第一步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8D-w-%E5%BE%AE%E5%88%86%E5%BE%97%E5%88%B0%E6%96%9C%E7%8E%87"><span class="toc-number">1.8.2.</span> <span class="toc-text"> 對 W 微分，得到斜率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E5%BE%80%E5%8F%8D%E6%96%B9%E5%90%91%E8%B5%B0"><span class="toc-number">1.8.3.</span> <span class="toc-text"> 為什麼要往反方向走？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0-w-%E5%92%8C-b-%E7%9A%84%E5%85%AC%E5%BC%8F"><span class="toc-number">1.8.4.</span> <span class="toc-text"> 更新 W 和 B 的公式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%89%8D%E9%81%87%E5%88%B0%E7%9A%84%E5%95%8F%E9%A1%8C"><span class="toc-number">1.9.</span> <span class="toc-text"> 目前遇到的問題</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%88%E7%9C%8B%E4%B8%80%E5%80%8B%E4%B8%80%E6%A2%9D%E7%B7%9A%E5%B0%B1%E6%98%AF%E5%88%86%E4%B8%8D%E9%96%8B%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="toc-number">1.9.1.</span> <span class="toc-text"> 先看一個「一條線就是分不開」的例子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%95%8F%E9%A1%8C%E8%A7%A3%E9%87%8B"><span class="toc-number">1.9.2.</span> <span class="toc-text"> 問題解釋</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B8%E5%AD%B8%E8%AD%89%E6%98%8E%E6%98%AF%E5%8F%AF%E4%BB%A5%E7%9A%84"><span class="toc-number">1.9.2.1.</span> <span class="toc-text"> 數學證明：是可以的</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%82%A3%E7%82%BA%E4%BB%80%E9%BA%BC%E5%AF%A6%E9%9A%9B%E4%B8%8A%E7%84%A1%E6%B3%95%E9%80%99%E9%BA%BC%E5%81%9A"><span class="toc-number">1.9.2.2.</span> <span class="toc-text"> 那為什麼「實際上無法」這麼做？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E5%B1%A4%E7%A5%9E%E7%B6%93%E7%B6%B2%E8%B7%AF%E6%98%AF%E6%80%8E%E9%BA%BC%E5%84%AA%E9%9B%85%E8%A7%A3%E6%B1%BA%E9%80%99%E5%80%8B%E5%95%8F%E9%A1%8C%E7%9A%84"><span class="toc-number">1.9.2.3.</span> <span class="toc-text"> 多層神經網路，是怎麼優雅解決這個問題的？</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A5%9E%E7%B6%93%E7%B6%B2%E8%B7%AF%E7%9A%84%E5%AE%8C%E6%95%B4%E8%A8%93%E7%B7%B4%E6%B5%81%E7%A8%8B%E5%89%8D%E5%82%B3%E9%81%9E-%E5%80%92%E5%82%B3%E9%81%9E-%E8%B3%87%E6%96%99%E9%9B%86-overfitting"><span class="toc-number">2.</span> <span class="toc-text"> 神經網路的完整訓練流程：前傳遞、倒傳遞、資料集、Overfitting</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BA%E7%99%BC%E9%BB%9E%E6%9C%89%E4%BA%86%E5%A4%9A%E5%B1%A4%E7%A5%9E%E7%B6%93%E5%85%83%E8%A6%81%E6%80%8E%E9%BA%BC%E8%AE%93%E6%95%B4%E5%80%8B%E7%B6%B2%E8%B7%AF%E4%B8%80%E8%B5%B7%E5%AD%B8%E7%BF%92"><span class="toc-number">2.1.</span> <span class="toc-text"> 出發點：有了多層神經元，要怎麼讓「整個網路」一起學習？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A5%9E%E7%B6%93%E7%B6%B2%E8%B7%AF%E6%98%AF%E4%BB%80%E9%BA%BC"><span class="toc-number">2.2.</span> <span class="toc-text"> 神經網路是什麼？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E9%9A%B1%E8%97%8F%E5%B1%A4%E8%A6%81%E6%A8%A1%E7%B5%84%E5%8C%96%E5%88%86%E5%B7%A5"><span class="toc-number">2.3.</span> <span class="toc-text"> 為什麼隱藏層要「模組化分工」？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E5%82%B3%E9%81%9Eforward-propagation%E5%AF%A6%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">2.4.</span> <span class="toc-text"> 前傳遞（Forward Propagation）實作原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E9%9C%80%E8%A6%81%E5%80%92%E5%82%B3%E9%81%9Ebackpropagation"><span class="toc-number">2.5.</span> <span class="toc-text"> 為什麼需要倒傳遞（Backpropagation）？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC-sigmoid-%E6%9C%83%E9%80%A0%E6%88%90%E6%A2%AF%E5%BA%A6%E6%B6%88%E5%A4%B1%E7%88%86%E7%82%B8"><span class="toc-number">2.5.1.</span> <span class="toc-text"> 為什麼 Sigmoid 會造成梯度消失／爆炸？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B3%87%E6%96%99%E9%9B%86dataset%E7%9A%84%E8%A8%AD%E8%A8%88%E5%8E%9F%E7%90%86"><span class="toc-number">2.6.</span> <span class="toc-text"> 資料集（Dataset）的設計原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E8%B3%87%E6%96%99%E9%9B%86%E8%A6%81%E6%9C%89%E6%84%8F%E7%BE%A9"><span class="toc-number">2.6.1.</span> <span class="toc-text"> 為什麼資料集要「有意義」？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B3%87%E6%96%99%E9%9B%86%E7%9A%84%E5%88%87%E5%88%86"><span class="toc-number">2.6.2.</span> <span class="toc-text"> 資料集的切分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E9%9C%80%E8%A6%81%E4%B8%8D%E5%90%8C%E7%9A%84%E8%A8%93%E7%B7%B4%E6%96%B9%E5%BC%8Fbatch-mini-batch-sgd"><span class="toc-number">2.6.3.</span> <span class="toc-text"> 為什麼需要不同的訓練方式（Batch &#x2F; Mini-batch &#x2F; SGD）？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#overfitting%E9%81%8E%E6%93%AC%E5%90%88%E6%98%AF%E4%BB%80%E9%BA%BC%E7%82%BA%E4%BB%80%E9%BA%BC%E6%9C%83%E7%99%BC%E7%94%9F"><span class="toc-number">2.7.</span> <span class="toc-text"> Overfitting（過擬合）是什麼？為什麼會發生？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%8A%9C%E6%8E%A5%E4%B8%8B%E4%B8%80%E6%AD%A5"><span class="toc-number">2.8.</span> <span class="toc-text"> 銜接下一步</span></a></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ai-%E7%9A%84%E8%B5%B7%E9%BB%9E-perceptron"><span class="toc-number">1.</span> <span class="toc-text"> AI 的起點  Perceptron</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9A%E9%BA%BC%E6%98%AFartificial-intelligence"><span class="toc-number">1.1.</span> <span class="toc-text"> 甚麼是 Artificial Intelligence</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A9%B2%E5%A6%82%E4%BD%95%E8%AE%93%E6%A9%9F%E5%99%A8%E5%88%A4%E6%96%B7"><span class="toc-number">1.2.</span> <span class="toc-text"> 該如何讓機器判斷</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#perceptron%E6%84%9F%E7%9F%A5%E6%A9%9F%E6%98%AF%E4%BB%80%E9%BA%BC"><span class="toc-number">1.3.</span> <span class="toc-text"> Perceptron（感知機）是什麼？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%AE%93perceptron%E5%88%A4%E6%96%B7%E6%9B%B4%E6%BA%96%E7%A2%BA"><span class="toc-number">1.4.</span> <span class="toc-text"> 如何讓 Perceptron  判斷更準確</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#training%E8%A8%93%E7%B7%B4%E5%9C%A8%E5%81%9A%E4%BB%80%E9%BA%BC"><span class="toc-number">1.5.</span> <span class="toc-text">  Training（訓練） 在做什麼</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC-perceptron-%E9%9C%80%E8%A6%81%E8%A2%AB%E5%8D%87%E7%B4%9A%E6%88%90-sigmoid-%E7%A5%9E%E7%B6%93%E5%85%83"><span class="toc-number">1.6.</span> <span class="toc-text"> 為什麼  Perceptron  需要被「升級」成  Sigmoid  神經元？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#perceptron-%E9%81%87%E5%88%B0%E7%9A%84%E5%95%8F%E9%A1%8C"><span class="toc-number">1.6.1.</span> <span class="toc-text">  Perceptron  遇到的問題</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sigmoid-function-%E5%9C%A8%E5%81%9A%E4%BB%80%E9%BA%BC"><span class="toc-number">1.6.2.</span> <span class="toc-text">  Sigmoid Function  在做什麼</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8Dgradient-descent%E6%98%AF%E7%94%9A%E9%BA%BC"><span class="toc-number">1.7.</span> <span class="toc-text"> 梯度下降（Gradient Descent）是甚麼</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8Dgradient-descent%E5%AF%A6%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">1.8.</span> <span class="toc-text"> 梯度下降（Gradient Descent）實作原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5"><span class="toc-number">1.8.1.</span> <span class="toc-text"> 第一步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8D-w-%E5%BE%AE%E5%88%86%E5%BE%97%E5%88%B0%E6%96%9C%E7%8E%87"><span class="toc-number">1.8.2.</span> <span class="toc-text"> 對 W 微分，得到斜率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E5%BE%80%E5%8F%8D%E6%96%B9%E5%90%91%E8%B5%B0"><span class="toc-number">1.8.3.</span> <span class="toc-text"> 為什麼要往反方向走？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0-w-%E5%92%8C-b-%E7%9A%84%E5%85%AC%E5%BC%8F"><span class="toc-number">1.8.4.</span> <span class="toc-text"> 更新 W 和 B 的公式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%89%8D%E9%81%87%E5%88%B0%E7%9A%84%E5%95%8F%E9%A1%8C"><span class="toc-number">1.9.</span> <span class="toc-text"> 目前遇到的問題</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%88%E7%9C%8B%E4%B8%80%E5%80%8B%E4%B8%80%E6%A2%9D%E7%B7%9A%E5%B0%B1%E6%98%AF%E5%88%86%E4%B8%8D%E9%96%8B%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="toc-number">1.9.1.</span> <span class="toc-text"> 先看一個「一條線就是分不開」的例子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%95%8F%E9%A1%8C%E8%A7%A3%E9%87%8B"><span class="toc-number">1.9.2.</span> <span class="toc-text"> 問題解釋</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B8%E5%AD%B8%E8%AD%89%E6%98%8E%E6%98%AF%E5%8F%AF%E4%BB%A5%E7%9A%84"><span class="toc-number">1.9.2.1.</span> <span class="toc-text"> 數學證明：是可以的</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%82%A3%E7%82%BA%E4%BB%80%E9%BA%BC%E5%AF%A6%E9%9A%9B%E4%B8%8A%E7%84%A1%E6%B3%95%E9%80%99%E9%BA%BC%E5%81%9A"><span class="toc-number">1.9.2.2.</span> <span class="toc-text"> 那為什麼「實際上無法」這麼做？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E5%B1%A4%E7%A5%9E%E7%B6%93%E7%B6%B2%E8%B7%AF%E6%98%AF%E6%80%8E%E9%BA%BC%E5%84%AA%E9%9B%85%E8%A7%A3%E6%B1%BA%E9%80%99%E5%80%8B%E5%95%8F%E9%A1%8C%E7%9A%84"><span class="toc-number">1.9.2.3.</span> <span class="toc-text"> 多層神經網路，是怎麼優雅解決這個問題的？</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A5%9E%E7%B6%93%E7%B6%B2%E8%B7%AF%E7%9A%84%E5%AE%8C%E6%95%B4%E8%A8%93%E7%B7%B4%E6%B5%81%E7%A8%8B%E5%89%8D%E5%82%B3%E9%81%9E-%E5%80%92%E5%82%B3%E9%81%9E-%E8%B3%87%E6%96%99%E9%9B%86-overfitting"><span class="toc-number">2.</span> <span class="toc-text"> 神經網路的完整訓練流程：前傳遞、倒傳遞、資料集、Overfitting</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BA%E7%99%BC%E9%BB%9E%E6%9C%89%E4%BA%86%E5%A4%9A%E5%B1%A4%E7%A5%9E%E7%B6%93%E5%85%83%E8%A6%81%E6%80%8E%E9%BA%BC%E8%AE%93%E6%95%B4%E5%80%8B%E7%B6%B2%E8%B7%AF%E4%B8%80%E8%B5%B7%E5%AD%B8%E7%BF%92"><span class="toc-number">2.1.</span> <span class="toc-text"> 出發點：有了多層神經元，要怎麼讓「整個網路」一起學習？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A5%9E%E7%B6%93%E7%B6%B2%E8%B7%AF%E6%98%AF%E4%BB%80%E9%BA%BC"><span class="toc-number">2.2.</span> <span class="toc-text"> 神經網路是什麼？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E9%9A%B1%E8%97%8F%E5%B1%A4%E8%A6%81%E6%A8%A1%E7%B5%84%E5%8C%96%E5%88%86%E5%B7%A5"><span class="toc-number">2.3.</span> <span class="toc-text"> 為什麼隱藏層要「模組化分工」？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E5%82%B3%E9%81%9Eforward-propagation%E5%AF%A6%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">2.4.</span> <span class="toc-text"> 前傳遞（Forward Propagation）實作原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E9%9C%80%E8%A6%81%E5%80%92%E5%82%B3%E9%81%9Ebackpropagation"><span class="toc-number">2.5.</span> <span class="toc-text"> 為什麼需要倒傳遞（Backpropagation）？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC-sigmoid-%E6%9C%83%E9%80%A0%E6%88%90%E6%A2%AF%E5%BA%A6%E6%B6%88%E5%A4%B1%E7%88%86%E7%82%B8"><span class="toc-number">2.5.1.</span> <span class="toc-text"> 為什麼 Sigmoid 會造成梯度消失／爆炸？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B3%87%E6%96%99%E9%9B%86dataset%E7%9A%84%E8%A8%AD%E8%A8%88%E5%8E%9F%E7%90%86"><span class="toc-number">2.6.</span> <span class="toc-text"> 資料集（Dataset）的設計原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E8%B3%87%E6%96%99%E9%9B%86%E8%A6%81%E6%9C%89%E6%84%8F%E7%BE%A9"><span class="toc-number">2.6.1.</span> <span class="toc-text"> 為什麼資料集要「有意義」？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B3%87%E6%96%99%E9%9B%86%E7%9A%84%E5%88%87%E5%88%86"><span class="toc-number">2.6.2.</span> <span class="toc-text"> 資料集的切分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E9%9C%80%E8%A6%81%E4%B8%8D%E5%90%8C%E7%9A%84%E8%A8%93%E7%B7%B4%E6%96%B9%E5%BC%8Fbatch-mini-batch-sgd"><span class="toc-number">2.6.3.</span> <span class="toc-text"> 為什麼需要不同的訓練方式（Batch &#x2F; Mini-batch &#x2F; SGD）？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#overfitting%E9%81%8E%E6%93%AC%E5%90%88%E6%98%AF%E4%BB%80%E9%BA%BC%E7%82%BA%E4%BB%80%E9%BA%BC%E6%9C%83%E7%99%BC%E7%94%9F"><span class="toc-number">2.7.</span> <span class="toc-text"> Overfitting（過擬合）是什麼？為什麼會發生？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92%E6%A1%86%E6%9E%B6%E8%88%87-pytorch"><span class="toc-number">3.</span> <span class="toc-text"> 深度學習框架與 PyTorch</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BA%E7%99%BC%E9%BB%9E%E7%90%86%E8%AB%96%E9%83%BD%E6%87%82%E4%BA%86%E4%BD%86%E8%87%AA%E5%B7%B1%E6%89%8B%E5%88%BB%E4%B8%80%E5%80%8B%E7%A5%9E%E7%B6%93%E7%B6%B2%E8%B7%AF%E5%A4%AA%E7%97%9B%E8%8B%A6"><span class="toc-number">3.1.</span> <span class="toc-text"> 出發點：理論都懂了，但自己手刻一個神經網路太痛苦</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E9%9C%80%E8%A6%81%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92%E6%A1%86%E6%9E%B6"><span class="toc-number">3.2.</span> <span class="toc-text"> 為什麼需要深度學習框架？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E6%B5%81%E6%A1%86%E6%9E%B6%E6%98%AF%E4%BB%80%E9%BA%BC-tensorflow-vs-pytorch"><span class="toc-number">3.3.</span> <span class="toc-text"> 主流框架是什麼？—— TensorFlow vs PyTorch</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tensorflowgoogle-%E9%96%8B%E7%99%BC"><span class="toc-number">3.3.1.</span> <span class="toc-text"> TensorFlow（Google 開發）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pytorchfacebook-%E9%96%8B%E7%99%BC%E5%89%8D%E8%BA%AB%E7%82%BA-torch"><span class="toc-number">3.3.2.</span> <span class="toc-text"> PyTorch（Facebook 開發，前身為 Torch）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pytorch-%E8%A8%93%E7%B7%B4%E6%B5%81%E7%A8%8B%E7%9A%84%E5%AF%A6%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">3.4.</span> <span class="toc-text"> PyTorch 訓練流程的實作原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B4%E9%AB%94-workflow"><span class="toc-number">3.4.1.</span> <span class="toc-text"> 整體 Workflow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B3%87%E6%96%99%E5%89%8D%E8%99%95%E7%90%86%E7%9A%84%E5%85%B7%E9%AB%94%E6%AD%A5%E9%A9%9F"><span class="toc-number">3.4.2.</span> <span class="toc-text"> 資料前處理的具體步驟</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E6%89%8B%E5%8B%95%E6%8A%8A%E6%A2%AF%E5%BA%A6%E6%AD%B8%E9%9B%B6zero_grad"><span class="toc-number">3.4.3.</span> <span class="toc-text"> 為什麼要手動把梯度「歸零」（zero_grad）？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%87%89%E7%94%A8%E4%B8%80%E5%80%8B%E5%85%B8%E5%9E%8B%E7%9A%84-pytorch-%E8%A8%93%E7%B7%B4%E7%AF%84%E4%BE%8B"><span class="toc-number">3.5.</span> <span class="toc-text"> 應用：一個典型的 PyTorch 訓練範例</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E9%A1%9E%E4%BB%BB%E5%8B%99%E7%9A%84%E6%A0%B8%E5%BF%83%E5%85%83%E4%BB%B6encoding-softmax-%E5%95%9F%E7%94%A8-%E6%90%8D%E5%A4%B1%E5%87%BD%E5%BC%8F-optimizer"><span class="toc-number">4.</span> <span class="toc-text"> 分類任務的核心元件：Encoding、Softmax、啟用 &#x2F; 損失函式、Optimizer</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BA%E7%99%BC%E9%BB%9E%E6%A8%A1%E5%9E%8B%E8%A6%81%E6%80%8E%E9%BA%BC%E7%90%86%E8%A7%A3%E9%A1%9E%E5%88%A5%E8%BC%B8%E5%87%BA%E5%8F%88%E8%A6%81%E6%80%8E%E9%BA%BC%E8%AE%8A%E6%88%90%E4%B8%80%E5%80%8B%E5%90%88%E7%90%86%E7%9A%84%E7%AD%94%E6%A1%88"><span class="toc-number">4.1.</span> <span class="toc-text"> 出發點：模型要怎麼「理解」類別？輸出又要怎麼變成一個合理的答案？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#label-encoding%E6%A8%99%E7%B1%A4%E7%B7%A8%E7%A2%BC%E6%8A%8A%E9%A1%9E%E5%88%A5%E8%AE%8A%E6%88%90%E6%95%B8%E5%AD%97"><span class="toc-number">4.2.</span> <span class="toc-text"> Label Encoding（標籤編碼）：把類別變成數字</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B4%E6%95%B8%E7%B7%A8%E7%A2%BC%E6%98%AF%E4%BB%80%E9%BA%BC"><span class="toc-number">4.2.1.</span> <span class="toc-text"> 整數編碼是什麼？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E6%95%B4%E6%95%B8%E7%B7%A8%E7%A2%BC%E6%9C%83%E6%9C%89%E5%95%8F%E9%A1%8C"><span class="toc-number">4.2.2.</span> <span class="toc-text"> 為什麼整數編碼會有問題？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#one-hot-encoding-%E6%98%AF%E4%BB%80%E9%BA%BC%E7%82%BA%E4%BB%80%E9%BA%BC%E9%9C%80%E8%A6%81%E5%AE%83"><span class="toc-number">4.2.3.</span> <span class="toc-text"> One-hot Encoding 是什麼？為什麼需要它？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#softmax%E6%8A%8A%E9%9B%9C%E4%BA%82%E7%9A%84%E8%BC%B8%E5%87%BA%E8%AE%8A%E6%88%90%E6%A9%9F%E7%8E%87%E5%88%86%E4%BD%88"><span class="toc-number">4.3.</span> <span class="toc-text"> Softmax：把雜亂的輸出變成機率分佈</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E9%9C%80%E8%A6%81-softmax"><span class="toc-number">4.3.1.</span> <span class="toc-text"> 為什麼需要 Softmax？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E4%B8%8D%E8%83%BD%E7%9B%B4%E6%8E%A5%E5%81%9A%E7%B0%A1%E5%96%AE%E7%9A%84%E6%AD%A3%E8%A6%8F%E5%8C%96%E9%99%A4%E4%BB%A5%E7%B8%BD%E5%92%8C"><span class="toc-number">4.3.2.</span> <span class="toc-text"> 為什麼不能直接做簡單的「正規化」（除以總和）？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#softmax-%E7%9A%84%E5%AF%A6%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">4.3.3.</span> <span class="toc-text"> Softmax 的實作原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#softmax-%E6%94%BE%E5%9C%A8%E5%93%AA%E8%A3%A1"><span class="toc-number">4.3.4.</span> <span class="toc-text"> Softmax 放在哪裡？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%95%9F%E7%94%A8%E5%87%BD%E5%BC%8F-%E6%90%8D%E5%A4%B1%E5%87%BD%E5%BC%8F%E8%A4%87%E7%BF%92%E8%88%87%E5%BB%B6%E4%BC%B8"><span class="toc-number">4.4.</span> <span class="toc-text"> 啟用函式 &#x2F; 損失函式：複習與延伸</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#optimizer-%E9%80%B2%E9%9A%8E%E8%87%AA%E5%8B%95%E8%AA%BF%E6%95%B4%E5%AD%B8%E7%BF%92%E7%8E%87%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">4.5.</span> <span class="toc-text"> Optimizer 進階：自動調整學習率的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E5%9F%BA%E6%9C%AC%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8Dsgd%E4%B8%8D%E5%A4%A0%E5%A5%BD"><span class="toc-number">4.5.1.</span> <span class="toc-text"> 為什麼基本梯度下降（SGD）不夠好？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#adagrad%E4%BE%9D%E6%96%B9%E5%90%91%E8%87%AA%E5%8B%95%E8%AA%BF%E6%95%B4%E5%AD%B8%E7%BF%92%E7%8E%87"><span class="toc-number">4.5.2.</span> <span class="toc-text"> Adagrad：依方向自動調整學習率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rmsprop%E6%94%B9%E5%96%84-adagrad-%E5%8F%8D%E6%87%89%E5%A4%AA%E6%85%A2%E7%9A%84%E5%95%8F%E9%A1%8C"><span class="toc-number">4.5.3.</span> <span class="toc-text"> RMSProp：改善 Adagrad 反應太慢的問題</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#adam%E7%B5%90%E5%90%88-momentum-%E8%88%87-rmsprop"><span class="toc-number">4.5.4.</span> <span class="toc-text"> Adam：結合 Momentum 與 RMSProp</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%87%89%E7%94%A8%E9%8A%9C%E6%8E%A5%E5%88%B0%E5%BD%B1%E5%83%8F%E8%BE%A8%E8%AD%98"><span class="toc-number">4.6.</span> <span class="toc-text"> 應用：銜接到影像辨識</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cnn-%E8%88%87%E7%89%A9%E4%BB%B6%E5%81%B5%E6%B8%AC"><span class="toc-number">5.</span> <span class="toc-text"> CNN 與物件偵測</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BA%E7%99%BC%E9%BB%9E%E7%94%A8-dnn-%E5%81%9A%E5%BD%B1%E5%83%8F%E8%BE%A8%E8%AD%98%E5%8F%83%E6%95%B8%E9%87%8F%E6%9C%83%E7%9B%B4%E6%8E%A5%E7%88%86%E7%82%B8"><span class="toc-number">5.1.</span> <span class="toc-text"> 出發點：用 DNN 做影像辨識，參數量會直接爆炸</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cnn-%E6%98%AF%E4%BB%80%E9%BA%BC"><span class="toc-number">5.2.</span> <span class="toc-text"> CNN 是什麼？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC-cnn-%E5%8F%AF%E4%BB%A5%E6%AF%94-dnn-%E8%A1%A8%E7%8F%BE%E6%9B%B4%E5%A5%BD"><span class="toc-number">5.3.</span> <span class="toc-text"> 為什麼 CNN 可以比 DNN 表現更好？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%8E%E9%BA%BC%E6%AF%94%E8%BC%83%E4%B8%8D%E5%90%8C-cnn-%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%A5%BD%E5%A3%9E-imagenet-%E8%88%87-benchmark"><span class="toc-number">5.4.</span> <span class="toc-text"> 怎麼比較不同 CNN 模型的好壞？—— ImageNet 與 Benchmark</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B6%93%E5%85%B8-cnn-%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%BC%94%E9%80%B2%E5%8E%9F%E7%90%86"><span class="toc-number">5.5.</span> <span class="toc-text"> 經典 CNN 模型的演進原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#lenet1998"><span class="toc-number">5.5.1.</span> <span class="toc-text"> LeNet（1998）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#alexnet2012"><span class="toc-number">5.5.2.</span> <span class="toc-text"> AlexNet（2012）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vggnet2014%E7%89%9B%E6%B4%A5%E5%A4%A7%E5%AD%B8%E6%8F%90%E5%87%BA"><span class="toc-number">5.5.3.</span> <span class="toc-text"> VGGNet（2014，牛津大學提出）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#inception-googlenet2014"><span class="toc-number">5.5.4.</span> <span class="toc-text"> Inception &#x2F; GoogLeNet（2014）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%A9%E4%BB%B6%E5%81%B5%E6%B8%ACobject-detection%E4%B8%8D%E5%8F%AA%E8%A6%81%E5%88%86%E9%A1%9E%E9%82%84%E8%A6%81%E5%AE%9A%E4%BD%8D"><span class="toc-number">5.6.</span> <span class="toc-text"> 物件偵測（Object Detection）：不只要分類，還要定位</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E5%88%86%E9%A1%9E%E4%B8%8D%E5%A4%A0%E7%94%A8"><span class="toc-number">5.6.1.</span> <span class="toc-text"> 為什麼分類不夠用？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A9%E9%9A%8E%E6%AE%B5%E6%96%B9%E6%B3%95%E5%A6%82-r-cnn-%E7%B3%BB%E5%88%97"><span class="toc-number">5.6.2.</span> <span class="toc-text"> 兩階段方法（如 R-CNN 系列）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E9%9A%8E%E6%AE%B5%E6%96%B9%E6%B3%95yoloyou-only-look-once"><span class="toc-number">5.6.3.</span> <span class="toc-text"> 一階段方法：YOLO（You Only Look Once）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E9%9C%80%E8%A6%81-data-augmentation%E8%B3%87%E6%96%99%E5%A2%9E%E5%BC%B7"><span class="toc-number">5.7.</span> <span class="toc-text"> 為什麼需要 Data Augmentation（資料增強）？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E5%80%8B%E6%9C%89%E8%B6%A3%E7%9A%84%E5%8F%8D%E4%BE%8Bshortcut-learning%E6%8D%B7%E5%BE%91%E5%AD%B8%E7%BF%92"><span class="toc-number">5.7.1.</span> <span class="toc-text"> 一個有趣的反例：Shortcut Learning（捷徑學習）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#data-augmentation-%E6%80%8E%E9%BA%BC%E8%A7%A3%E6%B1%BA%E9%80%99%E5%80%8B%E5%95%8F%E9%A1%8C"><span class="toc-number">5.7.2.</span> <span class="toc-text"> Data Augmentation 怎麼解決這個問題？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BB%B6%E4%BC%B8%E6%87%89%E7%94%A8%E6%96%87%E5%AD%97%E5%AE%9A%E4%BD%8D"><span class="toc-number">5.8.</span> <span class="toc-text"> 延伸應用：文字定位</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%8A%9C%E6%8E%A5%E4%B8%8B%E4%B8%80%E6%AD%A5"><span class="toc-number">5.9.</span> <span class="toc-text"> 銜接下一步</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#nlp-%E5%9F%BA%E7%A4%8E%E8%88%87-rnn-lstm-gru-%E8%A9%9E%E5%B5%8C%E5%85%A5"><span class="toc-number">6.</span> <span class="toc-text"> NLP 基礎與 RNN &#x2F; LSTM &#x2F; GRU &#x2F; 詞嵌入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BA%E7%99%BC%E9%BB%9Ecnn-%E8%99%95%E7%90%86%E5%BE%97%E4%BA%86%E5%9C%96%E7%89%87%E4%BD%86%E6%96%87%E5%AD%97%E6%98%AF%E5%8F%A6%E4%B8%80%E7%A8%AE%E5%AE%8C%E5%85%A8%E4%B8%8D%E5%90%8C%E7%9A%84%E8%B3%87%E6%96%99"><span class="toc-number">6.1.</span> <span class="toc-text"> 出發點：CNN 處理得了「圖片」，但「文字」是另一種完全不同的資料</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AA%9E%E8%A8%80%E6%98%AF%E4%BB%80%E9%BA%BC%E6%A9%9F%E5%99%A8%E8%A6%81%E6%80%8E%E9%BA%BC%E7%9C%8B%E6%87%82%E8%AA%9E%E8%A8%80"><span class="toc-number">6.2.</span> <span class="toc-text"> 語言是什麼？機器要怎麼「看懂」語言？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E5%85%88%E5%81%9A%E6%96%B7%E8%A9%9Esegmentation"><span class="toc-number">6.2.1.</span> <span class="toc-text"> 為什麼要先做斷詞（Segmentation）？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B7%E8%A9%9E%E7%9A%84%E5%AF%A6%E4%BD%9C%E5%8E%9F%E7%90%86%E9%95%B7%E8%A9%9E%E5%84%AA%E5%85%88%E6%B3%95"><span class="toc-number">6.2.2.</span> <span class="toc-text"> 斷詞的實作原理：長詞優先法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AA%9E%E6%84%8F%E5%88%86%E6%9E%90%E8%A9%9E%E6%80%A7%E6%A8%99%E8%A8%98%E8%88%87%E5%8F%A5%E6%B3%95%E7%B5%90%E6%A7%8B%E6%A8%B9"><span class="toc-number">6.2.3.</span> <span class="toc-text"> 語意分析：詞性標記與句法結構樹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nlp-%E7%9A%84%E5%B8%B8%E8%A6%8B%E6%87%89%E7%94%A8"><span class="toc-number">6.2.4.</span> <span class="toc-text"> NLP 的常見應用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E9%9C%80%E8%A6%81-rnn%E9%81%9E%E8%BF%B4%E7%A5%9E%E7%B6%93%E7%B6%B2%E8%B7%AF"><span class="toc-number">6.3.</span> <span class="toc-text"> 為什麼需要 RNN（遞迴神經網路）？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#rnn-%E7%9A%84%E5%AF%A6%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">6.3.1.</span> <span class="toc-text"> RNN 的實作原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC-rnn-%E9%82%84%E6%9C%83%E9%81%87%E5%88%B0%E6%A2%AF%E5%BA%A6%E6%B6%88%E5%A4%B1%E7%9A%84%E5%95%8F%E9%A1%8C"><span class="toc-number">6.3.2.</span> <span class="toc-text"> 為什麼 RNN 還會遇到梯度消失的問題？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lstm%E7%94%A8%E4%B8%89%E5%80%8B%E9%96%98%E9%96%80%E8%A7%A3%E6%B1%BA%E6%A2%AF%E5%BA%A6%E6%B6%88%E5%A4%B1"><span class="toc-number">6.3.3.</span> <span class="toc-text"> LSTM：用「三個閘門」解決梯度消失</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#grulstm-%E7%9A%84%E7%B0%A1%E5%8C%96%E7%89%88"><span class="toc-number">6.3.4.</span> <span class="toc-text"> GRU：LSTM 的簡化版</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A9%9E%E5%B5%8C%E5%85%A5word-embedding%E6%80%8E%E9%BA%BC%E6%8A%8A%E8%A9%9E%E8%AE%8A%E6%88%90%E6%A8%A1%E5%9E%8B%E7%9C%8B%E5%BE%97%E6%87%82%E7%9A%84%E6%95%B8%E5%AD%97"><span class="toc-number">6.4.</span> <span class="toc-text"> 詞嵌入（Word Embedding）：怎麼把「詞」變成模型看得懂的數字</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC-one-hot-encoding-%E5%9C%A8%E8%A9%9E%E5%90%91%E9%87%8F%E4%B8%8A%E6%9C%83%E5%87%BA%E5%95%8F%E9%A1%8C"><span class="toc-number">6.4.1.</span> <span class="toc-text"> 為什麼 One-hot Encoding 在詞向量上會出問題？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A9%9E%E5%B5%8C%E5%85%A5%E7%9A%84%E6%A0%B8%E5%BF%83%E6%83%B3%E6%B3%95"><span class="toc-number">6.4.2.</span> <span class="toc-text"> 詞嵌入的核心想法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%8E%E9%BA%BC%E8%A8%93%E7%B7%B4%E5%87%BA%E9%80%99%E4%BA%9B%E5%BA%A7%E6%A8%99-word2vec"><span class="toc-number">6.4.3.</span> <span class="toc-text"> 怎麼訓練出這些座標？—— Word2Vec</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A8%93%E7%B7%B4%E5%BE%8C%E6%9C%83%E5%87%BA%E7%8F%BE%E4%BB%80%E9%BA%BC%E6%9C%89%E8%B6%A3%E7%8F%BE%E8%B1%A1"><span class="toc-number">6.4.4.</span> <span class="toc-text"> 訓練後會出現什麼有趣現象？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#textcnncnn-%E4%B9%9F%E8%83%BD%E6%8B%BF%E4%BE%86%E5%81%9A%E6%96%87%E5%AD%97%E5%88%86%E9%A1%9E"><span class="toc-number">6.5.</span> <span class="toc-text"> TextCNN：CNN 也能拿來做文字分類</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%8A%9C%E6%8E%A5%E4%B8%8B%E4%B8%80%E6%AD%A5-2"><span class="toc-number">6.6.</span> <span class="toc-text"> 銜接下一步</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#attention-mechanism-transformer-bert"><span class="toc-number">7.</span> <span class="toc-text"> Attention Mechanism、Transformer、BERT</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BA%E7%99%BC%E9%BB%9Ernn-%E7%B3%BB%E5%88%97%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%85%A9%E5%80%8B%E6%A0%B9%E6%9C%AC%E9%99%90%E5%88%B6"><span class="toc-number">7.1.</span> <span class="toc-text"> 出發點：RNN 系列模型的兩個根本限制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#attention-mechanism%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%A9%9F%E5%88%B6%E6%98%AF%E4%BB%80%E9%BA%BC"><span class="toc-number">7.2.</span> <span class="toc-text"> Attention Mechanism（注意力機制）是什麼？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#attention-%E7%9A%84%E5%AF%A6%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">7.2.1.</span> <span class="toc-text"> Attention 的實作原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B7%E9%AB%94%E7%9A%84%E6%95%B8%E5%AD%B8%E9%81%8B%E7%AE%97dot-product-attention"><span class="toc-number">7.2.2.</span> <span class="toc-text"> 具體的數學運算：Dot-Product Attention</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#self-attention%E5%BA%8F%E5%88%97%E8%87%AA%E5%B7%B1%E8%B7%9F%E8%87%AA%E5%B7%B1%E7%AE%97-attention"><span class="toc-number">7.2.3.</span> <span class="toc-text"> Self-Attention：序列「自己跟自己」算 Attention</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#transformer-%E6%98%AF%E4%BB%80%E9%BA%BC%E7%82%BA%E4%BB%80%E9%BA%BC%E9%9C%80%E8%A6%81%E5%AE%83"><span class="toc-number">7.3.</span> <span class="toc-text"> Transformer 是什麼？為什麼需要它？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#transformer-%E7%9A%84%E5%85%A9%E5%A4%A7%E5%84%AA%E5%8B%A2"><span class="toc-number">7.3.1.</span> <span class="toc-text"> Transformer 的兩大優勢</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#encoder-decoder-%E6%9E%B6%E6%A7%8B"><span class="toc-number">7.3.2.</span> <span class="toc-text"> Encoder-Decoder 架構</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#transformer-block-%E7%9A%84%E5%85%A7%E9%83%A8%E7%B5%90%E6%A7%8B"><span class="toc-number">7.3.3.</span> <span class="toc-text"> Transformer Block 的內部結構</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E9%9C%80%E8%A6%81-multi-head-attention"><span class="toc-number">7.3.3.1.</span> <span class="toc-text"> 為什麼需要 Multi-Head Attention？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E9%9C%80%E8%A6%81-residual-connection%E6%AE%98%E5%B7%AE%E9%80%A3%E6%8E%A5"><span class="toc-number">7.3.3.2.</span> <span class="toc-text"> 為什麼需要 Residual Connection（殘差連接）？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E9%9C%80%E8%A6%81-layer-normalization"><span class="toc-number">7.3.3.3.</span> <span class="toc-text"> 為什麼需要 Layer Normalization？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bert-%E6%98%AF%E4%BB%80%E9%BA%BC"><span class="toc-number">7.4.</span> <span class="toc-text"> BERT 是什麼？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E9%9C%80%E8%A6%81-bert-%E9%80%99%E7%A8%AE%E9%A0%90%E8%A8%93%E7%B7%B4%E6%A8%A1%E5%9E%8B"><span class="toc-number">7.4.1.</span> <span class="toc-text"> 為什麼需要 BERT 這種「預訓練」模型？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A9%E7%A8%AE%E8%A6%8F%E6%A0%BC"><span class="toc-number">7.4.2.</span> <span class="toc-text"> 兩種規格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bert-%E7%9A%84%E8%BC%B8%E5%85%A5%E8%A1%A8%E7%A4%BAinput-representation%E5%8E%9F%E7%90%86"><span class="toc-number">7.4.3.</span> <span class="toc-text"> BERT 的輸入表示（Input Representation）原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A9%E5%80%8B%E7%89%B9%E6%AE%8A%E7%AC%A6%E8%99%9F"><span class="toc-number">7.4.3.1.</span> <span class="toc-text"> 兩個特殊符號</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#wordpiece-embedding%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E6%8A%8A%E8%A9%9E%E6%8B%86%E5%BE%97%E6%9B%B4%E7%B4%B0"><span class="toc-number">7.4.3.2.</span> <span class="toc-text"> WordPiece Embedding：為什麼要把詞拆得更細？</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bert-%E7%9A%84%E5%85%A9%E7%A8%AE%E9%A0%90%E8%A8%93%E7%B7%B4%E4%BB%BB%E5%8B%99"><span class="toc-number">7.4.4.</span> <span class="toc-text"> BERT 的兩種預訓練任務</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-masked-language-modelmlm"><span class="toc-number">7.4.4.1.</span> <span class="toc-text"> 1. Masked Language Model（MLM）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-next-sentence-predictionnsp"><span class="toc-number">7.4.4.2.</span> <span class="toc-text"> 2. Next Sentence Prediction（NSP）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bert-%E7%9A%84%E6%87%89%E7%94%A8%E4%B8%8B%E6%B8%B8%E4%BB%BB%E5%8B%99%E6%80%8E%E9%BA%BC%E6%8E%A5"><span class="toc-number">7.5.</span> <span class="toc-text"> BERT 的應用：下游任務怎麼接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E9%AB%94%E8%84%88%E7%B5%A1%E5%9B%9E%E9%A1%A7"><span class="toc-number">7.6.</span> <span class="toc-text"> 整體脈絡回顧</span></a></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="系列文章">
       </div>
@@ -681,10 +1174,41 @@ B_new = B_old - 學習率 × 斜率
 <div class="breadcrumb">
 <a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
 <i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/APCS/" title="分類於 APCS">APCS</a>
+</div>
+
+    <span><a href="/2025/01/18/j607-3-%E5%85%88%E5%8A%A0%E5%BE%8C%E4%B9%98%E8%88%87%E5%87%BD%E6%95%B8/" title="j607. 3. 先加後乘與函數">j607. 3. 先加後乘與函數</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2025/06/18/%E9%AB%98%E7%AD%89%E6%BC%94%E7%AE%97%E6%B3%95%E6%9C%9F%E6%9C%AB%E4%BD%9C%E6%A5%AD/" title="高等演算法期末作業">高等演算法期末作業</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
 <a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/CHSH-OJ/" title="分類於 CHSH OJ">CHSH OJ</a>
 </div>
 
-    <span><a href="/2025/01/18/c004-%E5%85%B5%E9%95%B7%E7%A0%8D%E7%8C%B4/" title="c004 兵長砍猴">c004 兵長砍猴</a></span>
+    <span><a href="/2025/01/18/c005-%E7%82%BA%E4%BA%86%E6%88%90%E7%82%BA%E6%9C%80%E6%A3%92%E7%9A%84COSER/" title="c005 為了成為最棒的COSER">c005 為了成為最棒的COSER</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Hexo/" title="分類於 Hexo">Hexo</a>
+</div>
+
+    <span><a href="/2026/01/09/hexo-mermaid-fix/" title="Hexo Shoka 主題 Mermaid 渲染問題排查與修復">Hexo Shoka 主題 Mermaid 渲染問題排查與修復</a></span>
   </li>
 
       
@@ -696,16 +1220,7 @@ B_new = B_old - 學習率 × 斜率
 <a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
 </div>
 
-    <span><a href="/2025/02/21/Q-5-5-Closest-pair/" title="Q-5-5. Closest pair">Q-5-5. Closest pair</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2026/04/10/python-%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/" title="python 語法筆記">python 語法筆記</a></span>
+    <span><a href="/2025/01/18/Q-1-4-%E6%94%AF%E9%BB%9E%E5%88%87%E5%89%B2/" title="Q-1-4. 支點切割">Q-1-4. 支點切割</a></span>
   </li>
 
       
@@ -724,9 +1239,12 @@ B_new = B_old - 學習率 × 斜率
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/%E5%85%B6%E4%BB%96/" title="分類於 其他">其他</a>
 </div>
 
-    <span><a href="/2026/01/08/hello-world/" title="Hello World">Hello World</a></span>
+    <span><a href="/2025/01/18/c889-2-%E4%BA%8C%E5%88%86%E5%9C%96/" title="c889. 2. 二分圖">c889. 2. 二分圖</a></span>
   </li>
 
       
@@ -738,7 +1256,7 @@ B_new = B_old - 學習率 × 斜率
 <a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
 </div>
 
-    <span><a href="/2025/01/18/Q-3-5-%E5%B8%B6%E8%91%97%E6%9D%BF%E5%87%B3%E6%8E%92%E9%9B%9E%E6%8E%92%E7%9A%84%E9%AB%98%E4%BA%BA-APCS/" title="Q-3-5. 帶著板凳排雞排的高人(APCS)">Q-3-5. 帶著板凳排雞排的高人(APCS)</a></span>
+    <span><a href="/2025/01/19/Q-8-16-%E7%97%85%E6%AF%92%E6%BC%94%E5%8C%96-APCS202007-O-nm/" title="Q-8-16. 病毒演化 (APCS202007) O(nm)">Q-8-16. 病毒演化 (APCS202007) O(nm)</a></span>
   </li>
 
       
@@ -750,37 +1268,19 @@ B_new = B_old - 學習率 × 斜率
 <a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
 </div>
 
-    <span><a href="/2025/01/18/Q-2-10-%E5%AD%90%E9%9B%86%E5%90%88%E7%9A%84%E5%92%8C-%E6%8A%98%E5%8D%8A%E6%9E%9A%E8%88%89/" title="Q-2-10. 子集合的和(折半枚舉)">Q-2-10. 子集合的和(折半枚舉)</a></span>
+    <span><a href="/2025/01/18/Q-6-5-%E4%BA%8C%E7%B6%AD%E6%9C%80%E5%A4%A7%E5%AD%90%E7%9F%A9%E9%99%A3/" title="Q-6-5. 二維最大子矩陣">Q-6-5. 二維最大子矩陣</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-</div>
-
-    <span><a href="/2025/02/21/Vue3-%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/" title="Vue3 語法筆記">Vue3 語法筆記</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2025/01/15/My-First-Post/" title="My First Post">My First Post</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80%E7%AD%86%E8%A8%98/" title="分類於 程式語言筆記">程式語言筆記</a>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80%E7%AD%86%E8%A8%98/node-js/" title="分類於 node.js">node.js</a>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/APCS-%E6%A8%A1%E6%93%AC%E5%9C%98%E9%9A%8A/" title="分類於 APCS 模擬團隊">APCS 模擬團隊</a>
 </div>
 
-    <span><a href="/2025/01/15/Mongoose-%E7%9A%84%E5%9F%BA%E7%A4%8E%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/" title="Mongoose 的基礎語法筆記">Mongoose 的基礎語法筆記</a></span>
+    <span><a href="/2025/01/18/apcs0403%E6%84%9B%E5%90%83%E5%AD%97%E6%AF%8D%E7%9A%84%E6%80%AA%E7%8D%B8-Alphabet-Monster/" title="apcs0403愛吃字母的怪獸 (Alphabet Monster)">apcs0403愛吃字母的怪獸 (Alphabet Monster)</a></span>
   </li>
 
   </ul>
@@ -805,13 +1305,13 @@ B_new = B_old - 學習率 × 斜率
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="總字數">383k 字</span>
+    <span title="總字數">397k 字</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">5:48</span>
+    <span title="所需總閱讀時間">6:01</span>
   </div>
   <div class="powered-by">
     基於 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
