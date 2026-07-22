@@ -1,0 +1,1160 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/https:/pub-da440be71028438aa9683b63bef5ccf1.r2.devimages/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/https:/pub-da440be71028438aa9683b63bef5ccf1.r2.dev/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="プログラムを書けないうさぎは、ただのうさぎだ。" href="https://rabbirreaper.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="プログラムを書けないうさぎは、ただのうさぎだ。" href="https://rabbirreaper.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="プログラムを書けないうさぎは、ただのうさぎだ。" href="https://rabbirreaper.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="https://rabbirreaper.github.io/2026/07/22/Progressive-Web-App-PWA/">
+
+
+
+  <title>
+Progressive Web App(PWA) |
+Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎだ。</title>
+<meta name="generator" content="Hexo 8.1.1"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Progressive Web App(PWA)
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="創建時間：2026-07-22 02:36:52">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">發表於</span>
+    <time itemprop="dateCreated datePublished" datetime="2026-07-22T02:36:52+08:00">2026-07-22</time>
+  </span>
+  <span class="item" title="文章字數">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">文章字數</span>
+    <span>26k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="所需閱讀時間">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">所需閱讀時間</span>
+    <span>24 分鐘</span>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切換導航欄">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Rabbir Reaper</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/46.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/93.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/8.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/30.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/1.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/22.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首頁</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-TW">
+  <link itemprop="mainEntityOfPage" href="https://rabbirreaper.github.io/2026/07/22/Progressive-Web-App-PWA/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/https:/pub-da440be71028438aa9683b63bef5ccf1.r2.dev/images/avatar.jpg">
+    <meta itemprop="name" content="Rabbir">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="プログラムを書けないうさぎは、ただのうさぎだ。">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="progressive-web-apppwa30-天完整學習筆記"><a class="anchor" href="#progressive-web-apppwa30-天完整學習筆記">#</a> Progressive Web App（PWA）30 天完整學習筆記</h1>
+<blockquote>
+<p>本筆記整理自 iThome 2017 iT 邦幫忙鐵人賽系列文章《30 天 Progressive Web App 學習筆記》（作者：iamya），共 30 篇文章。內容經過重新整理、補充原理說明與設計思路分析。</p>
+<p>原系列連結：<span class="exturl" data-url="aHR0cHM6Ly9pdGhlbHAuaXRob21lLmNvbS50dy91c2Vycy8yMDA3MTUxMi9pcm9ubWFuLzEyMjI=">https://ithelp.ithome.com.tw/users/20071512/ironman/1222</span></p>
+</blockquote>
+<hr />
+<h2 id="目錄"><a class="anchor" href="#目錄">#</a> 目錄</h2>
+<ol>
+<li>PWA 是什麼、為什麼需要它</li>
+<li>從靜態網站到 SPA：網站演進史</li>
+<li>App Shell 架構：PWA 效能的核心秘密</li>
+<li>RAIL 效能模型與 Critical Rendering Path</li>
+<li>Optimizing Content Efficiency：資源最佳化</li>
+<li>Service Worker：PWA 的技術心臟</li>
+<li>Chrome DevTools 除錯工具</li>
+<li>PWA 實際案例分析</li>
+<li>動手實作：Vanilla JS 版 To-Do List PWA</li>
+<li>Web App Manifest：讓網站更像 App</li>
+<li>自動化生成 Service Worker：sw-precache 與 webpack plugin</li>
+<li>React + Redux 版本實作</li>
+<li>Offline Storage 選型策略</li>
+<li>總結與延伸學習方向</li>
+</ol>
+<hr />
+<h2 id="1-pwa-是什麼-為什麼需要它"><a class="anchor" href="#1-pwa-是什麼-為什麼需要它">#</a> 1. PWA 是什麼、為什麼需要它</h2>
+<h3 id="11-網頁與-app-各自的痛點"><a class="anchor" href="#11-網頁與-app-各自的痛點">#</a> 1.1 網頁與 App 各自的痛點</h3>
+<p>要理解 PWA 為什麼誕生，得先回到「網頁」與「原生 App」這兩種體驗長期存在的矛盾。</p>
+<p><strong>網頁的痛點：</strong></p>
+<ul>
+<li><strong>手機網路不穩定、速度慢</strong>：Google 官方數據指出，載入超過 3 秒，53% 的使用者會直接放棄瀏覽。在傳統 SPA（Single Page Application）架構下，使用者要先下載 HTML/CSS/JS，再發送 API 請求取得 JSON、才能組出畫面，網路品質差時這個「取得完整內容」的過程會被放大成使用者可感知的痛苦等待。</li>
+<li><strong>使用者體驗不如原生 App</strong>：原生 App 有 Splash Screen（開場過場動畫）、有推播通知（push notification）可以主動把使用者拉回來；傳統網頁兩者都沒有，互動黏著度天生就弱一截。</li>
+</ul>
+<p><strong>原生 App 的痛點：</strong></p>
+<ul>
+<li><strong>開發成本高</strong>：Native App 通常要分別聘請 iOS/Android/Windows 工程師；Hybrid App 雖然共用一份程式碼，但仍要透過 Cordova 之類的工具打包，並且要遵守各家 App Store 的審核規範，改一版就要重跑一次審核流程。</li>
+<li><strong>安裝路徑太長、流失率高</strong>：Chrome Dev Summit 2015 中 Alex Russell 引用研究指出，安裝 App 的每一個步驟大約會流失 20% 的使用者 —— 打開 App Store、搜尋、點安裝、同意權限、等待下載……1000 人的漏斗最後可能只剩下 260 人左右。相較之下，網頁只要「點一下連結」就能造訪，沒有這道摩擦力。</li>
+<li><strong>使用者對「安裝」本身有戒心</strong>：許多使用者不想安裝太多 App，擔心佔用手機容量、擔心過度授權隱私權限；在網路資費昂貴、Wi-Fi 難找的地區，下載和更新 App 的成本更是雪上加霜。而 comScore 的調查也顯示，行動網頁的整體瀏覽量是 App 的將近三倍 ——App 有「不容易被搜尋、不容易被分享」的天生劣勢，網頁反而在這件事上贏了 App。</li>
+</ul>
+<p><strong>這裡是理解 PWA 設計哲學的關鍵</strong>：PWA 並不是「發明一套全新技術」，而是觀察到「網頁的優勢」（易分享、免安裝、可搜尋）與「App 的優勢」（快、可離線、可推播、有主畫面圖示）剛好互補，於是提出一套漸進式的技術規範，讓網頁「借用」App 的體驗優點，同時完全不犧牲網頁原本的可傳播性。這也是為什麼名字裡有「Progressive（漸進式）」—— 它不要求你一次做到位，而是允許你在支援的瀏覽器裡逐步疊加能力，不支援的環境則優雅降級（graceful degradation），回到普通網頁的基本體驗。</p>
+<h3 id="12-pwa-的正式定義與十大特性"><a class="anchor" href="#12-pwa-的正式定義與十大特性">#</a> 1.2 PWA 的正式定義與十大特性</h3>
+<p>PWA（Progressive Web App）這個名詞由設計師 Frances Berriman 與 Google Chrome 工程師 Alex Russell 在 2015 年提出。Google 官方文件列出 PWA 應具備的十項特性：</p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Progressive</td>
+<td>漸進式：不論瀏覽器支援程度，都能提供基本體驗，環境許可時再疊加進階功能</td>
+</tr>
+<tr>
+<td>Responsive</td>
+<td>響應式：能在各種裝置尺寸下做最佳化顯示</td>
+</tr>
+<tr>
+<td>Connectivity independent</td>
+<td>不依賴網路連線：透過 Service Worker，在低頻寬甚至離線時仍可瀏覽</td>
+</tr>
+<tr>
+<td>App-like</td>
+<td>像 App 一樣：瀏覽速度、互動手感貼近原生體驗</td>
+</tr>
+<tr>
+<td>Fresh</td>
+<td>保持新鮮：Service Worker 能在背景自動更新內容</td>
+</tr>
+<tr>
+<td>Safe</td>
+<td>安全：必須透過 HTTPS 提供服務，確保傳輸資料的完整性</td>
+</tr>
+<tr>
+<td>Discoverable</td>
+<td>可被發現：能被搜尋引擎索引</td>
+</tr>
+<tr>
+<td>Re-engageable</td>
+<td>可再互動：透過推播通知等機制，主動把使用者找回來</td>
+</tr>
+<tr>
+<td>Installable</td>
+<td>可安裝：Add to Home Screen，像 App 一樣加到手機桌面</td>
+</tr>
+<tr>
+<td>Linkable</td>
+<td>可連結分享：透過 URL 就能無摩擦地分享、傳遞</td>
+</tr>
+</tbody>
+</table>
+<p><strong>為什麼特別強調「Safe（必須 HTTPS）」？</strong> 因為 Service Worker 擁有攔截、竄改所有網路請求的能力，如果透過不安全的 HTTP 連線註冊，就等於給了中間人攻擊者一個「劫持你所有網路流量」的後門，所以規格上直接鎖死：Service Worker 只能在  <code>localhost</code> （方便本機開發）或 HTTPS 環境下運作，這是刻意的安全設計，不是限制而是保護。</p>
+<h3 id="13-真實案例flipkart-lite-的啟示"><a class="anchor" href="#13-真實案例flipkart-lite-的啟示">#</a> 1.3 真實案例：Flipkart Lite 的啟示</h3>
+<p>印度電商龍頭 Flipkart 在 2015 年一度因為行動版網站體驗太差而直接關閉 mobile website，2016 年改用 PWA 技術重新推出「Flipkart Lite」，成效相當驚人：</p>
+<ul>
+<li>使用者平均停留時間從 70 秒拉長到 3.5 分鐘（<strong>3 倍</strong>）</li>
+<li>顧客回流率提升 <strong>40%</strong></li>
+<li>透過「加入主畫面」進站的使用者轉換率提升 <strong>70%</strong></li>
+<li>資料傳輸量降低 <strong>3 倍</strong></li>
+</ul>
+<p>這個案例之所以重要，是因為它精準點出 PWA 最大的受益場景：<strong>行動網路品質不佳、資費昂貴、且使用者對「安裝 App」有心理門檻的市場</strong>。印度當時 70% 地區仍使用 2G 網路，PWA 的離線快取特性剛好對症下藥。這也解釋了為什麼 PWA 在新興市場（印度、東南亞）比在已開發國家更早獲得爆發性採用。</p>
+<hr />
+<h2 id="2-從靜態網站到-spa網站演進史"><a class="anchor" href="#2-從靜態網站到-spa網站演進史">#</a> 2. 從靜態網站到 SPA：網站演進史</h2>
+<p>理解 PWA 為何長成現在這個樣子，需要先理解網站架構的演進脈絡，因為 PWA 本質上是這條演進路線的「下一步」。</p>
+<h3 id="21-靜態網站-動態網站server-render"><a class="anchor" href="#21-靜態網站-動態網站server-render">#</a> 2.1 靜態網站 → 動態網站（Server Render）</h3>
+<p>最早期的網站是純靜態頁面：每個網址對應一個獨立的 HTML 檔案。缺點很直觀 —— 如果網站有 100 頁，共用的 LOGO 圖檔要換，就要手動改 100 次。</p>
+<p>於是出現了「動態網站」：伺服器上跑一支程式，依照網址（route）決定該從資料庫撈什麼資料、再用樣板引擎（Node/EJS、PHP/Laravel、Ruby on Rails/ERB 等）拼出 HTML 回傳。同一支程式可以產生無數種頁面內容，管理成本大幅降低。</p>
+<p>但動態網站有個先天限制：<strong>每次換頁都是整頁重新請求、整頁刷新</strong>。使用者沒辦法「邊聽音樂邊看文章」，因為切換頁面等於瀏覽器重新載入整份文件，任何正在執行中的 JS 狀態（音樂播放器）都會被砍掉重來。</p>
+<h3 id="22-spasingle-page-application的興起與代價"><a class="anchor" href="#22-spasingle-page-application的興起與代價">#</a> 2.2 SPA（Single Page Application）的興起與代價</h3>
+<p>為了解決「連續性操作」的需求，SPA 應運而生。核心技術是 AJAX：透過 JavaScript 發送請求拿到資料後，直接在前端置換 DOM，不必整頁刷新。2006 年 Gmail 就是知名的早期案例，體驗媲美桌面應用程式；Spotify 早期網頁版也採用同樣策略，讓使用者「點進去就能聽」，比下載 App 更容易推廣。</p>
+<p>隨著 SPA 邏輯越來越複雜，Backbone.js、Ember.js、Angular.js 這類框架陸續出現，用來管理 DOM 抽換與資料綁定。但 SPA 也帶來新問題：</p>
+<ul>
+<li><strong>首次載入很慢</strong>：因為所有邏輯都打包在 JS 裡，使用者要等 JS 全部下載、解析、執行完才看得到內容。</li>
+<li><strong>JavaScript 檔案過大</strong>：功能越豐富，bundle 就越肥。</li>
+<li><strong>SEO 不友善</strong>：搜尋引擎爬蟲若不執行 JS，就看不到內容（雖然現代爬蟲已大幅改善，但當年是硬傷）。</li>
+</ul>
+<p><strong>這正是 PWA 要解決的下一道題目</strong>：SPA 已經把「App 般的互動流暢度」做出來了，但犧牲了「首次載入速度」與「離線可用性」。PWA 的核心命題就是：<strong>能不能讓網頁保留住 SPA 的優勢，同時解決它引入的新問題？</strong> 答案就是接下來要談的 App Shell 架構與 Service Worker。</p>
+<hr />
+<h2 id="3-app-shell-架構pwa-效能的核心秘密"><a class="anchor" href="#3-app-shell-架構pwa-效能的核心秘密">#</a> 3. App Shell 架構：PWA 效能的核心秘密</h2>
+<h3 id="31-什麼是-app-shell"><a class="anchor" href="#31-什麼是-app-shell">#</a> 3.1 什麼是 App Shell？</h3>
+<p>App Shell 是 PWA 最重要的架構思想之一。核心概念很簡單：<strong>把網站切分成「不常變動的外殼（Shell）」與「常常變動的內容（Content）」兩部分</strong>。</p>
+<ul>
+<li>Shell：Logo、導覽列（Navbar）、版面骨架、固定的 CSS/JS—— 這些東西幾乎不會變。</li>
+<li>Content：文章內容、清單資料、使用者輸入 —— 這些才是每次造訪可能不同的部分。</li>
+</ul>
+<p>透過 Service Worker，把 Shell 這部分的檔案（最小化的 HTML/CSS/JS）在第一次造訪時快取到本機，之後再次造訪時就能「立即」把 Shell 顯示出來，不用再等網路請求。等 Shell 出現後，再非同步去抓真正的內容資料填進去。</p>
+<p>可以把這個概念類比成建構原生 App 時「打包 APK/IPA」的動作 —— 這份打包好的殼只包含程式邏輯與核心元件，不含任何動態資料，之後要顯示的資料是另外透過 API 拉取的。</p>
+<h3 id="32-為什麼要這樣設計感知效能-實際效能"><a class="anchor" href="#32-為什麼要這樣設計感知效能-實際效能">#</a> 3.2 為什麼要這樣設計？「感知效能 &gt; 實際效能」</h3>
+<p>App Shell 設計背後有一個關鍵的心理學原理：</p>
+<blockquote>
+<p><strong>感知效能（Perceived Performance）比實際效能（Actual Performance）更重要。</strong></p>
+</blockquote>
+<p>同樣是「網站真正完全就緒」要花 3 秒，如果使用者在 0.3 秒看到 Logo 和版面骨架出現、緊接著內容陸續填入，體感速度會遠比「螢幕整整空白 3 秒、內容一次全部跳出來」要快很多。這是因為：</p>
+<ul>
+<li><strong>不確定的等待感覺更長</strong>：空白畫面沒有給使用者任何回饋，使用者無法判斷網站是當機了還是正在載入，這種不確定性本身就會拉長主觀等待時間。</li>
+<li><strong>漸進式呈現提供「進度感」</strong>：先看到殼、再看到內容，等於給了使用者一個進度指標，即使總時間沒變，體驗也會顯著改善。</li>
+</ul>
+<p>這也是為什麼原生 App 普遍會做 Splash Screen—— 不是單純好看，而是刻意用視覺回饋來「欺騙」等待感。</p>
+<h3 id="33-為什麼不整包一起-cache而要拆成殼跟內容分開"><a class="anchor" href="#33-為什麼不整包一起-cache而要拆成殼跟內容分開">#</a> 3.3 為什麼不整包一起 cache，而要拆成殼跟內容分開？</h3>
+<p>如果不拆分，直接把整個頁面（含當前資料）整包快取，會有兩個問題：</p>
+<ol>
+<li><strong>資料新鮮度問題</strong>：如果整包一起快取，下次打開時看到的內容可能是過期的舊資料，而且很難只更新其中一小部分 —— 要嘛全部重抓，要嘛全部沿用舊的。</li>
+<li><strong>快取效率問題</strong>：Shell 部分（Logo、CSS、JS 框架程式碼）幾乎不會變，理論上可以永久快取、不必每次重新下載；但如果跟內容綁在一起快取，Shell 也會被迫跟著內容的更新頻率一起失效重抓，造成頻寬浪費。</li>
+</ol>
+<p>拆分之後，Shell 走<strong>快取優先（cache-first）<strong>策略 —— 幾乎不變，永久快取、瞬間顯示；Content 走</strong>網路優先或 stale-while-revalidate</strong> 策略 —— 保證資料新鮮度，同時允許離線時退回舊快取。這種「依照資源變動頻率選擇不同快取策略」的思路，後面會在 Service Worker 的  <code>runtimeCaching</code>  設定中具體落地（見第 11 章）。</p>
+<h3 id="34-實測效益app-shell-到底快多少"><a class="anchor" href="#34-實測效益app-shell-到底快多少">#</a> 3.4 實測效益：App Shell 到底快多少？</h3>
+<p>在 3G 網路、Nexus 5 裝置、Chrome Dev 瀏覽器的測試條件下：</p>
+<ul>
+<li><strong>Google 官方範例</strong>：第一次造訪（無快取）看到畫面要 2.5 秒、完全載入要 7.1 秒；透過 Service Worker 快取後的<strong>後續造訪</strong>，只要 <strong>0.8 秒</strong>就能看到畫面。</li>
+<li><strong>Weather App 案例</strong>（Google Codelab）：首次造訪 3.0 秒出現畫面、1.9 秒完全 render；快取後只要 <strong>0.3 秒</strong>出現畫面、<strong>0.6 秒</strong>完全 render。</li>
+</ul>
+<p>兩個案例都顯示：<strong>在 3G 網路下，App Shell + Service Worker 大約可以帶來 10 倍的載入速度提升</strong>。這正是為什麼在印度這類仍大量依賴 2G/3G 的市場，PWA 帶來的體驗提升特別有感。</p>
+<h3 id="35-如何設計-app-shell"><a class="anchor" href="#35-如何設計-app-shell">#</a> 3.5 如何設計 App Shell？</h3>
+<p>實務上設計 App Shell 時，可以自問幾個問題：</p>
+<ul>
+<li>使用者打開網站的瞬間，「一定」要馬上看到什麼？（First Paint 的內容）</li>
+<li>網站最關鍵的 UI 元件是什麼？（Header、Logo、輸入框？）</li>
+<li>這些元件依賴哪些資源？（images、CSS、JS）</li>
+</ul>
+<p>例如一個 To-Do List 應用，App Shell 通常會包含：Logo、頂部「未完成事項數量」的顯示區塊、輸入框 —— 這些是「殼」；而真正的待辦事項清單內容（從 API 抓來的資料），屬於「內容」，不算進 Shell 裡。</p>
+<hr />
+<h2 id="4-rail-效能模型與-critical-rendering-path"><a class="anchor" href="#4-rail-效能模型與-critical-rendering-path">#</a> 4. RAIL 效能模型與 Critical Rendering Path</h2>
+<h3 id="41-rail-model以使用者感受為中心的效能指標"><a class="anchor" href="#41-rail-model以使用者感受為中心的效能指標">#</a> 4.1 RAIL Model：以使用者感受為中心的效能指標</h3>
+<p>RAIL 是 Google 提出的效能評估模型，分別代表四個階段，各自對應不同的時間預算：</p>
+<table>
+<thead>
+<tr>
+<th>階段</th>
+<th>全名</th>
+<th>時間預算</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R</td>
+<td>Response 回應</td>
+<td>&lt; 100ms</td>
+<td>從使用者點擊到畫面出現回饋的時間</td>
+</tr>
+<tr>
+<td>A</td>
+<td>Animation 動畫</td>
+<td>每幀 &lt; 16ms（60fps）</td>
+<td>動畫與捲動要維持流暢</td>
+</tr>
+<tr>
+<td>I</td>
+<td>Idle 閒置</td>
+<td>每個工作區塊 &lt; 50ms</td>
+<td>善用瀏覽器閒置時間做背景工作</td>
+</tr>
+<tr>
+<td>L</td>
+<td>Load 載入</td>
+<td>&lt; 1000ms</td>
+<td>網站可互動的時間</td>
+</tr>
+</tbody>
+</table>
+<p><strong>為什麼是 100 毫秒？</strong> 這個數字不是隨便訂的，而是人類神經反應的生理極限 —— 研究顯示，從動作發生到人類意識到「有延遲」大約需要 100 毫秒，所以只要在這個時間窗口內給出回饋（哪怕只是按鈕變色），使用者就會感覺「即時」。</p>
+<p><strong>為什麼是 16 毫秒？</strong> 60fps 的螢幕更新，每一幀的時間預算是 1000ms ÷ 60 ≈ 16.7ms。瀏覽器要在這個時間內完成  <code>JavaScript → Style → Layout → Paint → Composite</code>  這一整條像素管線（pixel pipeline）。特別要注意：更改會觸發 Layout（重新排版）的 CSS 屬性（例如  <code>width</code> 、 <code>height</code> ）成本很高，動畫時應盡量只改  <code>transform</code> 、 <code>opacity</code>  這類只影響 Composite 階段的屬性，避免掉幀。</p>
+<p><strong>為什麼是 50 毫秒的 Idle 區塊？</strong> 因為如果背景任務跑太久沒有中斷點，使用者若在這期間做了操作（點擊、輸入），畫面會卡住沒反應。把工作切成 50ms 以內的小區塊（chunk），代表主執行緒隨時能被使用者的操作插隊，保持互動的即時性。</p>
+<p><strong>為什麼是 1 秒的 Load？</strong> 超過 1 秒會打斷使用者對當前任務的專注力。這裡的重點同樣是「感知」—— 不是要求 1 秒內載完所有東西，而是要在 1 秒內讓使用者感覺「東西已經可以用了」（呼應第 3.2 節的 App Shell 邏輯）。</p>
+<h3 id="42-critical-rendering-path瀏覽器怎麼把程式碼變成畫面"><a class="anchor" href="#42-critical-rendering-path瀏覽器怎麼把程式碼變成畫面">#</a> 4.2 Critical Rendering Path：瀏覽器怎麼把程式碼變成畫面？</h3>
+<p>要優化效能，得先理解瀏覽器內部把 HTML/CSS/JS 轉成螢幕像素的完整流程：</p>
+<ol>
+<li><strong>解析 HTML → 建立 DOM Tree</strong>：瀏覽器逐行讀取 HTML，建立文件物件模型樹。</li>
+<li><strong>解析 CSS → 建立 CSSOM Tree</strong>：遇到  <code>&lt;link rel=&quot;stylesheet&quot;&gt;</code>  時，下載並解析 CSS，建立樣式規則樹。</li>
+<li><strong>合併 DOM + CSSOM → Render Tree</strong>：只包含「會被畫出來」的節點（ <code>display: none</code>  的元素不會出現在這裡）。</li>
+<li><strong>Layout（排版）</strong>：計算每個節點在畫面上的確切位置與大小。</li>
+<li><strong>Paint（繪製）</strong>：把每個節點畫成實際的像素。</li>
+</ol>
+<p>CSS 屬於「render blocking（阻塞渲染）」資源 —— 瀏覽器必須等 CSSOM 建好才能繼續往下產生 Render Tree，所以 CSS 要盡量精簡、放在  <code>&lt;head&gt;</code>  盡早載入；JavaScript 若同步執行，還會阻塞 HTML 解析本身，所以才有  <code>async</code> ／ <code>defer</code>  這類延遲執行的屬性設計。</p>
+<h3 id="43-為什麼要區分critical與non-critical資源"><a class="anchor" href="#43-為什麼要區分critical與non-critical資源">#</a> 4.3 為什麼要區分「Critical」與「Non-Critical」資源？</h3>
+<p>一個常見的最佳化手法：把「首屏必須用到的 CSS」直接內聯（inline）寫進  <code>&lt;head&gt;</code>  的  <code>&lt;style&gt;</code>  裡，其餘非首屏需要的 CSS 用 JavaScript 非同步載入：</p>
+<figure class="highlight html"><figcaption data-lang="HTML"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="3"></td><td><pre>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css"><span class="token comment">/* 首屏必要的關鍵 CSS，直接內聯 */</span></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="4"></td><td><pre>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"><span class="token function">loadCSS</span><span class="token punctuation">(</span><span class="token string">'non-critical.css'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="7"></td><td><pre>  ...</pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="9"></td><td><pre><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></pre></td></tr></table></figure><p><strong>這樣設計的理由</strong>：外部 CSS 檔案需要多一次網路請求（DNS 查詢、建立連線、下載），在網路延遲較高的環境下，這個往返時間（RTT）可能就佔了首屏出現時間的大半。把關鍵 CSS 直接寫進 HTML，等於省下這一次網路往返，讓首屏能更快出現 —— 這與 App Shell「盡快顯示殼」的邏輯是一致的。</p>
+<hr />
+<h2 id="5-optimizing-content-efficiency資源最佳化"><a class="anchor" href="#5-optimizing-content-efficiency資源最佳化">#</a> 5. Optimizing Content Efficiency：資源最佳化</h2>
+<p>這一部分討論的是更基礎、卻常被忽略的效能功課：<strong>你真的需要下載這些東西嗎？</strong></p>
+<h3 id="51-先問這個資源真的有必要存在嗎"><a class="anchor" href="#51-先問這個資源真的有必要存在嗎">#</a> 5.1 先問：這個資源真的有必要存在嗎？</h3>
+<p>在加入任何圖片、Carousel、外部資源前，應該先評估：</p>
+<ol>
+<li>這個資源帶來的「下載成本」與「提供給使用者的價值」是否成正比？</li>
+<li>如果是外部資源，它的穩定性能被信任嗎？</li>
+<li>這個資源萬一載入失敗，會不會拖累整個頁面的效能與體驗？</li>
+<li>這個資源是否還有壓縮／快取空間？</li>
+</ol>
+<p>一個很有說服力的例子：某網站加入 Carousel 輪播圖，讓使用者點擊瀏覽更多照片，但所有照片一次全部下載。根據 <span class="exturl" data-url="aHR0cDovL05ELmVkdQ==">ND.edu</span> 的研究，Carousel 第一張（也就是使用者不需要點擊就看到的那張）點擊率佔了 <strong>89.1%</strong>—— 也就是說，網站為了服務那剩下 10.9% 的互動，讓 100% 的使用者付出了下載全部圖片的頻寬成本。<strong>這正是 PWA 精神的延伸：效能優化不只是前端工程師寫程式的事，而是產品設計階段就要考慮的成本效益取捨。</strong></p>
+<h3 id="52-文字類資源的壓縮"><a class="anchor" href="#52-文字類資源的壓縮">#</a> 5.2 文字類資源的壓縮</h3>
+<p>HTML/CSS/JS 屬於「Text-based Assets」，是壓縮效益最高的一類資源。常見手法：</p>
+<ul>
+<li><strong>Minify（壓縮）</strong>：移除註解、空白、換行，並縮短變數名稱。jQuery Core 2.2.4 未壓縮版本 258KB，壓縮後只剩 86KB，差距接近三倍。</li>
+<li><strong>GZIP 壓縮</strong>：伺服器端啟用 GZIP，對文字類資源效果最佳，通常能再省下可觀的傳輸體積。</li>
+</ul>
+<h3 id="53-圖片與-svg-最佳化"><a class="anchor" href="#53-圖片與-svg-最佳化">#</a> 5.3 圖片與 SVG 最佳化</h3>
+<ul>
+<li>簡單幾何圖形（Logo、文字圖示）建議用向量圖（SVG），因為不受解析度與縮放比例影響，一份檔案適用各種螢幕密度。</li>
+<li>用  <code>gulp-imagemin</code> 、 <code>image-webpack-loader</code>  這類工具自動化壓縮 PNG/JPEG/GIF/SVG。</li>
+<li>SVG 檔案（尤其是設計軟體匯出的）常含有大量不必要的中繼資料，可以用  <code>svgo</code> ／ <code>svgomg</code>  這類工具清理，實測可縮減約 58% 的檔案大小。</li>
+</ul>
+<h3 id="54-透過-http-快取降低重複傳輸"><a class="anchor" href="#54-透過-http-快取降低重複傳輸">#</a> 5.4 透過 HTTP 快取降低重複傳輸</h3>
+<p>利用 HTTP 的  <code>ETag</code>  與  <code>Cache-Control</code>  header，讓瀏覽器自己判斷資源是否需要重新下載：</p>
+<figure class="highlight javascript"><figcaption data-lang="javascript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment">// Node.js Express 範例</span></pre></td></tr><tr><td data-num="2"></td><td><pre>res<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">'ETag'</span><span class="token punctuation">,</span> <span class="token string">'"'</span> <span class="token operator">+</span> hash <span class="token operator">+</span> <span class="token string">'"'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//hash 是資源內容的指紋</span></pre></td></tr><tr><td data-num="3"></td><td><pre>res<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">'Cache-Control'</span><span class="token punctuation">,</span> <span class="token string">'public, max-age=31557600'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr></table></figure><p><strong>這裡值得注意的設計含意</strong>：HTTP 快取與 Service Worker 快取是兩層不同的機制。HTTP 快取由瀏覽器原生管理，規則簡單但控制粒度粗；Service Worker 快取則完全由開發者用 JavaScript 程式碼控制，可以做到「離線也能存取」「依 URL pattern 決定策略」這種細緻的行為 —— 這也是為什麼 PWA 選擇 Service Worker 作為核心技術，而不只是依賴傳統 HTTP 快取頭。</p>
+<hr />
+<h2 id="6-service-workerpwa-的技術心臟"><a class="anchor" href="#6-service-workerpwa-的技術心臟">#</a> 6. Service Worker：PWA 的技術心臟</h2>
+<p>如果說 App Shell 是「設計思想」，Service Worker 就是把這個思想落地的「技術引擎」。這是整個 PWA 系列裡份量最重的部分。</p>
+<h3 id="61-service-worker-是什麼為什麼要這樣設計"><a class="anchor" href="#61-service-worker-是什麼為什麼要這樣設計">#</a> 6.1 Service Worker 是什麼？為什麼要這樣設計？</h3>
+<p>Service Worker 本質上是一支獨立於網頁之外、跑在瀏覽器背景的 JavaScript 程式。它有幾個關鍵特性，而每個特性背後都有明確的設計理由：</p>
+<ul>
+<li><strong>不能直接操作 DOM</strong>：Service Worker 執行在獨立的執行緒（Worker context），沒有  <code>window</code> 、 <code>document</code>  物件。若要通知頁面做什麼事，只能透過  <code>postMessage</code>  傳遞訊息，讓頁面自己去操作 DOM。<strong>為什麼這樣設計？</strong> 因為 Service Worker 需要在頁面完全關閉的情況下也能繼續運作（例如接收推播通知），如果它綁死在某個特定頁面的 DOM 上，頁面一關閉它就失去意義了。把它設計成獨立於任何單一頁面之外的「背景代理人」，才能真正做到「即使網頁沒開也能運作」。</li>
+<li><strong>必須在 localhost 或 HTTPS 下運作</strong>：如前面 1.2 節提過，因為它能攔截所有網路請求，安全性要求極高。</li>
+<li><strong>擁有獨立的生命週期</strong>：不隨頁面關閉而消失，能持續在背景攔截請求、管理快取。</li>
+</ul>
+<h3 id="62-service-worker-生命週期詳解"><a class="anchor" href="#62-service-worker-生命週期詳解">#</a> 6.2 Service Worker 生命週期詳解</h3>
+<p>生命週期分為幾個關鍵階段：</p>
+<pre><code>註冊 (register) → 安裝 (install) → 等待/啟用 (waiting/activate) → 接管頁面 (control) → 閒置終止 (terminated)
+</code></pre>
+<ol>
+<li><strong>註冊（Register）</strong>：頁面透過 JavaScript 呼叫  <code>navigator.serviceWorker.register('/sw.js')</code> ，告訴瀏覽器要使用哪支 Service Worker 檔案。</li>
+<li><strong>安裝（Install）</strong>：瀏覽器在背景下載並安裝 Service Worker。這個階段通常用來做「預先快取（precache）」—— 把 App Shell 需要的靜態資源存進 Cache Storage。若所有資源都成功快取，才算安裝成功、進入 activate；若有任何一項失敗，整個安裝流程失敗，等待下一次重試。</li>
+<li><strong>啟用（Activate）</strong>：安裝成功後進入啟用階段，這是清除舊版快取的最佳時機（詳見 6.3 節）。</li>
+<li><strong>接管（Control）</strong>：啟用完成後，Service Worker 開始攔截頁面發出的所有  <code>fetch</code>  事件。</li>
+<li><strong>終止（Terminated）</strong>：頁面沒有被使用時，瀏覽器會把 Service Worker 進程終止以節省記憶體，但已註冊的狀態仍會保留，下次有請求時會被重新喚醒。</li>
+</ol>
+<p><strong>為什麼要設計成「一定要全部資源快取成功才算安裝成功」？</strong> 這是刻意的 all-or-nothing 設計。如果允許部分快取成功就繼續，App Shell 就可能缺了某個關鍵 CSS 或 JS，導致離線時畫面顯示不完整甚至壞掉。寧可整個安裝失敗、下次重試，也不要讓一個「不完整的殼」上線。</p>
+<h3 id="63-三大核心事件install-activate-fetch"><a class="anchor" href="#63-三大核心事件install-activate-fetch">#</a> 6.3 三大核心事件：install、activate、fetch</h3>
+<p>Service Worker 的所有行為都圍繞著監聽這三個事件展開。</p>
+<h4 id="install預先快取靜態資源"><a class="anchor" href="#install預先快取靜態資源">#</a> install：預先快取靜態資源</h4>
+<figure class="highlight javascript"><figcaption data-lang="javascript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">const</span> filesToCache <span class="token operator">=</span> <span class="token punctuation">[</span></pre></td></tr><tr><td data-num="2"></td><td><pre>  <span class="token string">'/'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="3"></td><td><pre>  <span class="token string">'/index.html'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="4"></td><td><pre>  <span class="token string">'/src/main.css'</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token keyword">const</span> cacheName <span class="token operator">=</span> <span class="token string">'static-v1'</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="7"></td><td><pre></pre></td></tr><tr><td data-num="8"></td><td><pre>self<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'install'</span><span class="token punctuation">,</span> <span class="token parameter">event</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="9"></td><td><pre>  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'installing…'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="10"></td><td><pre>  event<span class="token punctuation">.</span><span class="token function">waitUntil</span><span class="token punctuation">(</span></pre></td></tr><tr><td data-num="11"></td><td><pre>    caches<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span>cacheName<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">cache</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="12"></td><td><pre>      <span class="token keyword">return</span> cache<span class="token punctuation">.</span><span class="token function">addAll</span><span class="token punctuation">(</span>filesToCache<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="13"></td><td><pre>    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="14"></td><td><pre>  <span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="15"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr></table></figure><p>這裡有兩個關鍵 API 需要理解原理：</p>
+<ul>
+<li><strong> <code>event.waitUntil(promise)</code> </strong>： <code>install</code>  事件物件（ <code>InstallEvent</code> ）繼承自  <code>ExtendableEvent</code> ，它提供  <code>waitUntil</code>  方法，接受一個 Promise。<strong>為什麼需要它？</strong> 因為  <code>install</code>  事件的 callback 函式本身是同步執行完就結束的，但快取資源是非同步操作（需要時間下載）。如果不用  <code>waitUntil</code>  告訴瀏覽器「請等這個 Promise 完成再繼續」，瀏覽器可能會誤以為安裝已經完成、提前進入下一階段，導致資源還沒快取好就被判定安裝成功。 <code>waitUntil</code>  就是用來「延長事件的生命週期」，確保非同步工作真的做完了才算數。</li>
+<li><strong> <code>caches.open(cacheName)</code> </strong>： <code>CacheStorage</code> （也就是全域的  <code>caches</code>  物件）可以想像成一個資料庫， <code>cache.open()</code>  就是「取得（或建立）一張資料表」；再用  <code>cache.addAll(urls)</code>  把一批 URL 對應的 response 存進這張表，key 是 request URL，value 是 response 物件。</li>
+</ul>
+<h4 id="activate清除舊版快取"><a class="anchor" href="#activate清除舊版快取">#</a> activate：清除舊版快取</h4>
+<figure class="highlight javascript"><figcaption data-lang="javascript"></figcaption><table><tr><td data-num="1"></td><td><pre>self<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'activate'</span><span class="token punctuation">,</span> <span class="token parameter">event</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>  event<span class="token punctuation">.</span><span class="token function">waitUntil</span><span class="token punctuation">(</span></pre></td></tr><tr><td data-num="3"></td><td><pre>    caches<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">cacheNames</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="4"></td><td><pre>      <span class="token keyword">const</span> deletePromises <span class="token operator">=</span> cacheNames<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">name</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="5"></td><td><pre>        <span class="token keyword">if</span> <span class="token punctuation">(</span>name <span class="token operator">!==</span> cacheName<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>          <span class="token keyword">return</span> caches<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="7"></td><td><pre>        <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="8"></td><td><pre>      <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="9"></td><td><pre>      <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span>deletePromises<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="10"></td><td><pre>    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="11"></td><td><pre>  <span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="12"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr></table></figure><p><strong>為什麼一定要在 activate 做這件事，而不是 install？</strong> 因為  <code>install</code>  階段時，舊版的 Service Worker（如果有的話）可能還在服務目前開著的頁面，此時如果直接刪掉舊快取，正在瀏覽的使用者會突然拿不到原本的資源。瀏覽器的設計是：新的 Service Worker 安裝完後會先進入「等待（waiting）」狀態，等所有使用舊版本的頁面都關閉後，新版本才會真正 activate、接管頁面。所以在  <code>activate</code>  這個時間點清除舊快取，才能保證不會影響到還在使用舊版本的使用者體驗。</p>
+<p><code>cacheName</code>  通常會加上版本號（例如  <code>static-v1</code> 、 <code>static-v2</code> ），這是一種常見的<strong>快取失效（cache invalidation）策略</strong>：不直接修改同一個 cache 內容，而是每次改版就換一個全新的 cache 名稱，然後在 activate 階段清掉所有「名稱不等於目前版本」的舊 cache。這樣可以確保快取內容永遠是「整批換新」，不會出現新舊資源混雜的不一致狀態。</p>
+<h4 id="fetch攔截請求-決定回應策略"><a class="anchor" href="#fetch攔截請求-決定回應策略">#</a> fetch：攔截請求、決定回應策略</h4>
+<figure class="highlight javascript"><figcaption data-lang="javascript"></figcaption><table><tr><td data-num="1"></td><td><pre>self<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'fetch'</span><span class="token punctuation">,</span> <span class="token parameter">event</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>  event<span class="token punctuation">.</span><span class="token function">respondWith</span><span class="token punctuation">(</span></pre></td></tr><tr><td data-num="3"></td><td><pre>    caches<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>request<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">response</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="4"></td><td><pre>      <span class="token comment">// 命中快取就直接回傳；沒命中就發真正的網路請求</span></pre></td></tr><tr><td data-num="5"></td><td><pre>      <span class="token keyword">return</span> response <span class="token operator">||</span> <span class="token function">fetch</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>request<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">networkResponse</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>        <span class="token keyword">return</span> caches<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span>cacheName<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">cache</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="7"></td><td><pre>          cache<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>request<span class="token punctuation">,</span> networkResponse<span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="8"></td><td><pre>          <span class="token keyword">return</span> networkResponse<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="9"></td><td><pre>        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="10"></td><td><pre>      <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="11"></td><td><pre>    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="12"></td><td><pre>  <span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="13"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr></table></figure><p>幾個容易誤解的細節：</p>
+<ul>
+<li><strong> <code>event.respondWith()</code> </strong>：這是  <code>fetch</code>  事件特有的方法，用來「劫持」這次的網路請求、由開發者決定要回傳什麼內容（而不是讓瀏覽器照原本的方式去要資料）。如果  <code>fetch</code>  事件裡不呼叫  <code>respondWith</code> ，請求就會照常規流程走，Service Worker 只是單純旁觀。</li>
+<li><strong>為什麼要  <code>res.clone()</code> </strong>？因為 Response 物件的 body 是一個 Stream，只能被讀取一次。這次的請求既要「回傳給頁面顯示」，又要「存進快取供下次使用」，等於要讀兩次，所以必須先 clone 一份。</li>
+<li><strong>第一次造訪為什麼攔截不到請求？</strong> 因為 Service Worker 要先完成註冊 → 安裝 → 啟用整個流程才會開始攔截 fetch 事件，而頁面在第一次造訪時發出的請求（例如去抓 API 資料）通常搶在 Service Worker 啟用「之前」就已經送出去了。這是設計上必然的結果，也解釋了為什麼 PWA 通常需要使用者造訪兩次以上，離線體驗才會真正生效。</li>
+</ul>
+<h3 id="64-四種快取策略依資源特性選擇對應行為"><a class="anchor" href="#64-四種快取策略依資源特性選擇對應行為">#</a> 6.4 四種快取策略：依資源特性選擇對應行為</h3>
+<p>在自動化工具（ <code>sw-precache</code> 、 <code>sw-precache-webpack-plugin</code> ）的  <code>runtimeCaching</code>  設定中，可以針對不同 URL pattern 指定不同的處理策略：</p>
+<table>
+<thead>
+<tr>
+<th>策略</th>
+<th>行為</th>
+<th>適合場景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cacheFirst</code></td>
+<td>先查快取，有就直接回傳；沒有才發網路請求</td>
+<td>Logo、字型、圖示等幾乎不變的靜態資源</td>
+</tr>
+<tr>
+<td><code>networkFirst</code></td>
+<td>先發網路請求，成功就存快取並回傳；失敗才退回舊快取</td>
+<td>需要保持新鮮度的內容（新聞、動態資料）</td>
+</tr>
+<tr>
+<td><code>fastest</code> （也稱 stale-while-revalidate）</td>
+<td>同時發網路請求與查快取，誰先回來就先用誰，即使用了快取版本，仍然背景更新快取</td>
+<td>希望「快」又希望「新」的折衷方案</td>
+</tr>
+<tr>
+<td><code>cacheOnly</code></td>
+<td>只查快取，沒有就直接失敗，不發請求</td>
+<td>確定資源已預先快取、且絕不應該走網路的情境</td>
+</tr>
+<tr>
+<td><code>networkOnly</code></td>
+<td>只走網路，完全不使用快取</td>
+<td>不希望被快取影響的即時性資料（如支付相關 API）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>這張表格正是第 3.3 節「為什麼要拆分 Shell 跟 Content」的具體實踐</strong>：Shell（Logo、CSS、JS）用  <code>cacheFirst</code> ；Content（動態資料）視情境用  <code>networkFirst</code>  或  <code>stale-while-revalidate</code> 。策略選擇的本質，是在「速度」與「新鮮度」這兩個互相拉扯的目標之間，依照每種資源的更新頻率找一個合理的平衡點。</p>
+<h3 id="65-為什麼-self-而不是-this"><a class="anchor" href="#65-為什麼-self-而不是-this">#</a> 6.5 為什麼 self 而不是 this？</h3>
+<p>Service Worker 程式碼裡常看到  <code>self.addEventListener(...)</code> ，而不是常見的  <code>this</code>  或  <code>window</code> 。原因是 Service Worker 執行在  <code>ServiceWorkerGlobalScope</code>  這個獨立的全域環境，沒有  <code>window</code>  物件；規範上這個全域環境的自我參照就是  <code>self</code> （這與一般 Web Worker 的慣例一致）。用  <code>self</code>  才能正確存取 Service Worker 專屬的屬性與 API（例如  <code>self.registration</code> 、 <code>self.skipWaiting()</code>  等）。</p>
+<hr />
+<h2 id="7-chrome-devtools-除錯工具"><a class="anchor" href="#7-chrome-devtools-除錯工具">#</a> 7. Chrome DevTools 除錯工具</h2>
+<p>Chrome DevTools 新增了 <strong>Application</strong> 面板，專門用來檢查 PWA 相關的技術狀態，主要分三塊：</p>
+<h3 id="71-manifest-檢視"><a class="anchor" href="#71-manifest-檢視">#</a> 7.1 Manifest 檢視</h3>
+<p>可以直接看到目前套用的  <code>manifest.json</code>  內容（名稱、圖示、起始網址等），並提供「Add to homescreen」按鈕，模擬把網站加到主畫面的體驗，不必真的用手機實測。</p>
+<h3 id="72-service-workers-面板"><a class="anchor" href="#72-service-workers-面板">#</a> 7.2 Service Workers 面板</h3>
+<ul>
+<li><strong>Offline</strong>：勾選後可以模擬完全無網路的環境，是測試「離線瀏覽是否真的成功」最直接的方式。</li>
+<li><strong>Update on reload</strong>：每次重新整理都強制套用最新的 Service Worker，開發階段非常實用 —— 因為 Service Worker 預設有「舊版本要等所有分頁關閉才會被新版本取代」的機制（見 6.3 節），開發時勾選這個選項可以跳過等待，避免每次改完程式碼還要手動關掉所有分頁。</li>
+<li><strong>Bypass for network</strong>：完全繞過 Service Worker，直接走原生網路請求，用來排除「我看到的是不是舊快取」這個變因。</li>
+</ul>
+<h3 id="73-cache-storage-檢視"><a class="anchor" href="#73-cache-storage-檢視">#</a> 7.3 Cache Storage 檢視</h3>
+<p>可以逐一查看目前有哪些 cache、每個 cache 存了哪些 URL 對應的 response，也能手動刪除，是驗證「install 階段是否真的把該快取的東西存進去了」最直接的方式。此外 <strong>Clear storage</strong> 頁籤可以一次清除 Service Worker、Cache、IndexedDB、Local Storage 等所有儲存資料，方便重新測試整個生命週期。</p>
+<hr />
+<h2 id="8-pwa-實際案例分析"><a class="anchor" href="#8-pwa-實際案例分析">#</a> 8. PWA 實際案例分析</h2>
+<p>除了前面提到的 Flipkart Lite，還有幾個值得參考的實戰案例，共同點是都能量化出具體的商業效益：</p>
+<ul>
+<li><strong><span class="exturl" data-url="aHR0cDovL0hvdXNpbmcuY29t">Housing.com</span></strong>（印度租屋平台）：轉換率提升 38%、跳出率降低 40%、平均停留時間增加 10%、頁面載入速度加快 30%。</li>
+<li><strong>AliExpress</strong>（阿里巴巴國際版淘寶）：新使用者跨瀏覽器成長 104%、iOS 轉換率提升 82%、每次造訪瀏覽頁數翻倍、停留時間增加 74%。</li>
+<li><strong>pwa.rocks</strong>：Google 官方彙整的 PWA 展示網站集合，涵蓋電商、新聞、遊戲、社群等多種類型，可作為設計參考。</li>
+<li><strong><span class="exturl" data-url="aHR0cDovL1Bva2VkZXgub3Jn">Pokedex.org</span></strong>：由 Web 效能專家 Nolan Lawson 開發的示範專案，是學習「Cache API + IndexedDB」搭配使用的經典開源範例。</li>
+</ul>
+<p><strong>這些案例共同印證的結論</strong>：PWA 帶來的效益不是單純的「網站變快了」，而是直接反映在商業指標（轉換率、回流率、停留時間）上 —— 這也是為什麼越來越多電商與內容平台願意投入 PWA 改造，因為它是少數能同時改善使用者體驗與商業數字的技術投資。</p>
+<hr />
+<h2 id="9-動手實作vanilla-js-版-to-do-list-pwa"><a class="anchor" href="#9-動手實作vanilla-js-版-to-do-list-pwa">#</a> 9. 動手實作：Vanilla JS 版 To-Do List PWA</h2>
+<p>系列文章接下來用一個 To-Do List 範例貫穿實作，逐步疊加 PWA 的各項能力。這裡整理實作的完整脈絡與關鍵設計決策（程式碼經過重新整理示範，非逐字照搬原文）。</p>
+<h3 id="91-開發環境為什麼要用-json-server-http-server-concurrently"><a class="anchor" href="#91-開發環境為什麼要用-json-server-http-server-concurrently">#</a> 9.1 開發環境：為什麼要用 json-server + http-server + concurrently？</h3>
+<p>實作前，需要模擬一個貼近真實專案的開發環境：</p>
+<ul>
+<li><strong>json-server</strong>：讀取一份  <code>db.json</code> ，自動生成完整的 REST API（支援 GET/POST/PUT/DELETE），不必自己寫後端就能有一個可操作的假資料 API。這樣做的好處是前端開發可以完全獨立於後端進度，同時前端串接的程式碼寫法與真正對接後端 API 時幾乎一致，之後要換成真正的 API 只需要改網址。</li>
+<li><strong>http-server</strong>：零設定就能啟動一個靜態網站伺服器，把前端網頁跑起來。<strong>這裡有個容易被忽略但很關鍵的原因</strong>：Service Worker 要求執行在  <code>localhost</code>  或 HTTPS 環境，如果直接用  <code>file://</code>  開啟本機 HTML 檔案是無法註冊 Service Worker 的，所以哪怕只是本機開發，也一定要透過某種本地伺服器（如 http-server）提供服務。</li>
+<li><strong>concurrently</strong>：因為前端網站與假資料 API 是兩個各自獨立的伺服器行程， <code>concurrently</code>  讓你在一個終端機視窗同時啟動兩個 command，任何一個掛掉時可以連帶關閉另一個，簡化開發流程。</li>
+</ul>
+<h3 id="92-需求拆解"><a class="anchor" href="#92-需求拆解">#</a> 9.2 需求拆解</h3>
+<p>一個典型的 To-Do List 功能需求：</p>
+<ul>
+<li>顯示待辦事項清單（GET）</li>
+<li>新增待辦事項（POST），按 Enter 送出並清空輸入框</li>
+<li>修改待辦事項狀態：點擊可切換「已完成／未完成」（PUT）</li>
+<li>刪除待辦事項（DELETE）</li>
+<li>顯示目前未完成事項的數量</li>
+</ul>
+<h3 id="93-純-javascript-實作重點"><a class="anchor" href="#93-純-javascript-實作重點">#</a> 9.3 純 JavaScript 實作重點</h3>
+<p>以「顯示清單」為例，實作邏輯拆成幾個步驟：</p>
+<figure class="highlight javascript"><figcaption data-lang="javascript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment">// 用立即函式包裹，避免污染全域變數</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">window<span class="token punctuation">,</span> document</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="3"></td><td><pre>  <span class="token keyword">const</span> todoListDOM <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'todoList'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre>  <span class="token keyword">let</span> todoList <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="5"></td><td><pre></pre></td></tr><tr><td data-num="6"></td><td><pre>  <span class="token comment">//render 函式：只負責把資料轉成 HTML，不碰任何業務邏輯</span></pre></td></tr><tr><td data-num="7"></td><td><pre>  <span class="token keyword">function</span> <span class="token function">renderTodoList</span><span class="token punctuation">(</span><span class="token parameter">list</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="8"></td><td><pre>    <span class="token keyword">const</span> html <span class="token operator">=</span> list<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">item</span> <span class="token operator">=></span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string"></pre></td></tr><tr><td data-num="9"></td><td><pre>      &lt;li class="list"></pre></td></tr><tr><td data-num="10"></td><td><pre>        &lt;a class="</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>item<span class="token punctuation">.</span>isComplete <span class="token operator">?</span> <span class="token string">'finish'</span> <span class="token operator">:</span> <span class="token string">'unfinished'</span><span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token string">" data-id="</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>item<span class="token punctuation">.</span>id<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token string">">&lt;/a></pre></td></tr><tr><td data-num="11"></td><td><pre>        &lt;p class="desc" data-id="</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>item<span class="token punctuation">.</span>id<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token string">"></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>item<span class="token punctuation">.</span>desc<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token string">&lt;/p></pre></td></tr><tr><td data-num="12"></td><td><pre>        &lt;a class="del" data-id="</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>item<span class="token punctuation">.</span>id<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token string">">&lt;/a></pre></td></tr><tr><td data-num="13"></td><td><pre>      &lt;/li></pre></td></tr><tr><td data-num="14"></td><td><pre>    </span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="15"></td><td><pre>    todoListDOM<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> html<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="16"></td><td><pre>  <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="17"></td><td><pre></pre></td></tr><tr><td data-num="18"></td><td><pre>  <span class="token comment">// 透過 fetch 向假 API 拿資料</span></pre></td></tr><tr><td data-num="19"></td><td><pre>  <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'http://localhost:3000/todolist'</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="20"></td><td><pre>    <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">res</span> <span class="token operator">=></span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="21"></td><td><pre>    <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">json</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="22"></td><td><pre>      todoList <span class="token operator">=</span> json<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="23"></td><td><pre>      <span class="token function">renderTodoList</span><span class="token punctuation">(</span>todoList<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="24"></td><td><pre>    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="25"></td><td><pre>    <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">err</span> <span class="token operator">=></span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="26"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">(</span>window<span class="token punctuation">,</span> document<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr></table></figure><p><strong>為什麼要用立即函式（IIFE）包起來？</strong> 這是傳統 Vanilla JS（在還沒有 ES Modules／打包工具普及的年代）避免全域變數污染的慣用手法。所有變數都封閉在函式作用域內，不會不小心跟頁面上其他 script 的變數互相覆蓋。</p>
+<p><strong>為什麼要把  <code>render</code>  拆成獨立函式？</strong> 這是「資料與畫面分離」的雛型概念 —— 不論資料是「初次載入」「新增後」還是「刪除後」得到的，最終都呼叫同一個 render 函式重繪畫面，維持單一資料來源（single source of truth）的一致性。這個思路其實已經是 React 這類宣告式框架的核心概念的簡化版，只是這裡用手動呼叫取代了框架自動化的重新渲染機制。</p>
+<p>新增／修改／刪除的邏輯都遵循相同模式：<strong>監聽 DOM 事件 → 發送對應 HTTP method 的 request → 拿到成功回應後更新記憶體中的  <code>todoList</code>  陣列 → 呼叫 render 重繪畫面</strong>。例如修改狀態：</p>
+<figure class="highlight javascript"><figcaption data-lang="javascript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">const</span> <span class="token function-variable function">toggleItem</span> <span class="token operator">=</span> <span class="token parameter">id</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>  <span class="token keyword">const</span> item <span class="token operator">=</span> todoList<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token parameter">t</span> <span class="token operator">=></span> t<span class="token punctuation">.</span>id <span class="token operator">===</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="3"></td><td><pre>  item<span class="token punctuation">.</span>isComplete <span class="token operator">=</span> <span class="token operator">!</span>item<span class="token punctuation">.</span>isComplete<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre></pre></td></tr><tr><td data-num="5"></td><td><pre>  <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">http://localhost:3000/todolist/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>id<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>    <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">'PUT'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="7"></td><td><pre>    <span class="token literal-property property">headers</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span> <span class="token string-property property">'Content-Type'</span><span class="token operator">:</span> <span class="token string">'application/json'</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="8"></td><td><pre>    <span class="token literal-property property">body</span><span class="token operator">:</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="9"></td><td><pre>  <span class="token punctuation">&#125;</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="10"></td><td><pre>    <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">res</span> <span class="token operator">=></span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="11"></td><td><pre>    <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">renderTodoList</span><span class="token punctuation">(</span>todoList<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="12"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">;</span></pre></td></tr></table></figure><h3 id="94-加上離線能力app-shell-service-worker-整合"><a class="anchor" href="#94-加上離線能力app-shell-service-worker-整合">#</a> 9.4 加上離線能力：App Shell + Service Worker 整合</h3>
+<p>把 App Shell 的圖片、CSS、HTML 放進  <code>install</code>  階段的預先快取清單，再搭配前面第 6 章介紹的  <code>activate</code> （清舊快取）與  <code>fetch</code> （攔截請求）事件，整個 To-Do List 就具備了離線瀏覽 App Shell 與已快取內容的能力：</p>
+<figure class="highlight javascript"><figcaption data-lang="javascript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">const</span> filesToCache <span class="token operator">=</span> <span class="token punctuation">[</span></pre></td></tr><tr><td data-num="2"></td><td><pre>  <span class="token string">'/'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="3"></td><td><pre>  <span class="token string">'/index.html'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="4"></td><td><pre>  <span class="token string">'/src/main.css'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="5"></td><td><pre>  <span class="token string">'/assets/images/logo_todo.png'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="6"></td><td><pre>  <span class="token string">'/assets/images/ic_add.png'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="7"></td><td><pre>  <span class="token string">'/assets/images/btn_check.png'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="8"></td><td><pre>  <span class="token string">'/assets/images/btn_del.png'</span></pre></td></tr><tr><td data-num="9"></td><td><pre><span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="10"></td><td><pre><span class="token keyword">const</span> cacheName <span class="token operator">=</span> <span class="token string">'todolist-v1'</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="11"></td><td><pre></pre></td></tr><tr><td data-num="12"></td><td><pre>self<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'install'</span><span class="token punctuation">,</span> <span class="token parameter">event</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="13"></td><td><pre>  event<span class="token punctuation">.</span><span class="token function">waitUntil</span><span class="token punctuation">(</span></pre></td></tr><tr><td data-num="14"></td><td><pre>    caches<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span>cacheName<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">cache</span> <span class="token operator">=></span> cache<span class="token punctuation">.</span><span class="token function">addAll</span><span class="token punctuation">(</span>filesToCache<span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="15"></td><td><pre>  <span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="16"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr></table></figure><p><strong>這裡要誠實面對一個限制</strong>：這個階段的實作只能透過 Cache API 快取「GET 請求的靜態資源與 API 回應」。POST／PUT／DELETE 這類會修改資料的操作，在離線狀態下是無法真正送達伺服器的 —— 這也是為什麼後面第 13 章要另外討論 IndexedDB：純內容型網站用 Cache API 就足夠，但需要離線寫入、離線操作的應用（像完整的 To-Do List），勢必需要更完整的本地資料庫方案。</p>
+<hr />
+<h2 id="10-web-app-manifest讓網站更像-app"><a class="anchor" href="#10-web-app-manifest讓網站更像-app">#</a> 10. Web App Manifest：讓網站更像 App</h2>
+<h3 id="101-manifest-file-是什麼"><a class="anchor" href="#101-manifest-file-是什麼">#</a> 10.1 Manifest File 是什麼？</h3>
+<p><code>manifest.json</code>  是一份單純的 JSON 檔案，用來描述網站在「被安裝成類 App 體驗」時的各種外觀與行為設定。透過  <code>&lt;link rel=&quot;manifest&quot; href=&quot;/manifest.json&quot;&gt;</code>  掛載到頁面上。</p>
+<figure class="highlight json"><figcaption data-lang="JSON"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"PWA To-Do List with Vanilla JS"</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="3"></td><td><pre>  <span class="token property">"short_name"</span><span class="token operator">:</span> <span class="token string">"To-Do List"</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="4"></td><td><pre>  <span class="token property">"start_url"</span><span class="token operator">:</span> <span class="token string">"/"</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="5"></td><td><pre>  <span class="token property">"icons"</span><span class="token operator">:</span> <span class="token punctuation">[</span></pre></td></tr><tr><td data-num="6"></td><td><pre>    <span class="token punctuation">&#123;</span> <span class="token property">"src"</span><span class="token operator">:</span> <span class="token string">"/assets/images/icon-192x192.png"</span><span class="token punctuation">,</span> <span class="token property">"sizes"</span><span class="token operator">:</span> <span class="token string">"192x192"</span><span class="token punctuation">,</span> <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"image/png"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="7"></td><td><pre>    <span class="token punctuation">&#123;</span> <span class="token property">"src"</span><span class="token operator">:</span> <span class="token string">"/assets/images/icon-512x512.png"</span><span class="token punctuation">,</span> <span class="token property">"sizes"</span><span class="token operator">:</span> <span class="token string">"512x512"</span><span class="token punctuation">,</span> <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"image/png"</span> <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="8"></td><td><pre>  <span class="token punctuation">]</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="9"></td><td><pre>  <span class="token property">"background_color"</span><span class="token operator">:</span> <span class="token string">"#707477"</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="10"></td><td><pre>  <span class="token property">"theme_color"</span><span class="token operator">:</span> <span class="token string">"#f2f2f2"</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="11"></td><td><pre>  <span class="token property">"display"</span><span class="token operator">:</span> <span class="token string">"standalone"</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="12"></td><td><pre>  <span class="token property">"orientation"</span><span class="token operator">:</span> <span class="token string">"portrait"</span></pre></td></tr><tr><td data-num="13"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><h3 id="102-各欄位的作用與設計考量"><a class="anchor" href="#102-各欄位的作用與設計考量">#</a> 10.2 各欄位的作用與設計考量</h3>
+<table>
+<thead>
+<tr>
+<th>欄位</th>
+<th>作用</th>
+<th>設計說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code>  /  <code>short_name</code></td>
+<td>網站名稱</td>
+<td><code>name</code>  顯示不下時自動退回顯示  <code>short_name</code> ，用在安裝提示、Splash Screen、主畫面圖示下方文字</td>
+</tr>
+<tr>
+<td><code>icons</code></td>
+<td>多組不同尺寸的圖示</td>
+<td>提供多組尺寸讓瀏覽器依裝置螢幕密度挑選最合適的一組，避免單一圖示在高解析度螢幕被拉伸模糊</td>
+</tr>
+<tr>
+<td><code>background_color</code></td>
+<td>Splash Screen 背景色</td>
+<td>在圖示與內容都還沒載入完成前，先用純色背景撐住畫面，避免白屏閃爍</td>
+</tr>
+<tr>
+<td><code>theme_color</code></td>
+<td>系統 UI 主題色</td>
+<td>例如 Android 上狀態列的顏色會跟著變，強化「這是一個獨立 App」的視覺一致性</td>
+</tr>
+<tr>
+<td><code>display</code></td>
+<td>顯示模式： <code>browser</code> ／ <code>standalone</code> ／ <code>fullscreen</code></td>
+<td><code>standalone</code>  會隱藏瀏覽器網址列等 UI，讓網站看起來完全像原生 App；瀏覽器不支援時會優雅降級回  <code>browser</code></td>
+</tr>
+<tr>
+<td><code>orientation</code></td>
+<td>強制螢幕方向</td>
+<td>應謹慎使用，通常只用在遊戲類應用；一般網站應尊重使用者自行旋轉裝置的意願</td>
+</tr>
+<tr>
+<td><code>start_url</code></td>
+<td>從主畫面圖示啟動時開啟的網址</td>
+<td>常搭配  <code>?utm_source=homescreen</code>  這類查詢參數，方便在 Analytics 中追蹤「透過主畫面圖示進站」的流量來源</td>
+</tr>
+</tbody>
+</table>
+<p><strong>為什麼要有「Add to Home Screen」的自動提示機制？</strong> 瀏覽器（如 Chrome）會偵測使用者在短時間內（例如 5 分鐘內）多次造訪同一個網站，判斷這是「高互動意願」的訊號，才主動跳出安裝提示。這個設計是為了避免每個網站都濫用彈窗騷擾使用者 —— 只有真正展現出留存價值的網站，才「配得上」被推薦安裝，這也呼應了 PWA「漸進式」的精神：功能是被賺取的，不是被強塞的。</p>
+<h3 id="103-用工具驗證與生成"><a class="anchor" href="#103-用工具驗證與生成">#</a> 10.3 用工具驗證與生成</h3>
+<ul>
+<li>可透過線上工具（如 Web App Manifest Generator）輸入基本資訊、上傳圖示，自動產生完整  <code>manifest.json</code> ，省去手刻多組尺寸圖示的麻煩。</li>
+<li>Chrome DevTools 的 Application 面板可以直接驗證目前的 manifest 設定是否正確載入，是除錯的第一站。</li>
+</ul>
+<hr />
+<h2 id="11-自動化生成-service-workersw-precache-與-webpack-plugin"><a class="anchor" href="#11-自動化生成-service-workersw-precache-與-webpack-plugin">#</a> 11. 自動化生成 Service Worker：sw-precache 與 webpack plugin</h2>
+<h3 id="111-為什麼需要自動化工具"><a class="anchor" href="#111-為什麼需要自動化工具">#</a> 11.1 為什麼需要自動化工具？</h3>
+<p>回顧第 6 章手寫的 Service Worker，會發現一個明顯的痛點： <code>filesToCache</code>  陣列需要手動列出每一個要快取的檔案路徑。專案稍微成長，靜態資源動輒幾十上百個，手動維護這份清單既容易漏掉、也容易在改版後忘記更新，導致快取內容與實際部署內容不同步。</p>
+<p><code>sw-precache</code>  是 Google Chrome 團隊推出的 Node.js 模組，用途正是：<strong>掃描你指定的檔案規則（glob pattern），自動產生一支完整的 Service Worker 檔案，不必再手寫 install/activate/fetch 的邏輯</strong>。</p>
+<h3 id="112-sw-precache-基本用法"><a class="anchor" href="#112-sw-precache-基本用法">#</a> 11.2 sw-precache 基本用法</h3>
+<figure class="highlight javascript"><figcaption data-lang="javascript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment">// sw-precache-config.js</span></pre></td></tr><tr><td data-num="2"></td><td><pre>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="3"></td><td><pre>  <span class="token literal-property property">staticFileGlobs</span><span class="token operator">:</span> <span class="token punctuation">[</span></pre></td></tr><tr><td data-num="4"></td><td><pre>    <span class="token string">'index.html'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="5"></td><td><pre>    <span class="token string">'src/main.css'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="6"></td><td><pre>    <span class="token string">'assets/images/**.*'</span></pre></td></tr><tr><td data-num="7"></td><td><pre>  <span class="token punctuation">]</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="8"></td><td><pre>  <span class="token literal-property property">runtimeCaching</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="9"></td><td><pre>    <span class="token literal-property property">urlPattern</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\/api\/</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="10"></td><td><pre>    <span class="token literal-property property">handler</span><span class="token operator">:</span> <span class="token string">'networkFirst'</span></pre></td></tr><tr><td data-num="11"></td><td><pre>  <span class="token punctuation">&#125;</span><span class="token punctuation">]</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="12"></td><td><pre>  <span class="token literal-property property">swFile</span><span class="token operator">:</span> <span class="token string">'sw-generated.js'</span></pre></td></tr><tr><td data-num="13"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">;</span></pre></td></tr></table></figure><figure class="highlight bash"><figcaption data-lang="bash"></figcaption><table><tr><td data-num="1"></td><td><pre>sw-precache <span class="token parameter variable">--config</span><span class="token operator">=</span>./sw-precache-config.js <span class="token parameter variable">--verbose</span></pre></td></tr></table></figure><p>執行後會自動產生  <code>sw-generated.js</code> ，內容涵蓋了完整的預先快取清單、版本管理（自動依內容雜湊產生 cache 版本，內容沒變就不會重新產生新版本，避免不必要的更新）、以及  <code>runtimeCaching</code>  指定的執行期快取策略。</p>
+<p><strong>這裡的關鍵設計價值在於「內容雜湊（content hash）驅動的版本控制」</strong>：手寫版本時，開發者要自己決定何時該把  <code>cacheName</code>  從  <code>v1</code>  改成  <code>v2</code> （很容易忘記）， <code>sw-precache</code>  則是根據檔案「內容」自動算出 hash 值當作版本識別，只要檔案內容真的變了，快取就會自動失效重建；內容沒變，即使你重新部署了，也不會觸發不必要的重新下載。這比人工手動遞增版本號可靠得多。</p>
+<h3 id="113-搭配-webpacksw-precache-webpack-plugin"><a class="anchor" href="#113-搭配-webpacksw-precache-webpack-plugin">#</a> 11.3 搭配 Webpack：sw-precache-webpack-plugin</h3>
+<p>大型專案通常已經用 Webpack 做模組打包， <code>sw-precache-webpack-plugin</code>  把  <code>sw-precache</code>  包裝成一個 Webpack Plugin，直接讀取 Webpack 打包後產出的檔案清單，不必再另外維護一份靜態檔案列表：</p>
+<figure class="highlight javascript"><figcaption data-lang="javascript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">const</span> SWPrecacheWebpackPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'sw-precache-webpack-plugin'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="2"></td><td><pre></pre></td></tr><tr><td data-num="3"></td><td><pre>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="4"></td><td><pre>  <span class="token comment">//... 其他 webpack 設定</span></pre></td></tr><tr><td data-num="5"></td><td><pre>  <span class="token literal-property property">plugins</span><span class="token operator">:</span> <span class="token punctuation">[</span></pre></td></tr><tr><td data-num="6"></td><td><pre>    <span class="token keyword">new</span> <span class="token class-name">SWPrecacheWebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="7"></td><td><pre>      <span class="token literal-property property">cacheId</span><span class="token operator">:</span> <span class="token string">'todo-list'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="8"></td><td><pre>      <span class="token literal-property property">filepath</span><span class="token operator">:</span> <span class="token string">'./sw-generated-webpack.js'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="9"></td><td><pre>      <span class="token literal-property property">maximumFileSizeToCacheInBytes</span><span class="token operator">:</span> <span class="token number">4194304</span><span class="token punctuation">,</span> <span class="token comment">// 4MB</span></pre></td></tr><tr><td data-num="10"></td><td><pre>      <span class="token literal-property property">runtimeCaching</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="11"></td><td><pre>        <span class="token literal-property property">handler</span><span class="token operator">:</span> <span class="token string">'cacheFirst'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="12"></td><td><pre>        <span class="token literal-property property">urlPattern</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">[.]png$</span><span class="token regex-delimiter">/</span></span></pre></td></tr><tr><td data-num="13"></td><td><pre>      <span class="token punctuation">&#125;</span><span class="token punctuation">]</span></pre></td></tr><tr><td data-num="14"></td><td><pre>    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="15"></td><td><pre>  <span class="token punctuation">]</span></pre></td></tr><tr><td data-num="16"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">;</span></pre></td></tr></table></figure><p><strong>為什麼要跟 Webpack 整合，而不是各自獨立跑？</strong> 因為現代前端專案的檔案名稱通常會帶 hash（如  <code>bundle.a1b2c3.js</code> ），這個 hash 是 Webpack 打包當下才決定的。如果 Service Worker 的快取清單是獨立於 Webpack 之外手動維護，兩者的檔名版本很容易對不上 —— 你可能快取了一個舊 hash 的檔案，但實際部署的是新 hash 的檔案，導致快取形同虛設。整合成 Webpack Plugin 後，Service Worker 產生的時機點永遠是「打包完成、確定最終檔名」之後，兩者版本天然保持一致。</p>
+<h3 id="114-五種-handler-策略的完整語意"><a class="anchor" href="#114-五種-handler-策略的完整語意">#</a> 11.4 五種 handler 策略的完整語意</h3>
+<p>延續第 6.4 節的表格，這裡是  <code>sw-precache-webpack-plugin</code>  官方支援的完整策略定義：</p>
+<ul>
+<li><strong> <code>networkFirst</code> </strong>：先嘗試網路請求，成功則存入快取並回傳；失敗（離線）才退回舊快取，確保至少有基本資料可用。</li>
+<li><strong> <code>cacheFirst</code> </strong>：先查快取，有則直接回傳；沒有才發送網路請求。</li>
+<li><strong> <code>fastest</code> </strong>：同時發送網路請求並查詢快取，哪個先回應就先用哪個（通常快取會先回來），但即使用了快取結果，仍然會讓網路請求繼續執行，用最新結果更新快取，兼顧速度與新鮮度。</li>
+<li><strong> <code>cacheOnly</code> </strong>：只查快取，沒有對應內容就直接失敗，不會發出任何網路請求。</li>
+<li><strong> <code>networkOnly</code> </strong>：只透過網路，完全不經過快取層，網路失敗就是失敗。</li>
+</ul>
+<hr />
+<h2 id="12-react-redux-版本實作"><a class="anchor" href="#12-react-redux-版本實作">#</a> 12. React + Redux 版本實作</h2>
+<p>系列文章最後把同一個 To-Do List 案例，改用 React + Redux + Webpack 重新實作一次，展示 PWA 技術如何整合進現代前端框架的工作流程。</p>
+<h3 id="121-環境安裝"><a class="anchor" href="#121-環境安裝">#</a> 12.1 環境安裝</h3>
+<figure class="highlight bash"><figcaption data-lang="bash"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">npm</span> <span class="token function">install</span> --save-dev react react-dom react-redux react-router redux redux-thunk</pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token function">npm</span> <span class="token function">install</span> --save-dev babel-preset-react babel-preset-stage-0</pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token function">npm</span> <span class="token function">install</span> --save-dev file-loader url-loader webpack-dev-server</pre></td></tr></table></figure><ul>
+<li><code>redux-thunk</code> ：Redux 原生的 action creator 只能回傳一個純物件（同步），但這個 To-Do List 需要串接非同步的 API 請求（GET/POST/PUT/DELETE）。 <code>redux-thunk</code>  讓 action creator 可以回傳一個函式而非物件，函式內部再自行決定何時  <code>dispatch</code> ，這是處理非同步流程最經典的 Redux Middleware 解法。</li>
+</ul>
+<h3 id="122-container-component-分離架構"><a class="anchor" href="#122-container-component-分離架構">#</a> 12.2 Container / Component 分離架構</h3>
+<p>專案架構刻意把元件拆成兩層：</p>
+<pre><code>Component/     ← 純顯示元件（Presentational Components）
+  Header.jsx
+  Input.jsx
+  TodoList.jsx
+  TodoListItem.jsx
+Container/     ← 負責串接 Redux store 與 dispatch actions
+  Main.jsx
+  InputContainer.jsx
+  TodoListContainer.jsx
+</code></pre>
+<p>例如：</p>
+<figure class="highlight jsx"><figcaption data-lang="React JSX"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment">// TodoListContainer.jsx —— 負責「接資料」</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">import</span> TodoList <span class="token keyword">from</span> <span class="token string">'../Component/TodoList.jsx'</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">import</span> <span class="token punctuation">&#123;</span> connect <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'react-redux'</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token keyword">import</span> <span class="token punctuation">&#123;</span> getTodoList<span class="token punctuation">,</span> toggleTodoList<span class="token punctuation">,</span> delTodoList <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'../Reducers/todolist.js'</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="5"></td><td><pre></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">connect</span><span class="token punctuation">(</span></pre></td></tr><tr><td data-num="7"></td><td><pre>  <span class="token parameter">state</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">&#123;</span> <span class="token literal-property property">todos</span><span class="token operator">:</span> state<span class="token punctuation">.</span>todolist <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="8"></td><td><pre>  <span class="token punctuation">&#123;</span> getTodoList<span class="token punctuation">,</span> toggleTodoList<span class="token punctuation">,</span> delTodoList <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="9"></td><td><pre><span class="token punctuation">)</span><span class="token punctuation">(</span>TodoList<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr></table></figure><figure class="highlight jsx"><figcaption data-lang="React JSX"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment">// TodoList.jsx —— 只負責「畫出來」</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">TodoList</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="3"></td><td><pre>  <span class="token function">componentDidMount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="4"></td><td><pre>    <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span><span class="token function">getTodoList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="5"></td><td><pre>  <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="7"></td><td><pre>    <span class="token keyword">const</span> <span class="token punctuation">&#123;</span> todos<span class="token punctuation">,</span> toggleTodoList<span class="token punctuation">,</span> delTodoList <span class="token punctuation">&#125;</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="8"></td><td><pre>    <span class="token keyword">return</span> <span class="token punctuation">(</span></pre></td></tr><tr><td data-num="9"></td><td><pre>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>todoList<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token plain-text"></pre></td></tr><tr><td data-num="10"></td><td><pre>        </span><span class="token punctuation">&#123;</span>todos<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">item<span class="token punctuation">,</span> i</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span></pre></td></tr><tr><td data-num="11"></td><td><pre>          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">TodoListItem</span></span> <span class="token attr-name">key</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">&#123;</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">todolist_</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>i<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">&#125;</span></span> <span class="token spread"><span class="token punctuation">&#123;</span><span class="token operator">...</span>item<span class="token punctuation">&#125;</span></span></pre></td></tr><tr><td data-num="12"></td><td><pre>            <span class="token attr-name">toggleTodoList</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">&#123;</span>toggleTodoList<span class="token punctuation">&#125;</span></span> <span class="token attr-name">delTodoList</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">&#123;</span>delTodoList<span class="token punctuation">&#125;</span></span> <span class="token punctuation">/></span></span></pre></td></tr><tr><td data-num="13"></td><td><pre>        <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span><span class="token plain-text"></pre></td></tr><tr><td data-num="14"></td><td><pre>      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span></pre></td></tr><tr><td data-num="15"></td><td><pre>    <span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="16"></td><td><pre>  <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="17"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><p><strong>為什麼要刻意拆成 Container 跟 Component 兩層，而不是全部寫在一起？</strong> 這是社群中著名的 Presentational and Container Components 模式（Dan Abramov 提出）。核心理由是<strong>關注點分離（Separation of Concerns）</strong>：</p>
+<ul>
+<li><strong>Component（純顯示元件）</strong> 只關心「這些 props 要怎麼畫出來」，不知道資料從哪來、也不知道點擊事件最終會怎麼處理業務邏輯。這讓它極易被重用、被單獨測試、被 Storybook 這類工具單獨展示。</li>
+<li><strong>Container（容器元件）</strong> 負責「跟 Redux store 對話」—— 訂閱哪些 state、要 dispatch 哪些 action。所有跟資料來源、狀態管理相關的邏輯都集中在這一層。</li>
+</ul>
+<p>在小型的 To-Do List 範例裡，這樣拆分看起來有點小題大作，但作者刻意強調：<strong>專案規模越大，這種拆分帶來的可維護性與重用性優勢就越明顯</strong> —— 因為當畫面邏輯與資料邏輯攪在一起時，任何一邊的需求變更都可能牽動另一邊，測試與重構的成本會隨專案增長而急遽上升。</p>
+<h3 id="123-redux-reducer-與非同步-action"><a class="anchor" href="#123-redux-reducer-與非同步-action">#</a> 12.3 Redux Reducer 與非同步 Action</h3>
+<figure class="highlight javascript"><figcaption data-lang="javascript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment">// Reducer：純函式，只負責依照 action.type 計算出新的 state</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">todolist</span><span class="token punctuation">(</span><span class="token parameter">state <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> action</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="3"></td><td><pre>  <span class="token keyword">switch</span> <span class="token punctuation">(</span>action<span class="token punctuation">.</span>type<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="4"></td><td><pre>    <span class="token keyword">case</span> <span class="token constant">RECEIVE_TODO</span><span class="token operator">:</span></pre></td></tr><tr><td data-num="5"></td><td><pre>      <span class="token keyword">return</span> action<span class="token punctuation">.</span>data<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>    <span class="token keyword">case</span> <span class="token constant">ADD_TODO</span><span class="token operator">:</span></pre></td></tr><tr><td data-num="7"></td><td><pre>      <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token operator">...</span>state<span class="token punctuation">,</span> action<span class="token punctuation">.</span>payload<span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="8"></td><td><pre>    <span class="token keyword">case</span> <span class="token constant">TOGGLE_TODO</span><span class="token operator">:</span></pre></td></tr><tr><td data-num="9"></td><td><pre>      <span class="token keyword">return</span> state<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">item</span> <span class="token operator">=></span></pre></td></tr><tr><td data-num="10"></td><td><pre>        item<span class="token punctuation">.</span>id <span class="token operator">===</span> action<span class="token punctuation">.</span>payload<span class="token punctuation">.</span>id <span class="token operator">?</span> action<span class="token punctuation">.</span>payload <span class="token operator">:</span> item</pre></td></tr><tr><td data-num="11"></td><td><pre>      <span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="12"></td><td><pre>    <span class="token keyword">case</span> <span class="token constant">DEL_TODO</span><span class="token operator">:</span></pre></td></tr><tr><td data-num="13"></td><td><pre>      <span class="token keyword">return</span> state<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token parameter">item</span> <span class="token operator">=></span> item<span class="token punctuation">.</span>id <span class="token operator">!==</span> action<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="14"></td><td><pre>    <span class="token keyword">default</span><span class="token operator">:</span></pre></td></tr><tr><td data-num="15"></td><td><pre>      <span class="token keyword">return</span> state<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="16"></td><td><pre>  <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="17"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><figure class="highlight javascript"><figcaption data-lang="javascript"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment">// Action creator：搭配 redux-thunk，回傳函式而非物件，處理非同步請求</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">addTodoList</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="3"></td><td><pre>  <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">dispatch</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="4"></td><td><pre>    <span class="token keyword">return</span> <span class="token function">axios</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="5"></td><td><pre>      <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">'post'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="6"></td><td><pre>      <span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span><span class="token constant">URL</span><span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token string">todolist</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="7"></td><td><pre>      <span class="token literal-property property">data</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span> <span class="token literal-property property">isComplete</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token literal-property property">desc</span><span class="token operator">:</span> value <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="8"></td><td><pre>    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">res</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="9"></td><td><pre>      <span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span> <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token constant">ADD_TODO</span><span class="token punctuation">,</span> <span class="token literal-property property">payload</span><span class="token operator">:</span> res<span class="token punctuation">.</span>data <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="10"></td><td><pre>    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="11"></td><td><pre>  <span class="token punctuation">&#125;</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="12"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><p><strong>這裡體現的設計原則</strong>：Reducer 必須是「純函式」—— 同樣的輸入（state + action）永遠得到同樣的輸出，不能有 side effect（例如發 API 請求）。所有跟外部世界互動（發 HTTP 請求）的「不純」邏輯，統統被推到 action creator 這一層（透過 thunk），Reducer 保持絕對單純只做「狀態計算」。這種分工讓狀態變化的邏輯變得可預測、易於測試（因為 Reducer 不需要 mock 網路請求就能單元測試）。</p>
+<h3 id="124-react-版的-pwa-整合"><a class="anchor" href="#124-react-版的-pwa-整合">#</a> 12.4 React 版的 PWA 整合</h3>
+<p>React 版本套用 PWA 能力的方式，跟 Vanilla JS 版本原理完全一致 —— 一份對應內容的  <code>manifest.json</code> ，再搭配  <code>sw-precache</code>  自動產生 Service Worker，快取 Webpack 打包後的  <code>bundle.js</code>  與其他靜態資源，達成離線瀏覽 App Shell 與已請求過的 GET 資料。</p>
+<p><strong>作者在原文中誠實指出目前實作的邊界</strong>：這個階段做到的離線能力，只能顯示已快取過的 GET 資料；若要讓「離線時新增／修改／刪除」的操作也能正常運作（等網路恢復後再同步回伺服器），就必須另外實作 IndexedDB 搭配 Background Sync 之類更完整的離線優先（offline-first）架構，這已超出這個系列的範圍，但是很值得的延伸學習方向。</p>
+<hr />
+<h2 id="13-offline-storage-選型策略"><a class="anchor" href="#13-offline-storage-選型策略">#</a> 13. Offline Storage 選型策略</h2>
+<p>當你的應用不只需要「讀」資料（GET），還需要在離線狀態下「寫」資料（POST/PUT/DELETE 暫存待同步）時，就必須認真考慮該用哪一種瀏覽器儲存機制。</p>
+<h3 id="131-各種儲存方案的技術比較"><a class="anchor" href="#131-各種儲存方案的技術比較">#</a> 13.1 各種儲存方案的技術比較</h3>
+<table>
+<thead>
+<tr>
+<th>方案</th>
+<th>資料模型</th>
+<th>瀏覽器支援度（原文寫作當下）</th>
+<th>同步／非同步</th>
+<th>現況</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cache API</td>
+<td>key/value</td>
+<td>約 60%</td>
+<td>非同步</td>
+<td>專為配合 Service Worker 設計，適合「URL 可定位」的資源</td>
+</tr>
+<tr>
+<td>IndexedDB</td>
+<td>hybrid（物件導向、支援索引）</td>
+<td>約 83%</td>
+<td>非同步</td>
+<td>適合結構化、大量資料</td>
+</tr>
+<tr>
+<td>Local Storage</td>
+<td>key/value</td>
+<td>約 93%</td>
+<td>同步</td>
+<td>簡單但有明顯限制</td>
+</tr>
+<tr>
+<td>Web SQL</td>
+<td>SQL</td>
+<td>—</td>
+<td>非同步</td>
+<td>已被 W3C 於 2010 年正式棄用</td>
+</tr>
+</tbody>
+</table>
+<h3 id="132-官方建議與背後的技術理由"><a class="anchor" href="#132-官方建議與背後的技術理由">#</a> 13.2 官方建議與背後的技術理由</h3>
+<p>Google 官方文件《Offline Storage for Progressive Web Apps》給出明確的建議準則：</p>
+<blockquote>
+<ul>
+<li>對於「可以用 URL 定位的資源」（例如靜態檔案、GET API 回應），使用 <strong>Cache API</strong>（Service Worker 的一部分）。</li>
+<li>對於「其他所有資料」（例如需要離線寫入、結構化查詢的應用資料），使用 <strong>IndexedDB</strong>（搭配 Promise 包裝簡化 API）。</li>
+</ul>
+</blockquote>
+<p><strong>為什麼不能用 Local Storage 或 Cookie？</strong> 這是理解這個決策最關鍵的一段推理：</p>
+<ol>
+<li><strong>Local Storage／Session Storage 是同步（synchronous）API</strong>。這代表每一次讀寫都會<strong>阻塞（block）主執行緒</strong> —— 如果存的資料量稍大，畫面就會明顯卡頓。更嚴重的是，Service Worker 本身是跑在獨立的 Worker 執行緒裡的，而規範明確禁止在任何 Worker 環境（包含 Service Worker）中使用 Local Storage，因為同步 API 若允許在背景執行緒使用，很容易造成整個瀏覽器層級的死鎖風險。也就是說：<strong>Local Storage 在 Service Worker 裡根本無法使用</strong>，這已經直接排除了它作為 PWA 離線儲存方案的資格。</li>
+<li><strong>Cookie</strong> 同樣是同步機制，而且每次 HTTP 請求都會被夾帶在 Header 裡送出，容量限制通常只有 4KB 左右，完全不適合儲存結構化的應用資料。</li>
+<li><strong>Web SQL</strong> 雖然支援 SQL 查詢語法、對熟悉關聯式資料庫的人很友善，但因為 W3C 認為「用某一套資料庫引擎的方言（SQLite）當標準」不利於跨瀏覽器的長期互通性，已在 2010 年正式宣布廢止，不應該再用於新專案。</li>
+</ol>
+<p>反觀 <strong>Cache API 與 IndexedDB 都是非同步的</strong>，並且都被設計成可以在  <code>window</code> 、 <code>Web Worker</code> 、 <code>Service Worker</code>  這三種執行環境下<strong>通用運作</strong> —— 這正是它們被官方欽定為「PWA 標準離線儲存方案」的根本原因：只有非同步、且能跨執行環境使用的 API，才符合 Service Worker 架構的根本限制。</p>
+<h3 id="133-實務搭配模式"><a class="anchor" href="#133-實務搭配模式">#</a> 13.3 實務搭配模式</h3>
+<ul>
+<li><strong>靜態資源與 GET API 回應</strong> → Cache API（本筆記第 6 章已詳細說明操作方式）</li>
+<li><strong>應用程式狀態、需要離線寫入的資料、需要索引查詢的結構化資料</strong> → IndexedDB</li>
+</ul>
+<p><span class="exturl" data-url="aHR0cDovL1Bva2VkZXgub3Jn">Pokedex.org</span> 這個知名案例正是兩者搭配使用的典範：可透過 URL 取得的寶可夢圖鑑資源用 Cache API 快取，而應用程式本身的執行狀態則存在 IndexedDB 裡。</p>
+<hr />
+<h2 id="14-總結與延伸學習方向"><a class="anchor" href="#14-總結與延伸學習方向">#</a> 14. 總結與延伸學習方向</h2>
+<h3 id="141-整體知識地圖回顧"><a class="anchor" href="#141-整體知識地圖回顧">#</a> 14.1 整體知識地圖回顧</h3>
+<p>這 30 天的內容可以濃縮成一條清晰的邏輯脈絡：</p>
+<ol>
+<li><strong>動機層</strong>：網頁與 App 各有優劣（第 1-2 章）→ PWA 想讓網頁「借」到 App 的優點，同時不失去網頁易分享、免安裝的先天優勢。</li>
+<li><strong>架構層</strong>：App Shell 把「殼」與「內容」分離，是達成「快速首屏、感知效能優先」的設計核心（第 3 章）；RAIL 模型與 Critical Rendering Path 則提供了具體的效能量化指標與瀏覽器渲染原理（第 4-5 章）。</li>
+<li><strong>技術實作層</strong>：Service Worker 是落實這一切的引擎 —— 它的獨立生命週期（install/activate/fetch）設計，恰好對應「預先快取」「版本清理」「攔截回應」三個各自獨立又環環相扣的職責（第 6 章）。</li>
+<li><strong>工程化層</strong>：手寫 Service Worker 難以維護，於是有了 sw-precache 與其 Webpack Plugin，用「自動掃描、內容雜湊驅動版本」取代人工維護清單（第 11 章）；同時整合進 React + Redux 這類現代框架的工程實踐（第 12 章）。</li>
+<li><strong>資料層</strong>：當應用需要離線寫入而非只是離線讀取時，Cache API 已經不夠用，必須理解 IndexedDB 為何是唯一被官方推薦、且技術上唯一可行（非同步、跨 Worker 環境通用）的選擇（第 13 章）。</li>
+</ol>
+<h3 id="142-原系列未完成-值得延伸研究的主題"><a class="anchor" href="#142-原系列未完成-值得延伸研究的主題">#</a> 14.2 原系列未完成、值得延伸研究的主題</h3>
+<p>原作者在系列文章的最後也誠實列出當初規劃但未及完成的主題，這些同樣是完整理解 PWA 生態系不可或缺的一塊，適合作為後續自學方向：</p>
+<ul>
+<li><strong>HTTP/2</strong>：多工（multiplexing）、伺服器推送（server push）等特性如何與 PWA 的資源載入策略互補。</li>
+<li><strong>PRPL Pattern</strong>（Push, Render, Pre-cache, Lazy-load）：Google 針對 PWA 提出的另一套載入策略框架，與 App Shell 概念緊密相關，強調用 HTTP/2 Push 搭配 Service Worker 預先快取來加速首屏，其餘路由則延遲載入。</li>
+<li><strong>Offline UX Considerations</strong>：離線狀態下的 UI/UX 設計準則（如何提示使用者「目前離線」、離線時哪些操作應該被暫時禁用或改為排入佇列）。</li>
+<li><strong>HTTPS 部署細節</strong>：憑證申請、混合內容（Mixed Content）問題排查。</li>
+<li><strong>Push Notifications（推播通知）</strong>：搭配 Service Worker 的  <code>push</code>  事件與 Notification API，實現「Re-engageable」這項 PWA 特性。</li>
+<li><strong>Lighthouse</strong>：Google 釋出的開源自動化稽核工具，可以針對效能、PWA 規範符合度、無障礙（Accessibility）、SEO 等面向給出量化評分，是驗收一個 PWA 專案品質的標準工具。</li>
+<li><strong>IndexedDB 進階應用</strong>：搭配 Background Sync API，實作「離線時的寫入操作先暫存到 IndexedDB、等網路恢復後自動同步回伺服器」的完整離線優先（Offline-First）架構 —— 這正是本系列 To-Do List 範例還未完全解決的那塊拼圖。</li>
+</ul>
+<h3 id="143-常見問答整理來自作者於實體分享會後的補充"><a class="anchor" href="#143-常見問答整理來自作者於實體分享會後的補充">#</a> 14.3 常見問答整理（來自作者於實體分享會後的補充）</h3>
+<p><strong>Q1：Service Worker 程式碼裡的  <code>self</code>  是什麼？</strong><br />
+A： <code>self</code>  指向  <code>ServiceWorkerGlobalScope</code> ，是 Service Worker 執行環境的全域物件（因為沒有  <code>window</code> ），必須用  <code>self</code>  才能存取對應的事件監聽與屬性（詳見 6.5 節）。</p>
+<p><strong>Q2：Cache 有沒有容量限制？</strong><br />
+A：有，且限制因瀏覽器與裝置可用磁碟空間而異，沒有一個固定的絕對數字，開發時應留意透過 DevTools 監控實際佔用量，避免無限制堆積快取。</p>
+<p><strong>Q3：Service Worker 檔案一定要手寫嗎？</strong><br />
+A：不用，如第 11 章所述，可以用  <code>sw-precache</code>  或搭配 Webpack 的  <code>sw-precache-webpack-plugin</code>  自動產生，大幅降低維護成本。</p>
+<p><strong>Q4：有沒有工具可以檢測一個網站的 PWA 完整度？</strong><br />
+A：有，官方工具 <strong>Lighthouse</strong>（開源專案，也內建在 Chrome DevTools 裡）可以針對 PWA 規範逐項打分，是上線前檢查的標準做法。</p>
+<hr />
+<h2 id="附錄關鍵術語速查表"><a class="anchor" href="#附錄關鍵術語速查表">#</a> 附錄：關鍵術語速查表</h2>
+<table>
+<thead>
+<tr>
+<th>術語</th>
+<th>一句話解釋</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>App Shell</td>
+<td>把「不常變的外殼」與「常變的內容」分離快取的架構模式</td>
+</tr>
+<tr>
+<td>Service Worker</td>
+<td>跑在瀏覽器背景、獨立於頁面之外的 JS 程式，負責攔截網路請求與管理快取</td>
+</tr>
+<tr>
+<td>Cache API</td>
+<td>Service Worker 專用、非同步的 key/value 快取儲存介面</td>
+</tr>
+<tr>
+<td>IndexedDB</td>
+<td>瀏覽器內建的非同步、結構化資料庫，用於離線寫入與複雜查詢</td>
+</tr>
+<tr>
+<td>Manifest File</td>
+<td>描述網站被安裝為類 App 體驗時的外觀與行為設定的 JSON 檔</td>
+</tr>
+<tr>
+<td>RAIL Model</td>
+<td>Response／Animation／Idle／Load 四階段的效能評估模型</td>
+</tr>
+<tr>
+<td>Critical Rendering Path</td>
+<td>瀏覽器把 HTML/CSS/JS 轉換成螢幕像素的完整流程</td>
+</tr>
+<tr>
+<td>sw-precache</td>
+<td>自動掃描檔案並產生 Service Worker 程式碼的 Node.js 工具</td>
+</tr>
+<tr>
+<td>stale-while-revalidate</td>
+<td>先用舊快取回應、同時背景更新快取的折衷快取策略</td>
+</tr>
+<tr>
+<td>Lighthouse</td>
+<td>Google 官方的網站品質自動稽核工具，涵蓋 PWA 規範檢查</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>本筆記內容為原創重寫與延伸解說，原始資料來源為 iThome 2017 iT 邦幫忙鐵人賽系列文章，作者 iamya，感謝其完整記錄了學習 PWA 的完整脈絡。</em></p>
+<hr />
+
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新於</span>
+    <time title="修改時間：2026-07-22 02:38:03" itemprop="dateModified" datetime="2026-07-22T02:38:03+08:00">2026-07-22</time>
+  </span>
+  <span id="2026/07/22/Progressive-Web-App-PWA/" class="item leancloud_visitors" data-flag-title="Progressive Web App(PWA)" title="閱讀次數">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">閱讀次數</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">次</span>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>作者： </strong>Rabbir <i class="ic i-at"><em>@</em></i>プログラムを書けないうさぎは、ただのうさぎだ。
+  </li>
+  <li class="link">
+    <strong>文章連結：</strong>
+    <a href="https://rabbirreaper.github.io/2026/07/22/Progressive-Web-App-PWA/" title="Progressive Web App(PWA)">https://rabbirreaper.github.io/2026/07/22/Progressive-Web-App-PWA/</a>
+  </li>
+  <li class="license">
+    <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 許可協議。轉載請註明出處！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2026/07/03/%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5%E7%AD%86%E8%A8%98/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;pub-da440be71028438aa9683b63bef5ccf1.r2.dev&#x2F;11.jpg" title="深度學習核心概念筆記">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>深度學習核心概念筆記</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目錄">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#progressive-web-apppwa30-%E5%A4%A9%E5%AE%8C%E6%95%B4%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98"><span class="toc-number">1.</span> <span class="toc-text"> Progressive Web App（PWA）30 天完整學習筆記</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E9%8C%84"><span class="toc-number">1.1.</span> <span class="toc-text"> 目錄</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-pwa-%E6%98%AF%E4%BB%80%E9%BA%BC-%E7%82%BA%E4%BB%80%E9%BA%BC%E9%9C%80%E8%A6%81%E5%AE%83"><span class="toc-number">1.2.</span> <span class="toc-text"> 1. PWA 是什麼、為什麼需要它</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E7%B6%B2%E9%A0%81%E8%88%87-app-%E5%90%84%E8%87%AA%E7%9A%84%E7%97%9B%E9%BB%9E"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 1.1 網頁與 App 各自的痛點</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-pwa-%E7%9A%84%E6%AD%A3%E5%BC%8F%E5%AE%9A%E7%BE%A9%E8%88%87%E5%8D%81%E5%A4%A7%E7%89%B9%E6%80%A7"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 1.2 PWA 的正式定義與十大特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E7%9C%9F%E5%AF%A6%E6%A1%88%E4%BE%8Bflipkart-lite-%E7%9A%84%E5%95%9F%E7%A4%BA"><span class="toc-number">1.2.3.</span> <span class="toc-text"> 1.3 真實案例：Flipkart Lite 的啟示</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%BE%9E%E9%9D%9C%E6%85%8B%E7%B6%B2%E7%AB%99%E5%88%B0-spa%E7%B6%B2%E7%AB%99%E6%BC%94%E9%80%B2%E5%8F%B2"><span class="toc-number">1.3.</span> <span class="toc-text"> 2. 從靜態網站到 SPA：網站演進史</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#21-%E9%9D%9C%E6%85%8B%E7%B6%B2%E7%AB%99-%E5%8B%95%E6%85%8B%E7%B6%B2%E7%AB%99server-render"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 2.1 靜態網站 → 動態網站（Server Render）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#22-spasingle-page-application%E7%9A%84%E8%88%88%E8%B5%B7%E8%88%87%E4%BB%A3%E5%83%B9"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 2.2 SPA（Single Page Application）的興起與代價</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-app-shell-%E6%9E%B6%E6%A7%8Bpwa-%E6%95%88%E8%83%BD%E7%9A%84%E6%A0%B8%E5%BF%83%E7%A7%98%E5%AF%86"><span class="toc-number">1.4.</span> <span class="toc-text"> 3. App Shell 架構：PWA 效能的核心秘密</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#31-%E4%BB%80%E9%BA%BC%E6%98%AF-app-shell"><span class="toc-number">1.4.1.</span> <span class="toc-text"> 3.1 什麼是 App Shell？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#32-%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E9%80%99%E6%A8%A3%E8%A8%AD%E8%A8%88%E6%84%9F%E7%9F%A5%E6%95%88%E8%83%BD-%E5%AF%A6%E9%9A%9B%E6%95%88%E8%83%BD"><span class="toc-number">1.4.2.</span> <span class="toc-text"> 3.2 為什麼要這樣設計？「感知效能 &gt; 實際效能」</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#33-%E7%82%BA%E4%BB%80%E9%BA%BC%E4%B8%8D%E6%95%B4%E5%8C%85%E4%B8%80%E8%B5%B7-cache%E8%80%8C%E8%A6%81%E6%8B%86%E6%88%90%E6%AE%BC%E8%B7%9F%E5%85%A7%E5%AE%B9%E5%88%86%E9%96%8B"><span class="toc-number">1.4.3.</span> <span class="toc-text"> 3.3 為什麼不整包一起 cache，而要拆成殼跟內容分開？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#34-%E5%AF%A6%E6%B8%AC%E6%95%88%E7%9B%8Aapp-shell-%E5%88%B0%E5%BA%95%E5%BF%AB%E5%A4%9A%E5%B0%91"><span class="toc-number">1.4.4.</span> <span class="toc-text"> 3.4 實測效益：App Shell 到底快多少？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#35-%E5%A6%82%E4%BD%95%E8%A8%AD%E8%A8%88-app-shell"><span class="toc-number">1.4.5.</span> <span class="toc-text"> 3.5 如何設計 App Shell？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-rail-%E6%95%88%E8%83%BD%E6%A8%A1%E5%9E%8B%E8%88%87-critical-rendering-path"><span class="toc-number">1.5.</span> <span class="toc-text"> 4. RAIL 效能模型與 Critical Rendering Path</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#41-rail-model%E4%BB%A5%E4%BD%BF%E7%94%A8%E8%80%85%E6%84%9F%E5%8F%97%E7%82%BA%E4%B8%AD%E5%BF%83%E7%9A%84%E6%95%88%E8%83%BD%E6%8C%87%E6%A8%99"><span class="toc-number">1.5.1.</span> <span class="toc-text"> 4.1 RAIL Model：以使用者感受為中心的效能指標</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#42-critical-rendering-path%E7%80%8F%E8%A6%BD%E5%99%A8%E6%80%8E%E9%BA%BC%E6%8A%8A%E7%A8%8B%E5%BC%8F%E7%A2%BC%E8%AE%8A%E6%88%90%E7%95%AB%E9%9D%A2"><span class="toc-number">1.5.2.</span> <span class="toc-text"> 4.2 Critical Rendering Path：瀏覽器怎麼把程式碼變成畫面？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#43-%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E5%8D%80%E5%88%86critical%E8%88%87non-critical%E8%B3%87%E6%BA%90"><span class="toc-number">1.5.3.</span> <span class="toc-text"> 4.3 為什麼要區分「Critical」與「Non-Critical」資源？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-optimizing-content-efficiency%E8%B3%87%E6%BA%90%E6%9C%80%E4%BD%B3%E5%8C%96"><span class="toc-number">1.6.</span> <span class="toc-text"> 5. Optimizing Content Efficiency：資源最佳化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#51-%E5%85%88%E5%95%8F%E9%80%99%E5%80%8B%E8%B3%87%E6%BA%90%E7%9C%9F%E7%9A%84%E6%9C%89%E5%BF%85%E8%A6%81%E5%AD%98%E5%9C%A8%E5%97%8E"><span class="toc-number">1.6.1.</span> <span class="toc-text"> 5.1 先問：這個資源真的有必要存在嗎？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#52-%E6%96%87%E5%AD%97%E9%A1%9E%E8%B3%87%E6%BA%90%E7%9A%84%E5%A3%93%E7%B8%AE"><span class="toc-number">1.6.2.</span> <span class="toc-text"> 5.2 文字類資源的壓縮</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#53-%E5%9C%96%E7%89%87%E8%88%87-svg-%E6%9C%80%E4%BD%B3%E5%8C%96"><span class="toc-number">1.6.3.</span> <span class="toc-text"> 5.3 圖片與 SVG 最佳化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#54-%E9%80%8F%E9%81%8E-http-%E5%BF%AB%E5%8F%96%E9%99%8D%E4%BD%8E%E9%87%8D%E8%A4%87%E5%82%B3%E8%BC%B8"><span class="toc-number">1.6.4.</span> <span class="toc-text"> 5.4 透過 HTTP 快取降低重複傳輸</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-service-workerpwa-%E7%9A%84%E6%8A%80%E8%A1%93%E5%BF%83%E8%87%9F"><span class="toc-number">1.7.</span> <span class="toc-text"> 6. Service Worker：PWA 的技術心臟</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#61-service-worker-%E6%98%AF%E4%BB%80%E9%BA%BC%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E9%80%99%E6%A8%A3%E8%A8%AD%E8%A8%88"><span class="toc-number">1.7.1.</span> <span class="toc-text"> 6.1 Service Worker 是什麼？為什麼要這樣設計？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#62-service-worker-%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F%E8%A9%B3%E8%A7%A3"><span class="toc-number">1.7.2.</span> <span class="toc-text"> 6.2 Service Worker 生命週期詳解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#63-%E4%B8%89%E5%A4%A7%E6%A0%B8%E5%BF%83%E4%BA%8B%E4%BB%B6install-activate-fetch"><span class="toc-number">1.7.3.</span> <span class="toc-text"> 6.3 三大核心事件：install、activate、fetch</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#install%E9%A0%90%E5%85%88%E5%BF%AB%E5%8F%96%E9%9D%9C%E6%85%8B%E8%B3%87%E6%BA%90"><span class="toc-number">1.7.3.1.</span> <span class="toc-text"> install：預先快取靜態資源</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#activate%E6%B8%85%E9%99%A4%E8%88%8A%E7%89%88%E5%BF%AB%E5%8F%96"><span class="toc-number">1.7.3.2.</span> <span class="toc-text"> activate：清除舊版快取</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#fetch%E6%94%94%E6%88%AA%E8%AB%8B%E6%B1%82-%E6%B1%BA%E5%AE%9A%E5%9B%9E%E6%87%89%E7%AD%96%E7%95%A5"><span class="toc-number">1.7.3.3.</span> <span class="toc-text"> fetch：攔截請求、決定回應策略</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#64-%E5%9B%9B%E7%A8%AE%E5%BF%AB%E5%8F%96%E7%AD%96%E7%95%A5%E4%BE%9D%E8%B3%87%E6%BA%90%E7%89%B9%E6%80%A7%E9%81%B8%E6%93%87%E5%B0%8D%E6%87%89%E8%A1%8C%E7%82%BA"><span class="toc-number">1.7.4.</span> <span class="toc-text"> 6.4 四種快取策略：依資源特性選擇對應行為</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#65-%E7%82%BA%E4%BB%80%E9%BA%BC-self-%E8%80%8C%E4%B8%8D%E6%98%AF-this"><span class="toc-number">1.7.5.</span> <span class="toc-text"> 6.5 為什麼 self 而不是 this？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-chrome-devtools-%E9%99%A4%E9%8C%AF%E5%B7%A5%E5%85%B7"><span class="toc-number">1.8.</span> <span class="toc-text"> 7. Chrome DevTools 除錯工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#71-manifest-%E6%AA%A2%E8%A6%96"><span class="toc-number">1.8.1.</span> <span class="toc-text"> 7.1 Manifest 檢視</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#72-service-workers-%E9%9D%A2%E6%9D%BF"><span class="toc-number">1.8.2.</span> <span class="toc-text"> 7.2 Service Workers 面板</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#73-cache-storage-%E6%AA%A2%E8%A6%96"><span class="toc-number">1.8.3.</span> <span class="toc-text"> 7.3 Cache Storage 檢視</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-pwa-%E5%AF%A6%E9%9A%9B%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90"><span class="toc-number">1.9.</span> <span class="toc-text"> 8. PWA 實際案例分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E5%8B%95%E6%89%8B%E5%AF%A6%E4%BD%9Cvanilla-js-%E7%89%88-to-do-list-pwa"><span class="toc-number">1.10.</span> <span class="toc-text"> 9. 動手實作：Vanilla JS 版 To-Do List PWA</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#91-%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E7%94%A8-json-server-http-server-concurrently"><span class="toc-number">1.10.1.</span> <span class="toc-text"> 9.1 開發環境：為什麼要用 json-server + http-server + concurrently？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#92-%E9%9C%80%E6%B1%82%E6%8B%86%E8%A7%A3"><span class="toc-number">1.10.2.</span> <span class="toc-text"> 9.2 需求拆解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#93-%E7%B4%94-javascript-%E5%AF%A6%E4%BD%9C%E9%87%8D%E9%BB%9E"><span class="toc-number">1.10.3.</span> <span class="toc-text"> 9.3 純 JavaScript 實作重點</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#94-%E5%8A%A0%E4%B8%8A%E9%9B%A2%E7%B7%9A%E8%83%BD%E5%8A%9Bapp-shell-service-worker-%E6%95%B4%E5%90%88"><span class="toc-number">1.10.4.</span> <span class="toc-text"> 9.4 加上離線能力：App Shell + Service Worker 整合</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-web-app-manifest%E8%AE%93%E7%B6%B2%E7%AB%99%E6%9B%B4%E5%83%8F-app"><span class="toc-number">1.11.</span> <span class="toc-text"> 10. Web App Manifest：讓網站更像 App</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#101-manifest-file-%E6%98%AF%E4%BB%80%E9%BA%BC"><span class="toc-number">1.11.1.</span> <span class="toc-text"> 10.1 Manifest File 是什麼？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#102-%E5%90%84%E6%AC%84%E4%BD%8D%E7%9A%84%E4%BD%9C%E7%94%A8%E8%88%87%E8%A8%AD%E8%A8%88%E8%80%83%E9%87%8F"><span class="toc-number">1.11.2.</span> <span class="toc-text"> 10.2 各欄位的作用與設計考量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#103-%E7%94%A8%E5%B7%A5%E5%85%B7%E9%A9%97%E8%AD%89%E8%88%87%E7%94%9F%E6%88%90"><span class="toc-number">1.11.3.</span> <span class="toc-text"> 10.3 用工具驗證與生成</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-%E8%87%AA%E5%8B%95%E5%8C%96%E7%94%9F%E6%88%90-service-workersw-precache-%E8%88%87-webpack-plugin"><span class="toc-number">1.12.</span> <span class="toc-text"> 11. 自動化生成 Service Worker：sw-precache 與 webpack plugin</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#111-%E7%82%BA%E4%BB%80%E9%BA%BC%E9%9C%80%E8%A6%81%E8%87%AA%E5%8B%95%E5%8C%96%E5%B7%A5%E5%85%B7"><span class="toc-number">1.12.1.</span> <span class="toc-text"> 11.1 為什麼需要自動化工具？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#112-sw-precache-%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="toc-number">1.12.2.</span> <span class="toc-text"> 11.2 sw-precache 基本用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#113-%E6%90%AD%E9%85%8D-webpacksw-precache-webpack-plugin"><span class="toc-number">1.12.3.</span> <span class="toc-text"> 11.3 搭配 Webpack：sw-precache-webpack-plugin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#114-%E4%BA%94%E7%A8%AE-handler-%E7%AD%96%E7%95%A5%E7%9A%84%E5%AE%8C%E6%95%B4%E8%AA%9E%E6%84%8F"><span class="toc-number">1.12.4.</span> <span class="toc-text"> 11.4 五種 handler 策略的完整語意</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-react-redux-%E7%89%88%E6%9C%AC%E5%AF%A6%E4%BD%9C"><span class="toc-number">1.13.</span> <span class="toc-text"> 12. React + Redux 版本實作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#121-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D"><span class="toc-number">1.13.1.</span> <span class="toc-text"> 12.1 環境安裝</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#122-container-component-%E5%88%86%E9%9B%A2%E6%9E%B6%E6%A7%8B"><span class="toc-number">1.13.2.</span> <span class="toc-text"> 12.2 Container &#x2F; Component 分離架構</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#123-redux-reducer-%E8%88%87%E9%9D%9E%E5%90%8C%E6%AD%A5-action"><span class="toc-number">1.13.3.</span> <span class="toc-text"> 12.3 Redux Reducer 與非同步 Action</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#124-react-%E7%89%88%E7%9A%84-pwa-%E6%95%B4%E5%90%88"><span class="toc-number">1.13.4.</span> <span class="toc-text"> 12.4 React 版的 PWA 整合</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-offline-storage-%E9%81%B8%E5%9E%8B%E7%AD%96%E7%95%A5"><span class="toc-number">1.14.</span> <span class="toc-text"> 13. Offline Storage 選型策略</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#131-%E5%90%84%E7%A8%AE%E5%84%B2%E5%AD%98%E6%96%B9%E6%A1%88%E7%9A%84%E6%8A%80%E8%A1%93%E6%AF%94%E8%BC%83"><span class="toc-number">1.14.1.</span> <span class="toc-text"> 13.1 各種儲存方案的技術比較</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#132-%E5%AE%98%E6%96%B9%E5%BB%BA%E8%AD%B0%E8%88%87%E8%83%8C%E5%BE%8C%E7%9A%84%E6%8A%80%E8%A1%93%E7%90%86%E7%94%B1"><span class="toc-number">1.14.2.</span> <span class="toc-text"> 13.2 官方建議與背後的技術理由</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#133-%E5%AF%A6%E5%8B%99%E6%90%AD%E9%85%8D%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.14.3.</span> <span class="toc-text"> 13.3 實務搭配模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-%E7%B8%BD%E7%B5%90%E8%88%87%E5%BB%B6%E4%BC%B8%E5%AD%B8%E7%BF%92%E6%96%B9%E5%90%91"><span class="toc-number">1.15.</span> <span class="toc-text"> 14. 總結與延伸學習方向</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#141-%E6%95%B4%E9%AB%94%E7%9F%A5%E8%AD%98%E5%9C%B0%E5%9C%96%E5%9B%9E%E9%A1%A7"><span class="toc-number">1.15.1.</span> <span class="toc-text"> 14.1 整體知識地圖回顧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#142-%E5%8E%9F%E7%B3%BB%E5%88%97%E6%9C%AA%E5%AE%8C%E6%88%90-%E5%80%BC%E5%BE%97%E5%BB%B6%E4%BC%B8%E7%A0%94%E7%A9%B6%E7%9A%84%E4%B8%BB%E9%A1%8C"><span class="toc-number">1.15.2.</span> <span class="toc-text"> 14.2 原系列未完成、值得延伸研究的主題</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#143-%E5%B8%B8%E8%A6%8B%E5%95%8F%E7%AD%94%E6%95%B4%E7%90%86%E4%BE%86%E8%87%AA%E4%BD%9C%E8%80%85%E6%96%BC%E5%AF%A6%E9%AB%94%E5%88%86%E4%BA%AB%E6%9C%83%E5%BE%8C%E7%9A%84%E8%A3%9C%E5%85%85"><span class="toc-number">1.15.3.</span> <span class="toc-text"> 14.3 常見問答整理（來自作者於實體分享會後的補充）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%84%E9%8C%84%E9%97%9C%E9%8D%B5%E8%A1%93%E8%AA%9E%E9%80%9F%E6%9F%A5%E8%A1%A8"><span class="toc-number">1.16.</span> <span class="toc-text"> 附錄：關鍵術語速查表</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+      </div>
+      <div class="overview panel" data-title="本站概要">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Rabbir"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">Rabbir</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">99</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">12</span>
+        <span class="name">分類</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">36</span>
+        <span class="name">標籤</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>首頁</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>關於</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>歸檔</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分類</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>標籤</a>
+  </li>
+
+  </ul>
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>隨機文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80%E7%AD%86%E8%A8%98/" title="分類於 程式語言筆記">程式語言筆記</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80%E7%AD%86%E8%A8%98/node-js/" title="分類於 node.js">node.js</a>
+</div>
+
+    <span><a href="/2025/01/15/Mongoose-%E7%9A%84%E5%9F%BA%E7%A4%8E%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/" title="Mongoose 的基礎語法筆記">Mongoose 的基礎語法筆記</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/18/Q-6-14-K%E6%AC%A1%E8%B2%B7%E8%B3%A3/" title="Q-6-14. K次買賣">Q-6-14. K次買賣</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/APCS/" title="分類於 APCS">APCS</a>
+</div>
+
+    <span><a href="/2025/01/19/c575-APCS-2017-0304-4%E5%9F%BA%E5%9C%B0%E5%8F%B0/" title="c575. APCS 2017-0304-4基地台">c575. APCS 2017-0304-4基地台</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2026/04/10/python-%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/" title="python 語法筆記">python 語法筆記</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2026/04/28/CSS%E7%AD%86%E8%A8%98/" title="CSS 筆記">CSS 筆記</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80%E7%AD%86%E8%A8%98/" title="分類於 程式語言筆記">程式語言筆記</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80%E7%AD%86%E8%A8%98/node-js/" title="分類於 node.js">node.js</a>
+</div>
+
+    <span><a href="/2025/01/19/Express-%E4%B8%AD%E7%9A%84-Middleware%EF%BC%9A%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/" title="Express 中的 Middleware：語法筆記">Express 中的 Middleware：語法筆記</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/18/Q-6-10-%E7%BD%AE%E7%89%A9%E6%AB%83%E5%87%BA%E7%A7%9F/" title="Q-6-10. 置物櫃出租">Q-6-10. 置物櫃出租</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/" title="分類於 加密文章">加密文章</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/%E6%97%A5%E6%9C%9F/" title="分類於 日期">日期</a>
+</div>
+
+    <span><a href="/2026/01/12/260112/" title="260112">260112</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/18/Q-1-8-%E5%AD%90%E9%9B%86%E5%90%88%E7%9A%84%E5%92%8C/" title="Q-1-8. 子集合的和">Q-1-8. 子集合的和</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2025/01/15/My-First-Post/" title="My First Post">My First Post</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新評論</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2025 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Rabbir @ Rabbir Reaper</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="總字數">423k 字</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">6:24</span>
+  </div>
+  <div class="powered-by">
+    基於 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2026/07/22/Progressive-Web-App-PWA/',
+    favicon: {
+      show: "（●´3｀●）復活成功",
+      hide: "(´Д｀)瀏覽器崩潰啦"
+    },
+    search : {
+      placeholder: "文章搜尋",
+      empty: "關於 「 ${query} 」 ，什麼也沒搜到",
+      stats: "${time} ms 內找到 ${hits} 條結果"
+    },
+    valine: true,fancybox: true,
+    copyright: '複製成功，轉載請遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 協議。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
