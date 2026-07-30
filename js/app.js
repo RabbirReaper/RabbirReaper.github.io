@@ -1603,6 +1603,29 @@ const sidebarTOC = function () {
   createIntersectionObserver();
 }
 
+// hexo-blog-encrypt keeps the TOC ciphertext bundled with the article body so
+// heading text never sits in the page source before the password is verified.
+// Once hbe.js decrypts the content, pull the <hbe-toc> payload back out and
+// rebuild the sidebar contents panel from it.
+window.addEventListener('hexo-blog-decrypt', function () {
+  var container = $('#hexo-blog-encrypt');
+  if (!container) return;
+
+  var tocPayload = container.child('hbe-toc');
+  if (!tocPayload) return;
+
+  var tocHTML = tocPayload.innerHTML;
+  tocPayload.parentNode.removeChild(tocPayload);
+
+  var tocPanel = sideBar.child('.contents.panel');
+  if (tocPanel) {
+    tocPanel.innerHTML = tocHTML;
+  }
+
+  sideBarTab();
+  sidebarTOC();
+});
+
 const backToTopHandle = function () {
   pageScroll(0);
 }
