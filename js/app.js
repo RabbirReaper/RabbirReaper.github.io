@@ -1607,12 +1607,19 @@ const sidebarTOC = function () {
 // heading text never sits in the page source before the password is verified.
 // Once hbe.js decrypts the content, pull the <hbe-toc> payload back out and
 // rebuild the sidebar contents panel from it.
-window.addEventListener('hexo-blog-decrypt', function () {
+//
+// hbe.js runs as a plain synchronous <script> in the middle of the page, so
+// when a password is already saved in localStorage it decrypts and fires
+// 'hexo-blog-decrypt' before app.js (which defines this listener) has even
+// loaded. Relying solely on the event misses that case, so this same logic
+// also runs once during normal page init to pick up an already-decrypted
+// <hbe-toc> left behind by hbe.js.
+const restoreDecryptedTOC = function () {
   var container = $('#hexo-blog-encrypt');
-  if (!container) return;
+  if (!container) return false;
 
   var tocPayload = container.child('hbe-toc');
-  if (!tocPayload) return;
+  if (!tocPayload) return false;
 
   var tocHTML = tocPayload.innerHTML;
   tocPayload.parentNode.removeChild(tocPayload);
@@ -1621,6 +1628,20 @@ window.addEventListener('hexo-blog-decrypt', function () {
   if (tocPanel) {
     tocPanel.innerHTML = tocHTML;
   }
+
+  return true;
+};
+
+window.addEventListener('hexo-blog-decrypt', function () {
+  var hadTOC = restoreDecryptedTOC();
+
+  // Decrypted body content (including <table>) is injected into the DOM
+  // after postBeauty() already ran once at page init, so tables here were
+  // never wrapped in .table-container — re-wrap them so tables.styl's
+  // '.table-container table' border rules actually apply.
+  wrapTables();
+
+  if (!hadTOC) return;
 
   sideBarTab();
   sidebarTOC();
@@ -1786,11 +1807,33 @@ const postFancybox = function(p) {
   }
 }
 
+// Wraps every article table in .table-container, which is what tables.styl
+// hangs the border rules off. Safe to call more than once: encrypted posts get
+// their body injected by hbe.js after the initial run, so this has to run again
+// on decrypt, and already-wrapped tables must not be nested a second time.
+const wrapTables = function () {
+  $.each('.md table', function (element) {
+    var parent = element.parentNode;
+    if (parent && (parent.hasClass('table-container') || parent.hasClass('code-container')))
+      return
+
+    element.wrap({
+      className: 'table-container'
+    });
+  });
+
+  $.each('.highlight > .table-container', function (element) {
+    element.className = 'code-container'
+  });
+}
+
 const postBeauty = function () {
   loadComments();
 
   if(!$('.md'))
     return
+
+  wrapTables();
 
   postFancybox('.post.block');
 
@@ -1830,16 +1873,6 @@ const postBeauty = function () {
   $.each('ol[start]', function(element) {
     element.style.counterReset = "counter " + parseInt(element.attr('start') - 1)
   })
-
-  $.each('.md table', function (element) {
-    element.wrap({
-      className: 'table-container'
-    });
-  });
-
-  $.each('.highlight > .table-container', function (element) {
-    element.className = 'code-container'
-  });
 
   $.each('figure.highlight', function (element) {
 
@@ -2307,6 +2340,13 @@ const siteRefresh = function (reload) {
   resizeHandle()
 
   menuActive()
+
+  // Picks up a <hbe-toc> payload left behind by hbe.js when it auto-decrypts
+  // from a saved password before this script has loaded (see sidebar.js).
+  // The same race leaves the decrypted tables unwrapped, and postBeauty()
+  // bails out early when .md is missing, so wrap them here too.
+  restoreDecryptedTOC()
+  wrapTables()
 
   sideBarTab()
   sidebarTOC()

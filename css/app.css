@@ -2348,6 +2348,9 @@ main >.inner {
 .contents .current>a:hover {
   color: var(--primary-color);
 }
+hbe-toc {
+  display: none;
+}
 .related {
   font-size: 0.875em;
 }
