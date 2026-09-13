@@ -1,0 +1,694 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/https:/pub-da440be71028438aa9683b63bef5ccf1.r2.devimages/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/https:/pub-da440be71028438aa9683b63bef5ccf1.r2.dev/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="プログラムを書けないうさぎは、ただのうさぎだ。" href="https://rabbirreaper.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="プログラムを書けないうさぎは、ただのうさぎだ。" href="https://rabbirreaper.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="プログラムを書けないうさぎは、ただのうさぎだ。" href="https://rabbirreaper.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="C++,演算法,APCS,樹狀圖" />
+
+
+<link rel="canonical" href="https://rabbirreaper.github.io/2026/08/14/1-10-%E6%A8%B9%E4%B8%8A%E6%BC%94%E7%AE%97%E6%B3%95/">
+
+
+
+  <title>
+1-10 樹上演算法 - 演算法 - 教學 |
+Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎだ。</title>
+<meta name="generator" content="Hexo 8.1.1"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">1-10 樹上演算法
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="創建時間：2026-08-14 11:30:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">發表於</span>
+    <time itemprop="dateCreated datePublished" datetime="2026-08-14T11:30:00+08:00">2026-08-14</time>
+  </span>
+  <span class="item" title="文章字數">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">文章字數</span>
+    <span>7.2k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="所需閱讀時間">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">所需閱讀時間</span>
+    <span>7 分鐘</span>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切換導航欄">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Rabbir Reaper</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/81.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/38.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/58.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/52.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/80.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/9.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首頁</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E6%95%99%E5%AD%B8/" itemprop="item" rel="index" title="分類於 教學"><span itemprop="name">教學</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E6%95%99%E5%AD%B8/%E6%BC%94%E7%AE%97%E6%B3%95/" itemprop="item" rel="index" title="分類於 演算法"><span itemprop="name">演算法</span></a>
+<meta itemprop="position" content="2" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-TW">
+  <link itemprop="mainEntityOfPage" href="https://rabbirreaper.github.io/2026/08/14/1-10-%E6%A8%B9%E4%B8%8A%E6%BC%94%E7%AE%97%E6%B3%95/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/https:/pub-da440be71028438aa9683b63bef5ccf1.r2.dev/images/avatar.jpg">
+    <meta itemprop="name" content="Rabbir">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="プログラムを書けないうさぎは、ただのうさぎだ。">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="前言"><a class="anchor" href="#前言">#</a> 前言</h1>
+<p>這是這個系列的最後一章。這一單元提到的東西跟上一單元 <a href="/2026/08/14/1-9-%E5%9F%BA%E6%9C%AC%E5%9C%96%E8%AB%96%E6%BC%94%E7%AE%97%E6%B3%95/">1-9 基本圖論演算法</a> 差不多，像是 DFS 跟 BFS 這單元也一樣繼續都會用到，題目的類型寫起來會發現有很多類似的地方，不過這單元的題目有些會結合更前面的單元像是貪心法，動態規劃這些，題目都會結合起來不過我認為難度還是專門的動態規劃比較難，如果上一單元學得還可以這一單元也不需要太過擔心。</p>
+<p>儲存樹的資料結構基本上用 vector 會是一個很好的選擇，樹上演算法 APCS 的範圍內我感覺大部分的題目用 DFS 寫都會蠻直覺的，如果不熟悉 DFS 的人建議多多練習，不會用 DFS 很多題目都會卡住。</p>
+<hr />
+<h1 id="樹的基本觀念複習"><a class="anchor" href="#樹的基本觀念複習">#</a> 樹的基本觀念複習</h1>
+<pre><code>       1                    8
+    /  |  \               /   \
+   2   3   4              9    12
+  / \ / \                / \
+ 5  6 7  8              10  11
+</code></pre>
+<ul>
+<li><strong>樹 (tree) 的定義</strong>：一個連通且無環路的圖；一個連通圖且  <code>n(點數)=m(邊數)+1</code> ，如上圖；一個無環路的圖且  <code>n=m+1</code></li>
+<li>一個圖上不只一棵樹就可以叫做森林 (forest)，如上圖</li>
+<li><strong>樹上的點的名稱</strong>：
+<ul>
+<li><strong>根 (root)</strong>：例如點 (1,8)</li>
+<li><strong>樹葉 (leaf)</strong>：也稱外節點 (external node)，沒有孩子的點例如點 (5,6,7,4)</li>
+<li><strong>中間節點 (internal node)</strong>：例如點 (2,3)</li>
+<li><strong>祖先 (ancestor)</strong>：每個點沿著 parent 往上一路走，都會走到 root，中間碰到的點都是它的祖先</li>
+</ul>
+</li>
+</ul>
+<p>這些名詞在 <a href="/2026/08/14/1-9-%E5%9F%BA%E6%9C%AC%E5%9C%96%E8%AB%96%E6%BC%94%E7%AE%97%E6%B3%95/">1-9</a> 已經介紹過一次，這裡再複習一遍是因為接下來的演算法會頻繁用到「parent」「child」「深度」這些概念。</p>
+<hr />
+<h1 id="dfs"><a class="anchor" href="#dfs">#</a> DFS</h1>
+<h2 id="例題石窟探險apcs"><a class="anchor" href="#例題石窟探險apcs">#</a> 例題：石窟探險（APCS）</h2>
+<p>有一組探險隊要去一個樹狀結構的石窟內探險，該石窟內有 n 個石室，第 i 個石室有一個編號 Ai，若 Ai 為偶數則會有 2 條分支 (左分支和右分支)，若 Ai 為奇數則有 3 條分支 (左分支、中分支和右分支)。</p>
+<p>探險隊想要紀錄這個石窟的結構，每次只要第一次走到一個新的石室，就會將該石室的編號記錄在紙上，並由左到右依序走訪該石室的分支們，若走到一條死路則會在紙上紀錄一個數字 0，若該石室已經走完所有分支則退回到上一石室，走訪完整個石窟後在紙上得到上一個數字序列。</p>
+<p>探險隊回到基地後忘記計算了這個石窟內所有相鄰的石室編號相差取絕對值的總和，請幫助探險隊從紙上的序列推算出該數值。</p>
+<p><strong>輸入</strong>一個整數個數不超過 1e6 的整數序列，石室的編號不超過 1e5，並保證造出來的樹深度不超過 40。</p>
+<p><strong>輸出說明</strong>：輸出一個整數代表這個石窟內所有相鄰的石室編號相差取絕對值的總和，答案大小有可能會超過 2^31。</p>
+<table>
+<thead>
+<tr>
+<th>範例輸入 #1</th>
+<th>範例輸出 #1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2 6 0 8 14 0 0 0 10 0 4 0 0</td>
+<td>26</td>
+</tr>
+<tr>
+<td>範例輸入 #2</td>
+<td>範例輸出 #2</td>
+</tr>
+<tr>
+<td>5 2 10 0 0 0 8 0 0 17 0 0 0</td>
+<td>26</td>
+</tr>
+</tbody>
+</table>
+<p>範例輸入一說明： <code>|2-6| + |6-8| + |8-14| + |2-10| + |10-4| = 26</code></p>
+<p>如果不想寫成遞迴形式可以用 stack 來寫，不過我覺得遞迴比較簡潔好看。 <code>dfs()</code>  這個函數的定義是呼叫他之後輸入的 n 為當前的 root 然後回傳以這點為 root 然後依據題目的要求算出的答案。按照要求如果是 2 就會有兩個分支所以：</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>temp<span class="token punctuation">;</span>i<span class="token operator">&lt;</span><span class="token number">2</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>    temp<span class="token operator">=</span><span class="token function">dfs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="3"></td><td><pre>    <span class="token keyword">if</span><span class="token punctuation">(</span>temp<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">continue</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre>    <span class="token keyword">else</span> ans<span class="token operator">+=</span><span class="token function">abs</span><span class="token punctuation">(</span>temp<span class="token operator">-</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><p>這邊回圈內會跑兩次呼叫兩次這個函數，記得寫遞迴一定都會有終止條件。這一行就是終止條件： <code>if(n==0) return 0;</code> 。如果程式一直在跑都沒輸出結果很有可能就是終止條件沒有設好，這邊要特別注意。</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">long</span> <span class="token keyword">long</span> ans<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token keyword">int</span> <span class="token function">dfs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="5"></td><td><pre>    <span class="token keyword">int</span> n<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>    cin<span class="token operator">>></span>n<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="7"></td><td><pre>    <span class="token keyword">if</span><span class="token punctuation">(</span>n<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="8"></td><td><pre>    <span class="token keyword">if</span><span class="token punctuation">(</span>n<span class="token operator">%</span><span class="token number">2</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="9"></td><td><pre>        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>temp<span class="token punctuation">;</span>i<span class="token operator">&lt;</span><span class="token number">2</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="10"></td><td><pre>            temp<span class="token operator">=</span><span class="token function">dfs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="11"></td><td><pre>            <span class="token keyword">if</span><span class="token punctuation">(</span>temp<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">continue</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="12"></td><td><pre>            <span class="token keyword">else</span> ans<span class="token operator">+=</span><span class="token function">abs</span><span class="token punctuation">(</span>temp<span class="token operator">-</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="13"></td><td><pre>        <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="14"></td><td><pre>    <span class="token punctuation">&#125;</span><span class="token keyword">else</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="15"></td><td><pre>        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>temp<span class="token punctuation">;</span>i<span class="token operator">&lt;</span><span class="token number">3</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="16"></td><td><pre>            temp<span class="token operator">=</span><span class="token function">dfs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="17"></td><td><pre>            <span class="token keyword">if</span><span class="token punctuation">(</span>temp<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">continue</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="18"></td><td><pre>            <span class="token keyword">else</span> ans<span class="token operator">+=</span><span class="token function">abs</span><span class="token punctuation">(</span>temp<span class="token operator">-</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="19"></td><td><pre>        <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="20"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="21"></td><td><pre>    <span class="token keyword">return</span> n<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="22"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="23"></td><td><pre><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="24"></td><td><pre>    <span class="token function">dfs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="25"></td><td><pre>    cout<span class="token operator">&lt;&lt;</span>ans<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="26"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><p>這題示範了一個很簡潔的技巧：<strong>直接把  <code>cin</code>  放在遞迴函式裡，讓讀取輸入的順序跟遞迴走訪的順序一致</strong> —— 這正是 <a href="/2026/08/14/1-2-%E9%81%9E%E8%BF%B4/">1-2 遞迴</a> 例題一（合成函數）用過的手法，在樹的走訪裡同樣好用：不需要真的先讀完整個序列再建樹，遞迴的過程本身就自然完成了建樹跟走訪。</p>
+<hr />
+<h1 id="bfs"><a class="anchor" href="#bfs">#</a> BFS</h1>
+<h2 id="例題樹狀圖的距離總和ap325"><a class="anchor" href="#例題樹狀圖的距離總和ap325">#</a> 例題：樹狀圖的距離總和（AP325）</h2>
+<p>輸入一個樹狀圖，請計算所有點到所有點的距離總和。本題假設編號 1 是根節點。</p>
+<p><strong>輸入格式</strong>：第一行是正整數 n，代表點數，點以 1~n 編號，第二行有 n-1 個正整數， <code>p(2), p(3), …,p(n)</code> ，依序是編號 2~ 編號 n 各點的 parent，第三行有 n-1 個正整數，依序代表 i 從 2 到 n，邊 (i,p (i)) 的長度。n 不超過 1e5，每條邊長度是不超過 1000 的正整數。</p>
+<p><strong>輸出</strong>：各點到各點的距離總和。請注意 i 到 j 與 j 到 i 都要納入總和，如範例。</p>
+<table>
+<thead>
+<tr>
+<th>範例一輸入</th>
+<th>範例一輸出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4<br>1 2 3<br>10 20 30</td>
+<td>400</td>
+</tr>
+<tr>
+<td>範例二輸入</td>
+<td>範例二輸出</td>
+</tr>
+<tr>
+<td>5<br>1 1 1 2<br>20 20 30 30</td>
+<td>880</td>
+</tr>
+</tbody>
+</table>
+<p>範例二說明：</p>
+<pre><code>          1
+       20/ \20
+        2   4
+     30/  \30
+    (30)   3
+    5
+</code></pre>
+<p>先來看點 1 到其他點的距離：點 1 到點 (2,4) 都是 20 到點 (3) 是 30 到點 (5) 是 50 所以加起來是 20+30+20+50=120。點二到其他點的距離：20+50+40+30=140，我按照點由小大到打的順序寫距離。點三到其他點的距離：30+50+50+80=210。點四到其他點的距離：20+40+50+70=180。點五到其他點的距離：50+30+80+70=230。總和 120+140+210+180+230=880。</p>
+<h2 id="解題思路"><a class="anchor" href="#解題思路">#</a> 解題思路</h2>
+<p>這題是 ** 換根 DP（re-rooting）** 的經典應用：如果每個點各自跑一次 BFS/DFS 算「這個點到所有其他點的距離」，總複雜度會是  <code>O(n^2)</code> ，n 到 1e5 時無法接受。換根 DP 的精神是：<strong>先花  <code>O(n)</code>  算出根節點到所有點的距離總和，再利用「相鄰兩點的答案之間有簡單的轉換關係」，一次遞迴把所有點的答案都推出來</strong>。</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h></span></span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">N</span> <span class="token expression"><span class="token number">100005</span></span></span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token keyword">int</span> n<span class="token punctuation">,</span>w<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">,</span>num<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token number">0</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token keyword">long</span> <span class="token keyword">long</span> total<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>dis_son<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token number">0</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>dis<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token number">0</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> child<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token keyword">void</span> <span class="token function">dfs</span><span class="token punctuation">(</span><span class="token keyword">int</span> p<span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token comment">//O(n)</span></pre></td></tr><tr><td data-num="8"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">auto</span> e<span class="token operator">:</span>child<span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="9"></td><td><pre>        <span class="token keyword">int</span> u<span class="token operator">=</span>e<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="10"></td><td><pre>        <span class="token function">dfs</span><span class="token punctuation">(</span>u<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="11"></td><td><pre>        dis_son<span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token operator">+=</span>dis_son<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token operator">+</span>num<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token operator">*</span>w<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="12"></td><td><pre>        num<span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token operator">+=</span>num<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="13"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="14"></td><td><pre>    num<span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="15"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="16"></td><td><pre><span class="token keyword">void</span> <span class="token function">dfs_dis</span><span class="token punctuation">(</span><span class="token keyword">int</span> p<span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token comment">//O(n)</span></pre></td></tr><tr><td data-num="17"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">auto</span> e<span class="token operator">:</span>child<span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="18"></td><td><pre>        <span class="token keyword">int</span> u<span class="token operator">=</span>e<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="19"></td><td><pre>        dis<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token operator">=</span>dis<span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token operator">-</span><span class="token punctuation">(</span>num<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token operator">*</span>w<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token punctuation">(</span>n<span class="token operator">-</span>num<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">*</span>w<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="20"></td><td><pre>        total<span class="token operator">+=</span>dis<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="21"></td><td><pre>        <span class="token function">dfs_dis</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="22"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="23"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="24"></td><td><pre>queue<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> q<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="25"></td><td><pre><span class="token keyword">void</span> <span class="token function">bfs_dis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token comment">// 算總和的時候 bfs 程式碼</span></pre></td></tr><tr><td data-num="26"></td><td><pre>    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">!</span>q<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="27"></td><td><pre>        <span class="token keyword">int</span> p<span class="token operator">=</span>q<span class="token punctuation">.</span><span class="token function">front</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="28"></td><td><pre>        q<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="29"></td><td><pre>        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">auto</span> t<span class="token operator">:</span>child<span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="30"></td><td><pre>            <span class="token keyword">int</span> u<span class="token operator">=</span>t<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="31"></td><td><pre>            q<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>u<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="32"></td><td><pre>            dis<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token operator">=</span>dis<span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token operator">-</span><span class="token punctuation">(</span> num<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token operator">*</span>w<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token punctuation">(</span>n<span class="token operator">-</span>num<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">*</span>w<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="33"></td><td><pre>            total<span class="token operator">+=</span>dis<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="34"></td><td><pre>        <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="35"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="36"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="37"></td><td><pre><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="38"></td><td><pre>    cin<span class="token operator">>></span>n<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="39"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span>temp<span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="40"></td><td><pre>        cin<span class="token operator">>></span>temp<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="41"></td><td><pre>        child<span class="token punctuation">[</span>temp<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="42"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="43"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="44"></td><td><pre>        cin<span class="token operator">>></span>w<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="45"></td><td><pre>    <span class="token function">dfs</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="46"></td><td><pre>    dis<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span>dis_son<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="47"></td><td><pre>    <span class="token function">dfs_dis</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="48"></td><td><pre>    <span class="token comment">// q.push(1);</span></pre></td></tr><tr><td data-num="49"></td><td><pre>    <span class="token comment">// bfs_dis();</span></pre></td></tr><tr><td data-num="50"></td><td><pre>    cout<span class="token operator">&lt;&lt;</span>total<span class="token operator">+</span>dis_son<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="51"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><p>這一題我主要還是用了 DFS 不過算總合的地方我附上了用 BFS 的寫法。先來看每個陣列的定義：</p>
+<ul>
+<li><strong> <code>dis_son[i]</code> </strong>：第 i 點的所有小孩的距離總和，所以  <code>dis_son[1]</code>  等於 1 到所有點的距離總和，以範例一為例  <code>dis_son[1]=100</code></li>
+<li><strong> <code>dis[i]</code> </strong>：第 i 點到所有點的距離總和，所以  <code>dis[1]=dis_son[1]</code></li>
+<li><strong> <code>num[i]</code> </strong>：點 i 的 parent 到點 i 這條邊走過的次數，這個走過的次數是根據 1 這個點為 root 走到所有點其中走過這條邊的次數</li>
+<li><strong> <code>total</code> </strong>：所有點到所有點的距離</li>
+</ul>
+<p>拿範例二來說明幾行重要的程式：</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre>dis_son<span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token operator">+=</span>dis_son<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token operator">+</span>num<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token operator">*</span>w<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr></table></figure><p>由遞迴得知在計算  <code>dis_son[p]</code>  時， <code>w[u]</code>  這一條邊會走  <code>num[u]</code>  這麼多次，圖中的點 (5,3,4) 葉節點在 num 陣列裡都是 1 而 (2) 是 2 因為點 (1) 走到點 (2) 跟點 (5) 個會經過一次這條邊。</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre>dis<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token operator">=</span>dis<span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token operator">-</span><span class="token punctuation">(</span>num<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token operator">*</span>w<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token punctuation">(</span>n<span class="token operator">-</span>num<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">*</span>w<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr></table></figure><p>先注意看這一行所在的函式是先執行這一行才進行遞迴的， <code>dis[u]</code>  這一點到所有點的距離，這裡要對照著上面的圖看，假如現在的 u=2 所以 p=1，那換成中文敘述就是點 (1) 到所有點的距離減掉點 (1) 到點 (2) 中間這條邊，注意這裡減掉不只是減 1 次，要觀察點 (1) 到所有點中會經過這條邊幾次，然後再加上這一點往上到所有點會經過幾次，因為原本的 num 陣列是根據點 (1) 來儲存的所以是由上往下，現在是要看這點往上所以這行才會這樣寫，可以發現這行可以再畫減，不過這樣的可讀性我覺得比較好也比較方便來說明。</p>
+<p>這個公式的核心洞察是：<strong>當我們把「根」從 p 換到相鄰的子節點 u 時，樹上所有點到 u 的距離，相對於到 p 的距離，只有「跨越 (p,u) 這條邊」的方向會改變</strong> —— 原本走這條邊「靠近」的點（u 的子樹內，共  <code>num[u]</code>  個點）現在距離變近了  <code>w[u]</code> ，原本「遠離」的點（子樹外，共  <code>n-num[u]</code>  個點）現在距離變遠了  <code>w[u]</code> 。這就是「換根」名稱的由來，也是樹上 DP 一個非常重要的套路，能把  <code>O(n^2)</code>  的暴力（每個點各跑一次 BFS）降到  <code>O(n)</code> 。</p>
+<hr />
+<h1 id="例題病毒演化apcs樹上-dp-綜合應用"><a class="anchor" href="#例題病毒演化apcs樹上-dp-綜合應用">#</a> 例題：病毒演化（APCS，樹上 DP 綜合應用）</h1>
+<p>在資訊科學上，RNA 病毒可以看成一個由 A、U、G、C 這四種字母構成的字串。病毒演化中，某些字元可能變異成其他字元，例如將 AAUGG 中的第 3 個位置的 U 換成 C，則得到 AACGG，變異可能發生在多個位置。有個實驗團隊取得了某種 RNA 病毒的數個 RNA 片段樣本，並且掌握到這些樣本演化的親緣關係，用（樣本編號，親代編號，RNA 字串）的格式記錄，其中「樣本編號」與「親代編號」為兩個整數，若兩數字相同，則該樣本即為演化的源頭。</p>
+<p>例如：(1, 1, AAAA) (2, 1, GCAA) 表示樣本 1 的 RNA 字串為 AAAA，樣本 2 為 GCAA，且樣本 2 是由樣本 1 在兩個位置發生變異演化而來，樣本 1 為演化的源頭。</p>
+<p>然而，字串中每個位置的字元無法確定，實驗團隊以 @ 來表示這些字元，換言之，可能為 A、U、G、C 中任何一個。請注意，一個字串中可能有多個 @，並非代表這些位置的字元是相同的。例如 A@C@ 可能是任何第一個字元為 A 且第三個字元為 C 的字串，像是 ACCU 或 AACC。團隊猜測演化過程發生的變異總數會盡可能的少。請你利用親緣關係，來計算最小的變異總數量。</p>
+<p><strong>輸入格式</strong>：第一行有兩個正整數 n 與 m，表示共有 n 個樣本，由 1 至 n 編號；每個樣本之 RNA 字串長度均為 m，其中 n ≤ 1000 且 m ≤ 80。接下來 n 行，每行包含以空白間隔的兩個整數 i 與 j 以及一個 RNA 字串 si，對應一個樣本（i,j,si），si 由 A、U、G、C 與 @ 五種字元所組成。若 i=j=1，則該樣本即為演化的源頭，源頭以外樣本皆恰有一個親代。</p>
+<p><strong>輸出</strong>：輸出最小可能的變異總數。</p>
+<table>
+<thead>
+<tr>
+<th>範例一輸入</th>
+<th>範例一輸出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2 3<br>1 1 AAC<br>2 1 A@@</td>
+<td>0</td>
+</tr>
+<tr>
+<td>範例二輸入</td>
+<td>範例二輸出</td>
+</tr>
+<tr>
+<td>6 1<br>1 1 @<br>2 1 @<br>3 1 C<br>4 1 C<br>5 2 A<br>6 2 A</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="解題思路-2"><a class="anchor" href="#解題思路-2">#</a> 解題思路</h2>
+<p>這類型的題目是我相對不擅長的類型，所以我在這本講義的結尾放上這一題。這一題我是採用 top-down 的寫法，這類型的題目用 top-down 會好寫很多，再來根據題目變化是單個字元的事情，所以就是判斷只要判斷一個字元就好，最後用個迴圈全部跑一次把變化量加總起來就可以了，這種題目可能會想說要如何去判斷什麼時候變化，想了一下之後想不到貪心的寫法就果斷用 dp 了，通常不確定該用什麼寫法的時候觀察一下測資大小會有很大的幫助。</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h></span></span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">N</span> <span class="token expression"><span class="token number">1005</span></span></span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">INF</span> <span class="token expression"><span class="token number">1147483647</span></span><span class="token comment">//2^31-1-10^9</span></span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">T</span> <span class="token expression"><span class="token number">5</span></span></span></pre></td></tr><tr><td data-num="6"></td><td><pre>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> v<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token keyword">int</span> n<span class="token punctuation">,</span>m<span class="token punctuation">,</span>root<span class="token punctuation">,</span>dp<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">,</span>ans<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="8"></td><td><pre>string s<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment">//&#123;'@',0&#125; 負責記錄變化最少的結果</span></pre></td></tr><tr><td data-num="9"></td><td><pre>map<span class="token operator">&lt;</span><span class="token keyword">char</span><span class="token punctuation">,</span><span class="token keyword">int</span><span class="token operator">></span> mp<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#123;</span><span class="token char">'@'</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span><span class="token punctuation">&#123;</span><span class="token char">'A'</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span><span class="token punctuation">&#123;</span><span class="token char">'U'</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span><span class="token punctuation">&#123;</span><span class="token char">'C'</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span><span class="token punctuation">&#123;</span><span class="token char">'G'</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="10"></td><td><pre><span class="token comment">//A、U、C、G</span></pre></td></tr><tr><td data-num="11"></td><td><pre><span class="token keyword">void</span> <span class="token function">Virus</span><span class="token punctuation">(</span><span class="token keyword">int</span> f<span class="token punctuation">,</span><span class="token keyword">int</span> pos<span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="12"></td><td><pre>    <span class="token keyword">int</span> b<span class="token operator">=</span>mp<span class="token punctuation">[</span>s<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">[</span>pos<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment">// 紀錄符號</span></pre></td></tr><tr><td data-num="13"></td><td><pre>    <span class="token keyword">if</span><span class="token punctuation">(</span>v<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="14"></td><td><pre>        <span class="token keyword">if</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">[</span>pos<span class="token punctuation">]</span><span class="token operator">==</span><span class="token char">'@'</span><span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="15"></td><td><pre>        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>T<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="16"></td><td><pre>            dp<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span>INF<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="17"></td><td><pre>        dp<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span>dp<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">[</span>b<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="18"></td><td><pre>        <span class="token keyword">return</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="19"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="20"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">auto</span> e<span class="token operator">:</span>v<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="21"></td><td><pre>        <span class="token function">Virus</span><span class="token punctuation">(</span>e<span class="token punctuation">,</span>pos<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="22"></td><td><pre>    <span class="token keyword">if</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">[</span>pos<span class="token punctuation">]</span><span class="token operator">==</span><span class="token char">'@'</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token comment">// 因為是 @所以每種變化都計算一遍</span></pre></td></tr><tr><td data-num="23"></td><td><pre>        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>T<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="24"></td><td><pre>            <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">auto</span> e<span class="token operator">:</span>v<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="25"></td><td><pre>                dp<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+=</span><span class="token function">min</span><span class="token punctuation">(</span>dp<span class="token punctuation">[</span>e<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>dp<span class="token punctuation">[</span>e<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="26"></td><td><pre>        dp<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token function">min</span><span class="token punctuation">(</span><span class="token function">min</span><span class="token punctuation">(</span>dp<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>dp<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">min</span><span class="token punctuation">(</span>dp<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span>dp<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="27"></td><td><pre>    <span class="token punctuation">&#125;</span><span class="token keyword">else</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="28"></td><td><pre>        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>T<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> dp<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span>INF<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="29"></td><td><pre>        dp<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">[</span>b<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="30"></td><td><pre>        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">auto</span> e<span class="token operator">:</span>v<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="31"></td><td><pre>            dp<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">[</span>b<span class="token punctuation">]</span><span class="token operator">+=</span><span class="token function">min</span><span class="token punctuation">(</span>dp<span class="token punctuation">[</span>e<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>dp<span class="token punctuation">[</span>e<span class="token punctuation">]</span><span class="token punctuation">[</span>b<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 一樣的不用加 1</span></pre></td></tr><tr><td data-num="32"></td><td><pre>        dp<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span>dp<span class="token punctuation">[</span>f<span class="token punctuation">]</span><span class="token punctuation">[</span>b<span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="33"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="34"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="35"></td><td><pre><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="36"></td><td><pre>    cin<span class="token operator">>></span>n<span class="token operator">>></span>m<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="37"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>a<span class="token punctuation">,</span>b<span class="token punctuation">;</span>i<span class="token operator">&lt;</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="38"></td><td><pre>        cin<span class="token operator">>></span>a<span class="token operator">>></span>b<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="39"></td><td><pre>        cin<span class="token operator">>></span>s<span class="token punctuation">[</span>a<span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="40"></td><td><pre>        <span class="token keyword">if</span><span class="token punctuation">(</span>a<span class="token operator">==</span>b<span class="token punctuation">)</span> root<span class="token operator">=</span>a<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="41"></td><td><pre>        <span class="token keyword">else</span> v<span class="token punctuation">[</span>b<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="42"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="43"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>m<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="44"></td><td><pre>        <span class="token function">Virus</span><span class="token punctuation">(</span>root<span class="token punctuation">,</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="45"></td><td><pre>        ans<span class="token operator">+=</span>dp<span class="token punctuation">[</span>root<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="46"></td><td><pre>        <span class="token function">memset</span><span class="token punctuation">(</span>dp<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>dp<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="47"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="48"></td><td><pre>    cout<span class="token operator">&lt;&lt;</span>ans<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="49"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><p>先來看終止條件在葉節點的時候如果為 @ 就可以直接 return，因為只有一個 parent 所以就不用判斷了，再來就是要對 dp 陣列做一些更新，可以看到上面的 map 幫忙把四個字元都對應到了四個數字，而最前面的  <code>dp[f][0]</code>  就代表著最佳解的意思。</p>
+<p>繼續往下看如果是 @ 就每個都要計算一遍看變成哪個會比較好最後取最小值，如果不是就是判斷自己的子節點看是要突變還是一樣怎麼選會比較好突變會最少的就是比較 dp 陣列裡的值取最小值。最後提醒在寫遞迴的時候就是要讓等號右邊先出來。</p>
+<p>這題整合了這系列前面幾章的技巧：<strong>用遞迴走訪樹（本章）</strong>、<strong>DP 的「選與不選（這裡是選哪個字元）」思維（<a href="/2026/08/14/1-8-%E5%8B%95%E6%85%8B%E8%A6%8F%E5%8A%83/">1-8</a>）</strong>、以及<strong>用 map 把字元映射到數字方便處理（<a href="/2026/08/14/1-1-%E5%9F%BA%E6%9C%AC%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E8%88%87-STL/">1-1</a>）</strong>。這也說明了為什麼我把樹上演算法放在系列的最後一章 —— 它常常是前面所有章節技巧的綜合考驗。</p>
+<hr />
+<h1 id="總結"><a class="anchor" href="#總結">#</a> 總結</h1>
+<p>終於打完了，希望我解釋的這些題目有幫助大家理解，我幾乎都是挑 AP325 裡沒有講解的題目，有些題目我想了非常久才寫出來，如果把這些題目都做完了恭喜你，你大概已經了解了 APCS 範圍內的所有觀念，可是這樣還是不夠的，要多刷一些題目，練習自己對題目的反應速度，還練習像是 APCS 裡得第二題這種比較大型麻煩的程式，這種程式雖然不難花時間就寫得出來，不過重點就是要花時間，然而時間是有限的，要練習寫題的速度。</p>
+<p>這個系列從 <a href="/2026/08/14/1-1-%E5%9F%BA%E6%9C%AC%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E8%88%87-STL/">1-1 基本資料結構與 STL</a> 的工具箱開始，走過 <a href="/2026/08/14/1-2-%E9%81%9E%E8%BF%B4/">1-2 遞迴</a>、<a href="/2026/08/14/1-3-%E6%90%9C%E5%B0%8B%E6%8A%80%E5%B7%A7/">1-3 搜尋技巧</a>、<a href="/2026/08/14/1-4-%E7%AA%AE%E8%88%89%E6%9A%B4%E6%90%9C%E8%88%87%E5%9B%9E%E6%BA%AF%E6%B3%95/">1-4 窮舉暴搜與回溯法</a>、<a href="/2026/08/14/1-5-%E8%B2%AA%E5%BF%83%E6%BC%94%E7%AE%97%E6%B3%95/">1-5 貪心演算法</a>、<a href="/2026/08/14/1-6-%E6%8E%83%E6%8F%8F%E7%B7%9A%E6%BC%94%E7%AE%97%E6%B3%95/">1-6 掃描線演算法</a>、<a href="/2026/08/14/1-7-%E5%88%86%E6%B2%BB%E6%BC%94%E7%AE%97%E6%B3%95/">1-7 分治演算法</a>、<a href="/2026/08/14/1-8-%E5%8B%95%E6%85%8B%E8%A6%8F%E5%8A%83/">1-8 動態規劃</a>、<a href="/2026/08/14/1-9-%E5%9F%BA%E6%9C%AC%E5%9C%96%E8%AB%96%E6%BC%94%E7%AE%97%E6%B3%95/">1-9 基本圖論演算法</a>，一路到這一章的樹上演算法。整個系列的骨架沿用我原本《APCS 考前準備》講義的順序，並補上了 <span class="exturl" data-url="aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMTBoWkNNSEgwWWdzZmd1VlpDSFU3RVlpRzhxSkU1Zi1t">AP325</span>（吳邦一教授）跟 2023 CISCON 社群月演算法專題課程裡更完整的觀念說明、複雜度分析與證明方法。</p>
+<p>我再次感謝 AP325 的作者吳邦一教授、2023 CISCON 課程的講師們（動態規劃：陳俊安 Colten；貪心：Koying；枚舉：Fishhh；搜尋：高睿）還有網路上的各個電神分享自己的解題經驗，我才有辦法寫出這些困難的題目。</p>
+<p>之後會在各章節增加更多練習題 URL，把這份筆記補得更完整。</p>
+<h1 id="練習題"><a class="anchor" href="#練習題">#</a> 練習題</h1>
+<p>（之後補上）</p>
+
+      <div class="tags">
+          <a href="/tags/C/" rel="tag"><i class="ic i-tag"></i> C++</a>
+          <a href="/tags/%E6%BC%94%E7%AE%97%E6%B3%95/" rel="tag"><i class="ic i-tag"></i> 演算法</a>
+          <a href="/tags/APCS/" rel="tag"><i class="ic i-tag"></i> APCS</a>
+          <a href="/tags/%E6%A8%B9%E7%8B%80%E5%9C%96/" rel="tag"><i class="ic i-tag"></i> 樹狀圖</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新於</span>
+    <time title="修改時間：2026-09-14 00:36:31" itemprop="dateModified" datetime="2026-09-14T00:36:31+08:00">2026-09-14</time>
+  </span>
+  <span id="2026/08/14/1-10-樹上演算法/" class="item leancloud_visitors" data-flag-title="1-10 樹上演算法" title="閱讀次數">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">閱讀次數</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">次</span>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>作者： </strong>Rabbir <i class="ic i-at"><em>@</em></i>プログラムを書けないうさぎは、ただのうさぎだ。
+  </li>
+  <li class="link">
+    <strong>文章連結：</strong>
+    <a href="https://rabbirreaper.github.io/2026/08/14/1-10-%E6%A8%B9%E4%B8%8A%E6%BC%94%E7%AE%97%E6%B3%95/" title="1-10 樹上演算法">https://rabbirreaper.github.io/2026/08/14/1-10-樹上演算法/</a>
+  </li>
+  <li class="license">
+    <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 許可協議。轉載請註明出處！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2026/08/14/1-9-%E5%9F%BA%E6%9C%AC%E5%9C%96%E8%AB%96%E6%BC%94%E7%AE%97%E6%B3%95/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;pub-da440be71028438aa9683b63bef5ccf1.r2.dev&#x2F;94.jpg" title="1-9 基本圖論演算法">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> 演算法</span>
+  <h3>1-9 基本圖論演算法</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目錄">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text"> 前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A8%B9%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%A7%80%E5%BF%B5%E8%A4%87%E7%BF%92"><span class="toc-number">2.</span> <span class="toc-text"> 樹的基本觀念複習</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#dfs"><span class="toc-number">3.</span> <span class="toc-text"> DFS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E9%A1%8C%E7%9F%B3%E7%AA%9F%E6%8E%A2%E9%9A%AAapcs"><span class="toc-number">3.1.</span> <span class="toc-text"> 例題：石窟探險（APCS）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#bfs"><span class="toc-number">4.</span> <span class="toc-text"> BFS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E9%A1%8C%E6%A8%B9%E7%8B%80%E5%9C%96%E7%9A%84%E8%B7%9D%E9%9B%A2%E7%B8%BD%E5%92%8Cap325"><span class="toc-number">4.1.</span> <span class="toc-text"> 例題：樹狀圖的距離總和（AP325）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A1%8C%E6%80%9D%E8%B7%AF"><span class="toc-number">4.2.</span> <span class="toc-text"> 解題思路</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BE%8B%E9%A1%8C%E7%97%85%E6%AF%92%E6%BC%94%E5%8C%96apcs%E6%A8%B9%E4%B8%8A-dp-%E7%B6%9C%E5%90%88%E6%87%89%E7%94%A8"><span class="toc-number">5.</span> <span class="toc-text"> 例題：病毒演化（APCS，樹上 DP 綜合應用）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A1%8C%E6%80%9D%E8%B7%AF-2"><span class="toc-number">5.1.</span> <span class="toc-text"> 解題思路</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B8%BD%E7%B5%90"><span class="toc-number">6.</span> <span class="toc-text"> 總結</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B7%B4%E7%BF%92%E9%A1%8C"><span class="toc-number">7.</span> <span class="toc-text"> 練習題</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li><a href="/2026/08/14/1-1-%E5%9F%BA%E6%9C%AC%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E8%88%87-STL/" rel="bookmark" title="1-1 基本資料結構與 STL">1-1 基本資料結構與 STL</a></li><li><a href="/2026/08/14/1-2-%E9%81%9E%E8%BF%B4/" rel="bookmark" title="1-2 遞迴">1-2 遞迴</a></li><li><a href="/2026/08/14/1-3-%E6%90%9C%E5%B0%8B%E6%8A%80%E5%B7%A7/" rel="bookmark" title="1-3 搜尋技巧：前綴和、雙指針、滑動視窗、二分搜">1-3 搜尋技巧：前綴和、雙指針、滑動視窗、二分搜</a></li><li><a href="/2026/08/14/1-4-%E7%AA%AE%E8%88%89%E6%9A%B4%E6%90%9C%E8%88%87%E5%9B%9E%E6%BA%AF%E6%B3%95/" rel="bookmark" title="1-4 窮舉暴搜與回溯法">1-4 窮舉暴搜與回溯法</a></li><li><a href="/2026/08/14/1-5-%E8%B2%AA%E5%BF%83%E6%BC%94%E7%AE%97%E6%B3%95/" rel="bookmark" title="1-5 貪心演算法">1-5 貪心演算法</a></li><li><a href="/2026/08/14/1-6-%E6%8E%83%E6%8F%8F%E7%B7%9A%E6%BC%94%E7%AE%97%E6%B3%95/" rel="bookmark" title="1-6 掃描線演算法">1-6 掃描線演算法</a></li><li><a href="/2026/08/14/1-7-%E5%88%86%E6%B2%BB%E6%BC%94%E7%AE%97%E6%B3%95/" rel="bookmark" title="1-7 分治演算法">1-7 分治演算法</a></li><li><a href="/2026/08/14/1-8-%E5%8B%95%E6%85%8B%E8%A6%8F%E5%8A%83/" rel="bookmark" title="1-8 動態規劃">1-8 動態規劃</a></li><li><a href="/2026/08/14/1-9-%E5%9F%BA%E6%9C%AC%E5%9C%96%E8%AB%96%E6%BC%94%E7%AE%97%E6%B3%95/" rel="bookmark" title="1-9 基本圖論演算法">1-9 基本圖論演算法</a></li><li class="active"><a href="/2026/08/14/1-10-%E6%A8%B9%E4%B8%8A%E6%BC%94%E7%AE%97%E6%B3%95/" rel="bookmark" title="1-10 樹上演算法">1-10 樹上演算法</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="本站概要">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Rabbir"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">Rabbir</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">109</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">14</span>
+        <span class="name">分類</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">49</span>
+        <span class="name">標籤</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>首頁</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>關於</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>歸檔</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分類</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>標籤</a>
+  </li>
+
+  </ul>
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>隨機文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/APCS-%E6%A8%A1%E6%93%AC%E5%9C%98%E9%9A%8A/" title="分類於 APCS 模擬團隊">APCS 模擬團隊</a>
+</div>
+
+    <span><a href="/2025/01/18/apcs0204-%E9%80%83%E8%84%AB%E9%81%8A%E6%88%B2-Game/" title="apcs0204:逃脫遊戲 (Game)">apcs0204:逃脫遊戲 (Game)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/" title="分類於 加密文章">加密文章</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/%E6%97%A5%E6%9C%9F/" title="分類於 日期">日期</a>
+</div>
+
+    <span><a href="/2026/04/09/260409/" title="260409">260409</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E6%95%99%E5%AD%B8/" title="分類於 教學">教學</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E6%95%99%E5%AD%B8/%E6%BC%94%E7%AE%97%E6%B3%95/" title="分類於 演算法">演算法</a>
+</div>
+
+    <span><a href="/2026/08/14/1-5-%E8%B2%AA%E5%BF%83%E6%BC%94%E7%AE%97%E6%B3%95/" title="1-5 貪心演算法">1-5 貪心演算法</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/18/Q-3-5-%E5%B8%B6%E8%91%97%E6%9D%BF%E5%87%B3%E6%8E%92%E9%9B%9E%E6%8E%92%E7%9A%84%E9%AB%98%E4%BA%BA-APCS/" title="Q-3-5. 帶著板凳排雞排的高人(APCS)">Q-3-5. 帶著板凳排雞排的高人(APCS)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/19/Q-8-9-%E6%9C%8D%E5%8B%99%E4%B8%AD%E5%BF%83%E9%81%B8%E4%BD%8D%E7%BD%AE/" title="Q-8-9. 服務中心選位置">Q-8-9. 服務中心選位置</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2025/04/28/Vue-%E6%B8%AC%E8%A9%A6%E7%AD%86%E8%A8%98/" title="Vue 測試筆記 (未完成)">Vue 測試筆記 (未完成)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/APCS/" title="分類於 APCS">APCS</a>
+</div>
+
+    <span><a href="/2025/01/19/j608-4-%E6%A9%9F%E5%99%A8%E5%87%BA%E7%A7%9F/" title="j608. 4. 機器出租">j608. 4. 機器出租</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/18/Q-3-11-%E6%9C%80%E9%95%B7%E7%9A%84%E7%9B%B8%E7%95%B0%E8%89%B2%E5%BD%A9%E5%B8%B6/" title="Q-3-11. 最長的相異色彩帶">Q-3-11. 最長的相異色彩帶</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80%E7%AD%86%E8%A8%98/" title="分類於 程式語言筆記">程式語言筆記</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80%E7%AD%86%E8%A8%98/node-js/" title="分類於 node.js">node.js</a>
+</div>
+
+    <span><a href="/2025/01/19/Express-%E4%B8%AD%E7%9A%84-Middleware%EF%BC%9A%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/" title="Express 中的 Middleware：語法筆記">Express 中的 Middleware：語法筆記</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2026/01/05/CPE%E6%BA%96%E5%82%99%E7%B4%80%E9%8C%84/" title="CPE 準備紀錄">CPE 準備紀錄</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新評論</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2025 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Rabbir @ Rabbir Reaper</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="總字數">486k 字</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">7:22</span>
+  </div>
+  <div class="powered-by">
+    基於 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2026/08/14/1-10-樹上演算法/',
+    favicon: {
+      show: "（●´3｀●）復活成功",
+      hide: "(´Д｀)瀏覽器崩潰啦"
+    },
+    search : {
+      placeholder: "文章搜尋",
+      empty: "關於 「 ${query} 」 ，什麼也沒搜到",
+      stats: "${time} ms 內找到 ${hits} 條結果"
+    },
+    valine: true,fancybox: true,
+    copyright: '複製成功，轉載請遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 協議。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

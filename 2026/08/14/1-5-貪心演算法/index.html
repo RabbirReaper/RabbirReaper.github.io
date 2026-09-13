@@ -1,0 +1,761 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/https:/pub-da440be71028438aa9683b63bef5ccf1.r2.devimages/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/https:/pub-da440be71028438aa9683b63bef5ccf1.r2.dev/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="プログラムを書けないうさぎは、ただのうさぎだ。" href="https://rabbirreaper.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="プログラムを書けないうさぎは、ただのうさぎだ。" href="https://rabbirreaper.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="プログラムを書けないうさぎは、ただのうさぎだ。" href="https://rabbirreaper.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="C++,演算法,APCS,貪心演算法" />
+
+
+<link rel="canonical" href="https://rabbirreaper.github.io/2026/08/14/1-5-%E8%B2%AA%E5%BF%83%E6%BC%94%E7%AE%97%E6%B3%95/">
+
+
+
+  <title>
+1-5 貪心演算法 - 演算法 - 教學 |
+Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎだ。</title>
+<meta name="generator" content="Hexo 8.1.1"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">1-5 貪心演算法
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="創建時間：2026-08-14 10:40:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">發表於</span>
+    <time itemprop="dateCreated datePublished" datetime="2026-08-14T10:40:00+08:00">2026-08-14</time>
+  </span>
+  <span class="item" title="文章字數">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">文章字數</span>
+    <span>7k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="所需閱讀時間">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">所需閱讀時間</span>
+    <span>6 分鐘</span>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切換導航欄">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Rabbir Reaper</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/16.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/49.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/41.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/65.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/100.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/38.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首頁</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E6%95%99%E5%AD%B8/" itemprop="item" rel="index" title="分類於 教學"><span itemprop="name">教學</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E6%95%99%E5%AD%B8/%E6%BC%94%E7%AE%97%E6%B3%95/" itemprop="item" rel="index" title="分類於 演算法"><span itemprop="name">演算法</span></a>
+<meta itemprop="position" content="2" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-TW">
+  <link itemprop="mainEntityOfPage" href="https://rabbirreaper.github.io/2026/08/14/1-5-%E8%B2%AA%E5%BF%83%E6%BC%94%E7%AE%97%E6%B3%95/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/https:/pub-da440be71028438aa9683b63bef5ccf1.r2.dev/images/avatar.jpg">
+    <meta itemprop="name" content="Rabbir">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="プログラムを書けないうさぎは、ただのうさぎだ。">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="前言"><a class="anchor" href="#前言">#</a> 前言</h1>
+<p>貪心演算法的意思是挑選目前最好的選擇，換句話說就是有一個固定的規則可以解決問題，因為有時候挑選目前最好的選擇不一定是全局最好的。舉例來說我們有很多工作，每個工作的工作時間不同 (ex:8 點到 9 點，12 點到 16 點) 可是每個工作給我們帶來的效益是相同的，我們要怎麼在有限的時間裡安排工作讓我們可以獲得最大效益，換句話說就是在盡可能安排更多工作，我們該怎麼安排工作呢？在那麼多個工作中該怎麼挑選工作才是最佳解呢？</p>
+<p>貪心最讓人卡關的地方，往往不是「怎麼寫」，而是「<strong>為什麼這樣貪心是對的</strong>」。我原本的講義在這裡大多是「自己嘗試證明看看」，這章補上 2023 CISCON《貪心 Greedy》課程（Koying）裡系統化的證明方法：<strong>反證法</strong>跟<strong>交換論證</strong>。</p>
+<hr />
+<h1 id="貪心是什麼"><a class="anchor" href="#貪心是什麼">#</a> 貪心是什麼</h1>
+<p>不斷選擇「目前」最好的選項。這句話聽起來像廢話，但它精確地描述了貪心演算法的行為：<strong>每一步只根據當下能看到的資訊做決定，且做了決定就不會反悔</strong>。</p>
+<h2 id="硬幣問題貪心不一定對"><a class="anchor" href="#硬幣問題貪心不一定對">#</a> 硬幣問題：貪心不一定對</h2>
+<p>先看一個經典反例，體會貪心為什麼需要證明。</p>
+<p><strong>硬幣問題 1</strong>：你有無限多個面額為 1, 5, 10, 50 的硬幣，請問要怎麼用最少的硬幣數量湊出 n 元？</p>
+<p>相信有買過東西的人應該都知道該怎麼辦，顯然就是先拿面額大的。但，這個策略難道永遠都是正確的嗎？</p>
+<p><strong>硬幣問題 2</strong>：你有無限多個面額為 1, 5, 11 的硬幣，請問要怎麼用最少的硬幣數量湊出 n 元？</p>
+<p>使用剛剛的策略還會正確嗎？假設 n=15，使用剛剛的策略會拿  <code>11+1+1+1+1</code> （5 枚），但是  <code>5+5+5</code>  才是最少的硬幣數量（3 枚）。代表著這個策略並不是永遠正確的，或許只有在硬幣面額呈倍數時才成立。</p>
+<p>這說明了貪心演算法<strong>沒有一套萬用的判斷方法</strong>，每一題的貪心規則是否正確，都需要個別驗證。那該如何證明呢？以下會介紹一些在離散數學中比較常見的證明方式。</p>
+<hr />
+<h1 id="貪心法的常見證明方式"><a class="anchor" href="#貪心法的常見證明方式">#</a> 貪心法的常見證明方式</h1>
+<h2 id="反證法proof-by-contradiction"><a class="anchor" href="#反證法proof-by-contradiction">#</a> 反證法（Proof by Contradiction）</h2>
+<p>給出某命題 p 與 p̄（非 p），其滿足排中律（(p ∨ ¬p) 為真，也就是 p 與非 p 至少有一為真）。假設 p̄ 成立，但經過推導後我們發現 p̄ 並不成立，那麼就代表 p 成立。</p>
+<p>用一個大家高中都學過的例子來體會這個技巧：<strong>證明 √2 為無理數</strong>（無法使用兩互質整數 p, q 將其表示為 p/q）。</p>
+<ol>
+<li>假設 √2 為有理數，那麼根據有理數的性質， <code>√2 = p/q</code></li>
+<li>移項之後： <code>2q^2 = p^2</code></li>
+<li>則  <code>2 | p^2</code> ，又因此可推導出  <code>2 | p</code> ，所以我們可以將 p 寫成  <code>2k</code></li>
+<li>再套回去剛剛的式子： <code>q^2 = 2k^2</code> ，因此  <code>2 | q</code></li>
+<li>經過上面的推導，發現 p, q 皆為偶數，但是 p, q 互質，所以 p, q 不能同時為偶數，矛盾</li>
+<li>因此 √2 為無理數</li>
+</ol>
+<p><strong>在貪心法中，反證法的用法是</strong>：先假設「貪心解不是最佳解」，然後推導出矛盾（例如發現存在一個比貪心解更好的解，但這個解其實可以被貪心解取代或超越），從而證明貪心解必定是最佳解。</p>
+<h2 id="回到硬幣問題什麼時候貪心解是最佳的"><a class="anchor" href="#回到硬幣問題什麼時候貪心解是最佳的">#</a> 回到硬幣問題：什麼時候貪心解是最佳的</h2>
+<p>有無限多個面額為  <code>c_1, c_2, ..., c_n</code>  的硬幣，請問要怎麼用最少的硬幣數量湊出 x 元？已知  <code>v_1 = 1</code> ， <code>v_i | v_{i+1}</code> （ <code>v_i</code>  能夠整除  <code>v_{i+1}</code> ）。</p>
+<ol>
+<li>假設對於某個  <code>c_i</code>  的硬幣，我們用了超過  <code>c_{i+1}/c_i</code>  個，那麼我們就可以將這  <code>c_{i+1}/c_i</code>  個  <code>c_i</code>  換成是  <code>c_{i+1}</code></li>
+<li>根據以上所述，每個硬幣的數量都不會超過  <code>c_{i+1}/c_i</code>  個，且在最佳解中，若只使用  <code>c_1 ~ c_{i-1}</code>  的硬幣，所能湊出的最大金額為  <code>v_i - 1</code></li>
+<li>因此當我們需要求出 x 元，且  <code>c_i ≤ x &lt; c_{i+1}</code>  時，必選  <code>c_i</code> ，得證在面額倍數關係時，貪心解為最佳解</li>
+</ol>
+<p>這正好解釋了為什麼「1, 5, 10, 50」用貪心是對的（每個面額都是前一個的倍數），而「1, 5, 11」不是（11 不是 5 的倍數）。</p>
+<h2 id="數學歸納法mathematical-induction"><a class="anchor" href="#數學歸納法mathematical-induction">#</a> 數學歸納法（Mathematical Induction）</h2>
+<p>數學歸納法的步驟還蠻簡單的：</p>
+<ol>
+<li>證明 n=1 時成立</li>
+<li>當 n=m 時，證明 n=m+1 時成立</li>
+</ol>
+<p>有點類似我推倒第一張骨牌，接下來每一張骨牌都會因前一張骨牌倒下而倒下。</p>
+<p>舉平方和公式的證明作為範例，試證明  <code>Σ(i=1 to n) i^2 = n(n+1)(2n+1)/6</code> ：</p>
+<ol>
+<li>n=1 時，成立（左式 = 1，右式 =  <code>1×2×3/6 = 1</code> ）</li>
+<li>當 n=m 時，假設  <code>Σ(i=1 to m) i^2 = m(m+1)(2m+1)/6</code>  成立</li>
+<li>則 n=m+1 時， <code>Σ(i=1 to m) i^2 + (m+1)^2 = m(m+1)(2m+1)/6 + (m+1)^2</code></li>
+<li><code>= m(m+1)(2m+1)/6 + 6(m+1)(m+1)/6</code></li>
+<li><code>= (m+1)(m+2)(2m+3)/6</code> ，滿足 n=m+1 時的式子</li>
+<li>由數學歸納法得證</li>
+</ol>
+<p>數學歸納法也可以用來證明遞迴定義的性質，例如證明費式數列  <code>Σ(i=0 to n) F_i = F_{n+2} - 1</code> ：</p>
+<ol>
+<li>n=0 時， <code>F_0 = F_2 - 1</code> ，成立</li>
+<li>假設 n=m 時成立，此時  <code>Σ(i=0 to m) F_i = F_{m+2} - 1</code></li>
+<li>在 n=m+1 時，可得  <code>Σ(i=0 to m+1) F_i = F_{m+2} - 1 + F_{m+1}</code></li>
+<li>可得  <code>Σ(i=0 to m+1) F_i = F_{m+3} - 1</code></li>
+<li>由數學歸納法得證</li>
+</ol>
+<h2 id="構造性證明constructive-proof"><a class="anchor" href="#構造性證明constructive-proof">#</a> 構造性證明（Constructive Proof）</h2>
+<p>利用建立出一種構造方式，證明假設正確。</p>
+<p>例如<strong>證明質數有無限多個</strong>：</p>
+<ol>
+<li>假設已知質數有 k 個  <code>p_1, p_2, ..., p_k</code></li>
+<li>那麼我們就可以構造出一個數  <code>x = ∏(1 to k) p_i + 1</code></li>
+<li>如果 x 為和數，那麼一定可以找到一個質因數 P 使得  <code>P | x</code></li>
+<li>但這是不可能的，因為  <code>x ≡ 1 (mod p_i)</code> ，所以 x 為質數，得證</li>
+</ol>
+<p>構造性證明在貪心法裡常用來<strong>直接建構出一個解，並證明這個解等於或優於貪心解</strong>，藉此確立貪心解的下界。</p>
+<hr />
+<h1 id="交換論證exchange-argument貪心法最常用的證明方式"><a class="anchor" href="#交換論證exchange-argument貪心法最常用的證明方式">#</a> 交換論證（Exchange Argument）：貪心法最常用的證明方式</h1>
+<p>回頭看我原本講義裡的兩題貪心，其實它們背後的證明方式都是<strong>交換論證</strong>：假設有一個非貪心的最佳解，證明把它「換成貪心的順序」不會讓答案變差，於是貪心解至少跟最佳解一樣好。</p>
+<h2 id="例題cses-movie-festival"><a class="anchor" href="#例題cses-movie-festival">#</a> 例題：CSES Movie Festival</h2>
+<blockquote>
+<p>題目來源：CISCON 2023 貪心課程</p>
+</blockquote>
+<p>有 n 場電影，每場電影從  <code>a_i</code>  到  <code>b_i</code> ，請問最多可以看幾場電影？（n ≤ 2×10^5）</p>
+<p>觀察題目，發現可能會有兩種方式：依照開頭排序、依照結尾排序。</p>
+<p><strong>依開頭排序的情況</strong>：很簡單的可以發現，若有一部特別早開始的電影，但是特別晚結束，那麼這部電影的時間就很有可能包含了其他部電影，導致不會是最佳解。</p>
+<p><strong>依結尾排序</strong>：假設我們目前在 x 之後有空，那麼根據策略，看了一部最早結束的電影 i 之後，變為  <code>b_i</code>  之後有空。對於任意一個解所看的電影 j 看完後有空的時間變為  <code>b_j</code> ， <code>b_i</code>  必定 ≤  <code>b_j</code> 。顯然在剩下的時間內， <code>b_i</code>  之後所能看的電影數量必定 ≥  <code>b_j</code>  之後所能看的電影數量。</p>
+<p>得證不存在另一優於貪心解 ⇒ 貪心解為最佳解。</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment">// [來源：本文補充，待替換]</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token function">sort</span><span class="token punctuation">(</span>movies<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> movies<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token keyword">auto</span><span class="token operator">&amp;</span> x<span class="token punctuation">,</span> <span class="token keyword">auto</span><span class="token operator">&amp;</span> y<span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="3"></td><td><pre>    <span class="token keyword">return</span> x<span class="token punctuation">.</span>second <span class="token operator">&lt;</span> y<span class="token punctuation">.</span>second<span class="token punctuation">;</span>  <span class="token comment">// 依照結尾（b）排序</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token keyword">int</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token keyword">long</span> <span class="token keyword">long</span> lastEnd <span class="token operator">=</span> LLONG_MIN<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span><span class="token operator">&amp;</span> <span class="token punctuation">[</span>a<span class="token punctuation">,</span> b<span class="token punctuation">]</span> <span class="token operator">:</span> movies<span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="8"></td><td><pre>    <span class="token keyword">if</span> <span class="token punctuation">(</span>a <span class="token operator">>=</span> lastEnd<span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="9"></td><td><pre>        count<span class="token operator">++</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="10"></td><td><pre>        lastEnd <span class="token operator">=</span> b<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="11"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="12"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><p>這個證明的結構完全就是交換論證：<strong>任意一個候選解，都可以被「換成貪心的選擇」而不變差</strong>。這比我原本講義裡「機器出租」那題的直覺解釋更嚴謹 —— 它明確指出了為什麼「選最早結束的工作」永遠不會比其他選擇差。</p>
+<h2 id="判斷該用哪種排序一個實用的觀察角度"><a class="anchor" href="#判斷該用哪種排序一個實用的觀察角度">#</a> 判斷該用哪種排序：一個實用的觀察角度</h2>
+<p>上面這個例子點出一個很實用的判斷方式：碰到區間排程類的貪心題，通常會猶豫「要依開頭排序還是依結尾排序」。判斷的關鍵在於：<strong>貪心規則挑出來的選項，是不是保證不會排擠掉其他選項的空間</strong>。依結尾排序、選最早結束的，可以保證留給後面的空間最大；依開頭排序則沒有這個保證，因為開頭早不代表結尾也早。</p>
+<hr />
+<h1 id="貪心經典題"><a class="anchor" href="#貪心經典題">#</a> 貪心經典題</h1>
+<h2 id="最大子陣列和也可以用貪心"><a class="anchor" href="#最大子陣列和也可以用貪心">#</a> 最大子陣列和：也可以用貪心</h2>
+<p>給一個整數陣列 A [0:n-1]，請計算 A 的連續子陣列的最大可能總和，空陣列的和以 0 計算。</p>
+<p>還記得區間和怎麼算嗎？ <code>Σ(i=l to r) a_i = psum_r - psum_{l-1}</code> 。對於 r 為結尾的最大子陣列和，顯然就是一個最小的  <code>psum_i</code>  滿足  <code>i &lt; r</code> 。那麼對於整個陣列的最大子陣列和，答案就是  <code>max(r=1 to n) (psum_r - min(i=1 to r-1) psum_i)</code> 。</p>
+<p>這其實跟貪心的精神一致：<strong>掃過陣列時，隨時記錄「目前看過的最小前綴和」，用當前前綴和減掉它就是以當前位置結尾的最大子陣列和</strong>，全程只需要  <code>O(n)</code> ，且每一步都在做「目前最好的選擇」（選最小的前綴和當基準點）。這題也是分治法的經典題，會在 <a href="/2026/08/14/1-7-%E5%88%86%E6%B2%BB%E6%BC%94%E7%AE%97%E6%B3%95/">1-7 分治演算法</a> 用不同的角度再解一次。</p>
+<h2 id="機器出租apcs"><a class="anchor" href="#機器出租apcs">#</a> 機器出租（APCS）</h2>
+<p>有 N 個活動，舉辦每個活動都要租借一台機器，若要舉辦第 N 個活動，就需要在時間段 [L,R] 租借用一台機器的。已知 N 個活動的需要使用的時間段，並且有 K 台機器可以開放租借，且一台機器同時間只能借給一個活動，請問最多可以成功舉辦多少場活動？</p>
+<p><strong>輸入說明</strong>：第一行有兩個正整數 N 和 K。第二行有 N 個正整數，第 i 個正整數是活動 i 的開始時間 L。第三行有 N 個正整數，第 i 個正整數是活動 i 的結束時間 R。</p>
+<table>
+<thead>
+<tr>
+<th>範例輸入 #1</th>
+<th>範例輸出 #1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5 1<br>0 2 1 3 4<br>2 3 5 4 6</td>
+<td>2</td>
+</tr>
+<tr>
+<td>範例輸入 #2</td>
+<td>範例輸出 #2</td>
+</tr>
+<tr>
+<td>8 2<br>3 1 4 3 7 2 2 5<br>5 3 7 4 8 7 4 6</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<p>這一題一開始看可能會覺得有點難，我們有時候遇到比較難的題目可以先把題目拆解成比較簡單的版本然後一步一步去思考，像是這題可以先假設 K=1，這樣整個題目就變成只有單一機器要如何去安排工作的問題，該如何安排呢？這是一個貪心法則很經典的問題，就是挑選最早結束的工作，一直不斷地挑選最早結束的工作 —— 這正是上面「CSES Movie Festival」的交換論證能直接套用的地方。</p>
+<p>我們已經知道 K=1 的情況下要挑選最早結束的工作那如果 k&gt;1 該怎麼辦，那就每台機器都挑選最早結束的工作，可是這樣做其實還有一個小問題就是每個的工作時間起始點都不一樣，要怎樣才能讓機器選擇時間能更有彈性呢？我們已經知道挑選最早結束的工作，再來要挑選要讓哪個機器來做這個工作，挑選那個機器工作完離現在這個工作的開始時間最接近的，這樣就整理玩了。</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment">// [自己的解法]</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h></span></span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">N</span> <span class="token expression"><span class="token number">100005</span></span></span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token keyword">bool</span> <span class="token function">cmp</span><span class="token punctuation">(</span>pair<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span><span class="token keyword">int</span><span class="token operator">></span> a<span class="token punctuation">,</span>pair<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span><span class="token keyword">int</span><span class="token operator">></span> b<span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>    <span class="token keyword">return</span> a<span class="token punctuation">.</span>second<span class="token operator">&lt;</span>b<span class="token punctuation">.</span>second<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token keyword">int</span> n<span class="token punctuation">,</span>k<span class="token punctuation">,</span>ans<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="9"></td><td><pre>multiset<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> ms<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="10"></td><td><pre>pair<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span><span class="token keyword">int</span><span class="token operator">></span> pii<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="11"></td><td><pre><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="12"></td><td><pre>    ios<span class="token double-colon punctuation">::</span><span class="token function">sync_with_stdio</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="13"></td><td><pre>    cin<span class="token punctuation">.</span><span class="token function">tie</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="14"></td><td><pre>    cin<span class="token operator">>></span>n<span class="token operator">>></span>k<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="15"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="16"></td><td><pre>        cin<span class="token operator">>></span>pii<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>first<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="17"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="18"></td><td><pre>        cin<span class="token operator">>></span>pii<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>second<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="19"></td><td><pre>    <span class="token function">sort</span><span class="token punctuation">(</span>pii<span class="token punctuation">,</span>pii<span class="token operator">+</span>n<span class="token punctuation">,</span>cmp<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="20"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>k<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> ms<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="21"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="22"></td><td><pre>        <span class="token keyword">auto</span> it<span class="token operator">=</span>ms<span class="token punctuation">.</span><span class="token function">lower_bound</span><span class="token punctuation">(</span>pii<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>first<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="23"></td><td><pre>        <span class="token keyword">if</span><span class="token punctuation">(</span>it<span class="token operator">==</span>ms<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">continue</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="24"></td><td><pre>        it<span class="token operator">--</span><span class="token punctuation">;</span><span class="token comment">// 第一個小於現在工作開始的時間</span></pre></td></tr><tr><td data-num="25"></td><td><pre>        ans<span class="token operator">++</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="26"></td><td><pre>        ms<span class="token punctuation">.</span><span class="token function">erase</span><span class="token punctuation">(</span>it<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="27"></td><td><pre>        ms<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span>pii<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>second<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="28"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="29"></td><td><pre>    cout<span class="token operator">&lt;&lt;</span>ans<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="30"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><h2 id="物品堆疊apcs"><a class="anchor" href="#物品堆疊apcs">#</a> 物品堆疊（APCS）</h2>
+<p>將 N 個物品堆在一個垂直的貨架上，每個物品各佔一層。系統運作的方式如下：每次只會取用一個物品，取用時必須先將在其上方的物品貨架升高，取用後必須將該物品放回，然後將剛才升起的貨架降回原始位置，之後才會進行下一個物品的取用。每一次升高貨架所需要消耗的能量是以這些物品的總重來計算。</p>
+<p>現在有 N 個物品，第 i 個物品的重量是 w (i) 而需要取用的次數為 f (i)，我們需要決定如何擺放這些物品的順序來讓消耗的能量越小越好。</p>
+<table>
+<thead>
+<tr>
+<th>範例輸入 #1</th>
+<th>範例輸出 #1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2<br>20 10<br>1 1</td>
+<td>10</td>
+</tr>
+<tr>
+<td>範例輸入 #2</td>
+<td>範例輸出 #2</td>
+</tr>
+<tr>
+<td>3<br>3 4 5<br>1 2 3</td>
+<td>19</td>
+</tr>
+</tbody>
+</table>
+<p>解釋一下範例輸入 #2：最佳解由上到下依序是 (3,2,1)，所以最上面的重量 5 要取用三次就不需要移除箱子，再來往下的箱子要移動兩次上面箱子的重量是 5 所以乘 2，再來最下面的箱子要移動一次所以需要移開上面的兩個箱子，所以是 (4+5)*1 再加上之前箱子消耗的能量 9+10 所以答案是 19。</p>
+<p>首先不要把題目想的太難，思考貪心法則的目的是尋求當前的最佳解，所以你可以把相鄰的兩個箱子調換看看，看調換後有沒有比較好，拿上面得範例輸入 #2 的例子，假設預設是 (1,2,3)，我們先來判斷後面的 2 跟 3 要不要調換，要怎麼判斷呢？根據題目就是自己的頻率去乘上對方的重量，按照這樣排序從小排到大。</p>
+<p>這其實就是<strong>交換論證的實作版本</strong>：任取相鄰兩個物品 i、j，比較「i 在上、j 在下」跟「j 在上、i 在下」哪種花費比較少，可以推出最佳排序滿足  <code>w_i × f_j &lt; w_j × f_i</code> （也就是按  <code>w × f</code>  由小到大排）。這個「比較相鄰兩者交換前後的差異」正是交換論證的標準操作程序，之後遇到類似的排序類貪心題都可以照這個方法推導。</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment">// [自己的解法]</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h></span></span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">N</span> <span class="token expression"><span class="token number">100005</span></span></span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token keyword">struct</span> <span class="token class-name">item</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>    <span class="token keyword">int</span> w<span class="token punctuation">,</span>f<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token keyword">bool</span> <span class="token function">cmp</span><span class="token punctuation">(</span>item p<span class="token punctuation">,</span>item q<span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="9"></td><td><pre>    <span class="token keyword">return</span> p<span class="token punctuation">.</span>w<span class="token operator">*</span>q<span class="token punctuation">.</span>f <span class="token operator">&lt;</span> q<span class="token punctuation">.</span>w<span class="token operator">*</span>p<span class="token punctuation">.</span>f<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="10"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="11"></td><td><pre><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="12"></td><td><pre>    item ite<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="13"></td><td><pre>    <span class="token keyword">int</span> n<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="14"></td><td><pre>    cin<span class="token operator">>></span>n<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="15"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="16"></td><td><pre>        cin<span class="token operator">>></span>ite<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>w<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="17"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="18"></td><td><pre>        cin<span class="token operator">>></span>ite<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>f<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="19"></td><td><pre>    <span class="token function">sort</span><span class="token punctuation">(</span>ite<span class="token punctuation">,</span>ite<span class="token operator">+</span>n<span class="token punctuation">,</span>cmp<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 按照上述的解釋排序</span></pre></td></tr><tr><td data-num="20"></td><td><pre>    <span class="token keyword">long</span> <span class="token keyword">long</span> all<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>buffer<span class="token operator">=</span>ite<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>w<span class="token punctuation">;</span><span class="token comment">// 記得用 long long</span></pre></td></tr><tr><td data-num="21"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="22"></td><td><pre>        all<span class="token operator">+=</span>buffer<span class="token operator">*</span>ite<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>f<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="23"></td><td><pre>        buffer<span class="token operator">+=</span>ite<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>w<span class="token punctuation">;</span><span class="token comment">// 重量是累加的</span></pre></td></tr><tr><td data-num="24"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="25"></td><td><pre>    cout<span class="token operator">&lt;&lt;</span>all<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="26"></td><td><pre>    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="27"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><h2 id="先到先服務ap325"><a class="anchor" href="#先到先服務ap325">#</a> 先到先服務（AP325）</h2>
+<p>有 n 個客人要分配到 m 個櫃台來服務，客人依編號順序到達，第 i 個客人需要 t (i) 的時間來完成 (無論分配到哪一個櫃台)，而且每個客人的需求必須在同一個櫃台完成。因為公平的因素，先到客人不可以比晚到客人更晚開始服務。現在希望安排每個客人的服務櫃檯，以便可以在最短的時間內完成所有客人的需求。</p>
+<p><strong>輸入說明</strong>：輸入兩行，第一行是正整數 n 與 m，第二行是 n 個正整數 t (1),t (2),…,t (n)，同行數字間以空白隔格。n 與 m 不超過 2×10^5，t (i) 不超過 1×10^4。</p>
+<p><strong>輸出說明</strong>：最早可能服務完所有客人的時間。</p>
+<table>
+<thead>
+<tr>
+<th>範例輸入 #1</th>
+<th>範例輸出 #1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3 2<br>3 1 5</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+<p>下面程式的利用了加上負號的技巧來讓優先佇列由小到大來方便解題。</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment">// [自己的解法]</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h></span></span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="5"></td><td><pre>    <span class="token keyword">int</span> n<span class="token punctuation">,</span>m<span class="token punctuation">,</span>mx<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>    priority_queue<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> pq<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="7"></td><td><pre>    cin<span class="token operator">>></span>n<span class="token operator">>></span>m<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="8"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>buffer<span class="token punctuation">;</span>i<span class="token operator">&lt;</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="9"></td><td><pre>        cin<span class="token operator">>></span>buffer<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="10"></td><td><pre>        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>pq<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&lt;</span>m<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="11"></td><td><pre>            pq<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token operator">-</span>buffer<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 遵守先到先服務</span></pre></td></tr><tr><td data-num="12"></td><td><pre>        <span class="token keyword">else</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="13"></td><td><pre>            buffer<span class="token operator">+=</span><span class="token operator">-</span><span class="token punctuation">(</span>pq<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="14"></td><td><pre>            pq<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="15"></td><td><pre>            pq<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token operator">-</span>buffer<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="16"></td><td><pre>        <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="17"></td><td><pre>        mx<span class="token operator">=</span><span class="token function">max</span><span class="token punctuation">(</span>mx<span class="token punctuation">,</span>buffer<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="18"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="19"></td><td><pre>    cout<span class="token operator">&lt;&lt;</span>mx<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="20"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><p>用  <code>priority_queue&lt;int&gt;</code>  存負值，取出來的  <code>top()</code>  就是「所有櫃台中，目前累積工時最小的那一個」（因為負值最大等於原值最小）。每來一位客人，就分配給目前最早有空的櫃台，這正是貪心的直接應用 ——<strong> 永遠把新工作分給目前負擔最輕的資源</strong>。</p>
+<hr />
+<h1 id="小結"><a class="anchor" href="#小結">#</a> 小結</h1>
+<p>貪心演算法的思路很直覺（挑眼前最好的），但 **「直覺」不等於「正確」**，硬幣問題就是最好的反例。這章的重點是給出幾套系統化的驗證方法：</p>
+<table>
+<thead>
+<tr>
+<th>證明方式</th>
+<th>核心手法</th>
+<th>適合的貪心類型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>反證法</td>
+<td>假設貪心解不是最佳解，推出矛盾</td>
+<td>需要說明「最佳解一定包含貪心的選擇」</td>
+</tr>
+<tr>
+<td>數學歸納法</td>
+<td>證明小規模成立，再證明從 m 到 m+1 也成立</td>
+<td>遞迴定義或可以逐步累加的性質</td>
+</tr>
+<tr>
+<td>構造性證明</td>
+<td>直接構造一個達到或優於目標的解</td>
+<td>需要確立下界或存在性</td>
+</tr>
+<tr>
+<td>交換論證</td>
+<td>任取一個解，證明「換成貪心的選擇」不會變差</td>
+<td>排序類、區間排程類貪心（最常見）</td>
+</tr>
+</tbody>
+</table>
+<p>實務上寫貪心題最常用的是<strong>交換論證</strong>：先猜一個排序規則，再拿相鄰兩個元素做交換，比較交換前後哪個比較好，往往就能推出正確的排序條件。這比空想或死背規則可靠得多。</p>
+<p>下一章要講<strong>掃描線演算法</strong>，它常常是貪心思路的延伸 —— 排序之後，由一個方向掃到另一個方向，一路上維護當前需要的資訊。</p>
+<h1 id="練習題"><a class="anchor" href="#練習題">#</a> 練習題</h1>
+<p>（之後補上）</p>
+
+      <div class="tags">
+          <a href="/tags/C/" rel="tag"><i class="ic i-tag"></i> C++</a>
+          <a href="/tags/%E6%BC%94%E7%AE%97%E6%B3%95/" rel="tag"><i class="ic i-tag"></i> 演算法</a>
+          <a href="/tags/APCS/" rel="tag"><i class="ic i-tag"></i> APCS</a>
+          <a href="/tags/%E8%B2%AA%E5%BF%83%E6%BC%94%E7%AE%97%E6%B3%95/" rel="tag"><i class="ic i-tag"></i> 貪心演算法</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新於</span>
+    <time title="修改時間：2026-09-14 00:36:31" itemprop="dateModified" datetime="2026-09-14T00:36:31+08:00">2026-09-14</time>
+  </span>
+  <span id="2026/08/14/1-5-貪心演算法/" class="item leancloud_visitors" data-flag-title="1-5 貪心演算法" title="閱讀次數">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">閱讀次數</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">次</span>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>作者： </strong>Rabbir <i class="ic i-at"><em>@</em></i>プログラムを書けないうさぎは、ただのうさぎだ。
+  </li>
+  <li class="link">
+    <strong>文章連結：</strong>
+    <a href="https://rabbirreaper.github.io/2026/08/14/1-5-%E8%B2%AA%E5%BF%83%E6%BC%94%E7%AE%97%E6%B3%95/" title="1-5 貪心演算法">https://rabbirreaper.github.io/2026/08/14/1-5-貪心演算法/</a>
+  </li>
+  <li class="license">
+    <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 許可協議。轉載請註明出處！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2026/08/14/1-4-%E7%AA%AE%E8%88%89%E6%9A%B4%E6%90%9C%E8%88%87%E5%9B%9E%E6%BA%AF%E6%B3%95/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;pub-da440be71028438aa9683b63bef5ccf1.r2.dev&#x2F;64.jpg" title="1-4 窮舉暴搜與回溯法">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> 演算法</span>
+  <h3>1-4 窮舉暴搜與回溯法</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2026/08/14/1-6-%E6%8E%83%E6%8F%8F%E7%B7%9A%E6%BC%94%E7%AE%97%E6%B3%95/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;pub-da440be71028438aa9683b63bef5ccf1.r2.dev&#x2F;49.jpg" title="1-6 掃描線演算法">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> 演算法</span>
+  <h3>1-6 掃描線演算法</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目錄">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text"> 前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B2%AA%E5%BF%83%E6%98%AF%E4%BB%80%E9%BA%BC"><span class="toc-number">2.</span> <span class="toc-text"> 貪心是什麼</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A1%AC%E5%B9%A3%E5%95%8F%E9%A1%8C%E8%B2%AA%E5%BF%83%E4%B8%8D%E4%B8%80%E5%AE%9A%E5%B0%8D"><span class="toc-number">2.1.</span> <span class="toc-text"> 硬幣問題：貪心不一定對</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B2%AA%E5%BF%83%E6%B3%95%E7%9A%84%E5%B8%B8%E8%A6%8B%E8%AD%89%E6%98%8E%E6%96%B9%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text"> 貪心法的常見證明方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E8%AD%89%E6%B3%95proof-by-contradiction"><span class="toc-number">3.1.</span> <span class="toc-text"> 反證法（Proof by Contradiction）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9E%E5%88%B0%E7%A1%AC%E5%B9%A3%E5%95%8F%E9%A1%8C%E4%BB%80%E9%BA%BC%E6%99%82%E5%80%99%E8%B2%AA%E5%BF%83%E8%A7%A3%E6%98%AF%E6%9C%80%E4%BD%B3%E7%9A%84"><span class="toc-number">3.2.</span> <span class="toc-text"> 回到硬幣問題：什麼時候貪心解是最佳的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B8%E5%AD%B8%E6%AD%B8%E7%B4%8D%E6%B3%95mathematical-induction"><span class="toc-number">3.3.</span> <span class="toc-text"> 數學歸納法（Mathematical Induction）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A7%8B%E9%80%A0%E6%80%A7%E8%AD%89%E6%98%8Econstructive-proof"><span class="toc-number">3.4.</span> <span class="toc-text"> 構造性證明（Constructive Proof）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%A4%E6%8F%9B%E8%AB%96%E8%AD%89exchange-argument%E8%B2%AA%E5%BF%83%E6%B3%95%E6%9C%80%E5%B8%B8%E7%94%A8%E7%9A%84%E8%AD%89%E6%98%8E%E6%96%B9%E5%BC%8F"><span class="toc-number">4.</span> <span class="toc-text"> 交換論證（Exchange Argument）：貪心法最常用的證明方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E9%A1%8Ccses-movie-festival"><span class="toc-number">4.1.</span> <span class="toc-text"> 例題：CSES Movie Festival</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A4%E6%96%B7%E8%A9%B2%E7%94%A8%E5%93%AA%E7%A8%AE%E6%8E%92%E5%BA%8F%E4%B8%80%E5%80%8B%E5%AF%A6%E7%94%A8%E7%9A%84%E8%A7%80%E5%AF%9F%E8%A7%92%E5%BA%A6"><span class="toc-number">4.2.</span> <span class="toc-text"> 判斷該用哪種排序：一個實用的觀察角度</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B2%AA%E5%BF%83%E7%B6%93%E5%85%B8%E9%A1%8C"><span class="toc-number">5.</span> <span class="toc-text"> 貪心經典題</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7%E5%AD%90%E9%99%A3%E5%88%97%E5%92%8C%E4%B9%9F%E5%8F%AF%E4%BB%A5%E7%94%A8%E8%B2%AA%E5%BF%83"><span class="toc-number">5.1.</span> <span class="toc-text"> 最大子陣列和：也可以用貪心</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A9%9F%E5%99%A8%E5%87%BA%E7%A7%9Fapcs"><span class="toc-number">5.2.</span> <span class="toc-text"> 機器出租（APCS）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%A9%E5%93%81%E5%A0%86%E7%96%8Aapcs"><span class="toc-number">5.3.</span> <span class="toc-text"> 物品堆疊（APCS）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%88%E5%88%B0%E5%85%88%E6%9C%8D%E5%8B%99ap325"><span class="toc-number">5.4.</span> <span class="toc-text"> 先到先服務（AP325）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90"><span class="toc-number">6.</span> <span class="toc-text"> 小結</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B7%B4%E7%BF%92%E9%A1%8C"><span class="toc-number">7.</span> <span class="toc-text"> 練習題</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li><a href="/2026/08/14/1-1-%E5%9F%BA%E6%9C%AC%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E8%88%87-STL/" rel="bookmark" title="1-1 基本資料結構與 STL">1-1 基本資料結構與 STL</a></li><li><a href="/2026/08/14/1-2-%E9%81%9E%E8%BF%B4/" rel="bookmark" title="1-2 遞迴">1-2 遞迴</a></li><li><a href="/2026/08/14/1-3-%E6%90%9C%E5%B0%8B%E6%8A%80%E5%B7%A7/" rel="bookmark" title="1-3 搜尋技巧：前綴和、雙指針、滑動視窗、二分搜">1-3 搜尋技巧：前綴和、雙指針、滑動視窗、二分搜</a></li><li><a href="/2026/08/14/1-4-%E7%AA%AE%E8%88%89%E6%9A%B4%E6%90%9C%E8%88%87%E5%9B%9E%E6%BA%AF%E6%B3%95/" rel="bookmark" title="1-4 窮舉暴搜與回溯法">1-4 窮舉暴搜與回溯法</a></li><li class="active"><a href="/2026/08/14/1-5-%E8%B2%AA%E5%BF%83%E6%BC%94%E7%AE%97%E6%B3%95/" rel="bookmark" title="1-5 貪心演算法">1-5 貪心演算法</a></li><li><a href="/2026/08/14/1-6-%E6%8E%83%E6%8F%8F%E7%B7%9A%E6%BC%94%E7%AE%97%E6%B3%95/" rel="bookmark" title="1-6 掃描線演算法">1-6 掃描線演算法</a></li><li><a href="/2026/08/14/1-7-%E5%88%86%E6%B2%BB%E6%BC%94%E7%AE%97%E6%B3%95/" rel="bookmark" title="1-7 分治演算法">1-7 分治演算法</a></li><li><a href="/2026/08/14/1-8-%E5%8B%95%E6%85%8B%E8%A6%8F%E5%8A%83/" rel="bookmark" title="1-8 動態規劃">1-8 動態規劃</a></li><li><a href="/2026/08/14/1-9-%E5%9F%BA%E6%9C%AC%E5%9C%96%E8%AB%96%E6%BC%94%E7%AE%97%E6%B3%95/" rel="bookmark" title="1-9 基本圖論演算法">1-9 基本圖論演算法</a></li><li><a href="/2026/08/14/1-10-%E6%A8%B9%E4%B8%8A%E6%BC%94%E7%AE%97%E6%B3%95/" rel="bookmark" title="1-10 樹上演算法">1-10 樹上演算法</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="本站概要">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Rabbir"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">Rabbir</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">109</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">14</span>
+        <span class="name">分類</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">49</span>
+        <span class="name">標籤</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>首頁</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>關於</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>歸檔</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分類</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>標籤</a>
+  </li>
+
+  </ul>
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2026/08/14/1-4-%E7%AA%AE%E8%88%89%E6%9A%B4%E6%90%9C%E8%88%87%E5%9B%9E%E6%BA%AF%E6%B3%95/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2026/08/14/1-6-%E6%8E%83%E6%8F%8F%E7%B7%9A%E6%BC%94%E7%AE%97%E6%B3%95/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>隨機文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/18/Q-6-5-%E4%BA%8C%E7%B6%AD%E6%9C%80%E5%A4%A7%E5%AD%90%E7%9F%A9%E9%99%A3/" title="Q-6-5. 二維最大子矩陣">Q-6-5. 二維最大子矩陣</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/" title="分類於 加密文章">加密文章</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/%E8%B5%A4%E5%85%94%E9%BB%9E%E9%BB%9E/" title="分類於 赤兔點點">赤兔點點</a>
+</div>
+
+    <span><a href="/2026/02/23/%E7%B3%BB%E7%B5%B1%E7%9B%B8%E9%97%9C%E6%B5%81%E7%A8%8B/" title="系統相關流程">系統相關流程</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/18/Q-4-16-%E8%B3%BA%E9%8C%A2%E8%88%87%E7%BD%B0%E6%AC%BE/" title="Q-4-16. 賺錢與罰款">Q-4-16. 賺錢與罰款</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/" title="分類於 加密文章">加密文章</a>
+</div>
+
+    <span><a href="/2026/05/11/%E8%89%BE%E7%95%A5%E7%89%B9%E6%B3%A2%E6%B5%AA%E7%90%86%E8%AB%96/" title="艾略特波浪理論">艾略特波浪理論</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E6%95%99%E5%AD%B8/" title="分類於 教學">教學</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E6%95%99%E5%AD%B8/%E6%BC%94%E7%AE%97%E6%B3%95/" title="分類於 演算法">演算法</a>
+</div>
+
+    <span><a href="/2026/08/14/1-10-%E6%A8%B9%E4%B8%8A%E6%BC%94%E7%AE%97%E6%B3%95/" title="1-10 樹上演算法">1-10 樹上演算法</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/19/Q-7-8-%E5%B0%8F%E5%AF%B6%E7%9A%84%E8%91%97%E8%89%B2%E5%95%8F%E9%A1%8C/" title="Q-7-8. 小寶的著色問題">Q-7-8. 小寶的著色問題</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/19/Q-2-4-%E5%BF%AB%E9%80%9F%E5%86%AA-200-%E4%BD%8D%E6%95%B4%E6%95%B8/" title="Q-2-4. 快速冪--200 位整數">Q-2-4. 快速冪--200 位整數</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E6%95%99%E5%AD%B8/" title="分類於 教學">教學</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E6%95%99%E5%AD%B8/%E6%BC%94%E7%AE%97%E6%B3%95/" title="分類於 演算法">演算法</a>
+</div>
+
+    <span><a href="/2026/08/14/1-3-%E6%90%9C%E5%B0%8B%E6%8A%80%E5%B7%A7/" title="1-3 搜尋技巧：前綴和、雙指針、滑動視窗、二分搜">1-3 搜尋技巧：前綴和、雙指針、滑動視窗、二分搜</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/18/P-6-13-%E5%91%A8%E4%BC%AF%E9%80%9A%E7%9A%84%E5%9F%BA%E5%9C%B0%E5%8F%B0/" title="P-6-13. 周伯通的基地台 (@@)">P-6-13. 周伯通的基地台 (@@)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/" title="分類於 加密文章">加密文章</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/%E8%B5%A4%E5%85%94%E9%BB%9E%E9%BB%9E/" title="分類於 赤兔點點">赤兔點點</a>
+</div>
+
+    <span><a href="/2026/05/04/%E8%B5%A4%E5%85%94%E6%A5%AD%E5%8B%99%E8%A6%8F%E5%8A%83/" title="赤兔業務規劃">赤兔業務規劃</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新評論</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2025 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Rabbir @ Rabbir Reaper</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="總字數">486k 字</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">7:22</span>
+  </div>
+  <div class="powered-by">
+    基於 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2026/08/14/1-5-貪心演算法/',
+    favicon: {
+      show: "（●´3｀●）復活成功",
+      hide: "(´Д｀)瀏覽器崩潰啦"
+    },
+    search : {
+      placeholder: "文章搜尋",
+      empty: "關於 「 ${query} 」 ，什麼也沒搜到",
+      stats: "${time} ms 內找到 ${hits} 條結果"
+    },
+    valine: true,fancybox: true,
+    copyright: '複製成功，轉載請遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 協議。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

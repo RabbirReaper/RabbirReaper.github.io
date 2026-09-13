@@ -1,0 +1,818 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/https:/pub-da440be71028438aa9683b63bef5ccf1.r2.devimages/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/https:/pub-da440be71028438aa9683b63bef5ccf1.r2.dev/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="プログラムを書けないうさぎは、ただのうさぎだ。" href="https://rabbirreaper.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="プログラムを書けないうさぎは、ただのうさぎだ。" href="https://rabbirreaper.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="プログラムを書けないうさぎは、ただのうさぎだ。" href="https://rabbirreaper.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="C++,演算法,APCS,STL" />
+
+
+<link rel="canonical" href="https://rabbirreaper.github.io/2026/08/14/1-1-%E5%9F%BA%E6%9C%AC%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E8%88%87-STL/">
+
+
+
+  <title>
+1-1 基本資料結構與 STL - 演算法 - 教學 |
+Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎだ。</title>
+<meta name="generator" content="Hexo 8.1.1"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">1-1 基本資料結構與 STL
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="創建時間：2026-08-14 10:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">發表於</span>
+    <time itemprop="dateCreated datePublished" datetime="2026-08-14T10:00:00+08:00">2026-08-14</time>
+  </span>
+  <span class="item" title="文章字數">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">文章字數</span>
+    <span>13k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="所需閱讀時間">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">所需閱讀時間</span>
+    <span>12 分鐘</span>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切換導航欄">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Rabbir Reaper</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/87.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/27.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/11.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/21.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/98.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/84.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首頁</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E6%95%99%E5%AD%B8/" itemprop="item" rel="index" title="分類於 教學"><span itemprop="name">教學</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E6%95%99%E5%AD%B8/%E6%BC%94%E7%AE%97%E6%B3%95/" itemprop="item" rel="index" title="分類於 演算法"><span itemprop="name">演算法</span></a>
+<meta itemprop="position" content="2" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-TW">
+  <link itemprop="mainEntityOfPage" href="https://rabbirreaper.github.io/2026/08/14/1-1-%E5%9F%BA%E6%9C%AC%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E8%88%87-STL/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/https:/pub-da440be71028438aa9683b63bef5ccf1.r2.dev/images/avatar.jpg">
+    <meta itemprop="name" content="Rabbir">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="プログラムを書けないうさぎは、ただのうさぎだ。">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="前言"><a class="anchor" href="#前言">#</a> 前言</h1>
+<p>這個系列是我重新整理自己的演算法學習筆記，主軸沿用我當初寫的《APCS 考前準備》講義的脈絡，並補上 <span class="exturl" data-url="aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMTBoWkNNSEgwWWdzZmd1VlpDSFU3RVlpRzhxSkU1Zi1t">AP325</span>（吳邦一教授）與 2023 CISCON 社群月演算法專題課程裡比較完整的觀念說明與複雜度分析。</p>
+<p>這一章先介紹會反覆用到的資料結構與 STL 函式。這些東西本身不是「演算法」，但它們是後面所有章節的工具箱 —— 你選對容器，一題就從  <code>O(n^2)</code>  掉到  <code>O(n log n)</code> ；選錯容器，就算想法完全正確也會 TLE。</p>
+<p>所以這章的重點不是背 API，而是理解<strong>每個容器的操作各要花多少時間</strong>。</p>
+<h2 id="關於程式碼來源"><a class="anchor" href="#關於程式碼來源">#</a> 關於程式碼來源</h2>
+<p>本系列的每段程式碼除了我自己寫的都會在第一行標註來源：</p>
+<table>
+<thead>
+<tr>
+<th>標註</th>
+<th>意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>// [來源：AP325]</code></td>
+<td>出自吳邦一教授的 AP325 教材</td>
+</tr>
+<tr>
+<td><code>// [來源：CISCON 2023]</code></td>
+<td>出自 2023 CISCON 社群月演算法專題課程</td>
+</tr>
+<tr>
+<td><code>// [來源：本文補充，待替換]</code></td>
+<td>為了補齊觀念而快速用 AI 補寫的範例，之後會替換成自己的寫法</td>
+</tr>
+</tbody>
+</table>
+<p>參考資料：</p>
+<ul>
+<li>AP325－從 APCS 實作題檢測三級到五級。吳邦一，2020/8/7</li>
+<li>2023 CISCON 社群月演算法專題課程（動態規劃：陳俊安 Colten／貪心：Koying／枚舉：Fishhh／搜尋：高睿）</li>
+<li>YUI HUANG 演算法學習筆記（<span class="exturl" data-url="aHR0cHM6Ly95dWlodWFuZy5jb20vYXBjcy8lRUYlQkMlODk=">https://yuihuang.com/apcs/）</span></li>
+<li>C++ Reference（<span class="exturl" data-url="aHR0cHM6Ly93d3cuY3BsdXNwbHVzLmNvbS9yZWZlcmVuY2UvJUVGJUJDJTg5">https://www.cplusplus.com/reference/）</span></li>
+</ul>
+<hr />
+<h1 id="先講複雜度為什麼要在意"><a class="anchor" href="#先講複雜度為什麼要在意">#</a> 先講複雜度：為什麼要在意</h1>
+<p>在挑資料結構之前，得先有個判斷標準。</p>
+<p>時間複雜度是用來描述「當輸入量 n 變大時，程式執行時間成長的趨勢」，我們只保留成長最快的那一項，並且忽略常數。例如  <code>3n^2 + 100n + 5</code>  就寫成  <code>O(n^2)</code> ，因為 n 夠大的時候， <code>n^2</code>  這一項會完全主導。</p>
+<h2 id="由測資大小反推所需複雜度"><a class="anchor" href="#由測資大小反推所需複雜度">#</a> 由測資大小反推所需複雜度</h2>
+<p>這是解題時最實用的一招。一般線上測試系統的時限大約 1 秒，而現代電腦大約每秒可以做  <code>10^8</code>  到  <code>10^9</code>  次基本運算。所以看到題目的 n，就大致能反推該用什麼等級的演算法：</p>
+<table>
+<thead>
+<tr>
+<th>n 的大小</th>
+<th>可接受的複雜度</th>
+<th>常見對應解法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>n ≤ 10</td>
+<td><code>O(n!)</code> 、 <code>O(2^n × n)</code></td>
+<td>全排列窮舉、回溯法</td>
+</tr>
+<tr>
+<td>n ≤ 20~25</td>
+<td><code>O(2^n)</code></td>
+<td>子集合窮舉、折半枚舉</td>
+</tr>
+<tr>
+<td>n ≤ 500</td>
+<td><code>O(n^3)</code></td>
+<td>三層迴圈、Floyd-Warshall</td>
+</tr>
+<tr>
+<td>n ≤ 5000</td>
+<td><code>O(n^2)</code></td>
+<td>二維 DP、雙層迴圈</td>
+</tr>
+<tr>
+<td>n ≤ 10^5 ~ 10^6</td>
+<td><code>O(n log n)</code></td>
+<td>排序、二分搜、掃描線、priority_queue</td>
+</tr>
+<tr>
+<td>n ≤ 10^7 以上</td>
+<td><code>O(n)</code> 、 <code>O(log n)</code></td>
+<td>前綴和、單調隊列、數學推導</td>
+</tr>
+</tbody>
+</table>
+<p>反過來用更有價值：<strong>題目給 n ≤ 2×10^5，就代表出題者不打算讓  <code>O(n^2)</code>  過</strong>，你要嘛排序、要嘛用 log 級的資料結構，這個資訊在你還沒想出解法時就已經幫你篩掉一半的方向了。</p>
+<h2 id="兩個一定要注意的地雷"><a class="anchor" href="#兩個一定要注意的地雷">#</a> 兩個一定要注意的地雷</h2>
+<p><strong>整數 overflow。</strong> C++ 的  <code>int</code>  大約只到  <code>2.1 × 10^9</code> （2^31 - 1）。題目只要出現「答案可能超過 int 上限」、「總和不超過 10^18」這類敘述，就要用  <code>long long</code> 。更陰險的是<strong>中間過程 overflow</strong>：即使最終答案在範圍內，計算途中的乘積可能已經爆掉了。</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">100000</span><span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">100000</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">long</span> <span class="token keyword">long</span> c <span class="token operator">=</span> a <span class="token operator">*</span> b<span class="token punctuation">;</span>        <span class="token comment">// 錯！a*b 先以 int 運算就溢位了，之後才轉型</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">long</span> <span class="token keyword">long</span> d <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">long</span> <span class="token keyword">long</span><span class="token punctuation">)</span>a <span class="token operator">*</span> b<span class="token punctuation">;</span>  <span class="token comment">// 對：先轉型再相乘</span></pre></td></tr></table></figure><p><strong>判斷式的 short-circuit evaluation。</strong> C++ 的  <code>&amp;&amp;</code>  和  <code>||</code>  是「短路求值」： <code>A &amp;&amp; B</code>  只要 A 是 false 就不會去看 B。這個特性拿來防越界非常好用：</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment">// 正確：先確定 i 沒越界，才去讀 a [i]</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> n <span class="token operator">&amp;&amp;</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> target<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="3"></td><td><pre></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token comment">// 錯誤：順序反過來，i == n 時會讀到陣列外</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token keyword">if</span> <span class="token punctuation">(</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> target <span class="token operator">&amp;&amp;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">&#125;</span></pre></td></tr></table></figure><hr />
+<h1 id="queue佇列"><a class="anchor" href="#queue佇列">#</a> queue（佇列）</h1>
+<p>特性是 <strong>First In First Out（先進先出）</strong>，像排隊一樣，先來的先服務。BFS 就是靠它實現的。</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre>queue<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> q<span class="token punctuation">;</span>         <span class="token comment">// 宣告</span></pre></td></tr><tr><td data-num="2"></td><td><pre>q<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token comment">// 把 x 放入 queue 中</span></pre></td></tr><tr><td data-num="3"></td><td><pre>q<span class="token punctuation">.</span><span class="token function">front</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token comment">// 讀取第一個元素（不會刪除）</span></pre></td></tr><tr><td data-num="4"></td><td><pre>q<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>              <span class="token comment">// 移除第一個元素（不會回傳值）</span></pre></td></tr><tr><td data-num="5"></td><td><pre>q<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token comment">// 判斷 queue 是否為空，為空 return true</span></pre></td></tr><tr><td data-num="6"></td><td><pre>q<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token comment">// 回傳 queue 的大小</span></pre></td></tr><tr><td data-num="7"></td><td><pre>q<span class="token punctuation">.</span><span class="token function">swap</span><span class="token punctuation">(</span>q2<span class="token punctuation">)</span><span class="token punctuation">;</span>           <span class="token comment">// 跟另一個 queue 做交換</span></pre></td></tr></table></figure><p>所有操作都是  <code>O(1)</code> 。</p>
+<p>要特別注意  <code>front()</code>  和  <code>pop()</code>  是分開的兩個動作： <code>front()</code>  只是看， <code>pop()</code>  只是丟， <code>pop()</code>  本身不回傳值。所以取值的標準寫法是：</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">auto</span> e <span class="token operator">=</span> q<span class="token punctuation">.</span><span class="token function">front</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>q<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr></table></figure><h1 id="deque雙向佇列"><a class="anchor" href="#deque雙向佇列">#</a> deque（雙向佇列）</h1>
+<p>跟 queue 的特性一樣，差別是多了許多方便的指令 —— 兩端都可以進出，而且支援隨機存取跟 iterator。</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre>deque<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> dq<span class="token punctuation">;</span>                        <span class="token comment">// 宣告</span></pre></td></tr><tr><td data-num="2"></td><td><pre>deque<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token double-colon punctuation">::</span>iterator it <span class="token operator">=</span> dq<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 用 iterator 取值，it 是第一個元素</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">auto</span> it <span class="token operator">=</span> dq<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                 <span class="token comment">// 與上一行相同意思</span></pre></td></tr><tr><td data-num="4"></td><td><pre>dq<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span>iterator<span class="token punctuation">,</span> iterator<span class="token operator">+</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment">// 把 dq 裡的值替換成 iterator 到 iterator+5 的內容（左閉右開）</span></pre></td></tr><tr><td data-num="5"></td><td><pre>dq<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>                      <span class="token comment">// 從最後面放入元素 x</span></pre></td></tr><tr><td data-num="6"></td><td><pre>dq<span class="token punctuation">.</span><span class="token function">push_front</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>                     <span class="token comment">// 從最前面放入元素 x</span></pre></td></tr><tr><td data-num="7"></td><td><pre>dq<span class="token punctuation">.</span><span class="token function">pop_back</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                        <span class="token comment">// 刪除最後一個元素</span></pre></td></tr><tr><td data-num="8"></td><td><pre>dq<span class="token punctuation">.</span><span class="token function">pop_front</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                       <span class="token comment">// 刪除第一個元素</span></pre></td></tr><tr><td data-num="9"></td><td><pre>dq<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span>it<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>                     <span class="token comment">// 在 it 這個位址插入 x，原本的值往後推</span></pre></td></tr><tr><td data-num="10"></td><td><pre>dq<span class="token punctuation">.</span><span class="token function">erase</span><span class="token punctuation">(</span>it<span class="token punctuation">)</span><span class="token punctuation">;</span>                         <span class="token comment">// 刪除在 it 這個位址的元素</span></pre></td></tr><tr><td data-num="11"></td><td><pre>dq<span class="token punctuation">.</span><span class="token function">erase</span><span class="token punctuation">(</span>dq<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> dq<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// 放入也可以是一個區間（左閉右開）</span></pre></td></tr><tr><td data-num="12"></td><td><pre>dq<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                           <span class="token comment">// 清空這個 deque</span></pre></td></tr><tr><td data-num="13"></td><td><pre>dq<span class="token punctuation">.</span><span class="token function">swap</span><span class="token punctuation">(</span>dq2<span class="token punctuation">)</span><span class="token punctuation">;</span>                         <span class="token comment">// 跟另一個 deque 做交換</span></pre></td></tr></table></figure><p>兩端的 push/pop 都是  <code>O(1)</code> ，中間的 insert/erase 是  <code>O(n)</code> 。</p>
+<p>deque 最重要的應用是<strong>單調隊列（monotonic queue）</strong>，可以在  <code>O(n)</code>  內求出所有「固定長度區間的最大／最小值」。後面動態規劃章節的「周伯通的基地台」就是靠它把  <code>O(nk)</code>  優化成  <code>O(n)</code> 。</p>
+<p>下面這支程式建議實際跑一遍，觀察每一行做出的改變：</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>    deque<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> dq<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="3"></td><td><pre>    <span class="token keyword">int</span> n<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> dq<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="5"></td><td><pre>    deque<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">sec</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">80</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>    <span class="token keyword">auto</span> it<span class="token operator">=</span>sec<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="7"></td><td><pre>    <span class="token operator">*</span><span class="token punctuation">(</span>it<span class="token operator">+</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token operator">=</span><span class="token number">70</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="8"></td><td><pre>    <span class="token keyword">while</span><span class="token punctuation">(</span>it<span class="token operator">!=</span>sec<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="9"></td><td><pre>        cout<span class="token operator">&lt;&lt;</span><span class="token operator">*</span>it<span class="token operator">++</span><span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="10"></td><td><pre>    cout<span class="token operator">&lt;&lt;</span><span class="token string">"\n"</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="11"></td><td><pre>    it<span class="token operator">=</span>dq<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="12"></td><td><pre>    sec<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span>it<span class="token punctuation">,</span>it<span class="token operator">+</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="13"></td><td><pre>    it<span class="token operator">=</span>sec<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="14"></td><td><pre>    <span class="token keyword">while</span><span class="token punctuation">(</span>it<span class="token operator">!=</span>sec<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="15"></td><td><pre>        cout<span class="token operator">&lt;&lt;</span><span class="token operator">*</span>it<span class="token operator">++</span><span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token punctuation">;</span> cout<span class="token operator">&lt;&lt;</span><span class="token string">"\n"</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="16"></td><td><pre>    sec<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span>it<span class="token operator">+</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="17"></td><td><pre>    sec<span class="token punctuation">.</span><span class="token function">erase</span><span class="token punctuation">(</span>sec<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>sec<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="18"></td><td><pre>    it<span class="token operator">=</span>sec<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="19"></td><td><pre>    <span class="token keyword">while</span><span class="token punctuation">(</span>it<span class="token operator">!=</span>sec<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="20"></td><td><pre>        cout<span class="token operator">&lt;&lt;</span><span class="token operator">*</span>it<span class="token operator">++</span><span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="21"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><h1 id="stack堆疊"><a class="anchor" href="#stack堆疊">#</a> stack（堆疊）</h1>
+<p>特性是<strong>先進後出（Last In First Out）</strong>。</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre>stack<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> stk<span class="token punctuation">;</span>   <span class="token comment">// 宣告</span></pre></td></tr><tr><td data-num="2"></td><td><pre>stk<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment">// 把 x 放入 stk</span></pre></td></tr><tr><td data-num="3"></td><td><pre>stk<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// 取最上面的值</span></pre></td></tr><tr><td data-num="4"></td><td><pre>stk<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// 把最上面的值刪除</span></pre></td></tr><tr><td data-num="5"></td><td><pre>stk<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment">//stk 的大小</span></pre></td></tr><tr><td data-num="6"></td><td><pre>stk<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment">//stk 是否為空，為空 return true</span></pre></td></tr><tr><td data-num="7"></td><td><pre>stk<span class="token punctuation">.</span><span class="token function">swap</span><span class="token punctuation">(</span>stk2<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// 把 stk 跟另一個 stack 裡面的東西交換</span></pre></td></tr></table></figure><p>所有操作都是  <code>O(1)</code> 。</p>
+<p>stack 的典型用途是<strong>括號配對</strong>、<strong>運算式求值</strong>，還有把遞迴改寫成迭代 —— 事實上遞迴本身就是靠系統的呼叫堆疊（call stack）運作的。後面「先加後乘與函數」那題就用到了 stack 來處理運算優先序。</p>
+<h1 id="vector動態陣列"><a class="anchor" href="#vector動態陣列">#</a> vector（動態陣列）</h1>
+<p>特性跟陣列一樣，不過在動態的使用上比陣列更有彈性。</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> v<span class="token punctuation">;</span>              <span class="token comment">// 宣告</span></pre></td></tr><tr><td data-num="2"></td><td><pre>vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> vv<span class="token punctuation">;</span>     <span class="token comment">// 宣告二維的 vector</span></pre></td></tr><tr><td data-num="3"></td><td><pre>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">v</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>           <span class="token comment">// 宣告長度為 3 的 vector，因為是 vector 所以可以繼續擴增</span></pre></td></tr><tr><td data-num="4"></td><td><pre>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">v</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// 宣告長度為 5、初始值都是 8 的 vector</span></pre></td></tr><tr><td data-num="5"></td><td><pre>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> v2 <span class="token operator">=</span> v<span class="token punctuation">;</span>         <span class="token comment">// 把 v 的內容給我新宣告的 v2</span></pre></td></tr><tr><td data-num="6"></td><td><pre>v<span class="token punctuation">.</span><span class="token function">front</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                  <span class="token comment">// 讀取 v 中第一個元素</span></pre></td></tr><tr><td data-num="7"></td><td><pre>v<span class="token punctuation">.</span><span class="token function">back</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                   <span class="token comment">// 讀取 v 中最後一個元素</span></pre></td></tr><tr><td data-num="8"></td><td><pre>v<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token comment">// 把元素 x 由後加進 v 中</span></pre></td></tr><tr><td data-num="9"></td><td><pre>v<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span>v<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span>i<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// 在索引值 i 的地方插入 x，其他值往後推</span></pre></td></tr><tr><td data-num="10"></td><td><pre>v<span class="token punctuation">.</span><span class="token function">pop_back</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>               <span class="token comment">// 刪除最後一個元素</span></pre></td></tr><tr><td data-num="11"></td><td><pre>v<span class="token punctuation">.</span><span class="token function">erase</span><span class="token punctuation">(</span>v<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment">// 刪除第 i 個元素（idx 從 0 開始）</span></pre></td></tr><tr><td data-num="12"></td><td><pre>v<span class="token punctuation">.</span><span class="token function">erase</span><span class="token punctuation">(</span>v<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span>i<span class="token punctuation">,</span> v<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span>j<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 刪除 (i,j) 區間的值（左閉右開）</span></pre></td></tr><tr><td data-num="13"></td><td><pre>v<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                  <span class="token comment">// 清空 v</span></pre></td></tr><tr><td data-num="14"></td><td><pre>v<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                   <span class="token comment">// 回傳 v 的長度</span></pre></td></tr><tr><td data-num="15"></td><td><pre>v<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                  <span class="token comment">// 回傳 v 的長度是否為 0，為 0 則 return true</span></pre></td></tr></table></figure><p>複雜度： <code>push_back</code>  與  <code>pop_back</code>  是<strong>均攤</strong>  <code>O(1)</code> ，用  <code>[]</code>  隨機存取是  <code>O(1)</code> ，中間的  <code>insert</code> ／ <code>erase</code>  是  <code>O(n)</code> 。</p>
+<p>這裡的「均攤  <code>O(1)</code> 」值得解釋一下：vector 的容量滿了的時候會重新配置一塊兩倍大的記憶體並搬移所有元素，那一次是  <code>O(n)</code> 。但因為容量是倍增的，這種昂貴操作發生的頻率越來越低，平均分攤到每次  <code>push_back</code>  上仍然是常數時間。</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>    vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> vv<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="3"></td><td><pre>    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">v</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre>    vv<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="5"></td><td><pre>    vv<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>    <span class="token keyword">auto</span> it<span class="token operator">=</span>vv<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">3</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="7"></td><td><pre>    <span class="token operator">*</span>it<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="8"></td><td><pre>    vv<span class="token punctuation">.</span><span class="token function">front</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">front</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=</span><span class="token number">6</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="9"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">auto</span> i<span class="token operator">:</span>vv<span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="10"></td><td><pre>        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">auto</span> j<span class="token operator">:</span>i<span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="11"></td><td><pre>            cout<span class="token operator">&lt;&lt;</span>j<span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="12"></td><td><pre>        <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="13"></td><td><pre>        cout<span class="token operator">&lt;&lt;</span><span class="token string">"\n"</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="14"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="15"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><p>補充一個實用寫法，宣告二維 vector 並指定大小與初始值：</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre>vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> <span class="token function">vv</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token generic-function"><span class="token function">vector</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span></span></span><span class="token punctuation">(</span>m<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//n 列 m 行，全部初始化為 0</span></pre></td></tr></table></figure><h1 id="set集合"><a class="anchor" href="#set集合">#</a> set（集合）</h1>
+<p>特性是由小到大排序且去除重複元素，實作是一棵平衡二元樹（紅黑樹）。因為是一棵平衡的二元樹，所以對一個 set 做增加、刪除或查找的時間複雜度是  <code>O(log n)</code> 。</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre>set<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> st<span class="token punctuation">;</span>                      <span class="token comment">// 宣告。如果是 pair&lt;int,int> 會先根據 first 排序再來 second</span></pre></td></tr><tr><td data-num="2"></td><td><pre>st<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>                     <span class="token comment">// 把 x 加入 set</span></pre></td></tr><tr><td data-num="3"></td><td><pre>st<span class="token punctuation">.</span><span class="token function">erase</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>                      <span class="token comment">// 把 x 從 set 中刪除</span></pre></td></tr><tr><td data-num="4"></td><td><pre>st<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                       <span class="token comment">// 清空 set</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token keyword">auto</span> it <span class="token operator">=</span> st<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token comment">// 用 iterator 儲存 set 中的第一個值（最小）</span></pre></td></tr><tr><td data-num="6"></td><td><pre>x <span class="token operator">=</span> <span class="token operator">*</span>st<span class="token punctuation">.</span><span class="token function">rbegin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                 <span class="token comment">// 把 set 中的最後一個值（最大）給 x</span></pre></td></tr><tr><td data-num="7"></td><td><pre>st<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                        <span class="token comment">// 回傳 set 的大小</span></pre></td></tr><tr><td data-num="8"></td><td><pre>st<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                       <span class="token comment">// 回傳 set 是否為空</span></pre></td></tr><tr><td data-num="9"></td><td><pre>st<span class="token punctuation">.</span><span class="token function">count</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>                      <span class="token comment">// 尋找 set 是否存在 x，回傳 true or false</span></pre></td></tr><tr><td data-num="10"></td><td><pre><span class="token keyword">auto</span> it <span class="token operator">=</span> st<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token comment">// 在 set 中尋找 x，找到回傳指向它的 iterator，沒找到回傳 st.end ()</span></pre></td></tr><tr><td data-num="11"></td><td><pre><span class="token keyword">auto</span> it <span class="token operator">=</span> st<span class="token punctuation">.</span><span class="token function">lower_bound</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment">// 回傳一個 iterator 指向第一個大於等於 x 的元素</span></pre></td></tr><tr><td data-num="12"></td><td><pre>x <span class="token operator">=</span> <span class="token operator">*</span>st<span class="token punctuation">.</span><span class="token function">upper_bound</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>           <span class="token comment">// 回傳第一個大於 x 的元素</span></pre></td></tr></table></figure><p>這裡有個容易踩的坑：<strong>set 有自己的  <code>lower_bound</code>  成員函式，一定要用它，不要用  <code>&lt;algorithm&gt;</code>  裡的全域  <code>lower_bound</code> </strong>。全域版本假設資料是隨機存取的，套在紅黑樹上會退化成  <code>O(n)</code> ；成員版本才是走樹的  <code>O(log n)</code> 。</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">auto</span> it <span class="token operator">=</span> st<span class="token punctuation">.</span><span class="token function">lower_bound</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>              <span class="token comment">// 對：O (log n)</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">auto</span> it <span class="token operator">=</span> <span class="token function">lower_bound</span><span class="token punctuation">(</span>st<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> st<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 錯：O (n)</span></pre></td></tr></table></figure><h1 id="multiset"><a class="anchor" href="#multiset">#</a> multiset</h1>
+<p>特性跟 set 一樣，只是會保留重複的元素。用法跟 set 差不多，下面介紹不同的部分：</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre>mst<span class="token punctuation">.</span><span class="token function">erase</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>              <span class="token comment">// 刪除所有值為 value 的元素</span></pre></td></tr><tr><td data-num="2"></td><td><pre>mst<span class="token punctuation">.</span><span class="token function">erase</span><span class="token punctuation">(</span>mst<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// 只刪除第一個值為 value 的元素</span></pre></td></tr><tr><td data-num="3"></td><td><pre>mst<span class="token punctuation">.</span><span class="token function">count</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>              <span class="token comment">//return 符合 value 的數量</span></pre></td></tr></table></figure><p>注意  <code>erase(value)</code>  跟  <code>erase(find(value))</code>  的差別非常大，這是實務上很常寫錯的地方 —— 前者會把所有相同的值一次清光。如果你只是想拿掉一個，一定要用  <code>find</code> 。</p>
+<p><code>count(value)</code>  的複雜度是  <code>O(log n + k)</code> ，k 是符合的元素個數。</p>
+<p>multiset 在貪心演算法裡特別有用，因為它同時支援「動態插入刪除」跟「查詢最接近某值的元素」，後面「機器出租」那題就是典型應用。</p>
+<h1 id="map映射"><a class="anchor" href="#map映射">#</a> map（映射）</h1>
+<p>跟 set 一樣是用紅黑樹實現，特性是提供了鍵值對（key-value pair）的映射關係，常用在離散化上。</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre>map<span class="token operator">&lt;</span>string<span class="token punctuation">,</span> pair<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span><span class="token keyword">int</span><span class="token operator">>></span> mp<span class="token punctuation">;</span>   <span class="token comment">// 宣告</span></pre></td></tr><tr><td data-num="2"></td><td><pre>map<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span><span class="token keyword">int</span><span class="token operator">></span> mp<span class="token punctuation">;</span>                 <span class="token comment">// 宣告</span></pre></td></tr><tr><td data-num="3"></td><td><pre>mp<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> value<span class="token punctuation">;</span>                 <span class="token comment">//map 給值的方式，key 對應到的 value</span></pre></td></tr><tr><td data-num="4"></td><td><pre>mp<span class="token punctuation">.</span><span class="token function">count</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span>                   <span class="token comment">// 回傳是否找到 key，return true or false</span></pre></td></tr><tr><td data-num="5"></td><td><pre>mp<span class="token punctuation">.</span><span class="token function">erase</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span>                   <span class="token comment">// 移除 key</span></pre></td></tr><tr><td data-num="6"></td><td><pre>mp<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                      <span class="token comment">// 清空 map</span></pre></td></tr><tr><td data-num="7"></td><td><pre>value <span class="token operator">=</span> mp<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span>                 <span class="token comment">// 把 mp [key] 對應到的值給 value</span></pre></td></tr><tr><td data-num="8"></td><td><pre>mp<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                       <span class="token comment">// 回傳 mp 的大小</span></pre></td></tr><tr><td data-num="9"></td><td><pre>mp<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                      <span class="token comment">// 回傳 mp 是否為 0</span></pre></td></tr><tr><td data-num="10"></td><td><pre>mp<span class="token punctuation">.</span><span class="token function">swap</span><span class="token punctuation">(</span>mp2<span class="token punctuation">)</span><span class="token punctuation">;</span>                    <span class="token comment">//mp 跟 mp2 交換</span></pre></td></tr></table></figure><p>增刪查都是  <code>O(log n)</code> ，而且走訪時會<strong>按照 key 由小到大</strong>的順序。</p>
+<p>有一個很常見的陷阱：<strong> <code>mp[key]</code>  如果 key 不存在，會直接建立一個預設值 0 的項目</strong>。所以純粹想「檢查存在性」時要用  <code>count()</code>  或  <code>find()</code> ，不要用  <code>mp[key]</code> ，否則你的 map 會在檢查過程中默默長大：</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">if</span> <span class="token punctuation">(</span>mp<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">&#125;</span>   <span class="token comment">// 錯：即使 key 不存在也會被建立出來</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">if</span> <span class="token punctuation">(</span>mp<span class="token punctuation">.</span><span class="token function">count</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">&#125;</span>  <span class="token comment">// 對</span></pre></td></tr></table></figure><p><code>begin()</code>  跟  <code>end()</code>  還有如何遍歷整個 map 在以下的程式進行說明：</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>    map<span class="token operator">&lt;</span><span class="token keyword">char</span><span class="token punctuation">,</span>pair<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span><span class="token keyword">int</span><span class="token operator">>></span> mp<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="3"></td><td><pre>    mp<span class="token punctuation">[</span><span class="token char">'B'</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>mp<span class="token punctuation">[</span><span class="token char">'A'</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>mp<span class="token punctuation">[</span><span class="token char">'C'</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">auto</span> pii<span class="token operator">:</span>mp<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="5"></td><td><pre>        cout<span class="token operator">&lt;&lt;</span>pii<span class="token punctuation">.</span>first<span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token operator">&lt;&lt;</span>pii<span class="token punctuation">.</span>second<span class="token punctuation">.</span>first<span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token operator">&lt;&lt;</span>pii<span class="token punctuation">.</span>second<span class="token punctuation">.</span>second<span class="token operator">&lt;&lt;</span><span class="token string">"\n"</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>    cout<span class="token operator">&lt;&lt;</span><span class="token string">"-=-=-=-\n"</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="7"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">auto</span> it<span class="token operator">=</span>mp<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>it<span class="token operator">!=</span>mp<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>it<span class="token operator">++</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="8"></td><td><pre>        cout<span class="token operator">&lt;&lt;</span>it<span class="token operator">-></span>first<span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token operator">&lt;&lt;</span>it<span class="token operator">-></span>second<span class="token punctuation">.</span>first<span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token operator">&lt;&lt;</span>it<span class="token operator">-></span>second<span class="token punctuation">.</span>second<span class="token operator">&lt;&lt;</span><span class="token string">"\n"</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="9"></td><td><pre>    cout<span class="token operator">&lt;&lt;</span><span class="token string">"-=-=-=-\n"</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="10"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">auto</span> it<span class="token operator">=</span>mp<span class="token punctuation">.</span><span class="token function">rbegin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>it<span class="token operator">!=</span>mp<span class="token punctuation">.</span><span class="token function">rend</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>it<span class="token operator">++</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="11"></td><td><pre>        cout<span class="token operator">&lt;&lt;</span><span class="token punctuation">(</span><span class="token operator">*</span>it<span class="token punctuation">)</span><span class="token punctuation">.</span>first<span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token operator">&lt;&lt;</span><span class="token punctuation">(</span><span class="token operator">*</span>it<span class="token punctuation">)</span><span class="token punctuation">.</span>second<span class="token punctuation">.</span>first<span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token operator">&lt;&lt;</span><span class="token punctuation">(</span><span class="token operator">*</span>it<span class="token punctuation">)</span><span class="token punctuation">.</span>second<span class="token punctuation">.</span>second<span class="token operator">&lt;&lt;</span><span class="token string">"\n"</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="12"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><h2 id="離散化"><a class="anchor" href="#離散化">#</a> 離散化</h2>
+<p>離散化是 map 最重要的應用，值得單獨講。</p>
+<p>有些題目的數值範圍很大（例如座標到  <code>10^9</code> ），但實際出現的數字很少（例如只有  <code>10^5</code>  個）。這時候你不可能開一個  <code>10^9</code>  大的陣列，但可以把這些數字「重新編號」成 0, 1, 2, ...，壓縮到能開陣列的範圍：</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment">// 方法一：用 map 直接映射</span></pre></td></tr><tr><td data-num="2"></td><td><pre>map<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span><span class="token keyword">int</span><span class="token operator">></span> id<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">int</span> cnt <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> x <span class="token operator">:</span> a<span class="token punctuation">)</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>id<span class="token punctuation">.</span><span class="token function">count</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span> id<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">=</span> cnt<span class="token operator">++</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="5"></td><td><pre></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token comment">// 方法二：排序去重後二分搜（比較快，常數小）</span></pre></td></tr><tr><td data-num="7"></td><td><pre>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> tmp <span class="token operator">=</span> a<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token function">sort</span><span class="token punctuation">(</span>tmp<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> tmp<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="9"></td><td><pre>tmp<span class="token punctuation">.</span><span class="token function">erase</span><span class="token punctuation">(</span><span class="token function">unique</span><span class="token punctuation">(</span>tmp<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> tmp<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> tmp<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="10"></td><td><pre><span class="token comment">// 之後 x 的新編號就是：</span></pre></td></tr><tr><td data-num="11"></td><td><pre><span class="token keyword">int</span> newId <span class="token operator">=</span> <span class="token function">lower_bound</span><span class="token punctuation">(</span>tmp<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> tmp<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span> <span class="token operator">-</span> tmp<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr></table></figure><p>方法二的  <code>unique</code>  會把相鄰的重複元素移到後面並回傳新的結尾位置，所以要<strong>先排序</strong>再用，而且要搭配  <code>erase</code>  才真的縮短容器。</p>
+<h1 id="unordered_map"><a class="anchor" href="#unordered_map">#</a> unordered_map</h1>
+<p>提供了一個將鍵映射到值的集合。與 map 不同，unordered_map 不會將其元素儲存在排序順序中，而是通過使用哈希表實現元素的儲存和查找（時間複雜度  <code>O(1)</code> ）。用法跟 map 幾乎一樣，需要注意的是 unordered_map 沒有  <code>rbegin()</code>  跟  <code>rend()</code> 。</p>
+<p>要提醒的是，那個  <code>O(1)</code>  是<strong>平均</strong>複雜度，最壞情況（大量雜湊碰撞）會退化成  <code>O(n)</code> 。在競賽場合偶爾會遇到針對雜湊函數設計的惡意測資，如果 unordered_map 莫名其妙 TLE，換回 map 試試看。另外，鍵的順序不固定，需要照順序輸出時只能用 map。</p>
+<h1 id="priority_queue優先佇列"><a class="anchor" href="#priority_queue優先佇列">#</a> priority_queue（優先佇列）</h1>
+<p>特性是資料預設由大到小，可以快速取得最大值。跟 multiset 有些許地方相似可是不一樣 —— 在取最大值或最小值時 priority_queue 可以用  <code>O(1)</code>  的速度，這裡就是最主要的差別。</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre>priority_queue<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> pq<span class="token punctuation">;</span>   <span class="token comment">// 宣告</span></pre></td></tr><tr><td data-num="2"></td><td><pre>pq<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>               <span class="token comment">// 把 x 加入 priority_queue</span></pre></td></tr><tr><td data-num="3"></td><td><pre>x <span class="token operator">=</span> pq<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token comment">// 取出 pq 中優先度最大的元素</span></pre></td></tr><tr><td data-num="4"></td><td><pre>pq<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                 <span class="token comment">// 移除 pq 中優先度最大的元素</span></pre></td></tr><tr><td data-num="5"></td><td><pre>pq<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>               <span class="token comment">//pq 是否為空</span></pre></td></tr><tr><td data-num="6"></td><td><pre>pq<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token comment">//pq 的大小</span></pre></td></tr></table></figure><p>複雜度： <code>top()</code>  是  <code>O(1)</code> ， <code>push()</code>  跟  <code>pop()</code>  是  <code>O(log n)</code> 。</p>
+<p>它的底層是<strong>二元堆積（binary heap）</strong>，用一個陣列模擬完全二元樹，父節點永遠不小於子節點。所以取最大值就是看陣列第 0 格， <code>O(1)</code> ；而插入或刪除後需要沿著樹「上浮」或「下沉」來恢復性質，樹高是  <code>log n</code> ，所以是  <code>O(log n)</code> 。</p>
+<p>跟 multiset 比較：multiset 能取最大也能取最小、還能查找任意值，但常數比較大；priority_queue 只能取一端，但快很多。<strong>只需要一端就用 priority_queue，需要兩端或查找就用 multiset。</strong></p>
+<p>如果想改變 priority_queue 的排序方式，例如想從由大到小變成由小到大，可以參考下面的方式：</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">struct</span> <span class="token class-name">cmp</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="4"></td><td><pre>    <span class="token keyword">bool</span> <span class="token keyword">operator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">int</span> <span class="token operator">&amp;</span>lhs<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">int</span> <span class="token operator">&amp;</span>rhs<span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="5"></td><td><pre>        <span class="token keyword">return</span> <span class="token punctuation">(</span>lhs <span class="token operator">></span> rhs<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token keyword">class</span> <span class="token class-name">mycomparison</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="9"></td><td><pre>    <span class="token keyword">bool</span> reverse<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="10"></td><td><pre><span class="token keyword">public</span><span class="token operator">:</span></pre></td></tr><tr><td data-num="11"></td><td><pre>    <span class="token function">mycomparison</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">bool</span> <span class="token operator">&amp;</span>revparam <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="12"></td><td><pre>        reverse <span class="token operator">=</span> revparam<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="13"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="14"></td><td><pre>    <span class="token keyword">bool</span> <span class="token keyword">operator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">int</span> <span class="token operator">&amp;</span>lhs<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">int</span> <span class="token operator">&amp;</span>rhs<span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="15"></td><td><pre>        <span class="token keyword">if</span> <span class="token punctuation">(</span>reverse<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="16"></td><td><pre>            <span class="token keyword">return</span> <span class="token punctuation">(</span>lhs <span class="token operator">></span> rhs<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="17"></td><td><pre>        <span class="token keyword">else</span></pre></td></tr><tr><td data-num="18"></td><td><pre>            <span class="token keyword">return</span> <span class="token punctuation">(</span>lhs <span class="token operator">&lt;</span> rhs<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="19"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="20"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="21"></td><td><pre><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="22"></td><td><pre>    priority_queue<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">,</span> cmp<span class="token operator">></span> pq1<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="23"></td><td><pre>    priority_queue<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">,</span> mycomparison<span class="token operator">></span> <span class="token function">pq2</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="24"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span><span class="token number">10</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> pq1<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="25"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span><span class="token number">10</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> pq2<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="26"></td><td><pre>    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">!</span>pq1<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>cout<span class="token operator">&lt;&lt;</span>pq1<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token punctuation">;</span>pq1<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="27"></td><td><pre>    cout<span class="token operator">&lt;&lt;</span><span class="token string">"\n"</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="28"></td><td><pre>    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">!</span>pq2<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>cout<span class="token operator">&lt;&lt;</span>pq2<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token punctuation">;</span>pq2<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="29"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><p>不過一般在使用時有個偷吃步的方法，就是改變正負號，這樣排序就會顛倒了，讀出值的時候要記得變回去就好。</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre>priority_queue<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> pq<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>pq<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token operator">-</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>          <span class="token comment">// 存進去的時候取負</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">int</span> val <span class="token operator">=</span> <span class="token operator">-</span>pq<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 拿出來的時候變回正，這樣拿到的就是最小值</span></pre></td></tr></table></figure><p>另外還有一個標準寫法，用  <code>greater</code>  直接做出小根堆，比自訂 struct 簡潔：</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre>priority_queue<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">,</span> greater<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> pq<span class="token punctuation">;</span>  <span class="token comment">// 由小到大，top () 是最小值</span></pre></td></tr></table></figure><hr />
+<h1 id="常用的-stl-函式"><a class="anchor" href="#常用的-stl-函式">#</a> 常用的 STL 函式</h1>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token function">sort</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> a<span class="token operator">+</span>n<span class="token punctuation">,</span> cmp<span class="token punctuation">)</span><span class="token punctuation">;</span>                 <span class="token comment">// 範圍是左閉右開，預設是由小到大</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token function">sort</span><span class="token punctuation">(</span>v<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> v<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> cmp<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// 排序，cmp 是自訂排序函數</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token function">memset</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>           <span class="token comment">// 將 a 陣列所有的值都設成 0</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token function">swap</span><span class="token punctuation">(</span>A<span class="token punctuation">,</span> B<span class="token punctuation">)</span><span class="token punctuation">;</span>                        <span class="token comment">// 交換 A 跟 B，記得 A 跟 B 資料型態要一樣</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token function">reverse</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> a<span class="token operator">+</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>                   <span class="token comment">// 將指定範圍內的元素順序倒轉，範圍也是左閉右開</span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token function">reverse</span><span class="token punctuation">(</span>v<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> v<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// 我印象中的全部 STL 函數都是左閉右開</span></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token keyword">auto</span> it <span class="token operator">=</span> <span class="token function">lower_bound</span><span class="token punctuation">(</span>v<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> v<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> val<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// 找到第一個大於等於 val 的位置</span></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token keyword">int</span> x <span class="token operator">=</span> <span class="token operator">*</span><span class="token function">upper_bound</span><span class="token punctuation">(</span>v<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> v<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> val<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">// 找到第一個大於 val 的值</span></pre></td></tr><tr><td data-num="9"></td><td><pre><span class="token keyword">int</span> idx <span class="token operator">=</span> <span class="token function">upper_bound</span><span class="token punctuation">(</span>v<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> v<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> val<span class="token punctuation">)</span> <span class="token operator">-</span> v<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 找到第一個大於 val 的 idx</span></pre></td></tr></table></figure><p>幾點補充：</p>
+<ul>
+<li><code>sort</code>  是  <code>O(n log n)</code> ，實作上是 introsort（快排 + 堆排 + 插入排序的混合），不保證穩定。需要穩定排序（相同鍵值維持原順序）要用  <code>stable_sort</code> 。</li>
+<li><code>memset</code>  是<strong>逐位元組</strong>填值，所以只有填  <code>0</code>  和  <code>-1</code>  是安全的。填其他值會出事，例如  <code>memset(a, 1, sizeof(a))</code>  得到的不是 1 而是  <code>0x01010101</code> 。要填其他初始值請用  <code>fill</code> 。</li>
+<li><code>lower_bound</code>  跟  <code>upper_bound</code>  都是  <code>O(log n)</code> ，但<strong>前提是資料必須已經由小到大排序好</strong>。</li>
+</ul>
+<h2 id="cmp-函式的寫法"><a class="anchor" href="#cmp-函式的寫法">#</a> cmp 函式的寫法</h2>
+<p>自訂排序函數有一個非常重要的規則：<strong>cmp 必須是嚴格弱序（strict weak ordering）</strong>，也就是相等的時候一定要回傳  <code>false</code> 。</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">bool</span> <span class="token function">cmp</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>    <span class="token keyword">return</span> x <span class="token operator">></span> y<span class="token punctuation">;</span>   <span class="token comment">// 對：由大到小，相等時回傳 false</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token keyword">bool</span> <span class="token function">cmp_bad</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="5"></td><td><pre>    <span class="token keyword">return</span> x <span class="token operator">>=</span> y<span class="token punctuation">;</span>  <span class="token comment">// 錯！相等時回傳 true，會導致 sort 執行期崩潰</span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><p>這個錯誤很陰險，小測資看起來正常，資料量一大就 runtime error。</p>
+<p>pair 的排序預設是由 first 由小到大，如果 first 一樣就根據 second 由小到大，從下面的範例程式就可以得知：</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">bool</span> <span class="token function">cmp2</span><span class="token punctuation">(</span>pair<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span><span class="token keyword">int</span><span class="token operator">></span> x<span class="token punctuation">,</span> pair<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span><span class="token keyword">int</span><span class="token operator">></span> y<span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>    <span class="token keyword">if</span><span class="token punctuation">(</span>x<span class="token punctuation">.</span>first<span class="token operator">!=</span>y<span class="token punctuation">.</span>first<span class="token punctuation">)</span> <span class="token keyword">return</span> x<span class="token punctuation">.</span>first<span class="token operator">></span>y<span class="token punctuation">.</span>first<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="3"></td><td><pre>    <span class="token keyword">else</span> <span class="token keyword">return</span> x<span class="token punctuation">.</span>second<span class="token operator">></span>y<span class="token punctuation">.</span>second<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><h2 id="自己寫二分搜"><a class="anchor" href="#自己寫二分搜">#</a> 自己寫二分搜</h2>
+<p>binary_search 是我自己寫的二分搜，因為  <code>lower_bound</code>  跟  <code>upper_bound</code>  都必須符合資料由小到大才可以查找。如果遇到一些比較特殊的情況要不方便使用 STL 函式，可以參考我寫的二分搜。這是我覺得最好的寫法，不管你要找第一個大於 val、第一個大於等於 val、第一個小於 val、第一個小於等於 val，都可透過修改 if 裡面的判斷式跟 return 的結果來快速更改成你需要的程式。</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">int</span> <span class="token function">binary_search</span><span class="token punctuation">(</span><span class="token keyword">int</span> l<span class="token punctuation">,</span><span class="token keyword">int</span> r<span class="token punctuation">,</span><span class="token keyword">int</span> val<span class="token punctuation">,</span><span class="token keyword">int</span> arr<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>  <span class="token comment">// 區間為左開右開</span></pre></td></tr><tr><td data-num="2"></td><td><pre>    <span class="token keyword">int</span> mid<span class="token operator">=</span><span class="token punctuation">(</span>l<span class="token operator">+</span>r<span class="token punctuation">)</span><span class="token operator">>></span><span class="token number">1</span><span class="token punctuation">;</span>   <span class="token comment">// 注意這個二分搜是寫給由大到小的數組用的</span></pre></td></tr><tr><td data-num="3"></td><td><pre>    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token punctuation">(</span>l<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">!=</span>r<span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="4"></td><td><pre>        <span class="token keyword">if</span><span class="token punctuation">(</span>arr<span class="token punctuation">[</span>mid<span class="token punctuation">]</span><span class="token operator">></span>val<span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="5"></td><td><pre>            l<span class="token operator">=</span>mid<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>        <span class="token punctuation">&#125;</span><span class="token keyword">else</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="7"></td><td><pre>            r<span class="token operator">=</span>mid<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="8"></td><td><pre>        <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="9"></td><td><pre>        mid<span class="token operator">=</span><span class="token punctuation">(</span>l<span class="token operator">+</span>r<span class="token punctuation">)</span><span class="token operator">>></span><span class="token number">1</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="10"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="11"></td><td><pre>    <span class="token keyword">return</span> l<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="12"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><p>這種「左開右開」寫法的核心是維持一個<strong>不變量（invariant）</strong>： <code>l</code>  永遠指向滿足條件的位置， <code>r</code>  永遠指向不滿足的位置。迴圈條件  <code>(l+1)!=r</code>  表示兩者相鄰時就停止，此時  <code>l</code>  就是最後一個滿足條件的位置。</p>
+<p>用這種寫法的好處是<strong>不會有 off-by-one 的困擾</strong> —— 因為初始呼叫時  <code>l</code>  和  <code>r</code>  都放在陣列外（例如  <code>binary_search(-1, n, val, a)</code> ），邊界情況自然被涵蓋，不用另外特判。</p>
+<p><code>&gt;&gt;1</code>  就是除以二的意思，位元運算會比  <code>/</code> （除號）還要快。</p>
+<p>下面是一支完整的範例程式，協助了解上述函式的用法。在讀的時候建議把程式複製到編譯器執行後觀察每一行做出的改變：</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">bool</span> <span class="token function">cmp</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span><span class="token keyword">int</span> y<span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="4"></td><td><pre>    <span class="token keyword">return</span> x<span class="token operator">></span>y<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token keyword">bool</span> <span class="token function">cmp2</span><span class="token punctuation">(</span>pair<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span><span class="token keyword">int</span><span class="token operator">></span> x<span class="token punctuation">,</span>pair<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span><span class="token keyword">int</span><span class="token operator">></span> y<span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="7"></td><td><pre>    <span class="token keyword">if</span><span class="token punctuation">(</span>x<span class="token punctuation">.</span>first<span class="token operator">!=</span>y<span class="token punctuation">.</span>first<span class="token punctuation">)</span> <span class="token keyword">return</span> x<span class="token punctuation">.</span>first<span class="token operator">></span>y<span class="token punctuation">.</span>first<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="8"></td><td><pre>    <span class="token keyword">else</span> <span class="token keyword">return</span> x<span class="token punctuation">.</span>second<span class="token operator">></span>y<span class="token punctuation">.</span>second<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="9"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="10"></td><td><pre><span class="token keyword">int</span> <span class="token function">binary_search</span><span class="token punctuation">(</span><span class="token keyword">int</span> l<span class="token punctuation">,</span><span class="token keyword">int</span> r<span class="token punctuation">,</span><span class="token keyword">int</span> val<span class="token punctuation">,</span><span class="token keyword">int</span> arr<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="11"></td><td><pre>    <span class="token keyword">int</span> mid<span class="token operator">=</span><span class="token punctuation">(</span>l<span class="token operator">+</span>r<span class="token punctuation">)</span><span class="token operator">>></span><span class="token number">1</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="12"></td><td><pre>    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token punctuation">(</span>l<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">!=</span>r<span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="13"></td><td><pre>        <span class="token keyword">if</span><span class="token punctuation">(</span>arr<span class="token punctuation">[</span>mid<span class="token punctuation">]</span><span class="token operator">></span>val<span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="14"></td><td><pre>            l<span class="token operator">=</span>mid<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="15"></td><td><pre>        <span class="token punctuation">&#125;</span><span class="token keyword">else</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="16"></td><td><pre>            r<span class="token operator">=</span>mid<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="17"></td><td><pre>        <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="18"></td><td><pre>        mid<span class="token operator">=</span><span class="token punctuation">(</span>l<span class="token operator">+</span>r<span class="token punctuation">)</span><span class="token operator">>></span><span class="token number">1</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="19"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="20"></td><td><pre>    <span class="token keyword">return</span> l<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="21"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="22"></td><td><pre><span class="token keyword">int</span> n<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">,</span>a<span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="23"></td><td><pre>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> b<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="24"></td><td><pre>vector<span class="token operator">&lt;</span>pair<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span><span class="token keyword">int</span><span class="token operator">>></span> c<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="25"></td><td><pre><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="26"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>temp<span class="token punctuation">;</span>i<span class="token operator">&lt;</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="27"></td><td><pre>        temp<span class="token operator">=</span><span class="token function">rand</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">%</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="28"></td><td><pre>        a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span>temp<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="29"></td><td><pre>        b<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>temp<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="30"></td><td><pre>        c<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>temp<span class="token punctuation">,</span><span class="token function">rand</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">%</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="31"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="32"></td><td><pre>    cout<span class="token operator">&lt;&lt;</span><span class="token string">"\na = "</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="33"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> cout<span class="token operator">&lt;&lt;</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="34"></td><td><pre>    cout<span class="token operator">&lt;&lt;</span><span class="token string">"\nb = "</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="35"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">auto</span> i<span class="token operator">:</span>b<span class="token punctuation">)</span> cout<span class="token operator">&lt;&lt;</span>i<span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="36"></td><td><pre>    cout<span class="token operator">&lt;&lt;</span><span class="token string">"\na = "</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="37"></td><td><pre>    <span class="token function">sort</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>a<span class="token operator">+</span>n<span class="token punctuation">,</span>cmp<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="38"></td><td><pre>    <span class="token function">sort</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>b<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="39"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> cout<span class="token operator">&lt;&lt;</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="40"></td><td><pre>    cout<span class="token operator">&lt;&lt;</span><span class="token string">"\nb = "</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="41"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">auto</span> i<span class="token operator">:</span>b<span class="token punctuation">)</span> cout<span class="token operator">&lt;&lt;</span>i<span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="42"></td><td><pre>    cout<span class="token operator">&lt;&lt;</span><span class="token string">"\nc = "</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="43"></td><td><pre>    <span class="token function">sort</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>c<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="44"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">auto</span> i<span class="token operator">:</span>c<span class="token punctuation">)</span> cout<span class="token operator">&lt;&lt;</span>i<span class="token punctuation">.</span>first<span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token operator">&lt;&lt;</span>i<span class="token punctuation">.</span>second<span class="token operator">&lt;&lt;</span><span class="token string">","</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="45"></td><td><pre>    cout<span class="token operator">&lt;&lt;</span><span class="token string">"\nc = "</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="46"></td><td><pre>    <span class="token function">sort</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>c<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>cmp2<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="47"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">auto</span> i<span class="token operator">:</span>c<span class="token punctuation">)</span> cout<span class="token operator">&lt;&lt;</span>i<span class="token punctuation">.</span>first<span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token operator">&lt;&lt;</span>i<span class="token punctuation">.</span>second<span class="token operator">&lt;&lt;</span><span class="token string">","</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="48"></td><td><pre>    cout<span class="token operator">&lt;&lt;</span><span class="token string">"\n"</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="49"></td><td><pre>    <span class="token keyword">int</span> val<span class="token operator">=</span><span class="token number">6</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="50"></td><td><pre>    <span class="token keyword">auto</span> it<span class="token operator">=</span><span class="token function">lower_bound</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>b<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="51"></td><td><pre>    <span class="token keyword">int</span> idx<span class="token operator">=</span><span class="token function">lower_bound</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>b<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>val<span class="token punctuation">)</span><span class="token operator">-</span>b<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="52"></td><td><pre>    cout<span class="token operator">&lt;&lt;</span><span class="token operator">*</span>it<span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token operator">&lt;&lt;</span>idx<span class="token operator">&lt;&lt;</span><span class="token string">"\n"</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="53"></td><td><pre>    it<span class="token operator">=</span><span class="token function">upper_bound</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>b<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="54"></td><td><pre>    idx<span class="token operator">=</span><span class="token function">upper_bound</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>b<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>val<span class="token punctuation">)</span><span class="token operator">-</span>b<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="55"></td><td><pre>    cout<span class="token operator">&lt;&lt;</span><span class="token operator">*</span>it<span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token operator">&lt;&lt;</span>idx<span class="token operator">&lt;&lt;</span><span class="token string">"\n"</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="56"></td><td><pre>    idx<span class="token operator">=</span><span class="token function">binary_search</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>n<span class="token punctuation">,</span>val<span class="token punctuation">,</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="57"></td><td><pre>    cout<span class="token operator">&lt;&lt;</span>a<span class="token punctuation">[</span>idx<span class="token punctuation">]</span><span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token operator">&lt;&lt;</span>idx<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="58"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><p>範例輸出：</p>
+<pre><code>a = 2 5 10 9 3 6 2 2 6 8   // 原始
+b = 2 5 10 9 3 6 2 2 6 8   // 原始
+a = 10 9 8 6 6 5 3 2 2 2   // 由大到小排序
+b = 2 2 2 3 5 6 6 8 9 10   // 由小到大排序
+c = 2 2, 2 8, 2 8, 3 5, 5 1, 6 3, 6 6, 8 7, 9 9, 10 5,   // pair 的原始
+c = 10 5, 9 9, 8 7, 6 6, 6 3, 5 1, 3 5, 2 8, 2 8, 2 2,   // pair 排序過後
+6 5    // b 數組第一個大於等於 6 的數跟那個數的索引值
+8 7    // b 數組第一個大於 6 的數跟那個數的索引值
+8 2    // a 數組第一個大於 6 的數跟那個數的索引值（注意 a 陣列是由大到小）
+// 如果函式裡的 return l 改成 return r 就會回傳遞一個小於等於 val 的 idx
+</code></pre>
+<hr />
+<h1 id="io-加速"><a class="anchor" href="#io-加速">#</a> I/O 加速</h1>
+<p>最後提一件在考試時很實際的事。C++ 的  <code>cin</code> ／ <code>cout</code>  預設會跟 C 的  <code>scanf</code> ／ <code>printf</code>  同步，這個同步機制讓它們變得很慢。輸入量大的時候（例如  <code>10^5</code>  筆以上）光是讀入就可能 TLE。</p>
+<p>解法是在  <code>main()</code>  開頭加上這兩行：</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre>ios<span class="token double-colon punctuation">::</span><span class="token function">sync_with_stdio</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>cin<span class="token punctuation">.</span><span class="token function">tie</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr></table></figure><p><code>sync_with_stdio(0)</code>  解除與 C 標準 I/O 的同步， <code>cin.tie(0)</code>  解除 cin 與 cout 的綁定（預設每次  <code>cin</code>  前都會先 flush  <code>cout</code> ）。</p>
+<p>加了之後就<strong>不要再混用  <code>scanf</code> ／ <code>printf</code> </strong>，否則輸出順序會亂掉。另外，用  <code>&quot;\n&quot;</code>  取代  <code>endl</code>  也能加速，因為  <code>endl</code>  每次都會強制 flush 緩衝區。</p>
+<p>這兩行在我原本的講義裡幾乎都沒打，只是因為不想占版面 —— 但實際檢定或比賽的時候記得要打。</p>
+<hr />
+<h1 id="小結"><a class="anchor" href="#小結">#</a> 小結</h1>
+<p>這章的重點整理成一張表，之後解題選容器時可以回來查：</p>
+<table>
+<thead>
+<tr>
+<th>容器</th>
+<th>插入</th>
+<th>刪除</th>
+<th>查找</th>
+<th>取極值</th>
+<th>有序</th>
+<th>典型用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vector</td>
+<td><code>O(1)</code>  均攤（尾端）</td>
+<td><code>O(1)</code> （尾端）</td>
+<td><code>O(n)</code></td>
+<td>—</td>
+<td>否</td>
+<td>通用陣列、鄰接串列</td>
+</tr>
+<tr>
+<td>deque</td>
+<td><code>O(1)</code> （兩端）</td>
+<td><code>O(1)</code> （兩端）</td>
+<td><code>O(n)</code></td>
+<td>—</td>
+<td>否</td>
+<td>單調隊列、滑動視窗</td>
+</tr>
+<tr>
+<td>stack</td>
+<td><code>O(1)</code></td>
+<td><code>O(1)</code></td>
+<td>—</td>
+<td>—</td>
+<td>否</td>
+<td>括號配對、運算式</td>
+</tr>
+<tr>
+<td>queue</td>
+<td><code>O(1)</code></td>
+<td><code>O(1)</code></td>
+<td>—</td>
+<td>—</td>
+<td>否</td>
+<td>BFS</td>
+</tr>
+<tr>
+<td>set / map</td>
+<td><code>O(log n)</code></td>
+<td><code>O(log n)</code></td>
+<td><code>O(log n)</code></td>
+<td><code>O(log n)</code>  兩端</td>
+<td>是</td>
+<td>去重、離散化、查找鄰近值</td>
+</tr>
+<tr>
+<td>multiset</td>
+<td><code>O(log n)</code></td>
+<td><code>O(log n)</code></td>
+<td><code>O(log n)</code></td>
+<td><code>O(log n)</code>  兩端</td>
+<td>是</td>
+<td>允許重複的動態查找</td>
+</tr>
+<tr>
+<td>unordered_map</td>
+<td><code>O(1)</code>  平均</td>
+<td><code>O(1)</code>  平均</td>
+<td><code>O(1)</code>  平均</td>
+<td>—</td>
+<td>否</td>
+<td>純查找、計數</td>
+</tr>
+<tr>
+<td>priority_queue</td>
+<td><code>O(log n)</code></td>
+<td><code>O(log n)</code></td>
+<td>—</td>
+<td><code>O(1)</code>  單端</td>
+<td>部分</td>
+<td>貪心、Dijkstra</td>
+</tr>
+</tbody>
+</table>
+<p>下一章開始進入真正的演算法，從<strong>遞迴</strong>講起 —— 它是後面分治、DP、圖論走訪的共同基礎。</p>
+<h1 id="練習題"><a class="anchor" href="#練習題">#</a> 練習題</h1>
+<p>（之後補上）</p>
+
+      <div class="tags">
+          <a href="/tags/C/" rel="tag"><i class="ic i-tag"></i> C++</a>
+          <a href="/tags/%E6%BC%94%E7%AE%97%E6%B3%95/" rel="tag"><i class="ic i-tag"></i> 演算法</a>
+          <a href="/tags/APCS/" rel="tag"><i class="ic i-tag"></i> APCS</a>
+          <a href="/tags/STL/" rel="tag"><i class="ic i-tag"></i> STL</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新於</span>
+    <time title="修改時間：2026-09-14 00:36:31" itemprop="dateModified" datetime="2026-09-14T00:36:31+08:00">2026-09-14</time>
+  </span>
+  <span id="2026/08/14/1-1-基本資料結構與-STL/" class="item leancloud_visitors" data-flag-title="1-1 基本資料結構與 STL" title="閱讀次數">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">閱讀次數</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">次</span>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>作者： </strong>Rabbir <i class="ic i-at"><em>@</em></i>プログラムを書けないうさぎは、ただのうさぎだ。
+  </li>
+  <li class="link">
+    <strong>文章連結：</strong>
+    <a href="https://rabbirreaper.github.io/2026/08/14/1-1-%E5%9F%BA%E6%9C%AC%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E8%88%87-STL/" title="1-1 基本資料結構與 STL">https://rabbirreaper.github.io/2026/08/14/1-1-基本資料結構與-STL/</a>
+  </li>
+  <li class="license">
+    <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 許可協議。轉載請註明出處！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2026/07/29/0-1-%E5%AD%B8%E6%9C%83%E5%AF%AB%E7%A8%8B%E5%BC%8F/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;pub-da440be71028438aa9683b63bef5ccf1.r2.dev&#x2F;79.jpg" title="0-1 學會寫程式">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> 教學</span>
+  <h3>0-1 學會寫程式</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2026/08/14/1-2-%E9%81%9E%E8%BF%B4/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;pub-da440be71028438aa9683b63bef5ccf1.r2.dev&#x2F;94.jpg" title="1-2 遞迴">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> 演算法</span>
+  <h3>1-2 遞迴</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目錄">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text"> 前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%9C%E6%96%BC%E7%A8%8B%E5%BC%8F%E7%A2%BC%E4%BE%86%E6%BA%90"><span class="toc-number">1.1.</span> <span class="toc-text"> 關於程式碼來源</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%88%E8%AC%9B%E8%A4%87%E9%9B%9C%E5%BA%A6%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E5%9C%A8%E6%84%8F"><span class="toc-number">2.</span> <span class="toc-text"> 先講複雜度：為什麼要在意</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B1%E6%B8%AC%E8%B3%87%E5%A4%A7%E5%B0%8F%E5%8F%8D%E6%8E%A8%E6%89%80%E9%9C%80%E8%A4%87%E9%9B%9C%E5%BA%A6"><span class="toc-number">2.1.</span> <span class="toc-text"> 由測資大小反推所需複雜度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A9%E5%80%8B%E4%B8%80%E5%AE%9A%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9C%B0%E9%9B%B7"><span class="toc-number">2.2.</span> <span class="toc-text"> 兩個一定要注意的地雷</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#queue%E4%BD%87%E5%88%97"><span class="toc-number">3.</span> <span class="toc-text"> queue（佇列）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#deque%E9%9B%99%E5%90%91%E4%BD%87%E5%88%97"><span class="toc-number">4.</span> <span class="toc-text"> deque（雙向佇列）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#stack%E5%A0%86%E7%96%8A"><span class="toc-number">5.</span> <span class="toc-text"> stack（堆疊）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vector%E5%8B%95%E6%85%8B%E9%99%A3%E5%88%97"><span class="toc-number">6.</span> <span class="toc-text"> vector（動態陣列）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#set%E9%9B%86%E5%90%88"><span class="toc-number">7.</span> <span class="toc-text"> set（集合）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#multiset"><span class="toc-number">8.</span> <span class="toc-text"> multiset</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#map%E6%98%A0%E5%B0%84"><span class="toc-number">9.</span> <span class="toc-text"> map（映射）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%A2%E6%95%A3%E5%8C%96"><span class="toc-number">9.1.</span> <span class="toc-text"> 離散化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#unordered_map"><span class="toc-number">10.</span> <span class="toc-text"> unordered_map</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#priority_queue%E5%84%AA%E5%85%88%E4%BD%87%E5%88%97"><span class="toc-number">11.</span> <span class="toc-text"> priority_queue（優先佇列）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84-stl-%E5%87%BD%E5%BC%8F"><span class="toc-number">12.</span> <span class="toc-text"> 常用的 STL 函式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#cmp-%E5%87%BD%E5%BC%8F%E7%9A%84%E5%AF%AB%E6%B3%95"><span class="toc-number">12.1.</span> <span class="toc-text"> cmp 函式的寫法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%B7%B1%E5%AF%AB%E4%BA%8C%E5%88%86%E6%90%9C"><span class="toc-number">12.2.</span> <span class="toc-text"> 自己寫二分搜</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#io-%E5%8A%A0%E9%80%9F"><span class="toc-number">13.</span> <span class="toc-text"> I&#x2F;O 加速</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90"><span class="toc-number">14.</span> <span class="toc-text"> 小結</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B7%B4%E7%BF%92%E9%A1%8C"><span class="toc-number">15.</span> <span class="toc-text"> 練習題</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li class="active"><a href="/2026/08/14/1-1-%E5%9F%BA%E6%9C%AC%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E8%88%87-STL/" rel="bookmark" title="1-1 基本資料結構與 STL">1-1 基本資料結構與 STL</a></li><li><a href="/2026/08/14/1-2-%E9%81%9E%E8%BF%B4/" rel="bookmark" title="1-2 遞迴">1-2 遞迴</a></li><li><a href="/2026/08/14/1-3-%E6%90%9C%E5%B0%8B%E6%8A%80%E5%B7%A7/" rel="bookmark" title="1-3 搜尋技巧：前綴和、雙指針、滑動視窗、二分搜">1-3 搜尋技巧：前綴和、雙指針、滑動視窗、二分搜</a></li><li><a href="/2026/08/14/1-4-%E7%AA%AE%E8%88%89%E6%9A%B4%E6%90%9C%E8%88%87%E5%9B%9E%E6%BA%AF%E6%B3%95/" rel="bookmark" title="1-4 窮舉暴搜與回溯法">1-4 窮舉暴搜與回溯法</a></li><li><a href="/2026/08/14/1-5-%E8%B2%AA%E5%BF%83%E6%BC%94%E7%AE%97%E6%B3%95/" rel="bookmark" title="1-5 貪心演算法">1-5 貪心演算法</a></li><li><a href="/2026/08/14/1-6-%E6%8E%83%E6%8F%8F%E7%B7%9A%E6%BC%94%E7%AE%97%E6%B3%95/" rel="bookmark" title="1-6 掃描線演算法">1-6 掃描線演算法</a></li><li><a href="/2026/08/14/1-7-%E5%88%86%E6%B2%BB%E6%BC%94%E7%AE%97%E6%B3%95/" rel="bookmark" title="1-7 分治演算法">1-7 分治演算法</a></li><li><a href="/2026/08/14/1-8-%E5%8B%95%E6%85%8B%E8%A6%8F%E5%8A%83/" rel="bookmark" title="1-8 動態規劃">1-8 動態規劃</a></li><li><a href="/2026/08/14/1-9-%E5%9F%BA%E6%9C%AC%E5%9C%96%E8%AB%96%E6%BC%94%E7%AE%97%E6%B3%95/" rel="bookmark" title="1-9 基本圖論演算法">1-9 基本圖論演算法</a></li><li><a href="/2026/08/14/1-10-%E6%A8%B9%E4%B8%8A%E6%BC%94%E7%AE%97%E6%B3%95/" rel="bookmark" title="1-10 樹上演算法">1-10 樹上演算法</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="本站概要">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Rabbir"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">Rabbir</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">109</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">14</span>
+        <span class="name">分類</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">49</span>
+        <span class="name">標籤</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>首頁</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>關於</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>歸檔</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分類</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>標籤</a>
+  </li>
+
+  </ul>
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2026/07/29/0-1-%E5%AD%B8%E6%9C%83%E5%AF%AB%E7%A8%8B%E5%BC%8F/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2026/08/14/1-2-%E9%81%9E%E8%BF%B4/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>隨機文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/19/Q-8-12-%E4%BD%94%E9%A0%98%E9%80%A3%E7%BA%8C%E7%9A%84%E5%9F%8E%E9%8E%AE/" title="Q-8-12. 佔領連續的城鎮">Q-8-12. 佔領連續的城鎮</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/" title="分類於 加密文章">加密文章</a>
+</div>
+
+    <span><a href="/2026/05/11/%E8%89%BE%E7%95%A5%E7%89%B9%E6%B3%A2%E6%B5%AA%E7%90%86%E8%AB%96/" title="艾略特波浪理論">艾略特波浪理論</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2025/06/18/%E9%AB%98%E7%AD%89%E6%BC%94%E7%AE%97%E6%B3%95%E6%9C%9F%E6%9C%AB%E4%BD%9C%E6%A5%AD/" title="高等演算法期末作業">高等演算法期末作業</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E6%95%99%E5%AD%B8/" title="分類於 教學">教學</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E6%95%99%E5%AD%B8/%E6%BC%94%E7%AE%97%E6%B3%95/" title="分類於 演算法">演算法</a>
+</div>
+
+    <span><a href="/2026/08/14/1-1-%E5%9F%BA%E6%9C%AC%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E8%88%87-STL/" title="1-1 基本資料結構與 STL">1-1 基本資料結構與 STL</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/18/Q-6-14-K%E6%AC%A1%E8%B2%B7%E8%B3%A3/" title="Q-6-14. K次買賣">Q-6-14. K次買賣</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80%E7%AD%86%E8%A8%98/" title="分類於 程式語言筆記">程式語言筆記</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80%E7%AD%86%E8%A8%98/node-js/" title="分類於 node.js">node.js</a>
+</div>
+
+    <span><a href="/2025/01/19/Express-%E4%B8%AD%E7%9A%84-Middleware%EF%BC%9A%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/" title="Express 中的 Middleware：語法筆記">Express 中的 Middleware：語法筆記</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/APCS/" title="分類於 APCS">APCS</a>
+</div>
+
+    <span><a href="/2025/01/19/j125-4-%E8%93%8B%E6%AD%A5%E9%81%93/" title="j125. 4. 蓋步道">j125. 4. 蓋步道</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E6%95%99%E5%AD%B8/" title="分類於 教學">教學</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E6%95%99%E5%AD%B8/%E6%BC%94%E7%AE%97%E6%B3%95/" title="分類於 演算法">演算法</a>
+</div>
+
+    <span><a href="/2026/08/14/1-4-%E7%AA%AE%E8%88%89%E6%9A%B4%E6%90%9C%E8%88%87%E5%9B%9E%E6%BA%AF%E6%B3%95/" title="1-4 窮舉暴搜與回溯法">1-4 窮舉暴搜與回溯法</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/APCS/" title="分類於 APCS">APCS</a>
+</div>
+
+    <span><a href="/2025/01/19/j123-2-%E9%81%8B%E8%B2%A8%E7%AB%99-O-c-r-n/" title="j123. 2. 運貨站">j123. 2. 運貨站</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/19/Q-7-7-AOV-%E6%9C%80%E6%97%A9%E5%AE%8C%E5%B7%A5%E6%99%82%E9%96%93/" title="Q-7-7. AOV 最早完工時間">Q-7-7. AOV 最早完工時間</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新評論</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2025 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Rabbir @ Rabbir Reaper</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="總字數">486k 字</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">7:22</span>
+  </div>
+  <div class="powered-by">
+    基於 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2026/08/14/1-1-基本資料結構與-STL/',
+    favicon: {
+      show: "（●´3｀●）復活成功",
+      hide: "(´Д｀)瀏覽器崩潰啦"
+    },
+    search : {
+      placeholder: "文章搜尋",
+      empty: "關於 「 ${query} 」 ，什麼也沒搜到",
+      stats: "${time} ms 內找到 ${hits} 條結果"
+    },
+    valine: true,fancybox: true,
+    copyright: '複製成功，轉載請遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 協議。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

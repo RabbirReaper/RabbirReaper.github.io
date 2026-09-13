@@ -1,0 +1,689 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/https:/pub-da440be71028438aa9683b63bef5ccf1.r2.devimages/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/https:/pub-da440be71028438aa9683b63bef5ccf1.r2.dev/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="プログラムを書けないうさぎは、ただのうさぎだ。" href="https://rabbirreaper.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="プログラムを書けないうさぎは、ただのうさぎだ。" href="https://rabbirreaper.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="プログラムを書けないうさぎは、ただのうさぎだ。" href="https://rabbirreaper.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="C++,演算法,APCS,分治法" />
+
+
+<link rel="canonical" href="https://rabbirreaper.github.io/2026/08/14/1-7-%E5%88%86%E6%B2%BB%E6%BC%94%E7%AE%97%E6%B3%95/">
+
+
+
+  <title>
+1-7 分治演算法 - 演算法 - 教學 |
+Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎだ。</title>
+<meta name="generator" content="Hexo 8.1.1"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">1-7 分治演算法
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="創建時間：2026-08-14 11:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">發表於</span>
+    <time itemprop="dateCreated datePublished" datetime="2026-08-14T11:00:00+08:00">2026-08-14</time>
+  </span>
+  <span class="item" title="文章字數">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">文章字數</span>
+    <span>7.5k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="所需閱讀時間">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">所需閱讀時間</span>
+    <span>7 分鐘</span>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切換導航欄">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Rabbir Reaper</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/81.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/26.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/60.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/50.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/32.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/25.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首頁</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E6%95%99%E5%AD%B8/" itemprop="item" rel="index" title="分類於 教學"><span itemprop="name">教學</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E6%95%99%E5%AD%B8/%E6%BC%94%E7%AE%97%E6%B3%95/" itemprop="item" rel="index" title="分類於 演算法"><span itemprop="name">演算法</span></a>
+<meta itemprop="position" content="2" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-TW">
+  <link itemprop="mainEntityOfPage" href="https://rabbirreaper.github.io/2026/08/14/1-7-%E5%88%86%E6%B2%BB%E6%BC%94%E7%AE%97%E6%B3%95/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/https:/pub-da440be71028438aa9683b63bef5ccf1.r2.dev/images/avatar.jpg">
+    <meta itemprop="name" content="Rabbir">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="プログラムを書けないうさぎは、ただのうさぎだ。">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="前言"><a class="anchor" href="#前言">#</a> 前言</h1>
+<p>分治法就是一直把問題切兩半然後再合併。核心公式只有三步：<strong>分解（divide）→ 解決（conquer）→ 合併（combine）</strong>。跟 <a href="/2026/08/14/1-2-%E9%81%9E%E8%BF%B4/">1-2 遞迴</a> 的關係很直接 —— 分治法幾乎都是靠遞迴實現的，差別在於分治法特別強調「切一半」跟「合併兩邊答案」這兩個步驟。</p>
+<hr />
+<h1 id="熱身找最大值"><a class="anchor" href="#熱身找最大值">#</a> 熱身：找最大值</h1>
+<p>隨機給 10 個數字然後找最大值。題目就是這麼短，用分治法的想法是：把陣列切一半，兩邊各自遞迴找出最大值，再比較兩邊的最大值哪個比較大。</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment">// [自己的解法]</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">N</span> <span class="token expression"><span class="token number">10</span></span></span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token keyword">int</span> <span class="token function">search_max</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> _v<span class="token punctuation">,</span><span class="token keyword">int</span> l<span class="token punctuation">,</span><span class="token keyword">int</span> r<span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token comment">// 左閉右開</span></pre></td></tr><tr><td data-num="6"></td><td><pre>    <span class="token keyword">if</span><span class="token punctuation">(</span>l<span class="token operator">+</span><span class="token number">1</span><span class="token operator">==</span>r<span class="token punctuation">)</span> <span class="token keyword">return</span> _v<span class="token punctuation">[</span>l<span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment">// 終止條件</span></pre></td></tr><tr><td data-num="7"></td><td><pre>    <span class="token keyword">int</span> mid<span class="token operator">=</span><span class="token punctuation">(</span>l<span class="token operator">+</span>r<span class="token punctuation">)</span><span class="token operator">>></span><span class="token number">1</span><span class="token punctuation">;</span><span class="token comment">// 分割</span></pre></td></tr><tr><td data-num="8"></td><td><pre>    <span class="token keyword">int</span> a<span class="token operator">=</span><span class="token function">search_max</span><span class="token punctuation">(</span>_v<span class="token punctuation">,</span>l<span class="token punctuation">,</span>mid<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 兩邊各自遞迴</span></pre></td></tr><tr><td data-num="9"></td><td><pre>    <span class="token keyword">int</span> b<span class="token operator">=</span><span class="token function">search_max</span><span class="token punctuation">(</span>_v<span class="token punctuation">,</span>mid<span class="token punctuation">,</span>r<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="10"></td><td><pre>    <span class="token keyword">if</span><span class="token punctuation">(</span>a<span class="token operator">></span>b<span class="token punctuation">)</span> <span class="token keyword">return</span> a<span class="token punctuation">;</span><span class="token comment">// 比較兩邊的最大值</span></pre></td></tr><tr><td data-num="11"></td><td><pre>    <span class="token keyword">else</span> <span class="token keyword">return</span> b<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="12"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="13"></td><td><pre><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="14"></td><td><pre>    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> v<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="15"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>temp<span class="token punctuation">;</span>i<span class="token operator">&lt;</span>N<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="16"></td><td><pre>        temp<span class="token operator">=</span><span class="token function">rand</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">%</span>N<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="17"></td><td><pre>        cout<span class="token operator">&lt;&lt;</span>temp<span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="18"></td><td><pre>        v<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>temp<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="19"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="20"></td><td><pre>    cout<span class="token operator">&lt;&lt;</span><span class="token string">"\n"</span><span class="token operator">&lt;&lt;</span><span class="token function">search_max</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span>N<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="21"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><p>我程式的函式採用的是<strong>左閉右開區間</strong>，可以發現用這種寫法程式內呼叫函式都不需要 +1 或者 -1 看的就非常的清爽， <code>(l+r)&gt;&gt;1</code>  就是找終點的意思， <code>&gt;&gt;1</code>  就是除以二的意思用位元運算會比用  <code>/</code> （除號）還要快。觀察程式內分治的感覺再去看圖對應的 idx (索引值)，分治法就是這樣的感覺。</p>
+<p>分治法的複雜度分析通常用遞迴關係式表達：把問題切成兩半，各花  <code>T(n/2)</code> ，合併花  <code>O(f(n))</code> ，整體是  <code>T(n) = 2T(n/2) + O(f(n))</code> 。這題合併只是比較兩個數， <code>f(n)=O(1)</code> ，根據主定理（master theorem），總複雜度是  <code>O(n)</code> —— 跟直接掃一遍陣列找最大值一樣快，但這個簡單例子的價值在於展示分治法的骨架，之後的題目會看到合併步驟做更多事情，複雜度也會不一樣。</p>
+<hr />
+<h1 id="合併排序merge-sort"><a class="anchor" href="#合併排序merge-sort">#</a> 合併排序（Merge Sort）</h1>
+<p><code>[l,r)</code>  這裡的 &quot;[&quot; 代表包含 &quot;)&quot; 代表不包含，所以是左閉右開區間。</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment">// [自己的解法]</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h></span></span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token keyword">void</span> <span class="token function">merge_sort</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> _v<span class="token punctuation">,</span><span class="token keyword">int</span> l<span class="token punctuation">,</span><span class="token keyword">int</span> r<span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token comment">//[l,r)</span></pre></td></tr><tr><td data-num="5"></td><td><pre>    <span class="token keyword">if</span><span class="token punctuation">(</span>l<span class="token operator">+</span><span class="token number">1</span><span class="token operator">==</span>r<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>    <span class="token keyword">int</span> mid<span class="token operator">=</span><span class="token punctuation">(</span>l<span class="token operator">+</span>r<span class="token punctuation">)</span><span class="token operator">>></span><span class="token number">1</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="7"></td><td><pre>    <span class="token function">merge_sort</span><span class="token punctuation">(</span>_v<span class="token punctuation">,</span>l<span class="token punctuation">,</span>mid<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="8"></td><td><pre>    <span class="token function">merge_sort</span><span class="token punctuation">(</span>_v<span class="token punctuation">,</span>mid<span class="token punctuation">,</span>r<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="9"></td><td><pre>    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> temp<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="10"></td><td><pre>    <span class="token keyword">int</span> i<span class="token operator">=</span>l<span class="token punctuation">,</span>j<span class="token operator">=</span>mid<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="11"></td><td><pre>    <span class="token keyword">while</span><span class="token punctuation">(</span>i<span class="token operator">&lt;</span>mid<span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="12"></td><td><pre>        <span class="token keyword">while</span><span class="token punctuation">(</span>j<span class="token operator">&lt;</span>r <span class="token operator">&amp;&amp;</span> _v<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">&lt;</span>_v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token comment">// 這邊要注意一下</span></pre></td></tr><tr><td data-num="13"></td><td><pre>            temp<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>_v<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="14"></td><td><pre>            j<span class="token operator">++</span><span class="token punctuation">;</span><span class="token comment">//_v [j]>_v [mid-1] 那就不需要再放入 temp</span></pre></td></tr><tr><td data-num="15"></td><td><pre>        <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="16"></td><td><pre>        temp<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>_v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="17"></td><td><pre>        i<span class="token operator">++</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="18"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="19"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">auto</span> <span class="token operator">&amp;</span>u<span class="token operator">:</span>temp<span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="20"></td><td><pre>        _v<span class="token punctuation">[</span>l<span class="token punctuation">]</span><span class="token operator">=</span>u<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="21"></td><td><pre>        l<span class="token operator">++</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="22"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="23"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="24"></td><td><pre><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="25"></td><td><pre>    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> v<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="26"></td><td><pre>    <span class="token keyword">int</span> n<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">;</span><span class="token comment">// 幾筆測資</span></pre></td></tr><tr><td data-num="27"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>temp<span class="token punctuation">;</span>i<span class="token operator">&lt;</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="28"></td><td><pre>        temp<span class="token operator">=</span><span class="token function">rand</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">%</span><span class="token number">10</span><span class="token punctuation">;</span><span class="token comment">// 亂數大小</span></pre></td></tr><tr><td data-num="29"></td><td><pre>        v<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>temp<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="30"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="31"></td><td><pre>    <span class="token function">merge_sort</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span>v<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="32"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">auto</span> u<span class="token operator">:</span>v<span class="token punctuation">)</span> cout<span class="token operator">&lt;&lt;</span>u<span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="33"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><p>這裡示範了合併排序的寫法，也有人稱作歸併排序，建議自己寫寫看這個排序，因為分治法的題目很多都像是這種感覺。</p>
+<p>合併排序的複雜度是  <code>T(n) = 2T(n/2) + O(n)</code> （合併兩個已排序陣列需要  <code>O(n)</code> ），根據主定理解出來是  <code>O(n log n)</code> —— 這也是為什麼  <code>sort()</code>  這類通用排序函式的複雜度基準都是  <code>O(n log n)</code> 。</p>
+<p><strong>注意這裡合併時 while 迴圈的細節</strong>： <code>while(j&lt;r &amp;&amp; _v[j]&lt;_v[i])</code> ，這裡用嚴格小於（ <code>&lt;</code> ）而不是  <code>&lt;=</code> ，這個選擇會影響排序的<strong>穩定性（stability）</strong>—— 相同的值會不會維持原本的相對順序。如果需要穩定排序，要確保相等時優先取左邊（前段）的元素。</p>
+<hr />
+<h1 id="p-5-4-反序數量apcs"><a class="anchor" href="#p-5-4-反序數量apcs">#</a> P-5-4. 反序數量（APCS）</h1>
+<blockquote>
+<p>題目來源：APCS 201806 ｜ AP325 P-5-4</p>
+</blockquote>
+<p>考慮一個數列 A [1:n]。如果 A 中兩個數字 A [i] 和 A [j] 滿足  <code>i&lt;j</code>  且  <code>A[i]&gt;A[j]</code> ，也就是在前面的比較大，則我們說 (a [i],a [j]) 是一個反序對 (inversion)。定義 W (A) 為數列 A 中反序對數量。例如，在數列 A=(3,1,9,8,9,2) 中，一共有 (3,1)、(3,2)、(9,8)、(9,2)、(8,2)、(9,2) 一共 6 個反序對，所以 W (A)=6。</p>
+<p>請注意到序列中有兩個 9 都在 2 之前，因此有兩個 (9,2) 反序對，也就是說，不同位置的反序對都要計算，不管兩對的內容是否一樣。請撰寫一個程式，計算一個數列 A 的反序數量 W (A)。</p>
+<p><strong>輸入格式</strong>：第一行是一個正整數 n，代表數列長度，第二行有 n 個非負整數，是依序數列內容，數字間以空白隔開。n 不超過 1e5，數列內容不超過 1e6。</p>
+<p><strong>輸出</strong>：輸出反序對數量。</p>
+<table>
+<thead>
+<tr>
+<th>範例輸入</th>
+<th>範例輸出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6<br>3 1 9 8 9 2</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+<h2 id="解題思路"><a class="anchor" href="#解題思路">#</a> 解題思路</h2>
+<p>這一題仔細觀察會發現好像跟合併排序有點像，覺得不像沒關西看完程式碼就會覺得像了。</p>
+<p>這一題用合併排序的時候因為左邊跟右邊都是排好續的：</p>
+<pre><code>1 2 3 4 5 6 | 2 3 4 5 6
+</code></pre>
+<p>分成兩邊，然後由小到大排序要判斷哪個值比較小，所以一開始 1 比 2 小因為右端還沒放入任何東西所以答案不會增加。</p>
+<pre><code>   3 4 5 |    3 4 5 6
+1 2   2
+</code></pre>
+<p>下面的表格是現在排好序的數組，上面的表格空的代表已經變放到下面的表格，放入 3 的時候因為右端已經放入了一個值 (值為 2)，所以這時答案要加上 1，而這個 1 就是右端指向的 idx 減掉 mid。</p>
+<p>答案增加的情況，上方表格是放入哪個值，下面則是放入那個值答案加多少，所以答案是 6。</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment">// [自己的解法]</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token keyword">long</span> <span class="token keyword">long</span> ans<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token keyword">void</span> <span class="token function">merge_sort</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> _v<span class="token punctuation">,</span><span class="token keyword">int</span> l<span class="token punctuation">,</span><span class="token keyword">int</span> r<span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>    <span class="token keyword">if</span><span class="token punctuation">(</span>l<span class="token operator">+</span><span class="token number">1</span><span class="token operator">==</span>r<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="7"></td><td><pre>    <span class="token keyword">int</span> mid<span class="token operator">=</span><span class="token punctuation">(</span>l<span class="token operator">+</span>r<span class="token punctuation">)</span><span class="token operator">>></span><span class="token number">1</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="8"></td><td><pre>    <span class="token function">merge_sort</span><span class="token punctuation">(</span>_v<span class="token punctuation">,</span>l<span class="token punctuation">,</span>mid<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="9"></td><td><pre>    <span class="token function">merge_sort</span><span class="token punctuation">(</span>_v<span class="token punctuation">,</span>mid<span class="token punctuation">,</span>r<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="10"></td><td><pre>    <span class="token keyword">int</span> i<span class="token operator">=</span>l<span class="token punctuation">,</span>j<span class="token operator">=</span>mid<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="11"></td><td><pre>    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> temp<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="12"></td><td><pre>    <span class="token keyword">while</span><span class="token punctuation">(</span>i<span class="token operator">&lt;</span>mid<span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="13"></td><td><pre>        <span class="token keyword">while</span><span class="token punctuation">(</span>j<span class="token operator">&lt;</span>r <span class="token operator">&amp;&amp;</span> _v<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">&lt;</span>_v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="14"></td><td><pre>            temp<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>_v<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="15"></td><td><pre>            j<span class="token operator">++</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="16"></td><td><pre>        <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="17"></td><td><pre>        temp<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>_v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="18"></td><td><pre>        i<span class="token operator">++</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="19"></td><td><pre>        ans<span class="token operator">+=</span><span class="token punctuation">(</span>j<span class="token operator">-</span>mid<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 右邊比左邊小的數量</span></pre></td></tr><tr><td data-num="20"></td><td><pre>    <span class="token punctuation">&#125;</span><span class="token comment">// 因為兩邊都排好序所以左邊放進來 temp 的時候直接計算剛剛有幾個右端放進來</span></pre></td></tr><tr><td data-num="21"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">auto</span> u<span class="token operator">:</span>temp<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="22"></td><td><pre>        _v<span class="token punctuation">[</span>l<span class="token operator">++</span><span class="token punctuation">]</span><span class="token operator">=</span>u<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="23"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="24"></td><td><pre><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="25"></td><td><pre>    <span class="token keyword">int</span> n<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="26"></td><td><pre>    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> v<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="27"></td><td><pre>    cin<span class="token operator">>></span>n<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="28"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>temp<span class="token punctuation">;</span>i<span class="token operator">&lt;</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="29"></td><td><pre>        cin<span class="token operator">>></span>temp<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="30"></td><td><pre>        v<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>temp<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="31"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="32"></td><td><pre>    <span class="token function">merge_sort</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="33"></td><td><pre>    cout<span class="token operator">&lt;&lt;</span>ans<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="34"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><p>可以發現我函式名稱一直用  <code>merge_sort</code>  因為函式內容大概都圍繞著那個感覺在變化，不過分治法也有一些比較難的題目寫起來就沒辦法那麼直覺了。</p>
+<p>這題的關鍵洞察是：<strong>在合併排序的過程中，「合併」這個動作本身就會自然地暴露出反序對</strong>。因為左右兩半各自已經排好序，當右邊的元素  <code>_v[j]</code>  比左邊的  <code>_v[i]</code>  還小、需要提前放進 temp 時，代表  <code>_v[i]</code>  跟這個以及它之後所有還沒放進 temp 的右邊元素都構成反序對 —— 這就是  <code>ans += (j - mid)</code>  的意思。</p>
+<p>這種「藉助分治法的合併過程，順便算出額外資訊」的手法非常實用，之後遇到需要計算「逆序對」「區間內特殊配對數」的題目，都可以考慮往這個方向想。</p>
+<hr />
+<h1 id="低地距離apcs"><a class="anchor" href="#低地距離apcs">#</a> 低地距離（APCS）</h1>
+<p>輸入一個長度為 2n 的陣列，其中 1~n 的每個數字都剛好各 2 次。i 的低窪值的定義是兩個數值為 i 的位置中間，有幾個小於 i 的數字。以  <code>[3,1,2,1,3,2]</code>  為例，1 的低窪值為 0，2 的低窪值值為 1，3 的低窪值為 3。請對於每個 1~n 的數字都求其低窪值（兩個相同的數字之間有幾個數字比它小），輸出低窪值的總和，答案可能會超過 C++ int 的上限。</p>
+<p><strong>輸入說明</strong>：第一行有一個正整數 n，第二行有 2n 個正整數，以空格分隔，保證 1~n 每個數字都恰好出現兩次。</p>
+<p><strong>輸出說明</strong>：輸出 1~n 每個數字的低窪值總和。</p>
+<table>
+<thead>
+<tr>
+<th>範例輸入 #1</th>
+<th>範例輸出 #1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3<br>3 1 2 1 3 2</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<h2 id="解題思路-2"><a class="anchor" href="#解題思路-2">#</a> 解題思路</h2>
+<p>這一題有沒有覺得跟剛剛那題很像，覺得不像沒關西，看完圖之後就覺得像了。</p>
+<pre><code>3  1  2  1  3  2
+3  1  2  1  3  2
+3  1  2  1  3  2
+3  1  2  1  3  2
+</code></pre>
+<p>有沒有看出什麼規律，第一行是原本的數組，第二行則是判斷 1 的低地距離，因為沒有所以跟第一行一樣，第三行就不一樣了，前面比較淺的部分是判斷前面的 2 的反序數有多少個減掉後面 2 的反序數就是低地距離，第四行就更清楚了第一個 3 的反序數有 1,2,1,2，有四個減掉後面的 3 的反序數也就是只剩下一個的 2，這樣答案就出來了。</p>
+<p>這一題跟「反序數量」的關聯是：<strong>每個數字的低窪值，其實就是「這個數字第一次出現時的反序數」減掉「第二次出現時的反序數」</strong>。這是因為兩次出現之間比它小的數字，一定會在「第一次出現」時被算進反序對（因為它們在前面且比它大…… 不對，這裡要更精確一點）：關鍵在於利用<strong>同一個數字出現兩次</strong>這件事，讓合併排序在計算反序對時，能夠分別追蹤「第一次出現的貢獻」跟「第二次出現的貢獻」，兩者相減就是低窪值。</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment">// [自己的解法]</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h></span></span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">N</span> <span class="token expression"><span class="token number">100005</span></span></span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token keyword">long</span> <span class="token keyword">long</span> ans<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token keyword">void</span> <span class="token function">merge_sort</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>pair<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span><span class="token keyword">bool</span><span class="token operator">>></span><span class="token operator">&amp;</span> _v<span class="token punctuation">,</span><span class="token keyword">int</span> l<span class="token punctuation">,</span><span class="token keyword">int</span> r<span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="7"></td><td><pre>    <span class="token keyword">if</span><span class="token punctuation">(</span>l<span class="token operator">+</span><span class="token number">1</span> <span class="token operator">==</span> r<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="8"></td><td><pre>    <span class="token keyword">int</span> mid<span class="token operator">=</span><span class="token punctuation">(</span>l<span class="token operator">+</span>r<span class="token punctuation">)</span><span class="token operator">>></span><span class="token number">1</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="9"></td><td><pre>    <span class="token function">merge_sort</span><span class="token punctuation">(</span>_v<span class="token punctuation">,</span>l<span class="token punctuation">,</span>mid<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="10"></td><td><pre>    <span class="token function">merge_sort</span><span class="token punctuation">(</span>_v<span class="token punctuation">,</span>mid<span class="token punctuation">,</span>r<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="11"></td><td><pre>    <span class="token keyword">int</span> i<span class="token operator">=</span>l<span class="token punctuation">,</span>j<span class="token operator">=</span>mid<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="12"></td><td><pre>    vector<span class="token operator">&lt;</span>pair<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span><span class="token keyword">bool</span><span class="token operator">>></span> temp<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="13"></td><td><pre>    <span class="token keyword">while</span><span class="token punctuation">(</span>i<span class="token operator">&lt;</span>mid<span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="14"></td><td><pre>        <span class="token keyword">while</span><span class="token punctuation">(</span>j<span class="token operator">&lt;</span>r <span class="token operator">&amp;&amp;</span> _v<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">.</span>first<span class="token operator">&lt;</span>_v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>first<span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="15"></td><td><pre>            temp<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>_v<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">.</span>first<span class="token punctuation">,</span>_v<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">.</span>second<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="16"></td><td><pre>            j<span class="token operator">++</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="17"></td><td><pre>        <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="18"></td><td><pre>        <span class="token keyword">if</span><span class="token punctuation">(</span>_v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>second<span class="token punctuation">)</span> ans<span class="token operator">-=</span>j<span class="token operator">-</span>mid<span class="token punctuation">;</span><span class="token comment">// 第二個數字反序數要減掉</span></pre></td></tr><tr><td data-num="19"></td><td><pre>        <span class="token keyword">else</span> ans<span class="token operator">+=</span>j<span class="token operator">-</span>mid<span class="token punctuation">;</span><span class="token comment">// 第一個數字的反序數要加上</span></pre></td></tr><tr><td data-num="20"></td><td><pre>        temp<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>_v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>first<span class="token punctuation">,</span>_v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>second<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="21"></td><td><pre>        i<span class="token operator">++</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="22"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="23"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">auto</span> u<span class="token operator">:</span>temp<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="24"></td><td><pre>        _v<span class="token punctuation">[</span>l<span class="token operator">++</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">&#123;</span>u<span class="token punctuation">.</span>first<span class="token punctuation">,</span>u<span class="token punctuation">.</span>second<span class="token punctuation">&#125;</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="25"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="26"></td><td><pre><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="27"></td><td><pre>    vector<span class="token operator">&lt;</span>pair<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span><span class="token keyword">bool</span><span class="token operator">>></span> v<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="28"></td><td><pre>    <span class="token keyword">bool</span> check<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token number">0</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="29"></td><td><pre>    <span class="token keyword">int</span> n<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="30"></td><td><pre>    cin<span class="token operator">>></span>n<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="31"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>temp<span class="token punctuation">;</span>i<span class="token operator">&lt;</span><span class="token number">2</span><span class="token operator">*</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="32"></td><td><pre>        cin<span class="token operator">>></span>temp<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="33"></td><td><pre>        v<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>temp<span class="token punctuation">,</span>check<span class="token punctuation">[</span>temp<span class="token punctuation">]</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="34"></td><td><pre>        check<span class="token punctuation">[</span>temp<span class="token punctuation">]</span><span class="token operator">=</span><span class="token operator">!</span>check<span class="token punctuation">[</span>temp<span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="35"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="36"></td><td><pre>    <span class="token function">merge_sort</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token operator">*</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="37"></td><td><pre>    cout<span class="token operator">&lt;&lt;</span>ans<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="38"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><p>程式裡用一個  <code>bool</code>  標記每個數字是「第一次出現」還是「第二次出現」，然後在合併排序的過程中，第一次出現時把反序數加進答案，第二次出現時把反序數減掉 —— 兩次出現之間比它小的數字，恰好會被「加一次、減一次」抵消成只算一次，正好等於低窪值的定義。</p>
+<p>這題展示了分治法一個很重要的延伸能力：<strong>合併步驟不只可以合併「排序後的資料」，還可以順便累積任何跟順序相關的統計量</strong>，只要想清楚合併當下能得到什麼資訊。</p>
+<hr />
+<h1 id="最大連續子陣列分治"><a class="anchor" href="#最大連續子陣列分治">#</a> 最大連續子陣列（分治）</h1>
+<blockquote>
+<p>題目來源：AP325</p>
+</blockquote>
+<p>有一個整數陣列 A [0:n-1]，請計算 A 的連續子陣列的最大可能總和，空陣列的和以 0 計算。</p>
+<p><a href="/2026/08/14/1-5-%E8%B2%AA%E5%BF%83%E6%BC%94%E7%AE%97%E6%B3%95/">1-5 貪心演算法</a> 已經用「維護最小前綴和」的貪心角度解過這題，這裡用分治法的角度再解一次，體會同一題可以有不同的思路。</p>
+<h2 id="解題思路-3"><a class="anchor" href="#解題思路-3">#</a> 解題思路</h2>
+<p>把陣列切成左右兩半，最大子陣列可能存在於三個地方：完全在左半、完全在右半、或是<strong>跨越兩半</strong>。前兩種直接遞迴求解即可，第三種需要額外處理：跨越中點的最大子陣列，一定是「左半部以中點結尾的最大後綴和」加上「右半部以中點 + 1 開頭的最大前綴和」。</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment">// [來源：AP325]</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">N</span> <span class="token expression"><span class="token number">200020</span></span></span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token keyword">typedef</span> <span class="token keyword">long</span> <span class="token keyword">long</span> LL<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>LL psum<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// prefix-sum</span></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token keyword">struct</span> <span class="token class-name">Rdata</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="8"></td><td><pre>    <span class="token comment">// max-sum, max prefix-sum, max suffix-sum</span></pre></td></tr><tr><td data-num="9"></td><td><pre>    LL msum<span class="token punctuation">,</span> lmax<span class="token punctuation">,</span> rmax<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="10"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="11"></td><td><pre></pre></td></tr><tr><td data-num="12"></td><td><pre><span class="token comment">//return max in [le, ri), 左閉右開</span></pre></td></tr><tr><td data-num="13"></td><td><pre>Rdata <span class="token function">subarr</span><span class="token punctuation">(</span>LL a<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">int</span> le<span class="token punctuation">,</span> <span class="token keyword">int</span> ri<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="14"></td><td><pre>    <span class="token keyword">if</span> <span class="token punctuation">(</span>le<span class="token operator">+</span><span class="token number">1</span> <span class="token operator">==</span> ri<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="15"></td><td><pre>        LL t <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span>le<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">(</span>LL<span class="token punctuation">)</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="16"></td><td><pre>        <span class="token keyword">return</span> <span class="token punctuation">&#123;</span>t<span class="token punctuation">,</span> t<span class="token punctuation">,</span> t<span class="token punctuation">&#125;</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="17"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="18"></td><td><pre>    <span class="token keyword">int</span> mid<span class="token operator">=</span><span class="token punctuation">(</span>le<span class="token operator">+</span>ri<span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="19"></td><td><pre>    <span class="token comment">// recursively solve left and right parts</span></pre></td></tr><tr><td data-num="20"></td><td><pre>    Rdata left<span class="token operator">=</span><span class="token function">subarr</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> le<span class="token punctuation">,</span> mid<span class="token punctuation">)</span><span class="token punctuation">,</span> right<span class="token operator">=</span><span class="token function">subarr</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> mid<span class="token punctuation">,</span> ri<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="21"></td><td><pre>    Rdata my<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="22"></td><td><pre>    my<span class="token punctuation">.</span>lmax<span class="token operator">=</span><span class="token function">max</span><span class="token punctuation">(</span>left<span class="token punctuation">.</span>lmax<span class="token punctuation">,</span> psum<span class="token punctuation">[</span>mid<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">-</span>psum<span class="token punctuation">[</span>le<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">+</span>right<span class="token punctuation">.</span>lmax<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="23"></td><td><pre>    <span class="token comment">// 尋找最大前綴和在左邊還是跨越兩邊</span></pre></td></tr><tr><td data-num="24"></td><td><pre>    my<span class="token punctuation">.</span>rmax<span class="token operator">=</span><span class="token function">max</span><span class="token punctuation">(</span>right<span class="token punctuation">.</span>rmax<span class="token punctuation">,</span> psum<span class="token punctuation">[</span>ri<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">-</span>psum<span class="token punctuation">[</span>mid<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">+</span>left<span class="token punctuation">.</span>rmax<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="25"></td><td><pre>    <span class="token comment">// 尋找最大後綴和在右邊還是跨越兩邊</span></pre></td></tr><tr><td data-num="26"></td><td><pre>    my<span class="token punctuation">.</span>msum<span class="token operator">=</span><span class="token function">max</span><span class="token punctuation">(</span>left<span class="token punctuation">.</span>msum<span class="token punctuation">,</span> right<span class="token punctuation">.</span>msum<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="27"></td><td><pre>    <span class="token comment">// find largest sum cross middle</span></pre></td></tr><tr><td data-num="28"></td><td><pre>    my<span class="token punctuation">.</span>msum<span class="token operator">=</span><span class="token function">max</span><span class="token punctuation">(</span>my<span class="token punctuation">.</span>msum<span class="token punctuation">,</span> left<span class="token punctuation">.</span>rmax<span class="token operator">+</span>right<span class="token punctuation">.</span>lmax<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="29"></td><td><pre>    <span class="token keyword">return</span> my<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="30"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="31"></td><td><pre><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="32"></td><td><pre>    LL n<span class="token punctuation">,</span> a<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="33"></td><td><pre>    cin<span class="token operator">>></span>n<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="34"></td><td><pre>    a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> psum<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="35"></td><td><pre>    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="36"></td><td><pre>        cin<span class="token operator">>></span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="37"></td><td><pre>        psum<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span>psum<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">+</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="38"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="39"></td><td><pre>    cout<span class="token operator">&lt;&lt;</span><span class="token function">subarr</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span>msum<span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token operator">&lt;&lt;</span><span class="token function">subarr</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span>lmax</pre></td></tr><tr><td data-num="40"></td><td><pre><span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token operator">&lt;&lt;</span><span class="token function">subarr</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span>rmax<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="41"></td><td><pre>    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="42"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><p>最後輸出的地方我把最大前綴和跟最大後綴和都輸出了，這樣可以更清楚程式是如何前綴和跟後綴和在優化程式。我們來講一下最大區間可能在甚麼地方，最大區間可能存在於程式中分治法一刀切下去的左端前綴和或是右端後綴和或是穿越這兩端。</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre>my<span class="token punctuation">.</span>lmax<span class="token operator">=</span><span class="token function">max</span><span class="token punctuation">(</span>left<span class="token punctuation">.</span>lmax<span class="token punctuation">,</span> psum<span class="token punctuation">[</span>mid<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">-</span>psum<span class="token punctuation">[</span>le<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">+</span>right<span class="token punctuation">.</span>lmax<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>my<span class="token punctuation">.</span>rmax<span class="token operator">=</span><span class="token function">max</span><span class="token punctuation">(</span>right<span class="token punctuation">.</span>rmax<span class="token punctuation">,</span> psum<span class="token punctuation">[</span>ri<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">-</span>psum<span class="token punctuation">[</span>mid<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">+</span>left<span class="token punctuation">.</span>rmax<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr></table></figure><p>這兩行就是關鍵的地方，後方的部分就是在比較兩種穿越兩端的可能。比較黑的部分就是前面用 psum 計算出來的地方，而比較淺的地方就是直接用  <code>right.lmax</code>  跟  <code>left.rmax</code>  得出來的地方，這裡是我當初程式碼想最久的地方，不過搭配圖，我相信好理解不少。</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre>my<span class="token punctuation">.</span>msum<span class="token operator">=</span><span class="token function">max</span><span class="token punctuation">(</span>left<span class="token punctuation">.</span>msum<span class="token punctuation">,</span> right<span class="token punctuation">.</span>msum<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>my<span class="token punctuation">.</span>msum<span class="token operator">=</span><span class="token function">max</span><span class="token punctuation">(</span>my<span class="token punctuation">.</span>msum<span class="token punctuation">,</span> left<span class="token punctuation">.</span>rmax<span class="token operator">+</span>right<span class="token punctuation">.</span>lmax<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr></table></figure><p>再來是這兩行，上面那一行是在判斷說最大區間是在左邊還是右邊，下面那一行是在判斷說最大區間是穿越兩端。</p>
+<p>換句話說其實分治法就是分成兩邊各自去找答案再用兩邊得出來的結果去判斷，因為會一直遞迴下去所以最後合併答案就會出來，要注意的就是終止條件及跨越兩邊的答案合併時要注意。</p>
+<p>這題的複雜度是  <code>T(n) = 2T(n/2) + O(1)</code> （合併只需要常數時間比較），解出來是  <code>O(n)</code> —— 跟貪心解一樣快，但分治法的思路更容易推廣到二維（子矩陣最大和）等更複雜的變形。</p>
+<hr />
+<h1 id="小結"><a class="anchor" href="#小結">#</a> 小結</h1>
+<p>分治法的核心公式：<strong>分解 → 各自遞迴解決 → 合併答案</strong>。這章的四個例題展示了合併步驟可以做的事情越來越豐富：</p>
+<table>
+<thead>
+<tr>
+<th>題目</th>
+<th>合併步驟做的事</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>找最大值</td>
+<td>比較兩邊的最大值</td>
+</tr>
+<tr>
+<td>合併排序</td>
+<td>把兩個已排序陣列合併成一個</td>
+</tr>
+<tr>
+<td>反序數量</td>
+<td>合併的同時累計「跨越兩邊」的反序對數</td>
+</tr>
+<tr>
+<td>低地距離</td>
+<td>合併的同時累計「第一次／第二次出現」的反序數差</td>
+</tr>
+<tr>
+<td>最大連續子陣列</td>
+<td>合併時額外考慮「跨越中點」的解</td>
+</tr>
+</tbody>
+</table>
+<p>判斷一個問題能不能用分治法解，關鍵是看：<strong>這個問題切成兩半之後，能不能只靠「左邊的答案」「右邊的答案」外加一些額外資訊，快速合併出整體的答案</strong>。如果合併步驟的複雜度夠低（通常要求  <code>O(n)</code>  或更低），分治法就能把問題複雜度壓到  <code>O(n log n)</code> 。</p>
+<p>下一章要講<strong>動態規劃</strong>，這是全系列篇幅最長、也是變化最多的單元 —— 它跟分治法一樣是把大問題拆成小問題，但差別在於動態規劃刻意利用子問題之間的<strong>重疊性</strong>來避免重複計算。</p>
+<h1 id="練習題"><a class="anchor" href="#練習題">#</a> 練習題</h1>
+<p>（之後補上）</p>
+
+      <div class="tags">
+          <a href="/tags/C/" rel="tag"><i class="ic i-tag"></i> C++</a>
+          <a href="/tags/%E6%BC%94%E7%AE%97%E6%B3%95/" rel="tag"><i class="ic i-tag"></i> 演算法</a>
+          <a href="/tags/APCS/" rel="tag"><i class="ic i-tag"></i> APCS</a>
+          <a href="/tags/%E5%88%86%E6%B2%BB%E6%B3%95/" rel="tag"><i class="ic i-tag"></i> 分治法</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新於</span>
+    <time title="修改時間：2026-09-14 00:36:31" itemprop="dateModified" datetime="2026-09-14T00:36:31+08:00">2026-09-14</time>
+  </span>
+  <span id="2026/08/14/1-7-分治演算法/" class="item leancloud_visitors" data-flag-title="1-7 分治演算法" title="閱讀次數">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">閱讀次數</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">次</span>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>作者： </strong>Rabbir <i class="ic i-at"><em>@</em></i>プログラムを書けないうさぎは、ただのうさぎだ。
+  </li>
+  <li class="link">
+    <strong>文章連結：</strong>
+    <a href="https://rabbirreaper.github.io/2026/08/14/1-7-%E5%88%86%E6%B2%BB%E6%BC%94%E7%AE%97%E6%B3%95/" title="1-7 分治演算法">https://rabbirreaper.github.io/2026/08/14/1-7-分治演算法/</a>
+  </li>
+  <li class="license">
+    <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 許可協議。轉載請註明出處！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2026/08/14/1-6-%E6%8E%83%E6%8F%8F%E7%B7%9A%E6%BC%94%E7%AE%97%E6%B3%95/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;pub-da440be71028438aa9683b63bef5ccf1.r2.dev&#x2F;90.jpg" title="1-6 掃描線演算法">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> 演算法</span>
+  <h3>1-6 掃描線演算法</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2026/08/14/1-8-%E5%8B%95%E6%85%8B%E8%A6%8F%E5%8A%83/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;pub-da440be71028438aa9683b63bef5ccf1.r2.dev&#x2F;18.jpg" title="1-8 動態規劃">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> 演算法</span>
+  <h3>1-8 動態規劃</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目錄">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text"> 前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%86%B1%E8%BA%AB%E6%89%BE%E6%9C%80%E5%A4%A7%E5%80%BC"><span class="toc-number">2.</span> <span class="toc-text"> 熱身：找最大值</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%88%E4%BD%B5%E6%8E%92%E5%BA%8Fmerge-sort"><span class="toc-number">3.</span> <span class="toc-text"> 合併排序（Merge Sort）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#p-5-4-%E5%8F%8D%E5%BA%8F%E6%95%B8%E9%87%8Fapcs"><span class="toc-number">4.</span> <span class="toc-text"> P-5-4. 反序數量（APCS）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A1%8C%E6%80%9D%E8%B7%AF"><span class="toc-number">4.1.</span> <span class="toc-text"> 解題思路</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%8E%E5%9C%B0%E8%B7%9D%E9%9B%A2apcs"><span class="toc-number">5.</span> <span class="toc-text"> 低地距離（APCS）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A1%8C%E6%80%9D%E8%B7%AF-2"><span class="toc-number">5.1.</span> <span class="toc-text"> 解題思路</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7%E9%80%A3%E7%BA%8C%E5%AD%90%E9%99%A3%E5%88%97%E5%88%86%E6%B2%BB"><span class="toc-number">6.</span> <span class="toc-text"> 最大連續子陣列（分治）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A1%8C%E6%80%9D%E8%B7%AF-3"><span class="toc-number">6.1.</span> <span class="toc-text"> 解題思路</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90"><span class="toc-number">7.</span> <span class="toc-text"> 小結</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B7%B4%E7%BF%92%E9%A1%8C"><span class="toc-number">8.</span> <span class="toc-text"> 練習題</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li><a href="/2026/08/14/1-1-%E5%9F%BA%E6%9C%AC%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E8%88%87-STL/" rel="bookmark" title="1-1 基本資料結構與 STL">1-1 基本資料結構與 STL</a></li><li><a href="/2026/08/14/1-2-%E9%81%9E%E8%BF%B4/" rel="bookmark" title="1-2 遞迴">1-2 遞迴</a></li><li><a href="/2026/08/14/1-3-%E6%90%9C%E5%B0%8B%E6%8A%80%E5%B7%A7/" rel="bookmark" title="1-3 搜尋技巧：前綴和、雙指針、滑動視窗、二分搜">1-3 搜尋技巧：前綴和、雙指針、滑動視窗、二分搜</a></li><li><a href="/2026/08/14/1-4-%E7%AA%AE%E8%88%89%E6%9A%B4%E6%90%9C%E8%88%87%E5%9B%9E%E6%BA%AF%E6%B3%95/" rel="bookmark" title="1-4 窮舉暴搜與回溯法">1-4 窮舉暴搜與回溯法</a></li><li><a href="/2026/08/14/1-5-%E8%B2%AA%E5%BF%83%E6%BC%94%E7%AE%97%E6%B3%95/" rel="bookmark" title="1-5 貪心演算法">1-5 貪心演算法</a></li><li><a href="/2026/08/14/1-6-%E6%8E%83%E6%8F%8F%E7%B7%9A%E6%BC%94%E7%AE%97%E6%B3%95/" rel="bookmark" title="1-6 掃描線演算法">1-6 掃描線演算法</a></li><li class="active"><a href="/2026/08/14/1-7-%E5%88%86%E6%B2%BB%E6%BC%94%E7%AE%97%E6%B3%95/" rel="bookmark" title="1-7 分治演算法">1-7 分治演算法</a></li><li><a href="/2026/08/14/1-8-%E5%8B%95%E6%85%8B%E8%A6%8F%E5%8A%83/" rel="bookmark" title="1-8 動態規劃">1-8 動態規劃</a></li><li><a href="/2026/08/14/1-9-%E5%9F%BA%E6%9C%AC%E5%9C%96%E8%AB%96%E6%BC%94%E7%AE%97%E6%B3%95/" rel="bookmark" title="1-9 基本圖論演算法">1-9 基本圖論演算法</a></li><li><a href="/2026/08/14/1-10-%E6%A8%B9%E4%B8%8A%E6%BC%94%E7%AE%97%E6%B3%95/" rel="bookmark" title="1-10 樹上演算法">1-10 樹上演算法</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="本站概要">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Rabbir"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">Rabbir</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">109</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">14</span>
+        <span class="name">分類</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">49</span>
+        <span class="name">標籤</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>首頁</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>關於</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>歸檔</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分類</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>標籤</a>
+  </li>
+
+  </ul>
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2026/08/14/1-6-%E6%8E%83%E6%8F%8F%E7%B7%9A%E6%BC%94%E7%AE%97%E6%B3%95/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2026/08/14/1-8-%E5%8B%95%E6%85%8B%E8%A6%8F%E5%8A%83/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>隨機文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/" title="分類於 加密文章">加密文章</a>
+</div>
+
+    <span><a href="/2026/07/03/%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5%E7%AD%86%E8%A8%98/" title="深度學習核心概念筆記">深度學習核心概念筆記</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/19/Q-2-4-%E5%BF%AB%E9%80%9F%E5%86%AA-200-%E4%BD%8D%E6%95%B4%E6%95%B8/" title="Q-2-4. 快速冪--200 位整數">Q-2-4. 快速冪--200 位整數</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/APCS-%E6%A8%A1%E6%93%AC%E5%9C%98%E9%9A%8A/" title="分類於 APCS 模擬團隊">APCS 模擬團隊</a>
+</div>
+
+    <span><a href="/2025/01/18/apcs0103%E6%A8%B9%E8%A3%A1%E8%B3%87%E5%84%AA%E7%8F%AD-Tree-Gifted-Class/" title="apcs0103樹裡資優班 (Tree Gifted Class)">apcs0103樹裡資優班 (Tree Gifted Class)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/18/Q-2-10-%E5%AD%90%E9%9B%86%E5%90%88%E7%9A%84%E5%92%8C-%E6%8A%98%E5%8D%8A%E6%9E%9A%E8%88%89/" title="Q-2-10. 子集合的和(折半枚舉)">Q-2-10. 子集合的和(折半枚舉)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E6%95%99%E5%AD%B8/" title="分類於 教學">教學</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E6%95%99%E5%AD%B8/%E6%BC%94%E7%AE%97%E6%B3%95/" title="分類於 演算法">演算法</a>
+</div>
+
+    <span><a href="/2026/08/14/1-2-%E9%81%9E%E8%BF%B4/" title="1-2 遞迴">1-2 遞迴</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/18/Q-4-16-%E8%B3%BA%E9%8C%A2%E8%88%87%E7%BD%B0%E6%AC%BE/" title="Q-4-16. 賺錢與罰款">Q-4-16. 賺錢與罰款</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/APCS/" title="分類於 APCS">APCS</a>
+</div>
+
+    <span><a href="/2025/01/19/j608-4-%E6%A9%9F%E5%99%A8%E5%87%BA%E7%A7%9F/" title="j608. 4. 機器出租">j608. 4. 機器出租</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/%E5%85%B6%E4%BB%96/" title="分類於 其他">其他</a>
+</div>
+
+    <span><a href="/2025/01/18/a120-%E4%B8%AD%E7%BD%AE%E5%BC%8F%E8%BD%89%E5%BE%8C%E7%BD%AE%E5%BC%8F/" title="a120 中置式轉後置式">a120 中置式轉後置式</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/CHSH-OJ/" title="分類於 CHSH OJ">CHSH OJ</a>
+</div>
+
+    <span><a href="/2025/01/18/c004-%E5%85%B5%E9%95%B7%E7%A0%8D%E7%8C%B4/" title="c004 兵長砍猴">c004 兵長砍猴</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E6%95%99%E5%AD%B8/" title="分類於 教學">教學</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E6%95%99%E5%AD%B8/%E6%BC%94%E7%AE%97%E6%B3%95/" title="分類於 演算法">演算法</a>
+</div>
+
+    <span><a href="/2026/08/14/1-6-%E6%8E%83%E6%8F%8F%E7%B7%9A%E6%BC%94%E7%AE%97%E6%B3%95/" title="1-6 掃描線演算法">1-6 掃描線演算法</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新評論</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2025 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Rabbir @ Rabbir Reaper</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="總字數">486k 字</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">7:22</span>
+  </div>
+  <div class="powered-by">
+    基於 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2026/08/14/1-7-分治演算法/',
+    favicon: {
+      show: "（●´3｀●）復活成功",
+      hide: "(´Д｀)瀏覽器崩潰啦"
+    },
+    search : {
+      placeholder: "文章搜尋",
+      empty: "關於 「 ${query} 」 ，什麼也沒搜到",
+      stats: "${time} ms 內找到 ${hits} 條結果"
+    },
+    valine: true,fancybox: true,
+    copyright: '複製成功，轉載請遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 協議。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

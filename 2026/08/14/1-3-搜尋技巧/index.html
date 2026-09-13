@@ -1,0 +1,720 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/https:/pub-da440be71028438aa9683b63bef5ccf1.r2.devimages/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/https:/pub-da440be71028438aa9683b63bef5ccf1.r2.dev/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="プログラムを書けないうさぎは、ただのうさぎだ。" href="https://rabbirreaper.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="プログラムを書けないうさぎは、ただのうさぎだ。" href="https://rabbirreaper.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="プログラムを書けないうさぎは、ただのうさぎだ。" href="https://rabbirreaper.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="C++,演算法,APCS,二分搜" />
+
+
+<link rel="canonical" href="https://rabbirreaper.github.io/2026/08/14/1-3-%E6%90%9C%E5%B0%8B%E6%8A%80%E5%B7%A7/">
+
+
+
+  <title>
+1-3 搜尋技巧：前綴和、雙指針、滑動視窗、二分搜 - 演算法 - 教學 |
+Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎだ。</title>
+<meta name="generator" content="Hexo 8.1.1"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">1-3 搜尋技巧：前綴和、雙指針、滑動視窗、二分搜
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="創建時間：2026-08-14 10:20:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">發表於</span>
+    <time itemprop="dateCreated datePublished" datetime="2026-08-14T10:20:00+08:00">2026-08-14</time>
+  </span>
+  <span class="item" title="文章字數">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">文章字數</span>
+    <span>7.3k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="所需閱讀時間">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">所需閱讀時間</span>
+    <span>7 分鐘</span>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切換導航欄">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Rabbir Reaper</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/34.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/63.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/6.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/14.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/59.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/28.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首頁</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E6%95%99%E5%AD%B8/" itemprop="item" rel="index" title="分類於 教學"><span itemprop="name">教學</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E6%95%99%E5%AD%B8/%E6%BC%94%E7%AE%97%E6%B3%95/" itemprop="item" rel="index" title="分類於 演算法"><span itemprop="name">演算法</span></a>
+<meta itemprop="position" content="2" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-TW">
+  <link itemprop="mainEntityOfPage" href="https://rabbirreaper.github.io/2026/08/14/1-3-%E6%90%9C%E5%B0%8B%E6%8A%80%E5%B7%A7/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/https:/pub-da440be71028438aa9683b63bef5ccf1.r2.dev/images/avatar.jpg">
+    <meta itemprop="name" content="Rabbir">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="プログラムを書けないうさぎは、ただのうさぎだ。">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="前言"><a class="anchor" href="#前言">#</a> 前言</h1>
+<p>這一章講的東西不是單一演算法，而是一組<strong>把暴力解優化成可通過解</strong>的共同技巧：前綴和、雙指針、滑動視窗、二分搜。它們的共同精神都是：<strong>利用資料的某種性質（單調性、可累加性），省略不必要的重複計算</strong>。</p>
+<p>這章我把 AP325 講義裡分散在各章節的技巧集中起來，並參考 2023 CISCON《Searching》課程（高睿）的架構重新整理。</p>
+<hr />
+<h1 id="建表預處理preprocessing"><a class="anchor" href="#建表預處理preprocessing">#</a> 建表（預處理，preprocessing）</h1>
+<p>最基本也最容易被忽略的技巧：<strong>預先處理好一個表，當要用到某個資訊時直接拿表裡算過的資訊，避免重複計算</strong>。跟 DP 的精神很像，都有不重複計算相同問題的概念。</p>
+<h2 id="範例骰子湊分數"><a class="anchor" href="#範例骰子湊分數">#</a> 範例：骰子湊分數</h2>
+<blockquote>
+<p>題目來源：CISCON 2023 Searching（Ten Point Round #11 C. Gunjyo 與骰子）</p>
+</blockquote>
+<p>有三顆 100 面骰，每顆骰子的點數都是 1~100，當同時骰了三顆骰子時，點數分別為 a,b,c，那得到的分數可以是  <code>a+b+c</code> 、 <code>a+b×c</code> 、 <code>a×b+c</code> 、 <code>a×b×c</code> 。給 Q 筆詢問，每筆詢問給一個 x，問有幾種方式湊出 x 分。</p>
+<p><strong>限制</strong>：1≤Q≤2×10<sup>5，1≤x≤10</sup>6</p>
+<p>若每次詢問都重算一次結果，複雜度為  <code>O(Q×100^3)</code> ，很明顯會 TLE。但若我們預先將每個 x 的答案都記錄起來，複雜度會變為  <code>O(100^3 + Q)</code> 。</p>
+<p>做法：開一個陣列紀錄答案，用三層迴圈枚舉 a、b、c 的點數，每次枚舉出 a,b,c 時，將陣列中 a,b,c 能變成的四種分數都加一。最後陣列中的每個  <code>index[x]</code>  儲存的，就會是 x 能用幾種方式湊出來。接下來每筆詢問，就可以用  <code>O(1)</code>  的方式得到答案。</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment">// [來源：CISCON 2023]</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">void</span> <span class="token function">solve</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="3"></td><td><pre>    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>a<span class="token operator">&lt;=</span>MAX_N<span class="token punctuation">;</span>a<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="4"></td><td><pre>        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> b<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>b<span class="token operator">&lt;=</span>MAX_N<span class="token punctuation">;</span>b<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="5"></td><td><pre>            <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> c<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>c<span class="token operator">&lt;=</span>MAX_N<span class="token punctuation">;</span>c<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>                an<span class="token punctuation">[</span>a<span class="token operator">+</span>b<span class="token operator">+</span>c<span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="7"></td><td><pre>                an<span class="token punctuation">[</span>a<span class="token operator">+</span>b<span class="token operator">*</span>c<span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="8"></td><td><pre>                an<span class="token punctuation">[</span>a<span class="token operator">*</span>b<span class="token operator">+</span>c<span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="9"></td><td><pre>                an<span class="token punctuation">[</span>a<span class="token operator">*</span>b<span class="token operator">*</span>c<span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="10"></td><td><pre>            <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="11"></td><td><pre>        <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="12"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="13"></td><td><pre>    <span class="token keyword">int</span> Q<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="14"></td><td><pre>    cin <span class="token operator">>></span> Q<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="15"></td><td><pre>    <span class="token keyword">while</span><span class="token punctuation">(</span>Q<span class="token operator">--</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="16"></td><td><pre>        <span class="token keyword">int</span> x<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="17"></td><td><pre>        cin <span class="token operator">>></span> x<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="18"></td><td><pre>        cout <span class="token operator">&lt;&lt;</span> an<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> <span class="token string">"\n"</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="19"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="20"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><p>如果碰到感覺類似的題目，可能組成的答案數量不多（如 2×10^5 內），但答案可能的數字很大時，可以不用陣列，改用 map 來儲存答案。雖然這樣每個詢問的複雜度都會多一個 log，但在很多情況下還是比每次詢問再算答案還要來的好。</p>
+<h2 id="前綴和prefix-sum"><a class="anchor" href="#前綴和prefix-sum">#</a> 前綴和（Prefix Sum）</h2>
+<p>前綴和是最常見的建表技巧，用於快速計算陣列中前綴元素總和的算法。它可以在  <code>O(1)</code>  的時間複雜度內回答關於陣列中任意區間和的問題。</p>
+<p>具體來說，如果我們有一個長度為 n 的陣列  <code>a[]</code> ，則前綴和  <code>p[i]</code>  表示從  <code>a[0]</code>  到  <code>a[i]</code>  的元素之和，即：</p>
+<pre><code>p[0] = a[0]
+p[1] = a[0] + a[1]
+p[2] = a[0] + a[1] + a[2]
+...
+p[i] = a[0] + a[1] + ... + a[i]
+</code></pre>
+<p>可以看出， <code>p[i]</code>  可以通過  <code>p[i-1]</code>  和  <code>a[i]</code>  計算出來： <code>p[i] = p[i-1] + a[i]</code> 。</p>
+<p>使用前綴和，我們可以在  <code>O(1)</code>  的時間內回答如下問題：</p>
+<ul>
+<li>給定區間 [l, r]，求  <code>a[l]+a[l+1]+...+a[r]</code>  的值：只要  <code>p[r] - p[l-1]</code></li>
+<li>給定區間 [l, r]，求  <code>a[l]*1+a[l+1]*2+...+a[r]*(r-l+1)</code>  的值（力矩型），可以搭配「前綴和的前綴和」</li>
+</ul>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">int</span> psum<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>psum<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="4"></td><td><pre>    psum<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> psum<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="5"></td><td><pre></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token comment">// 查詢 [l, r] 的區間和（l > 0）</span></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token keyword">int</span> rangeSum <span class="token operator">=</span> psum<span class="token punctuation">[</span>r<span class="token punctuation">]</span> <span class="token operator">-</span> psum<span class="token punctuation">[</span>l<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr></table></figure><p>前綴和算法常用於解決涉及區間和的問題，比如最大子陣列問題和子矩陣求和問題。這一章開頭「支點切割」那題（見 <a href="/2026/08/14/1-2-%E9%81%9E%E8%BF%B4/">1-2 遞迴</a>）就是用左右兩個方向的前綴和快速算出力矩總和。</p>
+<p><strong>二維前綴和</strong>同理，用來  <code>O(1)</code>  查詢子矩陣和：</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment">// [來源：本文補充，待替換]</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token comment">//psum [i][j] = 從 (0,0) 到 (i,j) 這個矩形的總和</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="4"></td><td><pre>    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;=</span> m<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span></pre></td></tr><tr><td data-num="5"></td><td><pre>        psum<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> psum<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> psum<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> psum<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="6"></td><td><pre></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token comment">// 查詢子矩陣 [x1,y1] 到 [x2,y2] 的和</span></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token keyword">int</span> sum <span class="token operator">=</span> psum<span class="token punctuation">[</span>x2<span class="token punctuation">]</span><span class="token punctuation">[</span>y2<span class="token punctuation">]</span> <span class="token operator">-</span> psum<span class="token punctuation">[</span>x1<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>y2<span class="token punctuation">]</span> <span class="token operator">-</span> psum<span class="token punctuation">[</span>x2<span class="token punctuation">]</span><span class="token punctuation">[</span>y1<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> psum<span class="token punctuation">[</span>x1<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>y1<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr></table></figure><hr />
+<h1 id="雙指針two-pointers"><a class="anchor" href="#雙指針two-pointers">#</a> 雙指針（Two Pointers）</h1>
+<p>跟枚舉有點像，利用一些性質，來省略不必要的枚舉，實作上真的就是兩個指針在跑。</p>
+<h2 id="範例兩個遞增序列的和"><a class="anchor" href="#範例兩個遞增序列的和">#</a> 範例：兩個遞增序列的和</h2>
+<p>有兩個長度為 n 且遞增的序列 A, B，你可以從中各選擇一個數，問有幾種選法會使選擇的兩個數的和大於 m。</p>
+<p><strong>限制</strong>：1≤n≤2×10^5</p>
+<p>暴力解是雙層迴圈枚舉 A、B 各一個數， <code>O(n^2)</code> 。但注意到 A、B 都是遞增的，這件事就給了我們單調性：如果  <code>A[i] + B[j] &gt; m</code> ，那麼  <code>A[i] + B[j+1], A[i] + B[j+2], ...</code>  一定也都大於 m（因為 B 遞增）。</p>
+<p>利用這個性質，可以讓一個指針固定往一個方向移動，另一個指針跟著調整，兩個指針總移動次數不超過  <code>2n</code> ，所以整體是  <code>O(n)</code> 。</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment">// [來源：本文補充，待替換]</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token comment">// A, B 已由小到大排序</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">long</span> <span class="token keyword">long</span> cnt <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token keyword">int</span> j <span class="token operator">=</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>    <span class="token keyword">while</span> <span class="token punctuation">(</span>j <span class="token operator">>=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> A<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> B<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">></span> m<span class="token punctuation">)</span> j<span class="token operator">--</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="7"></td><td><pre>    <span class="token comment">// 此時 B [j+1..n-1] 都能與 A [i] 湊出超過 m 的和</span></pre></td></tr><tr><td data-num="8"></td><td><pre>    cnt <span class="token operator">+=</span> n <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">-</span> j<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="9"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><h2 id="範例cses-1640-sum-of-two-values"><a class="anchor" href="#範例cses-1640-sum-of-two-values">#</a> 範例：CSES 1640 Sum of Two Values</h2>
+<p>有個長度為 n 的序列 a 和數字 m，求兩個不同的位置 i,j 滿足  <code>a[i]+a[j]=m</code> 。</p>
+<p><strong>限制</strong>：1≤n≤2×10^5</p>
+<p>排序後用左右兩個指針從兩端往中間夾：如果當前和太小，左指針右移；太大，右指針左移；相等就找到答案。因為排序後具有單調性，這樣可以保證不漏掉任何解，複雜度  <code>O(n log n)</code> （含排序）。</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment">// [來源：本文補充，待替換]</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token function">sort</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> a<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">int</span> l <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> r <span class="token operator">=</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token keyword">while</span> <span class="token punctuation">(</span>l <span class="token operator">&lt;</span> r<span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="5"></td><td><pre>    <span class="token keyword">long</span> <span class="token keyword">long</span> sum <span class="token operator">=</span> a<span class="token punctuation">[</span>l<span class="token punctuation">]</span> <span class="token operator">+</span> a<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>    <span class="token keyword">if</span> <span class="token punctuation">(</span>sum <span class="token operator">==</span> m<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">/* 找到答案 */</span> <span class="token keyword">break</span><span class="token punctuation">;</span> <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="7"></td><td><pre>    <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>sum <span class="token operator">&lt;</span> m<span class="token punctuation">)</span> l<span class="token operator">++</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="8"></td><td><pre>    <span class="token keyword">else</span> r<span class="token operator">--</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="9"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><h2 id="範例cses-1641-sum-of-three-values"><a class="anchor" href="#範例cses-1641-sum-of-three-values">#</a> 範例：CSES 1641 Sum of Three Values</h2>
+<p>同樣的序列，求三個不同位置 i,j,k 滿足  <code>a[i]+a[j]+a[k]=m</code> 。</p>
+<p><strong>限制</strong>：1≤n≤5000</p>
+<p>這是雙指針很典型的<strong>升維應用</strong>：外層固定一個數  <code>a[i]</code> ，內層對剩下的部分做「Sum of Two Values」。外層  <code>O(n)</code> ，內層  <code>O(n)</code> ，整體  <code>O(n^2)</code> ，在 n≤5000 的限制下完全可以接受。</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment">// [來源：本文補充，待替換]</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token function">sort</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> a<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="4"></td><td><pre>    <span class="token keyword">int</span> l <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> r <span class="token operator">=</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="5"></td><td><pre>    <span class="token keyword">long</span> <span class="token keyword">long</span> target <span class="token operator">=</span> m <span class="token operator">-</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>    <span class="token keyword">while</span> <span class="token punctuation">(</span>l <span class="token operator">&lt;</span> r<span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="7"></td><td><pre>        <span class="token keyword">long</span> <span class="token keyword">long</span> sum <span class="token operator">=</span> a<span class="token punctuation">[</span>l<span class="token punctuation">]</span> <span class="token operator">+</span> a<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="8"></td><td><pre>        <span class="token keyword">if</span> <span class="token punctuation">(</span>sum <span class="token operator">==</span> target<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">/* 找到答案 (i,l,r) */</span> <span class="token keyword">break</span><span class="token punctuation">;</span> <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="9"></td><td><pre>        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>sum <span class="token operator">&lt;</span> target<span class="token punctuation">)</span> l<span class="token operator">++</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="10"></td><td><pre>        <span class="token keyword">else</span> r<span class="token operator">--</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="11"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="12"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><p>這個「固定一維，剩下用雙指針」的模式非常常見，之後遇到 k-sum 系列的題目都可以照這個套路往上疊。</p>
+<hr />
+<h1 id="滑動視窗sliding-window"><a class="anchor" href="#滑動視窗sliding-window">#</a> 滑動視窗（Sliding Window）</h1>
+<p>滑動視窗其實也是雙指針的一種，因為實際過程像是一個視窗不斷的平移，而得到這個名稱。跟一般雙指針的差別是：滑動視窗維護的是一個<strong>連續區間</strong>，並且這個區間會隨著左右指針同時往右移動。</p>
+<h2 id="範例固定和上限的區間數"><a class="anchor" href="#範例固定和上限的區間數">#</a> 範例：固定和上限的區間數</h2>
+<p>給一個長度為 n 的序列 a 和數字 s，問 a 中有幾個區間滿足區間內元素的和不大於 s。</p>
+<p><strong>限制</strong>：1≤n≤2×10^5，1≤a 的任意元素≤10<sup>9，1≤s≤10</sup>18</p>
+<p>因為題目的元素都是正數，<strong>區間和具有單調性</strong>：右界固定時，左界越往右，區間和越小；左界固定時，右界越往右，區間和越大。這正是滑動視窗能用的條件。</p>
+<p>作法：維護一個視窗 [l, r]，r 一路往右擴張；每次擴張後，只要視窗內的和超過 s，就把 l 往右縮，直到和不超過 s 為止。因為 l 跟 r 都只會往同一個方向移動，兩者總移動次數合計是  <code>O(n)</code> ，所以整體複雜度是  <code>O(n)</code> 。</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment">// [來源：本文補充，待替換]</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">long</span> <span class="token keyword">long</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> ans <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">int</span> l <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> r <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> r <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> r<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="5"></td><td><pre>    sum <span class="token operator">+=</span> a<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>    <span class="token keyword">while</span> <span class="token punctuation">(</span>sum <span class="token operator">></span> s<span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="7"></td><td><pre>        sum <span class="token operator">-=</span> a<span class="token punctuation">[</span>l<span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="8"></td><td><pre>        l<span class="token operator">++</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="9"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="10"></td><td><pre>    ans <span class="token operator">+=</span> r <span class="token operator">-</span> l <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>   <span class="token comment">// 以 r 結尾、和不超過 s 的區間數</span></pre></td></tr><tr><td data-num="11"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure><h2 id="範例leetcode-76-minimum-window-substring"><a class="anchor" href="#範例leetcode-76-minimum-window-substring">#</a> 範例：leetcode 76. Minimum Window Substring</h2>
+<p>給兩個字串 s, t，問 s 中最小的區間，滿足 t 的每個字元在該區間中皆能對應到一個與自己相同的字元（t 中重複出現的字元不可對應到選中區間中相同的字元），並輸出這個區間的所有字元。</p>
+<p><strong>限制</strong>：1 ≤ s.size (), t.size () ≤ 2×10^5，s 與 t 的所有字元皆為英文字母</p>
+<p>這是滑動視窗處理字元計數問題的經典模板：用一個 map 或陣列紀錄「還缺多少種字元」，右指針擴張視窗直到涵蓋了 t 的所有字元，接著左指針盡量縮小視窗（同時維持涵蓋條件），紀錄過程中最短的合法區間。因為左右指針都只往右移動，複雜度是  <code>O(|s| + |t|)</code> 。</p>
+<p>這題我在這裡只點出思路，實作留給讀者練習 —— 這正是滑動視窗最典型的應用場景：「找滿足某個條件的最短／最長連續區間」。</p>
+<h2 id="判斷能不能用滑動視窗的關鍵"><a class="anchor" href="#判斷能不能用滑動視窗的關鍵">#</a> 判斷能不能用滑動視窗的關鍵</h2>
+<p>滑動視窗（以及雙指針）能用的前提是<strong>單調性</strong>：當視窗擴大，某個要檢查的量只會往一個方向變化（例如和只會變大、種類數只會變多）。沒有這個性質，指針就無法保證不漏解、不重複，這時候還是得回到暴力枚舉，或考慮其他資料結構。</p>
+<hr />
+<h1 id="二分搜binary-search"><a class="anchor" href="#二分搜binary-search">#</a> 二分搜（Binary Search）</h1>
+<h2 id="核心概念"><a class="anchor" href="#核心概念">#</a> 核心概念</h2>
+<p>每個人的二分搜都有自己的寫法，平時只要用自己最熟悉的方式就好了。核心概念在於「二分」：如果把問題一般化，想像有一個由 0/1 組成的序列，任意 0 都在任意 1 的左邊（如  <code>00011</code> ），用二分搜的方式找出從左往右第一個出現的 1 是在哪個位置。</p>
+<p>這正是 <a href="/2026/08/14/1-1-%E5%9F%BA%E6%9C%AC%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E8%88%87-STL/">1-1</a> 提到的自寫二分搜的核心思路：把「是否滿足條件」看成一串 0/1，二分搜就是在找 0 跟 1 的分界點。</p>
+<h2 id="二分搜的常見-bug"><a class="anchor" href="#二分搜的常見-bug">#</a> 二分搜的常見 bug</h2>
+<p>雖然二分搜本身的概念不難，但細節和寫法都很多，還容易出 bug。常見的錯誤：</p>
+<ol>
+<li><strong>沒有單調性</strong>：忘記排序、或題目本來就不符合二分搜的前提</li>
+<li><strong>初始左右界設錯</strong>：導致  <code>L~R</code>  太小，答案不再搜尋範圍中；或 L 太小、R 太大，得到 mid 後卻在計算過程 overflow</li>
+<li><strong> <code>L+R</code>  時 overflow</strong>：兩個很大的數相加可能超過 int 範圍</li>
+<li><strong>負數運算</strong>： <code>/</code>  對負數是無條件捨去絕對值（趨向 0），跟數學上的「向下取整」不同，容易造成 mid 算錯</li>
+</ol>
+<p>解決方法：</p>
+<ul>
+<li>思考極端狀況下 L 跟 R 的範圍，若是怕範圍太大計算數值時 overflow，則 L 跟 R 可以用數學公式算，或者就在計算前先特判會不會 overflow</li>
+<li>針對第 3、4 點：<strong>將寫法從  <code>(L+R)/2</code>  改為  <code>L+(R-L)/2</code> </strong></li>
+</ul>
+<p>為什麼  <code>L+(R-L)/2</code>  可以解決負數運算的問題？因為  <code>R-L</code>  一定是正數（假設 L ≤ R），所以  <code>(R-L)/2</code>  一定是正確的向下取整，不會受到 C++ 對負數除法「趨向 0 捨去」的特性影響。同時  <code>R-L</code>  通常比  <code>L+R</code>  小很多，也降低了 overflow 的風險。</p>
+<h2 id="該想清楚的三個細節"><a class="anchor" href="#該想清楚的三個細節">#</a> 該想清楚的三個細節</h2>
+<p>寫二分搜之前，先想清楚這三件事，可以避免大部分的 bug：</p>
+<ol>
+<li><strong>當前區間大小為 2 時，mid 會指向左邊還右邊的元素？</strong>（取決於  <code>(l+r)/2</code>  是向下取整）</li>
+<li><strong>當 L 跟 R 移動時，它們跟 mid 的關係是什麼？</strong>（L 會不會設成 mid，還是 mid+1？R 同理）</li>
+<li><strong>當跳出迴圈時，答案的位置跟 L 或 R 的關係是什麼？</strong></li>
+</ol>
+<p>這三點沒想清楚就照抄模板，很容易出現差一個的錯誤（off-by-one）。我自己習慣用左閉右開區間（見 <a href="/2026/08/14/1-1-%E5%9F%BA%E6%9C%AC%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E8%88%87-STL/">1-1</a> 的  <code>binary_search</code>  寫法），因為終止條件跟區間定義都很明確，不容易搞混。</p>
+<h2 id="c-內建的二分搜工具"><a class="anchor" href="#c-內建的二分搜工具">#</a> C++ 內建的二分搜工具</h2>
+<ul>
+<li><code>binary_search(it_L, it_R, val)</code> ：回傳一個 bool，代表在  <code>[it_L, it_R)</code>  中是否有找到 val</li>
+<li><code>lower_bound(it_L, it_R, val)</code> ：回傳一個 iterator，指向  <code>[it_L, it_R)</code>  中第一個不小於 val 的位置</li>
+<li><code>upper_bound(it_L, it_R, val)</code> ：回傳一個 iterator，指向  <code>[it_L, it_R)</code>  中第一個大於 val 的位置</li>
+</ul>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment">// [來源：CISCON 2023]</span></pre></td></tr><tr><td data-num="2"></td><td><pre>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> a<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="3"></td><td><pre>cout <span class="token operator">&lt;&lt;</span> <span class="token function">binary_search</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>a<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">"\n"</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token keyword">auto</span> it1<span class="token operator">=</span><span class="token function">lower_bound</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>a<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="5"></td><td><pre>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"pos="</span> <span class="token operator">&lt;&lt;</span> it1<span class="token operator">-</span>a<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">" val="</span> <span class="token operator">&lt;&lt;</span> <span class="token operator">*</span>it1 <span class="token operator">&lt;&lt;</span> <span class="token string">"\n"</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token keyword">auto</span> it2<span class="token operator">=</span><span class="token function">upper_bound</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>a<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="7"></td><td><pre>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"pos="</span> <span class="token operator">&lt;&lt;</span> it2<span class="token operator">-</span>a<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">" val="</span> <span class="token operator">&lt;&lt;</span> <span class="token operator">*</span>it2 <span class="token operator">&lt;&lt;</span> <span class="token string">"\n"</span><span class="token punctuation">;</span></pre></td></tr></table></figure><p>輸出：</p>
+<pre><code>1
+pos=2 val=3
+pos=3 val=6
+</code></pre>
+<p>使用內建工具的好處：比自己寫快，而且只要使用方式正確就能避免出錯（前提是資料真的排序好了）。</p>
+<p><strong>注意</strong>：這些函式使用的前提是<strong>資料已經由小到大排序</strong>。如果需要由大到小或其他自訂順序，要嘛自己實作二分搜（見 <a href="/2026/08/14/1-1-%E5%9F%BA%E6%9C%AC%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E8%88%87-STL/">1-1</a>），要嘛傳入自訂的比較函式。</p>
+<hr />
+<h1 id="對答案二分搜"><a class="anchor" href="#對答案二分搜">#</a> 對答案二分搜</h1>
+<p>對答案二分搜，顧名思義就是對答案二分搜。使用時機：<strong>發現答案符合 0/1 序列的性質，且不會 TLE 時</strong>。</p>
+<p>這是二分搜最強大的應用，也是很多「看起來不像二分搜」的題目的真正解法。核心想法是：與其直接求答案，不如把問題轉換成「答案是不是至少 x？」這個 yes/no 問題，如果這個判斷式（通常叫  <code>check(x)</code> ）具有單調性（x 越大越容易滿足，或越小越容易滿足），就可以對 x 二分搜。</p>
+<h2 id="範例cses-1620-factory-machines"><a class="anchor" href="#範例cses-1620-factory-machines">#</a> 範例：CSES 1620 Factory Machines</h2>
+<p>有 n 台機器，第 i 台機器可以用  <code>k[i]</code>  的時間製造一個產品，問製造 t 個產品最少需要多久。</p>
+<p><strong>限制</strong>：1≤n≤2×10<sup>5，1≤t≤10</sup>9，1≤k[i]≤10^9</p>
+<p>直接求「最少需要多久」不好想，但反過來問「給定時間 x，是否能在 x 時間內做出至少 t 個產品？」就很好判斷 —— 只要把每台機器在 x 時間內能做的量  <code>x/k[i]</code>  加總，看是否 ≥ t 即可，這是  <code>O(n)</code> 。</p>
+<p>而這個判斷式滿足單調性：時間 x 越長，能做出的產品數量只會越多（不會變少）。所以可以對「時間」這個答案做二分搜，每次呼叫一次  <code>check(x)</code>  判斷，外層二分搜是  <code>O(log(範圍))</code> ，整體複雜度  <code>O(n log(範圍))</code> 。</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment">// [來源：本文補充，待替換]</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">bool</span> <span class="token function">check</span><span class="token punctuation">(</span><span class="token keyword">long</span> <span class="token keyword">long</span> x<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">long</span> <span class="token keyword">long</span><span class="token operator">></span><span class="token operator">&amp;</span> k<span class="token punctuation">,</span> <span class="token keyword">long</span> <span class="token keyword">long</span> t<span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="3"></td><td><pre>    <span class="token keyword">long</span> <span class="token keyword">long</span> produced <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="4"></td><td><pre>    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">long</span> <span class="token keyword">long</span> ki <span class="token operator">:</span> k<span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="5"></td><td><pre>        produced <span class="token operator">+=</span> x <span class="token operator">/</span> ki<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>        <span class="token keyword">if</span> <span class="token punctuation">(</span>produced <span class="token operator">>=</span> t<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>  <span class="token comment">// 提早結束，避免 overflow</span></pre></td></tr><tr><td data-num="7"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="8"></td><td><pre>    <span class="token keyword">return</span> produced <span class="token operator">>=</span> t<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="9"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="10"></td><td><pre></pre></td></tr><tr><td data-num="11"></td><td><pre><span class="token keyword">long</span> <span class="token keyword">long</span> l <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> r <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">long</span> <span class="token keyword">long</span><span class="token punctuation">)</span><span class="token number">2e18</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="12"></td><td><pre><span class="token keyword">while</span> <span class="token punctuation">(</span>l <span class="token operator">&lt;</span> r<span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="13"></td><td><pre>    <span class="token keyword">long</span> <span class="token keyword">long</span> mid <span class="token operator">=</span> l <span class="token operator">+</span> <span class="token punctuation">(</span>r <span class="token operator">-</span> l<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="14"></td><td><pre>    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">check</span><span class="token punctuation">(</span>mid<span class="token punctuation">,</span> k<span class="token punctuation">,</span> t<span class="token punctuation">)</span><span class="token punctuation">)</span> r <span class="token operator">=</span> mid<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="15"></td><td><pre>    <span class="token keyword">else</span> l <span class="token operator">=</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="16"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="17"></td><td><pre><span class="token comment">//l 即為答案</span></pre></td></tr></table></figure><h2 id="判斷能不能用對答案二分搜"><a class="anchor" href="#判斷能不能用對答案二分搜">#</a> 判斷能不能用對答案二分搜</h2>
+<p>拿到一題如果直接求答案很難，但「答案是否至少（或至多）為 x」這件事容易判斷，而且隨著 x 增加，判斷結果具有單調性（一旦從否變成是，就不會再變回否），就可以考慮對答案二分搜。這在<strong>最大化最小值 / 最小化最大值</strong>類型的題目中特別常見（後面圖論章節的「蓋步道」就是這個套路）。</p>
+<hr />
+<h1 id="對浮點數二分搜"><a class="anchor" href="#對浮點數二分搜">#</a> 對浮點數二分搜</h1>
+<p>跟對答案二分搜的精神一樣，只是答案本身是浮點數。使用時機同樣是：發現答案可以二分搜（符合 0/1 序列的性質），且不會 TLE 時。</p>
+<p>主要差別在於<strong>不能用「相等」判斷終止</strong>，因為浮點數幾乎不可能精確相等。做法是固定跑一個足夠的迴圈次數（例如 100 次，每次區間減半，100 次後精度遠超過一般題目要求的誤差範圍），或是用「區間長度小於 eps」當終止條件：</p>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token comment">// [來源：本文補充，待替換]</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">double</span> l <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> r <span class="token operator">=</span> <span class="token number">1e7</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> iter <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> iter <span class="token operator">&lt;</span> <span class="token number">100</span><span class="token punctuation">;</span> iter<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="4"></td><td><pre>    <span class="token keyword">double</span> mid <span class="token operator">=</span> <span class="token punctuation">(</span>l <span class="token operator">+</span> r<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="5"></td><td><pre>    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">check</span><span class="token punctuation">(</span>mid<span class="token punctuation">)</span><span class="token punctuation">)</span> r <span class="token operator">=</span> mid<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="6"></td><td><pre>    <span class="token keyword">else</span> l <span class="token operator">=</span> mid<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="8"></td><td><pre><span class="token comment">//l（或 r）即為答案，誤差極小</span></pre></td></tr></table></figure><p>固定跑 100 次是比較保險的寫法，因為浮點數二分搜的迴圈次數不好用「區間變 0」判斷（浮點數精度有限，區間可能永遠縮不到 0，導致無窮迴圈）。</p>
+<hr />
+<h1 id="小結"><a class="anchor" href="#小結">#</a> 小結</h1>
+<table>
+<thead>
+<tr>
+<th>技巧</th>
+<th>前提條件</th>
+<th>複雜度優化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>前綴和 / 建表</td>
+<td>查詢在建表之後、可重複利用</td>
+<td>每次查詢從  <code>O(n)</code>  降到  <code>O(1)</code></td>
+</tr>
+<tr>
+<td>雙指針</td>
+<td>資料具單調性（通常需先排序）</td>
+<td>從  <code>O(n^2)</code>  降到  <code>O(n)</code></td>
+</tr>
+<tr>
+<td>滑動視窗</td>
+<td>連續區間 + 單調性</td>
+<td>從  <code>O(n^2)</code>  降到  <code>O(n)</code></td>
+</tr>
+<tr>
+<td>二分搜</td>
+<td>資料已排序</td>
+<td>從  <code>O(n)</code>  降到  <code>O(log n)</code></td>
+</tr>
+<tr>
+<td>對答案二分搜</td>
+<td>判斷式  <code>check(x)</code>  具單調性</td>
+<td>把「求值」轉成「求界」， <code>O(log(範圍))</code>  次判斷</td>
+</tr>
+</tbody>
+</table>
+<p>這些技巧的共同心法是：<strong>先看資料或答案有沒有單調性，有的話幾乎都能把複雜度降一個檔次</strong>。之後遇到題目 TLE，第一件事就是回頭檢查有沒有漏看的單調性。</p>
+<p>下一章要講<strong>窮舉暴搜與回溯法</strong> —— 當真的找不到單調性或更好的結構時，就得靠有技巧的暴力來解決問題，重點會放在剪枝跟折半枚舉。</p>
+<h1 id="練習題"><a class="anchor" href="#練習題">#</a> 練習題</h1>
+<p>（之後補上）</p>
+
+      <div class="tags">
+          <a href="/tags/C/" rel="tag"><i class="ic i-tag"></i> C++</a>
+          <a href="/tags/%E6%BC%94%E7%AE%97%E6%B3%95/" rel="tag"><i class="ic i-tag"></i> 演算法</a>
+          <a href="/tags/APCS/" rel="tag"><i class="ic i-tag"></i> APCS</a>
+          <a href="/tags/%E4%BA%8C%E5%88%86%E6%90%9C/" rel="tag"><i class="ic i-tag"></i> 二分搜</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新於</span>
+    <time title="修改時間：2026-09-14 00:36:31" itemprop="dateModified" datetime="2026-09-14T00:36:31+08:00">2026-09-14</time>
+  </span>
+  <span id="2026/08/14/1-3-搜尋技巧/" class="item leancloud_visitors" data-flag-title="1-3 搜尋技巧：前綴和、雙指針、滑動視窗、二分搜" title="閱讀次數">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">閱讀次數</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">次</span>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>作者： </strong>Rabbir <i class="ic i-at"><em>@</em></i>プログラムを書けないうさぎは、ただのうさぎだ。
+  </li>
+  <li class="link">
+    <strong>文章連結：</strong>
+    <a href="https://rabbirreaper.github.io/2026/08/14/1-3-%E6%90%9C%E5%B0%8B%E6%8A%80%E5%B7%A7/" title="1-3 搜尋技巧：前綴和、雙指針、滑動視窗、二分搜">https://rabbirreaper.github.io/2026/08/14/1-3-搜尋技巧/</a>
+  </li>
+  <li class="license">
+    <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 許可協議。轉載請註明出處！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2026/08/14/1-2-%E9%81%9E%E8%BF%B4/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;pub-da440be71028438aa9683b63bef5ccf1.r2.dev&#x2F;22.jpg" title="1-2 遞迴">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> 演算法</span>
+  <h3>1-2 遞迴</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2026/08/14/1-4-%E7%AA%AE%E8%88%89%E6%9A%B4%E6%90%9C%E8%88%87%E5%9B%9E%E6%BA%AF%E6%B3%95/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;pub-da440be71028438aa9683b63bef5ccf1.r2.dev&#x2F;94.jpg" title="1-4 窮舉暴搜與回溯法">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> 演算法</span>
+  <h3>1-4 窮舉暴搜與回溯法</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目錄">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text"> 前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BB%BA%E8%A1%A8%E9%A0%90%E8%99%95%E7%90%86preprocessing"><span class="toc-number">2.</span> <span class="toc-text"> 建表（預處理，preprocessing）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AF%84%E4%BE%8B%E9%AA%B0%E5%AD%90%E6%B9%8A%E5%88%86%E6%95%B8"><span class="toc-number">2.1.</span> <span class="toc-text"> 範例：骰子湊分數</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%B6%B4%E5%92%8Cprefix-sum"><span class="toc-number">2.2.</span> <span class="toc-text"> 前綴和（Prefix Sum）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9B%99%E6%8C%87%E9%87%9Dtwo-pointers"><span class="toc-number">3.</span> <span class="toc-text"> 雙指針（Two Pointers）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AF%84%E4%BE%8B%E5%85%A9%E5%80%8B%E9%81%9E%E5%A2%9E%E5%BA%8F%E5%88%97%E7%9A%84%E5%92%8C"><span class="toc-number">3.1.</span> <span class="toc-text"> 範例：兩個遞增序列的和</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AF%84%E4%BE%8Bcses-1640-sum-of-two-values"><span class="toc-number">3.2.</span> <span class="toc-text"> 範例：CSES 1640 Sum of Two Values</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AF%84%E4%BE%8Bcses-1641-sum-of-three-values"><span class="toc-number">3.3.</span> <span class="toc-text"> 範例：CSES 1641 Sum of Three Values</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%BB%91%E5%8B%95%E8%A6%96%E7%AA%97sliding-window"><span class="toc-number">4.</span> <span class="toc-text"> 滑動視窗（Sliding Window）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AF%84%E4%BE%8B%E5%9B%BA%E5%AE%9A%E5%92%8C%E4%B8%8A%E9%99%90%E7%9A%84%E5%8D%80%E9%96%93%E6%95%B8"><span class="toc-number">4.1.</span> <span class="toc-text"> 範例：固定和上限的區間數</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AF%84%E4%BE%8Bleetcode-76-minimum-window-substring"><span class="toc-number">4.2.</span> <span class="toc-text"> 範例：leetcode 76. Minimum Window Substring</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A4%E6%96%B7%E8%83%BD%E4%B8%8D%E8%83%BD%E7%94%A8%E6%BB%91%E5%8B%95%E8%A6%96%E7%AA%97%E7%9A%84%E9%97%9C%E9%8D%B5"><span class="toc-number">4.3.</span> <span class="toc-text"> 判斷能不能用滑動視窗的關鍵</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E5%88%86%E6%90%9Cbinary-search"><span class="toc-number">5.</span> <span class="toc-text"> 二分搜（Binary Search）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5"><span class="toc-number">5.1.</span> <span class="toc-text"> 核心概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%88%86%E6%90%9C%E7%9A%84%E5%B8%B8%E8%A6%8B-bug"><span class="toc-number">5.2.</span> <span class="toc-text"> 二分搜的常見 bug</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A9%B2%E6%83%B3%E6%B8%85%E6%A5%9A%E7%9A%84%E4%B8%89%E5%80%8B%E7%B4%B0%E7%AF%80"><span class="toc-number">5.3.</span> <span class="toc-text"> 該想清楚的三個細節</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#c-%E5%85%A7%E5%BB%BA%E7%9A%84%E4%BA%8C%E5%88%86%E6%90%9C%E5%B7%A5%E5%85%B7"><span class="toc-number">5.4.</span> <span class="toc-text"> C++ 內建的二分搜工具</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B0%8D%E7%AD%94%E6%A1%88%E4%BA%8C%E5%88%86%E6%90%9C"><span class="toc-number">6.</span> <span class="toc-text"> 對答案二分搜</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AF%84%E4%BE%8Bcses-1620-factory-machines"><span class="toc-number">6.1.</span> <span class="toc-text"> 範例：CSES 1620 Factory Machines</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A4%E6%96%B7%E8%83%BD%E4%B8%8D%E8%83%BD%E7%94%A8%E5%B0%8D%E7%AD%94%E6%A1%88%E4%BA%8C%E5%88%86%E6%90%9C"><span class="toc-number">6.2.</span> <span class="toc-text"> 判斷能不能用對答案二分搜</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B0%8D%E6%B5%AE%E9%BB%9E%E6%95%B8%E4%BA%8C%E5%88%86%E6%90%9C"><span class="toc-number">7.</span> <span class="toc-text"> 對浮點數二分搜</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90"><span class="toc-number">8.</span> <span class="toc-text"> 小結</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B7%B4%E7%BF%92%E9%A1%8C"><span class="toc-number">9.</span> <span class="toc-text"> 練習題</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li><a href="/2026/08/14/1-1-%E5%9F%BA%E6%9C%AC%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E8%88%87-STL/" rel="bookmark" title="1-1 基本資料結構與 STL">1-1 基本資料結構與 STL</a></li><li><a href="/2026/08/14/1-2-%E9%81%9E%E8%BF%B4/" rel="bookmark" title="1-2 遞迴">1-2 遞迴</a></li><li class="active"><a href="/2026/08/14/1-3-%E6%90%9C%E5%B0%8B%E6%8A%80%E5%B7%A7/" rel="bookmark" title="1-3 搜尋技巧：前綴和、雙指針、滑動視窗、二分搜">1-3 搜尋技巧：前綴和、雙指針、滑動視窗、二分搜</a></li><li><a href="/2026/08/14/1-4-%E7%AA%AE%E8%88%89%E6%9A%B4%E6%90%9C%E8%88%87%E5%9B%9E%E6%BA%AF%E6%B3%95/" rel="bookmark" title="1-4 窮舉暴搜與回溯法">1-4 窮舉暴搜與回溯法</a></li><li><a href="/2026/08/14/1-5-%E8%B2%AA%E5%BF%83%E6%BC%94%E7%AE%97%E6%B3%95/" rel="bookmark" title="1-5 貪心演算法">1-5 貪心演算法</a></li><li><a href="/2026/08/14/1-6-%E6%8E%83%E6%8F%8F%E7%B7%9A%E6%BC%94%E7%AE%97%E6%B3%95/" rel="bookmark" title="1-6 掃描線演算法">1-6 掃描線演算法</a></li><li><a href="/2026/08/14/1-7-%E5%88%86%E6%B2%BB%E6%BC%94%E7%AE%97%E6%B3%95/" rel="bookmark" title="1-7 分治演算法">1-7 分治演算法</a></li><li><a href="/2026/08/14/1-8-%E5%8B%95%E6%85%8B%E8%A6%8F%E5%8A%83/" rel="bookmark" title="1-8 動態規劃">1-8 動態規劃</a></li><li><a href="/2026/08/14/1-9-%E5%9F%BA%E6%9C%AC%E5%9C%96%E8%AB%96%E6%BC%94%E7%AE%97%E6%B3%95/" rel="bookmark" title="1-9 基本圖論演算法">1-9 基本圖論演算法</a></li><li><a href="/2026/08/14/1-10-%E6%A8%B9%E4%B8%8A%E6%BC%94%E7%AE%97%E6%B3%95/" rel="bookmark" title="1-10 樹上演算法">1-10 樹上演算法</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="本站概要">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Rabbir"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">Rabbir</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">109</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">14</span>
+        <span class="name">分類</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">49</span>
+        <span class="name">標籤</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>首頁</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>關於</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>歸檔</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分類</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>標籤</a>
+  </li>
+
+  </ul>
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2026/08/14/1-2-%E9%81%9E%E8%BF%B4/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2026/08/14/1-4-%E7%AA%AE%E8%88%89%E6%9A%B4%E6%90%9C%E8%88%87%E5%9B%9E%E6%BA%AF%E6%B3%95/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>隨機文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Hexo/" title="分類於 Hexo">Hexo</a>
+</div>
+
+    <span><a href="/2026/01/09/hexo-mermaid-fix/" title="Hexo Shoka 主題 Mermaid 渲染問題排查與修復">Hexo Shoka 主題 Mermaid 渲染問題排查與修復</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/APCS-%E6%A8%A1%E6%93%AC%E5%9C%98%E9%9A%8A/" title="分類於 APCS 模擬團隊">APCS 模擬團隊</a>
+</div>
+
+    <span><a href="/2025/01/18/apcs0204-%E9%80%83%E8%84%AB%E9%81%8A%E6%88%B2-Game/" title="apcs0204:逃脫遊戲 (Game)">apcs0204:逃脫遊戲 (Game)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/APCS/" title="分類於 APCS">APCS</a>
+</div>
+
+    <span><a href="/2025/01/19/f315-4-%E4%BD%8E%E5%9C%B0%E8%B7%9D%E9%9B%A2/" title="f315. 4. 低地距離">f315. 4. 低地距離</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/%E5%85%B6%E4%BB%96/" title="分類於 其他">其他</a>
+</div>
+
+    <span><a href="/2025/01/18/c889-2-%E4%BA%8C%E5%88%86%E5%9C%96/" title="c889. 2. 二分圖">c889. 2. 二分圖</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/19/Q-7-7-AOV-%E6%9C%80%E6%97%A9%E5%AE%8C%E5%B7%A5%E6%99%82%E9%96%93/" title="Q-7-7. AOV 最早完工時間">Q-7-7. AOV 最早完工時間</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/18/Q-1-8-%E5%AD%90%E9%9B%86%E5%90%88%E7%9A%84%E5%92%8C/" title="Q-1-8. 子集合的和">Q-1-8. 子集合的和</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/APCS-%E6%A8%A1%E6%93%AC%E5%9C%98%E9%9A%8A/" title="分類於 APCS 模擬團隊">APCS 模擬團隊</a>
+</div>
+
+    <span><a href="/2025/01/18/apcs0303%E7%A4%A6%E5%9D%91-Mine/" title="apcs0303礦坑 (Mine)">apcs0303礦坑 (Mine)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/%E5%85%B6%E4%BB%96/" title="分類於 其他">其他</a>
+</div>
+
+    <span><a href="/2025/01/18/a120-%E4%B8%AD%E7%BD%AE%E5%BC%8F%E8%BD%89%E5%BE%8C%E7%BD%AE%E5%BC%8F/" title="a120 中置式轉後置式">a120 中置式轉後置式</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/%E5%85%B6%E4%BB%96/" title="分類於 其他">其他</a>
+</div>
+
+    <span><a href="/2025/01/18/a164-%E5%9C%98%E9%AB%94%E4%BD%87%E5%88%97/" title="a164 團體佇列">a164 團體佇列</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/APCS-%E6%A8%A1%E6%93%AC%E5%9C%98%E9%9A%8A/" title="分類於 APCS 模擬團隊">APCS 模擬團隊</a>
+</div>
+
+    <span><a href="/2025/01/18/apcs0404-C-CPP-%E9%A1%AF%E5%8D%A1%E7%88%AD%E9%9C%B8%E6%88%B0-Graphics-Card-Battle/" title="apcs0404-C-CPP:顯卡爭霸戰(Graphics Card Battle)">apcs0404-C-CPP:顯卡爭霸戰(Graphics Card Battle)</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新評論</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2025 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Rabbir @ Rabbir Reaper</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="總字數">486k 字</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">7:22</span>
+  </div>
+  <div class="powered-by">
+    基於 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2026/08/14/1-3-搜尋技巧/',
+    favicon: {
+      show: "（●´3｀●）復活成功",
+      hide: "(´Д｀)瀏覽器崩潰啦"
+    },
+    search : {
+      placeholder: "文章搜尋",
+      empty: "關於 「 ${query} 」 ，什麼也沒搜到",
+      stats: "${time} ms 內找到 ${hits} 條結果"
+    },
+    valine: true,fancybox: true,
+    copyright: '複製成功，轉載請遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 協議。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
