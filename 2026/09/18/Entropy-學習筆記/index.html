@@ -1,0 +1,778 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/https:/pub-da440be71028438aa9683b63bef5ccf1.r2.devimages/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/https:/pub-da440be71028438aa9683b63bef5ccf1.r2.dev/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="プログラムを書けないうさぎは、ただのうさぎだ。" href="https://rabbirreaper.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="プログラムを書けないうさぎは、ただのうさぎだ。" href="https://rabbirreaper.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="プログラムを書けないうさぎは、ただのうさぎだ。" href="https://rabbirreaper.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="https://rabbirreaper.github.io/2026/09/18/Entropy-%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/">
+
+
+
+  <title>
+Entropy 學習筆記 |
+Rabbir Reaper = プログラムを書けないうさぎは、ただのうさぎだ。</title>
+<meta name="generator" content="Hexo 8.1.1"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Entropy 學習筆記
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="創建時間：2026-09-18 15:01:21">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">發表於</span>
+    <time itemprop="dateCreated datePublished" datetime="2026-09-18T15:01:21+08:00">2026-09-18</time>
+  </span>
+  <span class="item" title="文章字數">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">文章字數</span>
+    <span>4.7k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="所需閱讀時間">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">所需閱讀時間</span>
+    <span>4 分鐘</span>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切換導航欄">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Rabbir Reaper</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/54.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/42.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/26.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/82.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/2.jpg"></li>
+          <li class="item" data-background-image="https://pub-da440be71028438aa9683b63bef5ccf1.r2.dev/63.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首頁</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-TW">
+  <link itemprop="mainEntityOfPage" href="https://rabbirreaper.github.io/2026/09/18/Entropy-%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/https:/pub-da440be71028438aa9683b63bef5ccf1.r2.dev/images/avatar.jpg">
+    <meta itemprop="name" content="Rabbir">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="プログラムを書けないうさぎは、ただのうさぎだ。">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="entropy-學習筆記-資料壓縮"><a class="anchor" href="#entropy-學習筆記-資料壓縮">#</a> Entropy 學習筆記 - 資料壓縮</h1>
+<h2 id="1-課程概述"><a class="anchor" href="#1-課程概述">#</a> 1. 課程概述</h2>
+<p>這份筆記整理自「資料壓縮」課程中 <strong>Entropy（熵）</strong> 單元的投影片，主標題為 <em>Mathematical Preliminaries for Lossless Compression</em>（無失真壓縮的數學預備知識），共 42 頁。</p>
+<p>核心脈絡：</p>
+<ul>
+<li><strong>資訊理論（Information Theory）</strong> 由 Shannon（貝爾實驗室）提出，是無失真壓縮技術發展的理論基礎。</li>
+<li><strong>對資料建模（Modeling the data）</strong> 則是設計有效編碼方案的關鍵。</li>
+</ul>
+<p>投影片先建立「資訊量該怎麼量化」這件事（自資訊、熵），再說明「了解資料的結構（模型）可以降低所需的編碼位元數」，最後銜接到「編碼（Coding）」的基本概念，為後面 Huffman、算術編碼等章節鋪路。</p>
+<h2 id="2-自資訊self-information"><a class="anchor" href="#2-自資訊self-information">#</a> 2. 自資訊（Self-information）</h2>
+<p>對事件 A（發生機率為 P (A)），我們想找一個函式 i (A) 來衡量這個事件包含的「資訊量（或驚異度、不確定性）」。</p>
+<p><strong>三個必須成立的假設</strong></p>
+<ol>
+<li>i (A) ≥ 0：資訊量不能為負。</li>
+<li>若 A、B 為兩個獨立事件，則 i (AB) = i (A) + i (B)（資訊量可加成）。</li>
+<li>i (A) 是連續且單調的函數：機率不同，i (A) 也不同。</li>
+</ol>
+<p><strong>推導出對數關係</strong></p>
+<p>若 p_A = p_B = p，則 i (p²) = 2×i (p)；一般化後可得 i (pⁿ) = n×i (p)。進一步推廣後，可得 i (y) = (m/n)×i (y^(n/m))，這正好符合<strong>對數函數</strong>的性質。因此定義：</p>
+<blockquote>
+<p><strong>i(A) = log_b(1/P(A)) = −log_b P(A)</strong></p>
+</blockquote>
+<p><strong>為什麼用 −log？</strong> 因為 log (1) = 0，且 −log (x) 隨 x 從 1 降到 0 而增加。這意味著：</p>
+<ul>
+<li>事件發生機率越<strong>低</strong>，包含的自資訊越<strong>高</strong>（越意外）。</li>
+<li>事件發生機率越<strong>高</strong>，包含的資訊越<strong>低</strong>（越不意外）。</li>
+<li>例子：狗吆叫、「白銀馬」探案中夜間狗沒叫反而是關鍵線索（意外度高）。</li>
+</ul>
+<p><strong>兩個獨立事件的資訊量</strong>：若 A、B 獨立，則 P (AB)=P (A) P (B)，代入後可得 i (AB) = i (A) + i (B)，驗證了假設 2。</p>
+<h2 id="3-資訊單位與拋硬幣範例"><a class="anchor" href="#3-資訊單位與拋硬幣範例">#</a> 3. 資訊單位與拋硬幣範例</h2>
+<p>對數的底 b 決定了資訊量的單位：</p>
+<table>
+<thead>
+<tr>
+<th>底數</th>
+<th>單位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2（預設）</td>
+<td>bit</td>
+</tr>
+<tr>
+<td>3</td>
+<td>trit</td>
+</tr>
+<tr>
+<td>e</td>
+<td>nat（自然對數）</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Hartley（紀念科學家 Ralph Hartley）</td>
+</tr>
+</tbody>
+</table>
+<p>課程若未特別說明底數，一律假設是 <strong>底數 2（bit）</strong>。</p>
+<p><strong>範例 2.2.1：拋硬幣</strong></p>
+<p>設 H = 正面、T = 反面：</p>
+<ul>
+<li>公平硬幣：P (H) = P (T) = 1/2 → i (H) = i (T) = 1 bit。</li>
+<li>不公平硬幣：P (H) = 1/8，P (T) = 7/8 → i (H) = 3 bits，i (T) ≈ 0.193 bits。</li>
+</ul>
+<p><strong>重點</strong>：不公平硬幣出現「正面」這種罕見結果時，攜帶的資訊量遠大於「反面」。這說明機率低的事件一旦發生，資訊量（意外程度）反而更高，之後編碼時應該給罕見符號分配較長的碼字、給常見符號較短的碼字。</p>
+<h2 id="4-平均自資訊與熵entropy的定義"><a class="anchor" href="#4-平均自資訊與熵entropy的定義">#</a> 4. 平均自資訊與熵（Entropy）的定義</h2>
+<p>設來自實驗 / 來源 S 的一組獨立事件 Aᵢ（聯合為樣本空間 S），定義其<strong>平均自資訊</strong>：</p>
+<blockquote>
+<p><strong>H = Σ P(Aᵢ) i(Aᵢ) = −Σ P(Aᵢ) log_b P(Aᵢ)</strong></p>
+</blockquote>
+<p>這個 H 就是 <strong>熵（Entropy）</strong>。如果來源的輸出符號集合為 A，熵就是：</p>
+<ul>
+<li>對該來源輸出編碼時，<strong>平均每個符號所需的二進位元數（bits）下限</strong>。</li>
+<li>實際事件並非永遠獨立，符號間可能存在依賴關係（下文的 Markov 模型就是處理這種情況）。</li>
+</ul>
+<p>這個公式可以理解為：將每個符號的自資訊 i (Aᵢ) 依其發生機率 P (Aᵢ) 加權平均，得到整個來源平均而言每個符號攜帶的資訊量。</p>
+<h2 id="5-熵的估計範例建模如何降低熵"><a class="anchor" href="#5-熵的估計範例建模如何降低熵">#</a> 5. 熵的估計範例：建模如何降低熵</h2>
+<p><strong>範例一：直接估計</strong></p>
+<p>數列： <code>1 2 3 2 3 4 5 4 5 6 7 8 9 8 9 10</code></p>
+<p>估計各符號發生機率（P (1)=P (6)=P (7)=P (10)=1/16，P (2)=P (3)=P (4)=P (5)=P (8)=P (9)=2/16），假設序列為 <strong>iid</strong>（獨立同分佈），算出熵 ≈ <strong>3.25 bits / 符號</strong>。這也是目前最好編碼方案能達到的上限。</p>
+<p><strong>範例二：利用結構建模（取相鄰差值）</strong></p>
+<p>將相鄰符號相減得到殘差序列： <code>1 1 1 -1 1 1 1 -1 1 1 1 1 1 -1 1 1</code> ，只有兩種值（P (1)=13/16、P (-1)=3/16），熵降到 <strong>0.70 bits / 符號</strong>。這說明：<strong>知道資料的結構（模型）可以大幅降低熵</strong>。（注：接收方還需知道建模方式 xn = xn−1 + rn 才能還原，這種參數固定的模型稱為 <strong>靜態模型</strong>）。</p>
+<p><strong>範例三：以區塊（block）降低熵</strong></p>
+<p>序列： <code>1 2 1 2 3 3 3 3 1 2 3 3 3 3 1 2 3 3 1 2</code> ，P (1)=P (2)=1/4、P (3)=1/2，單符號熵 = 1.5 bits。若以兩兩一組分組（12、12、33、33...），P (12)=P (33)=1/2，熵降為 <strong>1 bit / 組</strong>（即每個符號 0.5 bit）。</p>
+<blockquote>
+<p>小結：三個範例都在說明同一件事 ——<strong> 對資料結構的假設（模型）越準確，所估計出來的熵就越低</strong>，也就能壓縮得越小。</p>
+</blockquote>
+<h2 id="6-長序列與-n-tuple-熵的收斂"><a class="anchor" href="#6-長序列與-n-tuple-熵的收斂">#</a> 6. 長序列與 n-tuple 熵的收斂</h2>
+<p>為了捕捉符號之間的依賴關係，可以看「長度 n 的序列」的聯合分佈。課程以三本書（<em>Peter Pan</em>、<em>The Communist Manifesto</em>、<em>The Wealth of Nations</em>）為例，列出 n=1,2,3,10 時最常見的字母序列：</p>
+<ul>
+<li><strong>n 很小時</strong>（如 n=1,2）：只能看到英文語言本身的共通結構（如 the、of 等常用字），三本書很難區別。</li>
+<li><strong>n 增大到 10 時</strong>：已可進一步辨識出是哪一本書（如 bourgeoisie 對應 <em>Manifesto</em>），即捕捉到更多特定文本的結構。</li>
+</ul>
+<p><strong>形式化定義</strong></p>
+<p>定義 n 元組的聯合資訊量：</p>
+<blockquote>
+<p>Gn = −Σ…Σ P(X₁=i₁,…,Xn=in) log P(X₁=i₁,…,Xn=in)</p>
+</blockquote>
+<p>每字平均資訊量 Hn = Gn /n。將 Wealth of Nations 的 Hn 對 n=1~12 作圖，會發現 <strong>Hn 隨 n 增加而逐漸收斂到一個固定值</strong>。Shannon 證明，對 <strong>穩定來源（stationary source）</strong> 而言，這個極限就是真正的熵：</p>
+<blockquote>
+<p><strong>H(S) = lim(n→∞) (1/n) Hn</strong></p>
+</blockquote>
+<p>若序列是 <strong>iid</strong>（獨立同分佈），則可簡化為 Gn = n × 單符號熵，進而得到熟悉的式子：<strong>H(S) = −Σ P(X₁) log P(X₁)</strong>，與第 4 節的定義一致。</p>
+<h2 id="7-熵的重要性質"><a class="anchor" href="#7-熵的重要性質">#</a> 7. 熵的重要性質</h2>
+<p><strong>性質一：均勻分佈時熵最大</strong></p>
+<ul>
+<li>公平硬幣：熵 = 1/2×log₂(2) + 1/2×log₂(2) = <strong>1 bit</strong>（最大可能的熵）。</li>
+<li>假硬幣（P (H)=1/8，P (T)=7/8）：熵 = 1/8×log₂(8) + 7/8×log₂(8/7) ≈ <strong>0.54 bits</strong>，比公平硬幣低。</li>
+</ul>
+<p>結論：<strong>事件發生機率越均勻（不確定性越高），熵就越大</strong>；相反，若分佈們偏向某一值，熵就會變小。</p>
+<p><strong>性質二：Kraft 不等式與熵的下限意義</strong></p>
+<p>對於 <strong>瞬時、唯一可解碼碼（instantaneous uniquely decodable code）</strong> 而言，<strong>平均碼長一定大於或等於熵</strong>。換句話說：</p>
+<blockquote>
+<p>對於無失真壓縮而言，<strong>熵是理論上能達到的最佳（最短）平均編碼長度</strong>，任何無損編碼方法都無法突破這個下限。</p>
+</blockquote>
+<p>這就是編碼理論（變長碼、Huffman、算術編碼等後續章節）想要逐步逼近的目標。</p>
+<h2 id="8-資料模型機率模型-vs-markov-模型"><a class="anchor" href="#8-資料模型機率模型-vs-markov-模型">#</a> 8. 資料模型：機率模型 vs Markov 模型</h2>
+<p>要估計真實熵，需先對資料的統計特性做經驗觀察並建立<strong>模型</strong>，常見分類：</p>
+<ul>
+<li><strong>無知模型（ignorance model）</strong>：假設所有符號機率相等。</li>
+<li><strong>機率模型（probability model）</strong>：假設符號互相獨立，但機率不同。</li>
+<li><strong>Markov 模型</strong>：假設符號間<strong>彼此依賴</strong>。</li>
+</ul>
+<p><strong>Markov 模型基礎</strong>（以俄國數學家 Andrei Markov, 1856–1922 命名）：</p>
+<blockquote>
+<p>k 階 Markov 模型：P (xn | xn−1,…,xn−k) = P (xn | xn−1,…,xn−k,…)</p>
+</blockquote>
+<p>意思是：<strong>只需知道前 k 個符號，就等同於知道整個過去歷史</strong>。最常用的是 <strong>一階 Markov 模型</strong>（只看前一個符號）。</p>
+<p><strong>範例：二元影像（白 / 黑像素）</strong></p>
+<p>定義兩個狀態 Sw（白）、Sb（黑），並定義轉移機率 P (w|b)、P (b|w)。整個有限狀態過程的熵為各狀態熵的加權平均：<strong>H = Σ P(Si) H(Si)</strong>。</p>
+<p><strong>範例 2.3.1（數值比較：機率模型 vs Markov 模型）</strong></p>
+<p>已知 P (Sw)=30/31、P (Sb)=1/31，P (w|w)=0.99、P (b|w)=0.01、P (b|b)=0.7、P (w|b)=0.3：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>計算</th>
+<th>熵</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>機率模型（iid 假設）</td>
+<td>−0.8log0.8 − 0.2log0.2</td>
+<td>0.206 bits</td>
+</tr>
+<tr>
+<td>Markov 模型（H (Sb)）</td>
+<td>−0.3log0.3 − 0.7log0.7</td>
+<td>0.881 bits</td>
+</tr>
+<tr>
+<td>Markov 模型（H (Sw)）</td>
+<td>−0.01log0.01 − 0.99log0.99</td>
+<td>0.081 bits</td>
+</tr>
+<tr>
+<td>Markov 模型綜合</td>
+<td>加權平均</td>
+<td><strong>0.107 bits</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>關鍵發現</strong>：利用 Markov 模型考慮符號依賴性後，熵從 0.206 bits 降到 0.107 bits，<strong>約為 iid 假設的一半</strong>。這再次驗證了：<strong>越好的模型（越能描述資料真實結構），估計出的熵就越低</strong>，壓縮效果也就越好。</p>
+<h2 id="9-編碼基礎碼字-唯一可解碼與前綴碼"><a class="anchor" href="#9-編碼基礎碼字-唯一可解碼與前綴碼">#</a> 9. 編碼基礎：碼字、唯一可解碼與前綴碼</h2>
+<p><strong>基本名詞</strong></p>
+<ul>
+<li><strong>碼（code）</strong>：將字母表（alphabet）中的符號對應到二進位序列的對應關係。</li>
+<li><strong>碼字（codeword）</strong>：每個字母對應到的二進位序列。</li>
+</ul>
+<p><strong>範例：四個字母的四種碼</strong>（P (a₁)=1/2、P (a₂)=1/4、P (a₃)=P (a₄)=1/8，熵 = 1.75 bits）</p>
+<table>
+<thead>
+<tr>
+<th>字母</th>
+<th>碼 1</th>
+<th>碼 2</th>
+<th>碼 3</th>
+<th>碼 4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a₁</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>a₂</td>
+<td>0</td>
+<td>1</td>
+<td>10</td>
+<td>01</td>
+</tr>
+<tr>
+<td>a₃</td>
+<td>1</td>
+<td>00</td>
+<td>110</td>
+<td>011</td>
+</tr>
+<tr>
+<td>a₄</td>
+<td>10</td>
+<td>11</td>
+<td>111</td>
+<td>0111</td>
+</tr>
+<tr>
+<td>平均碼長</td>
+<td>1.125</td>
+<td>1.25</td>
+<td>1.75</td>
+<td>1.875</td>
+</tr>
+</tbody>
+</table>
+<p>雖然碼 1 平均碼長最短，但 a₁、a₂ 都是 0，收到 0 時無法分辨 ——<strong> 不是唯一可解碼</strong>（碼 2 同樣不行）。</p>
+<p><strong>碼 3（瞬時碼）</strong>：0 總是代表碼字結束，解碼方可立即知道一個碼字已完成。</p>
+<p><strong>碼 4（幾乎瞬時）</strong>：只有碼字開頭才出現 0，需等到下一個碼字開始才知道上一個已結束。</p>
+<p><strong>碼 5（唯一可解但非瞬時）</strong>：a₁=0、a₂=01、a₃=11。雖非瞬時，但仍可唯一解碼（規則：累積位元直到看到 0，0 前一位是上一個碼字的最後一位）。</p>
+<p><strong>前綴碼（prefix code）</strong>：若任一碼字都不是別的碼字的前綴，就是前綴碼。前綴碼必定是瞬時碼，可以用<strong>二進樹（binary tree）表示：從根節點出發，左步 0、右步 1，碼字只對應到外部節點（葉子，無子節點）</strong>，而非<strong>內部節點</strong>。</p>
+<h2 id="10-唯一可解碼測試與-kraft-mcmillan-不等式"><a class="anchor" href="#10-唯一可解碼測試與-kraft-mcmillan-不等式">#</a> 10. 唯一可解碼測試與 Kraft-McMillan 不等式</h2>
+<p><strong>懸域後綴（dangling suffix）測試步驟</strong></p>
+<ol>
+<li>列出所有碼字。</li>
+<li>檢查每對碼字，看是否有一個是另一個的前綴；若是，將剩下部分（懸域後綴）加入清單。</li>
+<li>重複此過程，直到：
+<ul>
+<li>出現一個懸域後綴本身就是碼字 → <strong>不是唯一可解碼</strong>（如碼 6：a₁=0、a₂=01、a₃=10，最終會得到碼字 0）。</li>
+<li>不再有新的懸域後綴出現 → <strong>是唯一可解碼</strong>（如碼 5：a₁=0、a₂=01、a₃=11，最終只循環出現 1）。</li>
+</ul>
+</li>
+</ol>
+<p><strong>Kraft-McMillan 不等式</strong></p>
+<p>對任何非前綴但唯一可解碼的碼，都可以找到一個<strong>碼長完全相同的前綴碼</strong>來取代它。因此限制自己只用前綴碼並不會損失任何壓縮效率。形式化條件：</p>
+<blockquote>
+<p>若碼 C 有 N 個碼字，長度分別為 l₁,…,l_N，若 C 為唯一可解碼，則：<strong>K(C) = Σ 2^(−lᵢ) ≤ 1</strong></p>
+</blockquote>
+<p>這是碼長設計的<strong>必要條件</strong>：若一組碼長滿足這個不等式，就一定存在對應的前綴碼。</p>
+<hr />
+<h3 id="重點總結"><a class="anchor" href="#重點總結">#</a> 重點總結</h3>
+<ol>
+<li><strong>自資訊 i (A) = −log₂ P (A)</strong>：機率越低、資訊量越高。</li>
+<li><strong>熵 H = −Σ P (Aᵢ) log₂ P (Aᵢ)</strong>：來源的平均資訊量，也是編碼每符號所需位元數的<strong>理論下限</strong>。</li>
+<li><strong>建模越準確，估計出的熵就越低</strong>（殘差、分組、Markov 模型都是實例），壓縮效果也越好。</li>
+<li><strong>均勻分佈時熵最大</strong>，分佈越偏斜熵越小。</li>
+<li><strong>瞬時 / 唯一可解碼的平均碼長 ≥ 熵</strong>，熵是無損壓縮的理論極限。</li>
+<li><strong>前綴碼</strong>既能保證唯一可解碼又能瞬時解碼，而且不會牽制碼長（Kraft-McMillan 保證），所以實作上編碼器（如 Huffman）都只需考慮前綴碼。</li>
+</ol>
+<p>這些概念是後續 Huffman 編碼、算術編碼等實際壓縮技術的理論基石。</p>
+
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新於</span>
+    <time title="修改時間：2026-09-19 23:43:46" itemprop="dateModified" datetime="2026-09-19T23:43:46+08:00">2026-09-19</time>
+  </span>
+  <span id="2026/09/18/Entropy-學習筆記/" class="item leancloud_visitors" data-flag-title="Entropy 學習筆記" title="閱讀次數">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">閱讀次數</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">次</span>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>作者： </strong>Rabbir <i class="ic i-at"><em>@</em></i>プログラムを書けないうさぎは、ただのうさぎだ。
+  </li>
+  <li class="link">
+    <strong>文章連結：</strong>
+    <a href="https://rabbirreaper.github.io/2026/09/18/Entropy-%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/" title="Entropy 學習筆記">https://rabbirreaper.github.io/2026/09/18/Entropy-學習筆記/</a>
+  </li>
+  <li class="license">
+    <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 許可協議。轉載請註明出處！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2026/09/14/%E8%8B%B1%E6%96%87%E6%96%87%E6%B3%95-17-%E5%88%86%E8%A9%9EI/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;pub-da440be71028438aa9683b63bef5ccf1.r2.dev&#x2F;1.jpg" title="文法閱讀筆記 17：分詞（上）">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> 英文學習</span>
+  <h3>文法閱讀筆記 17：分詞（上）</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目錄">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#entropy-%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98-%E8%B3%87%E6%96%99%E5%A3%93%E7%B8%AE"><span class="toc-number">1.</span> <span class="toc-text"> Entropy 學習筆記 - 資料壓縮</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%AA%B2%E7%A8%8B%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text"> 1. 課程概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%87%AA%E8%B3%87%E8%A8%8Aself-information"><span class="toc-number">1.2.</span> <span class="toc-text"> 2. 自資訊（Self-information）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E8%B3%87%E8%A8%8A%E5%96%AE%E4%BD%8D%E8%88%87%E6%8B%8B%E7%A1%AC%E5%B9%A3%E7%AF%84%E4%BE%8B"><span class="toc-number">1.3.</span> <span class="toc-text"> 3. 資訊單位與拋硬幣範例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%B9%B3%E5%9D%87%E8%87%AA%E8%B3%87%E8%A8%8A%E8%88%87%E7%86%B5entropy%E7%9A%84%E5%AE%9A%E7%BE%A9"><span class="toc-number">1.4.</span> <span class="toc-text"> 4. 平均自資訊與熵（Entropy）的定義</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E7%86%B5%E7%9A%84%E4%BC%B0%E8%A8%88%E7%AF%84%E4%BE%8B%E5%BB%BA%E6%A8%A1%E5%A6%82%E4%BD%95%E9%99%8D%E4%BD%8E%E7%86%B5"><span class="toc-number">1.5.</span> <span class="toc-text"> 5. 熵的估計範例：建模如何降低熵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E9%95%B7%E5%BA%8F%E5%88%97%E8%88%87-n-tuple-%E7%86%B5%E7%9A%84%E6%94%B6%E6%96%82"><span class="toc-number">1.6.</span> <span class="toc-text"> 6. 長序列與 n-tuple 熵的收斂</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E7%86%B5%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7%E8%B3%AA"><span class="toc-number">1.7.</span> <span class="toc-text"> 7. 熵的重要性質</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E8%B3%87%E6%96%99%E6%A8%A1%E5%9E%8B%E6%A9%9F%E7%8E%87%E6%A8%A1%E5%9E%8B-vs-markov-%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.8.</span> <span class="toc-text"> 8. 資料模型：機率模型 vs Markov 模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E7%B7%A8%E7%A2%BC%E5%9F%BA%E7%A4%8E%E7%A2%BC%E5%AD%97-%E5%94%AF%E4%B8%80%E5%8F%AF%E8%A7%A3%E7%A2%BC%E8%88%87%E5%89%8D%E7%B6%B4%E7%A2%BC"><span class="toc-number">1.9.</span> <span class="toc-text"> 9. 編碼基礎：碼字、唯一可解碼與前綴碼</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E5%94%AF%E4%B8%80%E5%8F%AF%E8%A7%A3%E7%A2%BC%E6%B8%AC%E8%A9%A6%E8%88%87-kraft-mcmillan-%E4%B8%8D%E7%AD%89%E5%BC%8F"><span class="toc-number">1.10.</span> <span class="toc-text"> 10. 唯一可解碼測試與 Kraft-McMillan 不等式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E9%BB%9E%E7%B8%BD%E7%B5%90"><span class="toc-number">1.10.1.</span> <span class="toc-text"> 重點總結</span></a></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+      </div>
+      <div class="overview panel" data-title="本站概要">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Rabbir"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">Rabbir</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">127</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">15</span>
+        <span class="name">分類</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">51</span>
+        <span class="name">標籤</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>首頁</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>關於</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>歸檔</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分類</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>標籤</a>
+  </li>
+
+  </ul>
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>隨機文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/%E5%85%B6%E4%BB%96/" title="分類於 其他">其他</a>
+</div>
+
+    <span><a href="/2025/01/19/c123-00514-Rails/" title="c123. 00514 - Rails">c123. 00514 - Rails</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/18/Q-4-10-%E6%81%A2%E5%BE%A9%E8%83%BD%E9%87%8F%E7%9A%84%E7%99%BD%E9%9B%B2%E7%86%8A%E8%86%BD%E4%B8%B8/" title="Q-4-10. 恢復能量的白雲熊膽丸">Q-4-10. 恢復能量的白雲熊膽丸</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%8B%B1%E6%96%87%E5%AD%B8%E7%BF%92/" title="分類於 英文學習">英文學習</a>
+</div>
+
+    <span><a href="/2026/09/14/%E8%8B%B1%E6%96%87%E6%96%87%E6%B3%95-13-%E5%90%8D%E8%A9%9E%E5%AD%90%E5%8F%A5I/" title="文法閱讀筆記 13：名詞子句（上）">文法閱讀筆記 13：名詞子句（上）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/APCS/" title="分類於 APCS">APCS</a>
+</div>
+
+    <span><a href="/2025/01/19/c575-APCS-2017-0304-4%E5%9F%BA%E5%9C%B0%E5%8F%B0/" title="c575. APCS 2017-0304-4基地台">c575. APCS 2017-0304-4基地台</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/" title="分類於 解題紀錄">解題紀錄</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E8%A7%A3%E9%A1%8C%E7%B4%80%E9%8C%84/AP325/" title="分類於 AP325">AP325</a>
+</div>
+
+    <span><a href="/2025/01/18/Q-3-5-%E5%B8%B6%E8%91%97%E6%9D%BF%E5%87%B3%E6%8E%92%E9%9B%9E%E6%8E%92%E7%9A%84%E9%AB%98%E4%BA%BA-APCS/" title="Q-3-5. 帶著板凳排雞排的高人(APCS)">Q-3-5. 帶著板凳排雞排的高人(APCS)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2026/03/13/DCF-%E7%8F%BE%E9%87%91%E6%B5%81%E6%8A%98%E7%8F%BE%E4%BC%B0%E5%80%BC%E6%A8%A1%E5%9E%8B/" title="DCF 現金流折現估值模型">DCF 現金流折現估值模型</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%8B%B1%E6%96%87%E5%AD%B8%E7%BF%92/" title="分類於 英文學習">英文學習</a>
+</div>
+
+    <span><a href="/2026/09/14/%E8%8B%B1%E6%96%87%E6%96%87%E6%B3%95-05-%E7%96%91%E5%95%8F%E5%8F%A5%E5%9E%8B/" title="文法閱讀筆記 05：疑問句型">文法閱讀筆記 05：疑問句型</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80%E7%AD%86%E8%A8%98/" title="分類於 程式語言筆記">程式語言筆記</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80%E7%AD%86%E8%A8%98/node-js/" title="分類於 node.js">node.js</a>
+</div>
+
+    <span><a href="/2025/01/19/Express-%E4%B8%AD%E7%9A%84-Middleware%EF%BC%9A%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/" title="Express 中的 Middleware：語法筆記">Express 中的 Middleware：語法筆記</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%8B%B1%E6%96%87%E5%AD%B8%E7%BF%92/" title="分類於 英文學習">英文學習</a>
+</div>
+
+    <span><a href="/2026/09/14/%E8%8B%B1%E6%96%87%E6%96%87%E6%B3%95-06-%E7%A5%88%E4%BD%BF%E5%8F%A5%E5%9E%8B/" title="文法閱讀筆記 06：祈使句型（起始句）">文法閱讀筆記 06：祈使句型（起始句）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80%E7%AD%86%E8%A8%98/" title="分類於 程式語言筆記">程式語言筆記</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80%E7%AD%86%E8%A8%98/node-js/" title="分類於 node.js">node.js</a>
+</div>
+
+    <span><a href="/2025/01/22/cookie-parser-%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98/" title="cookie-parser 語法筆記">cookie-parser 語法筆記</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新評論</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2025 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Rabbir @ Rabbir Reaper</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="總字數">611k 字</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">9:16</span>
+  </div>
+  <div class="powered-by">
+    基於 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2026/09/18/Entropy-學習筆記/',
+    favicon: {
+      show: "（●´3｀●）復活成功",
+      hide: "(´Д｀)瀏覽器崩潰啦"
+    },
+    search : {
+      placeholder: "文章搜尋",
+      empty: "關於 「 ${query} 」 ，什麼也沒搜到",
+      stats: "${time} ms 內找到 ${hits} 條結果"
+    },
+    valine: true,fancybox: true,
+    copyright: '複製成功，轉載請遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 協議。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
